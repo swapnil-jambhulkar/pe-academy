@@ -7,9 +7,10 @@ import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ui/scroll-to-top";
 
 // Using Inter for all text - clean, professional, matches corporate PE firm aesthetic
+// Optimized: Only loading weights we actually use (400, 500, 600, 700)
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
   preload: true,

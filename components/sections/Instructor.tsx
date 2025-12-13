@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Check } from "lucide-react";
 
@@ -39,14 +40,18 @@ export default function Instructor() {
               className="relative flex justify-center"
             >
               <div className="relative w-full max-w-sm">
-                <img
+                <Image
                   src="/images/swapnil.jpg"
                   alt="Swapnil - Founder of Norland Capital"
+                  width={400}
+                  height={500}
                   className="w-full h-auto rounded-lg object-contain"
                   style={{
                     filter: 'drop-shadow(0 15px 40px rgba(0, 0, 0, 0.25))',
                     display: 'block'
                   }}
+                  priority={false}
+                  loading="lazy"
                 />
               </div>
             </motion.div>

@@ -1,13 +1,29 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
-import Solution from "@/components/sections/Solution";
-import PathwayToInterview from "@/components/sections/PathwayToInterview";
-import Comparison from "@/components/sections/Comparison";
-import Testimonials from "@/components/sections/Testimonials";
-import Outcomes from "@/components/sections/Outcomes";
-import Guarantee from "@/components/sections/Guarantee";
-import Instructor from "@/components/sections/Instructor";
-import FinalCTA from "@/components/sections/FinalCTA";
+
+// Lazy load sections below the fold for better initial load performance
+const Solution = dynamic(() => import("@/components/sections/Solution"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const PathwayToInterview = dynamic(() => import("@/components/sections/PathwayToInterview"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Comparison = dynamic(() => import("@/components/sections/Comparison"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Guarantee = dynamic(() => import("@/components/sections/Guarantee"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Instructor = dynamic(() => import("@/components/sections/Instructor"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
 
 export default function Home() {
   return (
