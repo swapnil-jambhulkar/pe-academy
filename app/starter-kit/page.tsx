@@ -789,75 +789,73 @@ export default function StarterKitPage() {
             </motion.div>
 
             <Card className="bg-black border-2 border-white/20 shadow-xl">
-              <CardContent className="p-8 md:p-12">
-                <div className="text-center mb-10">
-                  <div className="mb-6">
-                    <div className="inline-block px-4 py-2 bg-red-500/20 rounded-full border border-red-400/50 mb-4">
-                      <span className="text-red-200 text-sm font-semibold uppercase tracking-wide">Early Bird</span>
+              <CardContent className="p-6 md:p-8">
+                <div className="text-center mb-6">
+                  <div className="mb-4">
+                    <div className="inline-block px-3 py-1.5 bg-red-500/20 rounded-full border border-red-400/50 mb-3">
+                      <span className="text-red-200 text-xs font-semibold uppercase tracking-wide">Early Bird</span>
                     </div>
-                    <div className="flex items-center justify-center gap-4">
-                      <div className="text-6xl font-heading font-bold text-white">
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="text-4xl md:text-5xl font-heading font-bold text-white">
                         {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
                       </div>
-                      <div className="text-3xl font-heading font-bold text-white line-through">
+                      <div className="text-2xl md:text-3xl font-heading font-bold text-white line-through">
                         {formatPrice(getPrice(currency, "starterKit"), currency)}
                       </div>
                     </div>
                   </div>
-                  <p className="text-white/80 text-base mb-4">One-time payment, lifetime access</p>
-                  <div className="flex items-center justify-center gap-2 text-white/70 text-sm">
-                    <Users className="h-4 w-4" />
+                  <p className="text-white/80 text-sm mb-3">One-time payment, lifetime access</p>
+                  <div className="flex items-center justify-center gap-2 text-white/70 text-xs">
+                    <Users className="h-3 w-3" />
                     <span>Join 300+ active members</span>
                   </div>
                 </div>
 
-                <div className="bg-white/10 rounded-lg p-6 mb-8 border border-white/20">
-                  <h3 className="text-white font-bold mb-4 text-center text-lg">What's Included</h3>
-                  <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white/10 rounded-lg p-4 mb-6 border border-white/20">
+                  <h3 className="text-white font-bold mb-3 text-center text-base">What's Included</h3>
+                  <div className="grid grid-cols-2 gap-2">
                     {features.map((feature, index) => {
                       const Icon = feature.icon;
                       return (
                         <div key={index} className="flex items-start gap-2">
-                          <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
-                          <span className="text-white text-sm font-medium">{feature.title}</span>
+                          <Check className="h-3.5 w-3.5 text-white flex-shrink-0 mt-0.5" />
+                          <span className="text-white text-xs font-medium">{feature.title}</span>
                         </div>
                       );
                     })}
                   </div>
                 </div>
 
-                <Button
-                  variant="default"
-                  size="lg"
-                  className="w-full bg-white text-black hover:bg-gray-50 text-base sm:text-xl font-bold mb-4 shadow-2xl hover:shadow-white/50 transition-all duration-300 py-4 sm:py-6 px-4 uppercase tracking-wide break-words"
-                  asChild
-                >
-                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-center">
-                    <span className="whitespace-normal">Buy Now</span>
-                    <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" />
-                  </a>
-                </Button>
-
-                <div className="flex items-center gap-2 justify-center text-sm text-white bg-white/10 rounded-lg p-3 border border-white/20 mb-6">
-                  <Shield className="h-4 w-4 text-white" />
-                  <span className="font-medium">3-day refund guarantee, no questions asked</span>
-                </div>
-
-                {/* Cohort CTA */}
-                <div className="border-2 border-white/30 rounded-lg p-6 bg-white/5">
-                  <h3 className="text-white font-bold text-lg mb-2 text-center">Want Live Mentorship?</h3>
-                  <p className="text-white/80 text-sm mb-4 text-center">Join our 6-week Cohort Program with 1-on-1 feedback</p>
+                {/* Both CTAs Side by Side */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                  <Button
+                    variant="default"
+                    size="lg"
+                    className="w-full bg-white text-black hover:bg-gray-50 text-sm md:text-base font-bold shadow-xl hover:shadow-white/50 transition-all duration-300 py-3 md:py-4 uppercase tracking-wide"
+                    asChild
+                  >
+                    <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                      Buy Now
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  
                   <Button
                     variant="outline"
                     size="lg"
-                    className="w-full border-2 border-white text-white hover:bg-white hover:text-black text-base sm:text-lg font-bold py-4 sm:py-6 transition-all duration-300"
+                    className="w-full border-2 border-white text-white hover:bg-white hover:text-black text-sm md:text-base font-bold py-3 md:py-4 transition-all duration-300"
                     asChild
                   >
                     <Link href="/cohort#apply" className="flex items-center justify-center gap-2">
-                      Explore Cohort Program
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      Explore Cohort
+                      <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
+                </div>
+
+                <div className="flex items-center gap-2 justify-center text-xs text-white bg-white/10 rounded-lg p-2.5 border border-white/20">
+                  <Shield className="h-3.5 w-3.5 text-white" />
+                  <span className="font-medium">3-day refund guarantee, no questions asked</span>
                 </div>
               </CardContent>
             </Card>
