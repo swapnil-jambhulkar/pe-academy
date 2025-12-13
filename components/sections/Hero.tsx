@@ -65,7 +65,7 @@ export default function Hero() {
           >
             <div className="mb-8">
               <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-6 font-sans font-light">
-                Norland Capital PE Academy
+                Norland Academy
               </p>
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-semibold text-white mb-8 leading-[1.1] tracking-tight relative">
                 Break Into{" "}

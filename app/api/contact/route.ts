@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     try {
       await resend.emails.send({
-        from: "PE Academy <onboarding@resend.dev>", // Change to your verified domain
+        from: "Norland Academy <onboarding@resend.dev>", // Change to your verified domain
         to: ["contact@norlandcapital.co.uk"],
         replyTo: email,
         subject: `Contact Form: ${subject}`,
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
               </div>
             </div>
             <p style="margin-top: 20px; color: #666; font-size: 12px;">
-              Sent from PE Academy contact form
+              Sent from Norland Academy contact form
             </p>
           </div>
         `,

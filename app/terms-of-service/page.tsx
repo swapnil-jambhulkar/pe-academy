@@ -12,7 +12,7 @@ export default function TermsOfServicePage() {
                 Last updated: {new Date().toLocaleDateString()}
               </p>
               <p className="text-gray-700">
-                By accessing and using Norland Capital PE Academy's website and services,
+                By accessing and using Norland Academy's website and services,
                 you agree to be bound by these Terms of Service.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">

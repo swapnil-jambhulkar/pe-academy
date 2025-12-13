@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Break Into PE Without MBA | Norland Capital PE Academy",
+  title: "Break Into PE Without MBA | Norland Academy",
   description:
     "Join 300+ aspiring PE professionals. Build proof with our Starter Kit (₹2,999) or 6-week live Cohort (₹25K). Learn from founder who did it.",
   keywords:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Break Into PE Without MBA | Norland Capital PE Academy",
+    title: "Break Into PE Without MBA | Norland Academy",
     description:
       "Join 300+ aspiring PE professionals. Build proof with our Starter Kit (₹2,999) or 6-week live Cohort (₹25K).",
     type: "website",

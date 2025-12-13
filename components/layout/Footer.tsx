@@ -41,7 +41,7 @@ export default function Footer() {
           {/* Left: Logo & Tagline */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-xl font-heading font-medium text-black uppercase tracking-tight">PE Academy</h3>
+              <h3 className="text-xl font-heading font-medium text-black uppercase tracking-tight">Norland Academy</h3>
               <div className="h-px w-full bg-gray-400 my-1"></div>
               <p className="text-xs font-normal text-gray-600 tracking-wide">By Norland Capital</p>
             </div>

@@ -47,20 +47,20 @@ export async function POST(request: NextRequest) {
     try {
       // Send confirmation to user
       await resend.emails.send({
-        from: "PE Academy <onboarding@resend.dev>", // Change to your verified domain
+        from: "Norland Academy <onboarding@resend.dev>", // Change to your verified domain
         to: [email],
-        subject: "You're on the PE Academy Waitlist!",
+        subject: "You're on the Norland Academy Waitlist!",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #000; border-bottom: 2px solid #000; padding-bottom: 10px;">
-              Welcome to the PE Academy Waitlist
+              Welcome to the Norland Academy Waitlist
             </h2>
             <div style="margin-top: 20px;">
               <p>Thank you for joining! We'll notify you when the next cohort opens for applications.</p>
               <p style="margin-top: 15px;">In the meantime, check out our <a href="https://yourdomain.com/starter-kit" style="color: #000; text-decoration: underline;">Starter Kit</a> to get started building your PE portfolio.</p>
             </div>
             <p style="margin-top: 20px; color: #666; font-size: 12px;">
-              PE Academy by Norland Capital
+              Norland Academy
             </p>
           </div>
         `,
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
 
       // Notify admin
       await resend.emails.send({
-        from: "PE Academy <onboarding@resend.dev>", // Change to your verified domain
+        from: "Norland Academy <onboarding@resend.dev>", // Change to your verified domain
         to: ["contact@norlandcapital.co.uk"],
         subject: "New Waitlist Signup",
         html: `

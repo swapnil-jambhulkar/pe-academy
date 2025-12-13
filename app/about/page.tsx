@@ -23,7 +23,7 @@ export default function AboutPage() {
                 About Norland Capital
               </h1>
               <p className="text-xl text-white/80">
-                PE Academy
+                Norland Academy
               </p>
             </motion.div>
           </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Norland Capital PE Academy was founded to democratize access to Private Equity careers.
+                Norland Academy was founded to democratize access to Private Equity careers.
                 We believe that breaking into PE shouldn't require a ₹50L+ MBA or years in investment banking.
                 With the right system, templates, and mentorship, anyone with the drive can build proof they can do PE work.
               </p>

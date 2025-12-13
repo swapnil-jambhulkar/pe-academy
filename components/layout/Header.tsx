@@ -41,7 +41,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <div className="flex flex-col">
               <span className="text-lg font-heading font-medium text-black tracking-tight uppercase">
-                PE Academy
+                Norland Academy
               </span>
               <div className="h-px w-full bg-gray-400 my-1"></div>
               <span className="text-xs font-normal text-gray-600 tracking-wide">
