@@ -1,0 +1,160 @@
+// Fixed pricing per currency (not conversion-based)
+export type Currency = "INR" | "USD" | "GBP" | "EUR";
+
+export interface CurrencyInfo {
+  code: Currency;
+  symbol: string;
+  name: string;
+}
+
+export const CURRENCIES: Record<Currency, CurrencyInfo> = {
+  INR: { code: "INR", symbol: "₹", name: "Indian Rupee" },
+  USD: { code: "USD", symbol: "$", name: "US Dollar" },
+  GBP: { code: "GBP", symbol: "£", name: "British Pound" },
+  EUR: { code: "EUR", symbol: "€", name: "Euro" },
+};
+
+// Fixed prices per currency
+export const PRICING: Record<Currency, {
+  starterKit: number;
+  starterKitEarlyBird: number;
+  cohort6Week: number;
+  cohort12Week: number;
+  cohort6WeekEarlyBird: number;
+  cohort12WeekEarlyBird: number;
+  individualResource: number;
+  resourceBundle: number;
+}> = {
+  INR: {
+    starterKit: 7999,
+    starterKitEarlyBird: 2999,
+    cohort6Week: 30000,
+    cohort12Week: 50000,
+    cohort6WeekEarlyBird: 25000,
+    cohort12WeekEarlyBird: 42000,
+    individualResource: 999,
+    resourceBundle: 2999,
+  },
+  USD: {
+    starterKit: 99,
+    starterKitEarlyBird: 49,
+    cohort6Week: 399,
+    cohort12Week: 599,
+    cohort6WeekEarlyBird: 349,
+    cohort12WeekEarlyBird: 499,
+    individualResource: 12,
+    resourceBundle: 39,
+  },
+  GBP: {
+    starterKit: 79,
+    starterKitEarlyBird: 39,
+    cohort6Week: 299,
+    cohort12Week: 499,
+    cohort6WeekEarlyBird: 249,
+    cohort12WeekEarlyBird: 399,
+    individualResource: 10,
+    resourceBundle: 29,
+  },
+  EUR: {
+    starterKit: 99,
+    starterKitEarlyBird: 49,
+    cohort6Week: 299,
+    cohort12Week: 499,
+    cohort6WeekEarlyBird: 249,
+    cohort12WeekEarlyBird: 399,
+    individualResource: 12,
+    resourceBundle: 39,
+  },
+};
+
+// Direct payment links per currency
+export const PAYMENT_LINKS: Record<Currency, {
+  starterKit: string;
+  individualResource: string;
+}> = {
+  INR: {
+    starterKit: "https://rzp.io/rzp/yMC89rS", // Razorpay for India
+    individualResource: "https://rzp.io/rzp/LpMQ5cX", // Razorpay for ₹999 individual resources
+  },
+  USD: {
+    starterKit: "[SKYDO_LINK_STARTER_USD]", // Skydo for USA - TODO: Add actual link
+    individualResource: "[SKYDO_LINK_INDIVIDUAL_RESOURCE_USD]", // TODO: Add Skydo link for $12
+  },
+  GBP: {
+    starterKit: "[SKYDO_LINK_STARTER_GBP]", // Skydo for UK - TODO: Add actual link
+    individualResource: "[SKYDO_LINK_INDIVIDUAL_RESOURCE_GBP]", // TODO: Add Skydo link for £10
+  },
+  EUR: {
+    starterKit: "[SKYDO_LINK_STARTER_EUR]", // Skydo for Europe - TODO: Add actual link
+    individualResource: "[SKYDO_LINK_INDIVIDUAL_RESOURCE_EUR]", // TODO: Add Skydo link for €12
+  },
+};
+
+// Detect currency based on timezone/country (auto-detection only, no manual selection)
+export function detectCurrency(): Currency {
+  if (typeof window === "undefined") return "INR";
+
+  // Auto-detect based on timezone (no localStorage check - always auto-detect)
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  // USA timezones
+  if (
+    timezone.includes("America/New_York") ||
+    timezone.includes("America/Chicago") ||
+    timezone.includes("America/Denver") ||
+    timezone.includes("America/Los_Angeles") ||
+    timezone.includes("America/Phoenix")
+  ) {
+    return "USD";
+  }
+
+  // UK timezone
+  if (timezone.includes("Europe/London")) {
+    return "GBP";
+  }
+
+  // Europe timezones
+  if (
+    timezone.includes("Europe/") &&
+    !timezone.includes("Europe/London")
+  ) {
+    return "EUR";
+  }
+
+  // Default to INR
+  return "INR";
+}
+
+// Get price for a product in current currency
+export function getPrice(currency: Currency, product: "starterKit" | "starterKitEarlyBird" | "cohort6Week" | "cohort12Week" | "cohort6WeekEarlyBird" | "cohort12WeekEarlyBird" | "individualResource" | "resourceBundle"): number {
+  return PRICING[currency][product];
+}
+
+// Format price with currency symbol
+export function formatPrice(amount: number, currency: Currency = "INR"): string {
+  const currencyInfo = CURRENCIES[currency];
+
+  // Format based on currency
+  if (currency === "INR") {
+    return `${currencyInfo.symbol}${amount.toLocaleString("en-IN")}`;
+  } else if (currency === "USD" || currency === "EUR") {
+    return `${currencyInfo.symbol}${amount.toLocaleString("en-US")}`;
+  } else if (currency === "GBP") {
+    return `${currencyInfo.symbol}${amount.toLocaleString("en-GB")}`;
+  }
+
+  return `${currencyInfo.symbol}${amount.toLocaleString()}`;
+}
+
+// Get direct payment link for Starter Kit
+export function getStarterKitPaymentLink(currency: Currency): string {
+  return PAYMENT_LINKS[currency].starterKit;
+}
+
+// Get direct payment link for Individual Resource
+export function getIndividualResourcePaymentLink(currency: Currency): string {
+  return PAYMENT_LINKS[currency].individualResource;
+}
+
+// Note: Currency is now auto-detected only, no manual selection
+// Users see prices based on their location automatically
