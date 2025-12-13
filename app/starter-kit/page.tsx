@@ -824,24 +824,6 @@ export default function StarterKitPage() {
                       );
                     })}
                   </div>
-                  
-                  {/* Cohort CTA inside bundle card */}
-                  <div className="mt-6 pt-6 border-t border-white/20">
-                    <div className="text-center">
-                      <p className="text-white/90 text-sm mb-3 font-medium">Want Live Mentorship?</p>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-2 border-white/50 text-white hover:bg-white hover:text-black text-sm font-semibold transition-all duration-300"
-                        asChild
-                      >
-                        <Link href="/cohort#apply" className="flex items-center justify-center gap-2">
-                          Explore Cohort Program
-                          <ArrowRight className="ml-1 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
                 </div>
 
                 <Button
