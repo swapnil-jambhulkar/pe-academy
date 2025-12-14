@@ -951,19 +951,19 @@ export default function CohortPage() {
                               value={`phase-${phaseIndex}-week-${weekIndex}`}
                             >
                               <AccordionTrigger
-                                className={`text-sm py-3 ${
+                                className={`text-sm py-3 w-full ${
                                   tierIndex % 2 === 0
                                     ? "text-black hover:text-gray-700"
                                     : "text-white hover:text-white/80"
                                 }`}
                               >
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 w-full">
                                   <Calendar
-                                    className={`h-4 w-4 ${
+                                    className={`h-4 w-4 shrink-0 ${
                                       tierIndex % 2 === 0 ? "text-gray-600" : "text-white/70"
                                     }`}
                                   />
-                                  <span className="font-semibold">{weekDetail.week}</span>
+                                  <span className="font-semibold truncate">{weekDetail.week}</span>
                                 </div>
                               </AccordionTrigger>
                               <AccordionContent>
