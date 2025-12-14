@@ -898,25 +898,39 @@ export default function CohortPage() {
           </DialogHeader>
           <div className="space-y-6 py-4">
             <div className="text-center space-y-4">
-              <p className="text-gray-700">
-                Click the button below to open the application form in a new window.
+              <p className="text-gray-700 text-base">
+                Click the button below to open the application form. It will open in a new tab.
               </p>
               <Button
                 variant="default"
                 size="lg"
                 className="w-full bg-black text-white hover:bg-gray-800 text-lg font-bold px-8 py-6"
-                asChild
+                onClick={() => {
+                  window.open("https://forms.gle/Uu7hpPegA17TCh7TA", "_blank", "noopener,noreferrer");
+                }}
               >
-                <a
-                  href="https://forms.gle/Uu7hpPegA17TCh7TA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
-                >
-                  Open Application Form
-                  <ArrowRight className="h-5 w-5" />
-                </a>
+                Open Application Form
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+              <div className="pt-2">
+                <p className="text-xs text-gray-500 mb-2">Or copy this link:</p>
+                <div className="flex items-center gap-2 bg-gray-50 p-3 rounded border">
+                  <code className="text-xs text-gray-700 flex-1 break-all">
+                    https://forms.gle/Uu7hpPegA17TCh7TA
+                  </code>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-xs"
+                    onClick={() => {
+                      navigator.clipboard.writeText("https://forms.gle/Uu7hpPegA17TCh7TA");
+                      alert("Link copied to clipboard!");
+                    }}
+                  >
+                    Copy
+                  </Button>
+                </div>
+              </div>
             </div>
             <div className="border-t pt-4">
               <p className="text-sm text-gray-500 text-center">
