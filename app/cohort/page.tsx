@@ -317,6 +317,15 @@ const filled12Week = 4;
 
 export default function CohortPage() {
   const [applicationOpen, setApplicationOpen] = useState(false);
+
+  // Handle #apply anchor - open dialog when URL has #apply
+  useEffect(() => {
+    if (window.location.hash === "#apply") {
+      setApplicationOpen(true);
+      // Remove hash from URL after opening
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  }, []);
   const [selectedTier, setSelectedTier] = useState<"6week" | "12week">("12week");
   const [daysRemaining, setDaysRemaining] = useState(0);
   const { currency } = useCurrency();
@@ -880,40 +889,43 @@ export default function CohortPage() {
 
       {/* Application Dialog */}
       <Dialog open={applicationOpen} onOpenChange={setApplicationOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle>Apply to Cohort Program</DialogTitle>
             <DialogDescription>
-              Fill out the form below to apply. We'll review your application and get back to you within 48 hours.
+              Fill out the application form to apply. We'll review your application and get back to you within 48 hours.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-4">
-            {/* Google Form Integration */}
-            {/* Replace [YOUR_GOOGLE_FORM_ID] with your actual Google Form ID */}
-            {/* To get your form ID: 
-                1. Create a Google Form
-                2. Click "Send" button
-                3. Click the embed icon (</>)
-                4. Copy the form ID from the iframe src URL
-                5. Replace [YOUR_GOOGLE_FORM_ID] below
-            */}
-            <iframe
-              src="https://docs.google.com/forms/d/e/[YOUR_GOOGLE_FORM_ID]/viewform?embedded=true"
-              width="100%"
-              height="800"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              className="w-full"
-            >
-              Loading…
-            </iframe>
-            <p className="text-xs text-gray-500 text-center">
-              Having trouble? Contact us at{" "}
-              <a href="mailto:contact@norlandcapital.co.uk" className="text-black underline">
-                contact@norlandcapital.co.uk
-              </a>
-            </p>
+          <div className="space-y-6 py-4">
+            <div className="text-center space-y-4">
+              <p className="text-gray-700">
+                Click the button below to open the application form in a new window.
+              </p>
+              <Button
+                variant="default"
+                size="lg"
+                className="w-full bg-black text-white hover:bg-gray-800 text-lg font-bold px-8 py-6"
+                asChild
+              >
+                <a
+                  href="https://forms.gle/Uu7hpPegA17TCh7TA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
+                >
+                  Open Application Form
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+            <div className="border-t pt-4">
+              <p className="text-sm text-gray-500 text-center">
+                Having trouble? Contact us at{" "}
+                <a href="mailto:contact@norlandcapital.co.uk" className="text-black underline">
+                  contact@norlandcapital.co.uk
+                </a>
+              </p>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
