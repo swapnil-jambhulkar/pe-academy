@@ -86,16 +86,8 @@ export default function FrustrationHeatmap({ data }: FrustrationHeatmapProps) {
                   {/* Left: Icon + Label */}
                   <div className="flex items-center gap-3 flex-1 min-w-0">
                     {Icon && (
-                      <div 
-                        className="p-2 rounded-lg flex-shrink-0"
-                        style={{ 
-                          backgroundColor: textColor === "#ffffff" ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.1)"
-                        }}
-                      >
-                        <Icon 
-                          className="h-4 w-4 flex-shrink-0" 
-                          style={{ color: textColor }}
-                        />
+                      <div className="p-2 rounded-lg flex-shrink-0 bg-white/20">
+                        <Icon className="h-4 w-4 flex-shrink-0 text-white" />
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
