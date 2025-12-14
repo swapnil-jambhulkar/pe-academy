@@ -364,10 +364,43 @@ export default function CohortPage() {
     <div>
       {/* Hero Section - Program Availability */}
       <section className="min-h-screen flex items-center bg-black text-white relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -50, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-40 -left-40 w-80 h-80 bg-white/[0.03] rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              x: [0, -80, 0],
+              y: [0, 60, 0],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-40 -right-40 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-white/[0.02] to-transparent rounded-full blur-2xl"
+          />
+        </div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
           <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)`,
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
             backgroundSize: '60px 60px'
           }} />
         </div>
@@ -381,11 +414,25 @@ export default function CohortPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <span className="px-4 py-2 bg-white/10 text-white text-sm font-semibold rounded-full mb-6 inline-block border border-white/20">
-                Live + Mentored Program
-              </span>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
+              >
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-white/80 text-sm font-semibold">Live + Mentored Program</span>
+              </motion.div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6">
-                PE Breakthrough Cohort
+                <span className="relative inline-block">
+                  PE Breakthrough Cohort
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
+                </span>
               </h1>
               <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-4">
                 Limited Enrollment. Personalized Attention. Real Results.

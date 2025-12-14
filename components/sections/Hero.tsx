@@ -54,62 +54,159 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center bg-black pt-16 md:pt-20 overflow-hidden">
-      {/* Clean Background */}
-      <div className="absolute inset-0 bg-black"></div>
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
       
-      {/* Subtle Pattern - Desktop only */}
-      <div className="hidden md:block absolute inset-0 opacity-[0.02]">
+      {/* Animated Gradient Orbs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-40 -left-40 w-80 h-80 bg-white/[0.03] rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-40 -right-40 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-white/[0.02] to-transparent rounded-full blur-2xl"
+        />
+      </div>
+      
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)`,
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
         }} />
+      </div>
+      
+      {/* Floating Particles - Desktop only */}
+      <div className="hidden md:block absolute inset-0">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0.2, 0.5, 0.2],
+              y: [0, -30, 0],
+              x: [0, 10, 0],
+            }}
+            transition={{
+              duration: 4 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.8,
+            }}
+            className="absolute w-1 h-1 bg-white rounded-full"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+          />
+        ))}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           
-          {/* Mobile: Clean & Simple */}
+          {/* Mobile: Clean & Attractive */}
           <div className="md:hidden">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className="relative"
             >
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/60 mb-4">
-                Norland Academy
-              </p>
-              <h1 className="text-3xl font-heading font-semibold text-white mb-2 leading-tight">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
+              >
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs uppercase tracking-wider text-white/80">Now Enrolling</span>
+              </motion.div>
+
+              <h1 className="text-4xl font-heading font-bold text-white mb-3 leading-tight">
                 Break Into
               </h1>
-              <h1 className="text-3xl font-heading font-semibold text-white mb-2 leading-tight">
-                Private Equity
+              <h1 className="text-4xl font-heading font-bold text-white mb-4 leading-tight">
+                <span className="relative">
+                  Private Equity
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
+                </span>
               </h1>
-              <p className="text-lg text-white/70 mb-6">
+              <p className="text-lg text-white/70 mb-2">
                 Without the Traditional Path
               </p>
-              <p className="text-sm text-white/60 mb-8 max-w-xs mx-auto">
-                Professional training by industry practitioners
+              <p className="text-sm text-white/50 mb-8">
+                Training by industry practitioners
               </p>
 
-              {/* Single CTA */}
-              <Button
-                variant="default"
-                size="lg"
-                asChild
-                className="w-full bg-white text-black hover:bg-gray-100 font-semibold py-5 text-base mb-3"
-              >
-                <Link href="/cohort">
-                  Explore Programs
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              
-              <Link 
-                href="/starter-kit" 
-                className="text-white/60 text-sm hover:text-white transition-colors"
-              >
-                Or view Starter Kit →
-              </Link>
+              {/* Stats Row */}
+              <div className="flex justify-center gap-6 mb-8">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">300+</div>
+                  <div className="text-xs text-white/50">Professionals</div>
+                </div>
+                <div className="w-px bg-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">42%</div>
+                  <div className="text-xs text-white/50">Response Rate</div>
+                </div>
+                <div className="w-px bg-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">20+</div>
+                  <div className="text-xs text-white/50">Mentees</div>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <Button
+                  variant="default"
+                  size="lg"
+                  asChild
+                  className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
+                >
+                  <Link href="/cohort">
+                    Explore Programs
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
+                >
+                  <Link href="/resources">
+                    View Starter Kit
+                  </Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
 

@@ -79,41 +79,100 @@ export default function StarterKitPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-black text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-24 pb-20 bg-black text-white overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -50, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-40 -left-40 w-80 h-80 bg-white/[0.03] rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              x: [0, -80, 0],
+              y: [0, 60, 0],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-40 -right-40 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl"
+          />
+        </div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-block px-4 py-2 bg-red-500/20 rounded-full border border-red-400/50 mb-4">
-                <span className="text-red-200 text-sm font-semibold uppercase tracking-wide">Early Bird</span>
-              </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-                Starter Kit
-              </h1>
-              <p className="text-xl text-white/80 mb-8">
-                Everything you need to start building proof you can do PE work. Templates, models, scripts, and community access.
-              </p>
-              <div className="mb-4">
-                <div className="flex items-center gap-4 justify-center">
-                  <span className="text-5xl font-heading font-bold text-white">{formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}</span>
-                  <span className="text-3xl font-heading font-bold text-white line-through">{formatPrice(getPrice(currency, "starterKit"), currency)}</span>
-                </div>
-              </div>
-              <p className="text-white/70 mb-8">One-time payment, lifetime access</p>
-              <Button
-                variant="default"
-                size="lg"
-                className="bg-white text-black hover:bg-gray-100 text-lg px-8"
-                asChild
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
-                <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                  Buy Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
+                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                <span className="text-white/90 text-sm font-medium">300+ Members Already Inside</span>
+              </motion.div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+                PE Starter Kit
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Templates, scripts, and community access to start building your PE portfolio today.
+              </p>
+              
+              {/* Price */}
+              <div className="mb-8">
+                <div className="flex items-center gap-4 justify-center mb-2">
+                  <span className="text-5xl md:text-6xl font-heading font-bold text-white">
+                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
+                  </span>
+                  <div className="text-left">
+                    <span className="text-2xl text-white/40 line-through block">{formatPrice(getPrice(currency, "starterKit"), currency)}</span>
+                    <span className="text-sm text-green-400 font-medium">Save {formatPrice(getPrice(currency, "starterKit") - getPrice(currency, "starterKitEarlyBird"), currency)}</span>
+                  </div>
+                </div>
+                <p className="text-white/60">One-time payment • Lifetime access</p>
+              </div>
+              
+              {/* CTA */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="bg-white text-black hover:bg-gray-100 text-lg px-10 py-6 font-bold shadow-xl shadow-white/10"
+                  asChild
+                >
+                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
+                    Get Instant Access
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+              </div>
+
+              {/* Trust */}
+              <div className="flex items-center justify-center gap-2 text-white/60 text-sm">
+                <Shield className="w-4 h-4" />
+                <span>3-day money-back guarantee</span>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -627,6 +686,50 @@ export default function StarterKitPage() {
                   </div>
                 </CardContent>
               </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-4">
+                Ready to Start Your PE Journey?
+              </h2>
+              <p className="text-white/70 mb-8">
+                Get instant access to all templates, community, and monthly challenges.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="bg-white text-black hover:bg-gray-100 font-bold px-8 py-6"
+                  asChild
+                >
+                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
+                    Get Starter Kit - {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white/30 text-white hover:bg-white/10 font-bold px-8 py-6"
+                  asChild
+                >
+                  <Link href="/cohort">
+                    Explore Cohort Program
+                  </Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </div>

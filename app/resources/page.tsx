@@ -86,20 +86,90 @@ export default function ResourcesPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-black text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-24 pb-16 bg-black text-white overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{
+              x: [0, 80, 0],
+              y: [0, -40, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-32 -right-32 w-72 h-72 bg-white/[0.03] rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              x: [0, -60, 0],
+              y: [0, 40, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/[0.02] rounded-full blur-3xl"
+          />
+        </div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
+              >
+                <Sparkles className="w-4 h-4 text-white/80" />
+                <span className="text-white/80 text-sm font-medium">PE Toolkit</span>
+              </motion.div>
+
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-                Resources
+                <span className="relative inline-block">
+                  Resources
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
+                </span>
               </h1>
-              <p className="text-xl text-white/80 mb-8">
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 Download samples, explore our resources, and choose what you need. Build your PE portfolio one resource at a time.
               </p>
+
+              {/* Quick Stats */}
+              <div className="flex justify-center gap-8">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">{resources.length}</div>
+                  <div className="text-xs text-white/50">Resources</div>
+                </div>
+                <div className="w-px bg-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">{formatPrice(individualPrice, currency)}</div>
+                  <div className="text-xs text-white/50">Each</div>
+                </div>
+                <div className="w-px bg-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">{formatPrice(bundlePrice, currency)}</div>
+                  <div className="text-xs text-white/50">Bundle</div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -125,14 +195,14 @@ export default function ResourcesPage() {
               <Button
                 variant="default"
                 size="lg"
-                className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-lg font-bold"
+                className="bg-black text-white hover:bg-gray-800 px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg font-bold w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
                 onClick={() => {
-                  // Download combined sample PDF
                   window.open("/samples/pe-academy-all-samples.pdf", "_blank");
                 }}
               >
-                <Download className="mr-2 h-5 w-5" />
-                Download All Samples (One PDF)
+                <Download className="mr-2 h-5 w-5 flex-shrink-0" />
+                <span className="hidden sm:inline">Download All Samples (One PDF)</span>
+                <span className="sm:hidden">Download Samples</span>
               </Button>
             </motion.div>
           </div>
