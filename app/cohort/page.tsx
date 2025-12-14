@@ -957,13 +957,13 @@ export default function CohortPage() {
                                     : "text-white hover:text-white/80"
                                 }`}
                               >
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 text-left">
                                   <Calendar
-                                    className={`h-4 w-4 ${
+                                    className={`h-4 w-4 flex-shrink-0 ${
                                       tierIndex % 2 === 0 ? "text-gray-600" : "text-white/70"
                                     }`}
                                   />
-                                  <span className="font-semibold">{weekDetail.week}</span>
+                                  <span className="font-semibold text-left">{weekDetail.week}</span>
                                 </div>
                               </AccordionTrigger>
                               <AccordionContent>
