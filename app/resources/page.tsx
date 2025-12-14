@@ -11,8 +11,8 @@ import {
   ShoppingCart,
   Check,
   ArrowRight,
-  Sparkles,
   Database,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { useCurrency } from "@/hooks/useCurrency";
@@ -122,9 +122,9 @@ export default function ResourcesPage() {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             
-            {/* Mobile: Clean Hero (matching homepage style) */}
+            {/* Mobile Hero */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -139,15 +139,12 @@ export default function ResourcesPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs uppercase tracking-wider text-white/80">PE Toolkit</span>
+                <span className="text-white/80 text-sm font-semibold">Real Tools from Norland</span>
               </motion.div>
 
-              <h1 className="text-3xl font-heading font-bold text-white mb-3 leading-tight">
-                Roadmaps & Playbooks.
-              </h1>
-              <h1 className="text-3xl font-heading font-bold text-white mb-4 leading-tight">
-                <span className="relative">
-                  Real Tools from Norland.
+              <h1 className="text-3xl font-heading font-bold text-white mb-4">
+                <span className="relative inline-block">
+                  Roadmaps & Playbooks
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
@@ -156,14 +153,16 @@ export default function ResourcesPage() {
                   />
                 </span>
               </h1>
-              <p className="text-base text-white/70 mb-2">
-                Career roadmaps. Outreach playbooks. Deal sourcing systems.
+              
+              <p className="text-lg text-white/80 mb-3">
+                Career Paths. Outreach Scripts. Deal Sourcing.
               </p>
+              
               <p className="text-sm text-white/50 mb-8">
-                {resources.length} resources • 42% response rate
+                The same tools and frameworks we use at Norland Capital. {resources.length} resources with 42% response rate on cold outreach.
               </p>
 
-              {/* CTA Buttons */}
+              {/* CTA */}
               <div className="space-y-3">
                 <Button
                   variant="default"
@@ -184,13 +183,13 @@ export default function ResourcesPage() {
                   className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
                 >
                   <Link href="/starter-kit">
-                    Get Full Access →
+                    Get Full Access
                   </Link>
                 </Button>
               </div>
             </motion.div>
 
-            {/* Desktop: Full Hero */}
+            {/* Desktop Hero */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -204,11 +203,11 @@ export default function ResourcesPage() {
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
-                <Sparkles className="w-4 h-4 text-white/80" />
-                <span className="text-white/80 text-sm font-medium">Your PE Toolkit</span>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-white/80 text-sm font-semibold">Real Tools from Norland</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6">
                 <span className="relative inline-block">
                   Roadmaps & Playbooks
                   <motion.div
@@ -219,38 +218,30 @@ export default function ResourcesPage() {
                   />
                 </span>
               </h1>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                The same tools and frameworks we use at Norland. Career roadmaps, outreach playbooks, and deal sourcing systems.
+              
+              <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-4">
+                Career Paths. Outreach Scripts. Deal Sourcing Systems.
+              </p>
+              
+              <p className="text-base text-white/50 max-w-2xl mx-auto mb-10">
+                The same tools and frameworks we use at Norland Capital. Career roadmaps, outreach playbooks with 42% response rate, and deal sourcing systems.
               </p>
 
-              {/* Value Props */}
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
-                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                  <span className="text-white/90 text-sm">Real Tools from Norland</span>
-                </div>
-                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                  <span className="text-white/90 text-sm">42% Cold Email Response Rate</span>
-                </div>
-                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                  <span className="text-white/90 text-sm">3 Career Paths</span>
-                </div>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="flex justify-center gap-8">
+              {/* Stats */}
+              <div className="flex items-center justify-center gap-8 max-w-xl mx-auto pt-8 border-t border-white/10">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">{resources.length}</div>
-                  <div className="text-xs text-white/50">Resources</div>
+                  <div className="text-2xl font-heading font-bold text-white">{resources.length}</div>
+                  <div className="text-xs text-white/50 mt-1">Resources</div>
                 </div>
-                <div className="w-px bg-white/20"></div>
+                <div className="h-8 w-px bg-white/20"></div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">3</div>
-                  <div className="text-xs text-white/50">Roadmaps</div>
+                  <div className="text-2xl font-heading font-bold text-white">3</div>
+                  <div className="text-xs text-white/50 mt-1">Roadmaps</div>
                 </div>
-                <div className="w-px bg-white/20"></div>
+                <div className="h-8 w-px bg-white/20"></div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">42%</div>
-                  <div className="text-xs text-white/50">Response Rate</div>
+                  <div className="text-2xl font-heading font-bold text-white">42%</div>
+                  <div className="text-xs text-white/50 mt-1">Response Rate</div>
                 </div>
               </div>
             </motion.div>

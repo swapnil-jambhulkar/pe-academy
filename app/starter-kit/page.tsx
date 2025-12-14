@@ -18,6 +18,7 @@ import {
   Trophy,
   Image as ImageIcon,
   Sparkles,
+  AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { useCurrency } from "@/hooks/useCurrency";
@@ -115,9 +116,9 @@ export default function StarterKitPage() {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             
-            {/* Mobile: Clean Hero (matching homepage style) */}
+            {/* Mobile Hero */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -132,15 +133,12 @@ export default function StarterKitPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs uppercase tracking-wider text-white/80">Your PE Playground</span>
+                <span className="text-white/80 text-sm font-semibold">Monthly Real Deal Challenges</span>
               </motion.div>
 
-              <h1 className="text-3xl font-heading font-bold text-white mb-3 leading-tight">
-                Real Deal Challenges.
-              </h1>
-              <h1 className="text-3xl font-heading font-bold text-white mb-4 leading-tight">
-                <span className="relative">
-                  Partner Feedback.
+              <h1 className="text-3xl font-heading font-bold text-white mb-4">
+                <span className="relative inline-block">
+                  Your PE Playground
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
@@ -149,27 +147,21 @@ export default function StarterKitPage() {
                   />
                 </span>
               </h1>
-              <p className="text-base text-white/70 mb-2">
-                Monthly challenges on live deals from Norland.
+              
+              <p className="text-lg text-white/80 mb-3">
+                Solve Real Challenges. Get Partner Feedback.
               </p>
-              <p className="text-sm text-white/50 mb-6">
-                300+ community • 2 tracks • Lifetime access
+              
+              <p className="text-sm text-white/50 mb-4">
+                Monthly challenges on live deals from Norland pipeline. Two tracks for Analyst and Associate level. 300+ community.
               </p>
-
-              {/* Price */}
-              <div className="mb-6">
-                <div className="flex items-center justify-center gap-3 mb-1">
-                  <span className="text-4xl font-heading font-bold text-white">
-                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                  </span>
-                  <span className="text-xl text-white/40 line-through">
-                    {formatPrice(getPrice(currency, "starterKit"), currency)}
-                  </span>
-                </div>
-                <p className="text-white/50 text-sm">One-time • Lifetime access</p>
+              
+              <div className="flex items-center justify-center gap-2 text-white/60 text-xs mb-8">
+                <AlertCircle className="h-3 w-3" />
+                <span>Lifetime access • 3-day money-back guarantee</span>
               </div>
 
-              {/* CTA Buttons */}
+              {/* CTA */}
               <div className="space-y-3">
                 <Button
                   variant="default"
@@ -178,7 +170,7 @@ export default function StarterKitPage() {
                   className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
                 >
                   <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                    Get Instant Access
+                    Get Access - {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
@@ -190,19 +182,13 @@ export default function StarterKitPage() {
                   className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
                 >
                   <Link href="/cohort">
-                    Want Live Deal Access? →
+                    Want Live Deal Access?
                   </Link>
                 </Button>
               </div>
-
-              {/* Trust */}
-              <div className="flex items-center justify-center gap-2 text-white/50 text-sm mt-6">
-                <Shield className="w-4 h-4" />
-                <span>3-day money-back guarantee</span>
-              </div>
             </motion.div>
 
-            {/* Desktop: Full Hero */}
+            {/* Desktop Hero */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,65 +202,83 @@ export default function StarterKitPage() {
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
-                <Trophy className="w-4 h-4 text-yellow-400" />
-                <span className="text-white/90 text-sm font-medium">Not Templates. A Playground.</span>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-white/80 text-sm font-semibold">Monthly Real Deal Challenges</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-                Your PE Playground
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6">
+                <span className="relative inline-block">
+                  Your PE Playground
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
+                </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed">
-                Solve real deal challenges. Get partner feedback. Build with 300+ likeminded people.
+              <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-4">
+                Solve Real Challenges. Get Partner Feedback.
               </p>
               
-              {/* Value Props */}
-              <div className="flex flex-wrap justify-center gap-3 mb-10">
-                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                  <span className="text-white/90 text-sm">Real Deals from Norland</span>
-                </div>
-                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                  <span className="text-white/90 text-sm">Partner Reviews</span>
-                </div>
-                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                  <span className="text-white/90 text-sm">2 Tracks: Analyst & Associate</span>
-                </div>
-              </div>
+              <p className="text-base text-white/50 max-w-2xl mx-auto mb-4">
+                Monthly challenges on live deals from Norland pipeline. Two tracks for Analyst and Associate level. Build with 300+ likeminded people working towards PE.
+              </p>
               
-              {/* Price */}
-              <div className="mb-8">
-                <div className="flex items-center gap-4 justify-center mb-2">
-                  <span className="text-5xl md:text-6xl font-heading font-bold text-white">
-                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                  </span>
-                  <div className="text-left">
-                    <span className="text-2xl text-white/40 line-through block">{formatPrice(getPrice(currency, "starterKit"), currency)}</span>
-                    <span className="text-sm text-green-400 font-medium">Save {formatPrice(getPrice(currency, "starterKit") - getPrice(currency, "starterKitEarlyBird"), currency)}</span>
-                  </div>
-                </div>
-                <p className="text-white/60">One-time payment • Lifetime access</p>
+              <div className="flex items-center justify-center gap-2 text-white/60 text-sm mb-10">
+                <AlertCircle className="h-4 w-4" />
+                <span>Lifetime access • One-time payment • 3-day money-back guarantee</span>
               </div>
-              
+
               {/* CTA */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <div className="flex flex-row gap-4 justify-center items-center mb-12">
                 <Button
                   variant="default"
                   size="lg"
-                  className="bg-white text-black hover:bg-gray-100 text-lg px-10 py-6 font-bold shadow-xl shadow-white/10"
+                  className="bg-white text-black hover:bg-gray-100 text-base font-semibold px-8 py-6"
                   asChild
                 >
                   <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                    Get Instant Access
+                    Get Access - {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="text-base border border-white/40 text-white hover:bg-white/10 hover:border-white/50 font-medium px-8 py-6"
+                >
+                  <Link href="/cohort">
+                    Want Live Deal Access?
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
 
-              {/* Trust */}
-              <div className="flex items-center justify-center gap-2 text-white/60 text-sm">
-                <Shield className="w-4 h-4" />
-                <span>3-day money-back guarantee</span>
-              </div>
+              {/* Stats - matching Homepage style */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex items-center justify-center gap-8 max-w-2xl mx-auto pt-8 border-t border-white/10"
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-heading font-bold text-white">Real</div>
+                  <div className="text-xs text-white/50 mt-1">Deal Challenges</div>
+                </div>
+                <div className="h-8 w-px bg-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-heading font-bold text-white">Partner</div>
+                  <div className="text-xs text-white/50 mt-1">Feedback</div>
+                </div>
+                <div className="h-8 w-px bg-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-heading font-bold text-white">300+</div>
+                  <div className="text-xs text-white/50 mt-1">Community</div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
