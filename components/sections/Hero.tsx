@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState("");
-  const fullText = "Private Equity";
+  const fullText = "PE Deals";
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const textRef = useRef<HTMLSpanElement>(null);
@@ -140,15 +140,15 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs uppercase tracking-wider text-white/80">Now Enrolling</span>
+                <span className="text-xs uppercase tracking-wider text-white/80">Real Deals. Real Access.</span>
               </motion.div>
 
-              <h1 className="text-4xl font-heading font-bold text-white mb-3 leading-tight">
-                Break Into
+              <h1 className="text-3xl font-heading font-bold text-white mb-3 leading-tight">
+                Work on Real Deals.
               </h1>
-              <h1 className="text-4xl font-heading font-bold text-white mb-4 leading-tight">
+              <h1 className="text-3xl font-heading font-bold text-white mb-4 leading-tight">
                 <span className="relative">
-                  Private Equity
+                  Get Real Feedback.
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
@@ -157,28 +157,22 @@ export default function Hero() {
                   />
                 </span>
               </h1>
-              <p className="text-lg text-white/70 mb-2">
-                Without the Traditional Path
+              <p className="text-base text-white/70 mb-2">
+                No IB background? No Ivy League?
               </p>
               <p className="text-sm text-white/50 mb-8">
-                Training by industry practitioners
+                Access live PE deals from our pipeline. Get partner-level feedback.
               </p>
 
-              {/* Stats Row */}
-              <div className="flex justify-center gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">300+</div>
-                  <div className="text-xs text-white/50">Professionals</div>
+              {/* Value Props */}
+              <div className="grid grid-cols-2 gap-3 mb-8 text-left">
+                <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                  <div className="text-lg font-bold text-white">Real Deals</div>
+                  <div className="text-xs text-white/50">From Norland Pipeline</div>
                 </div>
-                <div className="w-px bg-white/20"></div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">42%</div>
-                  <div className="text-xs text-white/50">Response Rate</div>
-                </div>
-                <div className="w-px bg-white/20"></div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">20+</div>
-                  <div className="text-xs text-white/50">Mentees</div>
+                <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                  <div className="text-lg font-bold text-white">Partner Access</div>
+                  <div className="text-xs text-white/50">Direct Feedback</div>
                 </div>
               </div>
 
@@ -191,7 +185,7 @@ export default function Hero() {
                   className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
                 >
                   <Link href="/cohort">
-                    Explore Programs
+                    Apply for Access
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -202,8 +196,8 @@ export default function Hero() {
                   asChild
                   className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
                 >
-                  <Link href="/resources">
-                    View Starter Kit
+                  <Link href="/starter-kit">
+                    Start with Starter Kit
                   </Link>
                 </Button>
               </div>
@@ -219,10 +213,10 @@ export default function Hero() {
             >
               <div className="mb-8">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-6 font-sans font-light">
-                  Norland Academy
+                  Norland Academy — Real Deal Access
                 </p>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-white mb-8 leading-[1.1] tracking-tight relative">
-                  Break Into{" "}
+                  Work on Real{" "}
                   <span className="chalk-text relative inline-block" ref={textRef}>
                     {displayedText.split('').map((char, index) => (
                       <motion.span
@@ -297,7 +291,7 @@ export default function Hero() {
                     )}
                   </AnimatePresence>
                   <br />
-                  <span className="text-white font-normal">Without the Traditional Path</span>
+                  <span className="text-white font-normal">Get Real Feedback</span>
                 </h1>
               </div>
             </motion.div>
@@ -306,25 +300,47 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl text-white/85 mb-12 max-w-2xl mx-auto font-sans font-normal leading-relaxed"
+              className="text-lg md:text-xl text-white/85 mb-8 max-w-2xl mx-auto font-sans font-normal leading-relaxed"
             >
-              Professional training programs designed by industry practitioners.
+              No IB background? No Ivy League? No problem.<br />
+              <span className="text-white/60">Work on live deals from our pipeline. Get feedback from a PE partner.</span>
             </motion.p>
+
+            {/* Value Props - Desktop */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex justify-center gap-6 mb-10"
+            >
+              <div className="bg-white/5 border border-white/10 rounded-lg px-6 py-3">
+                <span className="text-white font-semibold">Real Deals</span>
+                <span className="text-white/50 ml-2">from Norland Pipeline</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg px-6 py-3">
+                <span className="text-white font-semibold">Partner Access</span>
+                <span className="text-white/50 ml-2">Direct Feedback</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg px-6 py-3">
+                <span className="text-white font-semibold">IC Decisions</span>
+                <span className="text-white/50 ml-2">Behind the Scenes</span>
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-row gap-4 justify-center items-center mb-16"
+              className="flex flex-row gap-4 justify-center items-center mb-12"
             >
               <Button
                 variant="default"
                 size="lg"
                 asChild
-                className="text-base bg-white text-black hover:bg-gray-100 font-medium px-8 py-6"
+                className="text-base bg-white text-black hover:bg-gray-100 font-semibold px-8 py-6"
               >
-                <Link href="/cohort#apply">
-                  Explore Programs
+                <Link href="/cohort">
+                  Apply for Access
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -335,30 +351,32 @@ export default function Hero() {
                 className="text-base border border-white/40 text-white hover:bg-white/10 hover:border-white/50 font-medium px-8 py-6"
               >
                 <Link href="/starter-kit">
-                  View Curriculum
+                  Start with Starter Kit
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </motion.div>
 
-            {/* Stats - Desktop only */}
+            {/* Social Proof - Desktop only */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex items-center justify-center gap-12 max-w-xl mx-auto mt-12"
+              className="flex items-center justify-center gap-8 max-w-2xl mx-auto pt-8 border-t border-white/10"
             >
               <div className="text-center">
-                <div className="text-xl font-sans font-medium text-white/80">300+</div>
-                <div className="text-xs text-white/50 mt-1">Professionals</div>
+                <div className="text-2xl font-heading font-bold text-white">300+</div>
+                <div className="text-xs text-white/50 mt-1">Community Members</div>
               </div>
+              <div className="h-8 w-px bg-white/20"></div>
               <div className="text-center">
-                <div className="text-xl font-sans font-medium text-white/80">20+</div>
-                <div className="text-xs text-white/50 mt-1">Mentees</div>
+                <div className="text-2xl font-heading font-bold text-white">Real</div>
+                <div className="text-xs text-white/50 mt-1">Deal Experience</div>
               </div>
+              <div className="h-8 w-px bg-white/20"></div>
               <div className="text-center">
-                <div className="text-xl font-sans font-medium text-white/80">42%</div>
-                <div className="text-xs text-white/50 mt-1">Response Rate</div>
+                <div className="text-2xl font-heading font-bold text-white">Partner</div>
+                <div className="text-xs text-white/50 mt-1">Level Mentorship</div>
               </div>
             </motion.div>
           </div>

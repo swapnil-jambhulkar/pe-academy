@@ -17,10 +17,10 @@ const starterKitFeatures = [
 ];
 
 const cohortFeatures = [
-  { icon: Users, text: "Personalized mentorship from PE founder" },
-  { icon: Briefcase, text: "Real-world deal experience (live deals)" },
-  { icon: Network, text: "Direct access to PE professionals" },
-  { icon: FileText, text: "1-on-1 feedback on your work" },
+  { icon: Briefcase, text: "Work on real deals from Norland pipeline" },
+  { icon: Users, text: "Get partner-level feedback on your work" },
+  { icon: Network, text: "Watch IC committee decisions live" },
+  { icon: FileText, text: "Build portfolio with actual deal work" },
   { icon: Calendar, text: "Mock interviews & career prep" },
 ];
 
@@ -39,12 +39,13 @@ export default function Solution() {
           className="md:hidden text-center mb-6"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-black rounded-full mb-3">
-            <BookOpen className="h-4 w-4" />
-            <span className="text-xs font-semibold uppercase tracking-wider">Programs</span>
+            <Briefcase className="h-4 w-4" />
+            <span className="text-xs font-semibold uppercase tracking-wider">Your Access</span>
           </div>
           <h2 className="text-xl font-heading font-bold text-white">
-            Two Paths to Break In
+            Close the Gap
           </h2>
+          <p className="text-sm text-white/60 mt-2">Get what traditional candidates have</p>
         </motion.div>
 
         {/* Desktop Header */}
@@ -56,18 +57,22 @@ export default function Solution() {
           className="hidden md:block text-center mb-10 max-w-4xl mx-auto"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-white mb-3">
-            Two Paths to Break In
+            Access You Can't Get Anywhere Else
           </h2>
           <p className="text-base text-white/80 max-w-2xl mx-auto mb-4">
-            Built from 300+ survey responses. Addresses every frustration.
+            Real deals. Real feedback. Real access. Not another course.
           </p>
           
-          {/* Social Proof Badge */}
-          <div className="flex items-center justify-center gap-2 mb-6">
+          {/* What makes us different */}
+          <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
             <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
-              <span className="text-white/90 text-sm font-medium">
-                Join <span className="text-white font-semibold">300+</span> professionals building their PE careers
-              </span>
+              <span className="text-white/90 text-sm font-medium">Live deals from our pipeline</span>
+            </div>
+            <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+              <span className="text-white/90 text-sm font-medium">Partner-level feedback</span>
+            </div>
+            <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+              <span className="text-white/90 text-sm font-medium">IC decisions behind the scenes</span>
             </div>
           </div>
         </motion.div>
@@ -124,10 +129,9 @@ export default function Solution() {
               <span className="px-2 py-1 bg-black text-white text-xs font-semibold rounded-full">
                 Live + Mentored
               </span>
-              <div className="text-right">
-                <span className="text-2xl font-heading font-bold text-black">{formatPrice(getPrice(currency, "cohort6WeekEarlyBird"), currency)}</span>
-                <p className="text-xs text-gray-500">Starting from</p>
-              </div>
+              <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">
+                Apply for Access
+              </span>
             </div>
             <h3 className="text-lg font-heading font-bold text-black mb-2">Cohort Program</h3>
             <p className="text-sm text-gray-600 mb-3">Real mentorship, live deals & networking</p>
@@ -213,10 +217,9 @@ export default function Solution() {
                   <span className="px-3 py-1 bg-white text-black text-xs font-semibold rounded-full">
                     Live + Mentored
                   </span>
-                  <div className="text-right">
-                    <span className="text-3xl font-heading font-bold text-white">{formatPrice(getPrice(currency, "cohort6WeekEarlyBird"), currency)}</span>
-                    <p className="text-xs text-white/70">Starting from</p>
-                  </div>
+                  <span className="px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">
+                    Application Required
+                  </span>
                 </div>
                 <CardTitle className="text-2xl mt-4 text-white">Cohort Program</CardTitle>
                 <CardDescription className="text-base mt-2 text-white/80">

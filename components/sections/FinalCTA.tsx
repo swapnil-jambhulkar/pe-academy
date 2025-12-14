@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Check, Rocket } from "lucide-react";
 
 const finalPoints = [
-  "No IB/MBA required",
-  "Proven system",
-  "Portfolio-ready work",
-  "Lifetime access",
+  "Real deal access",
+  "Partner feedback",
+  "Portfolio work",
+  "300+ community",
 ];
 
 export default function FinalCTA() {
@@ -28,26 +28,26 @@ export default function FinalCTA() {
           <div className="text-center mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-black rounded-full mb-3">
               <Rocket className="h-4 w-4" />
-              <span className="text-xs font-semibold uppercase tracking-wider">Get Started</span>
+              <span className="text-xs font-semibold uppercase tracking-wider">Get Access</span>
             </div>
             <h2 className="text-xl font-heading font-bold text-white">
-              Begin Your PE Journey
+              Real Deals. Real Feedback.
             </h2>
           </div>
 
           {/* Stats Row */}
           <div className="grid grid-cols-3 gap-2 mb-6">
             <div className="bg-white/10 rounded-lg p-3 text-center border border-white/20">
+              <div className="text-lg font-bold text-white">Real</div>
+              <div className="text-[10px] text-white/60 uppercase">Deals</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-3 text-center border border-white/20">
+              <div className="text-lg font-bold text-white">Partner</div>
+              <div className="text-[10px] text-white/60 uppercase">Access</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-3 text-center border border-white/20">
               <div className="text-lg font-bold text-white">300+</div>
-              <div className="text-[10px] text-white/60 uppercase">Members</div>
-            </div>
-            <div className="bg-white/10 rounded-lg p-3 text-center border border-white/20">
-              <div className="text-lg font-bold text-white">6</div>
-              <div className="text-[10px] text-white/60 uppercase">Spots Left</div>
-            </div>
-            <div className="bg-white/10 rounded-lg p-3 text-center border border-white/20">
-              <div className="text-lg font-bold text-white">42%</div>
-              <div className="text-[10px] text-white/60 uppercase">Response</div>
+              <div className="text-[10px] text-white/60 uppercase">Community</div>
             </div>
           </div>
 
@@ -69,8 +69,8 @@ export default function FinalCTA() {
               asChild
               className="w-full bg-white text-black hover:bg-gray-100 font-semibold py-4"
             >
-              <Link href="/cohort#apply">
-                Explore Programs
+              <Link href="/cohort">
+                Apply for Access
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -102,31 +102,31 @@ export default function FinalCTA() {
           className="hidden md:block max-w-3xl mx-auto text-center w-full"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-            Begin Your Private Equity Journey
+            Get the Access You Need
           </h2>
           <p className="text-lg text-white/80 mb-4 max-w-2xl mx-auto">
-            Join our professional training programs and build the expertise needed to succeed in Private Equity.
+            Work on real deals. Get partner feedback. Build a portfolio that gets you interviews.
           </p>
           
           {/* Urgency & Social Proof */}
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8 text-sm">
             <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
+              <span className="text-white font-semibold">Real</span>
+              <span className="text-white/80">Deal Access</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
+              <span className="text-white font-semibold">Partner</span>
+              <span className="text-white/80">Feedback</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
               <span className="text-white font-semibold">300+</span>
-              <span className="text-white/80">Professionals</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
-              <span className="text-white font-semibold">Only 6</span>
-              <span className="text-white/80">Spots Left</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
-              <span className="text-white font-semibold">42%</span>
-              <span className="text-white/80">Response Rate</span>
+              <span className="text-white/80">Community</span>
             </div>
           </div>
 
           {/* Bullet Points */}
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 max-w-2xl mx-auto mb-10">
-            {["No IB/MBA required. Merit-based access", "Proven system with real results", "Portfolio-ready deliverables", "Lifetime community access"].map((point, index) => (
+            {["No IB/MBA required. Merit-based", "Real deals from Norland pipeline", "Portfolio with actual deal work", "Lifetime community access"].map((point, index) => (
               <div key={index} className="flex items-center gap-3 text-white text-sm">
                 <Check className="h-4 w-4 text-white/80 flex-shrink-0" />
                 <span className="text-left">{point}</span>

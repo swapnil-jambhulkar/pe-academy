@@ -46,7 +46,7 @@ export default function FrustrationHeatmap({ data }: FrustrationHeatmapProps) {
       {/* Header */}
       <div className="mb-4 flex items-center justify-between">
         <h4 className="text-sm font-semibold text-gray-700">
-          Top Frustrations
+          What's Stopping You
         </h4>
         <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
           Tap to expand

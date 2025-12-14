@@ -14,6 +14,7 @@ import {
   Sparkles,
   Database,
 } from "lucide-react";
+import Link from "next/link";
 import { useCurrency } from "@/hooks/useCurrency";
 import { formatPrice, getPrice, getStarterKitPaymentLink, getIndividualResourcePaymentLink, type Currency } from "@/lib/currency";
 
@@ -21,42 +22,42 @@ const resources = [
   {
     id: "roadmap-ib-to-pe",
     title: "IB to PE Roadmap",
-    description: "Step-by-step guide for transitioning from Investment Banking to Private Equity. Includes skill mapping, networking strategies, and interview prep.",
+    description: "Month-by-month action plan for transitioning from IB. Skill mapping, networking playbook, interview prep - all from someone who did it.",
     icon: Map,
     category: "Roadmap",
   },
   {
     id: "roadmap-vc-to-pe",
     title: "VC to PE Roadmap",
-    description: "Comprehensive guide for moving from Venture Capital to Private Equity. Covers deal experience translation, skill gaps, and transition strategies.",
+    description: "Complete transition guide from VC to PE. How to translate deal experience, close skill gaps, and position yourself effectively.",
     icon: Map,
     category: "Roadmap",
   },
   {
     id: "roadmap-non-mba",
     title: "NON-MBA Path to PE",
-    description: "Proven strategies for breaking into PE without an MBA. Real examples and actionable steps from someone who did it.",
+    description: "Proven strategies for breaking in without an MBA. Real examples and actionable steps from someone who did it without the traditional path.",
     icon: Map,
     category: "Roadmap",
   },
   {
     id: "linkedin-outreach",
-    title: "LinkedIn Outreach Templates",
-    description: "Proven LinkedIn outreach scripts with 42% response rate. Includes templates for connecting with PE professionals and following up.",
+    title: "LinkedIn Outreach Playbook",
+    description: "Our exact scripts with 42% response rate. How to connect with PE professionals, get warm introductions, and follow up effectively.",
     icon: Mail,
-    category: "Outreach",
+    category: "Playbook",
   },
   {
     id: "deal-sourcing-tool",
     title: "Deal Sourcing Tool",
-    description: "Excel-based tracker to organize your deal sourcing efforts. Track companies, outreach status, and follow-ups all in one place.",
+    description: "The same Excel tracker we use at Norland. Track companies, outreach status, pipeline value - organize your sourcing like a pro.",
     icon: Database,
     category: "Tool",
   },
   {
     id: "lbo-templates",
     title: "LBO Model Templates",
-    description: "Ready-to-use Excel templates for building LBO models. Includes step-by-step instructions and example calculations.",
+    description: "Ready-to-use Excel templates with video walkthroughs. Build portfolio-ready models, not just learn theory.",
     icon: FileText,
     category: "Templates",
   },
@@ -122,10 +123,79 @@ export default function ResourcesPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
+            
+            {/* Mobile: Clean Hero (matching homepage style) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="md:hidden"
+            >
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
+              >
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs uppercase tracking-wider text-white/80">PE Toolkit</span>
+              </motion.div>
+
+              <h1 className="text-3xl font-heading font-bold text-white mb-3 leading-tight">
+                Roadmaps & Playbooks.
+              </h1>
+              <h1 className="text-3xl font-heading font-bold text-white mb-4 leading-tight">
+                <span className="relative">
+                  Real Tools from Norland.
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
+                </span>
+              </h1>
+              <p className="text-base text-white/70 mb-2">
+                Career roadmaps. Outreach playbooks. Deal sourcing systems.
+              </p>
+              <p className="text-sm text-white/50 mb-8">
+                {resources.length} resources • 42% response rate
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
+                  onClick={() => {
+                    window.open("/samples/pe-academy-all-samples.pdf", "_blank");
+                  }}
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Samples
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
+                >
+                  <Link href="/starter-kit">
+                    Get Full Access →
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Desktop: Full Hero */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hidden md:block"
             >
               {/* Badge */}
               <motion.div
@@ -135,12 +205,12 @@ export default function ResourcesPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
                 <Sparkles className="w-4 h-4 text-white/80" />
-                <span className="text-white/80 text-sm font-medium">PE Toolkit</span>
+                <span className="text-white/80 text-sm font-medium">Your PE Toolkit</span>
               </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+              <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
                 <span className="relative inline-block">
-                  Resources
+                  Roadmaps & Playbooks
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
@@ -150,8 +220,21 @@ export default function ResourcesPage() {
                 </span>
               </h1>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                Download samples, explore our resources, and choose what you need. Build your PE portfolio one resource at a time.
+                The same tools and frameworks we use at Norland. Career roadmaps, outreach playbooks, and deal sourcing systems.
               </p>
+
+              {/* Value Props */}
+              <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+                  <span className="text-white/90 text-sm">Real Tools from Norland</span>
+                </div>
+                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+                  <span className="text-white/90 text-sm">42% Cold Email Response Rate</span>
+                </div>
+                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+                  <span className="text-white/90 text-sm">3 Career Paths</span>
+                </div>
+              </div>
 
               {/* Quick Stats */}
               <div className="flex justify-center gap-8">
@@ -161,13 +244,13 @@ export default function ResourcesPage() {
                 </div>
                 <div className="w-px bg-white/20"></div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">{formatPrice(individualPrice, currency)}</div>
-                  <div className="text-xs text-white/50">Each</div>
+                  <div className="text-2xl font-bold text-white">3</div>
+                  <div className="text-xs text-white/50">Roadmaps</div>
                 </div>
                 <div className="w-px bg-white/20"></div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">{formatPrice(bundlePrice, currency)}</div>
-                  <div className="text-xs text-white/50">Bundle</div>
+                  <div className="text-2xl font-bold text-white">42%</div>
+                  <div className="text-xs text-white/50">Response Rate</div>
                 </div>
               </div>
             </motion.div>
@@ -175,39 +258,6 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Download All Samples Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black mb-4">
-                Download All Samples
-              </h2>
-              <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
-                Try before you buy. Download our combined sample PDF with demo versions of all resources to explore what you'll get.
-              </p>
-              <Button
-                variant="default"
-                size="lg"
-                className="bg-black text-white hover:bg-gray-800 px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg font-bold w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
-                onClick={() => {
-                  window.open("/samples/pe-academy-all-samples.pdf", "_blank");
-                }}
-              >
-                <Download className="mr-2 h-5 w-5 flex-shrink-0" />
-                <span className="hidden sm:inline">Download All Samples (One PDF)</span>
-                <span className="sm:hidden">Download Samples</span>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Resources Grid */}
       <section className="py-16 bg-white">
@@ -296,14 +346,14 @@ export default function ResourcesPage() {
                     <div className="flex justify-center mb-4">
                       <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-black rounded-full">
                         <Sparkles className="h-3.5 w-3.5" />
-                        <span className="text-xs font-bold uppercase tracking-wide">Best Value</span>
+                        <span className="text-xs font-bold uppercase tracking-wide">Full Playground Access</span>
                       </div>
                     </div>
 
                     {/* Title & Price */}
                     <div className="text-center mb-5">
                       <h2 className="text-2xl font-heading font-bold text-white mb-3">
-                        Full Starter Kit Bundle
+                        Get Everything + Community
                       </h2>
                       <div className="flex items-baseline justify-center gap-2 mb-1">
                         <span className="text-4xl font-heading font-bold text-white">
@@ -322,19 +372,19 @@ export default function ResourcesPage() {
                     <div className="grid grid-cols-2 gap-2 mb-5">
                       <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
                         <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
-                        <span className="text-xs text-white">{resources.length} Resources</span>
+                        <span className="text-xs text-white">Real Deal Challenges</span>
                       </div>
                       <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
                         <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
-                        <span className="text-xs text-white">Discord Access</span>
+                        <span className="text-xs text-white">Partner Feedback</span>
                       </div>
                       <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
                         <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
-                        <span className="text-xs text-white">Office Hours</span>
+                        <span className="text-xs text-white">300+ Community</span>
                       </div>
                       <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
                         <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
-                        <span className="text-xs text-white">Challenges</span>
+                        <span className="text-xs text-white">All {resources.length} Resources</span>
                       </div>
                     </div>
 
@@ -345,7 +395,7 @@ export default function ResourcesPage() {
                       className="w-full bg-white text-black hover:bg-gray-100 font-bold py-4 text-base shadow-xl"
                       onClick={handleBuyBundle}
                     >
-                      Get Full Bundle
+                      Get Playground Access
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
 
@@ -362,13 +412,13 @@ export default function ResourcesPage() {
                 <CardHeader className="text-center pb-6">
                   <div className="inline-block px-4 py-2 bg-white/10 rounded-full mb-4 border border-white/20">
                     <Sparkles className="h-5 w-5 text-white inline mr-2" />
-                    <span className="text-white text-sm font-bold uppercase tracking-wide">Best Value</span>
+                    <span className="text-white text-sm font-bold uppercase tracking-wide">Full Playground Access</span>
                   </div>
                   <CardTitle className="text-3xl sm:text-4xl font-heading font-bold text-white mb-3">
-                    Full Starter Kit Bundle
+                    Resources + Community + Challenges
                   </CardTitle>
                   <CardDescription className="text-lg text-white/80">
-                    Get all resources plus community access, monthly challenges, and office hours
+                    All resources plus real deal challenges, partner feedback, and 300+ member community
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -382,27 +432,35 @@ export default function ResourcesPage() {
                       </span>
                     </div>
                     <p className="text-sm text-white/70">
-                      Save {formatPrice(individualPrice * resources.length - bundlePrice, currency)} when you buy the bundle
+                      Save {formatPrice(individualPrice * resources.length - bundlePrice, currency)} • Lifetime access
                     </p>
                   </div>
 
                   <div className="bg-white/10 rounded-lg p-6 mb-6 border border-white/20">
-                    <h3 className="text-white font-bold mb-4 text-center">What's Included</h3>
+                    <h3 className="text-white font-bold mb-4 text-center">What You Get</h3>
                     <div className="grid sm:grid-cols-2 gap-3">
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm font-medium">Monthly real deal challenges from Norland</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm font-medium">Partner feedback on your work</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm font-medium">2 tracks: Analyst & Associate paths</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm font-medium">300+ member community</span>
+                      </div>
                       {resources.map((resource) => (
                         <div key={resource.id} className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
                           <span className="text-white text-sm font-medium">{resource.title}</span>
                         </div>
                       ))}
-                      <div className="flex items-start gap-2">
-                        <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
-                        <span className="text-white text-sm font-medium">Private Discord Community (300+ members)</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
-                        <span className="text-white text-sm font-medium">Monthly Challenges (Analyst & Associate routes)</span>
-                      </div>
                       <div className="flex items-start gap-2">
                         <Check className="h-4 w-4 text-white flex-shrink-0 mt-0.5" />
                         <span className="text-white text-sm font-medium">Monthly Office Hours</span>
@@ -416,13 +474,13 @@ export default function ResourcesPage() {
                     className="w-full bg-white text-black hover:bg-gray-100 text-xl font-bold mb-4 shadow-2xl hover:shadow-white/50 transition-all duration-300 py-6 uppercase tracking-wide"
                     onClick={handleBuyBundle}
                   >
-                    Buy Full Bundle
+                    Get Full Access
                     <ArrowRight className="ml-2 h-6 w-6" />
                   </Button>
 
                   <div className="flex items-center gap-2 justify-center text-sm text-white/80 bg-white/10 rounded-lg p-3 border border-white/20">
                     <Check className="h-4 w-4 text-white" />
-                    <span className="font-medium">3-day refund guarantee, no questions asked</span>
+                    <span className="font-medium">3-day refund guarantee • No questions asked</span>
                   </div>
                 </CardContent>
               </Card>
@@ -443,7 +501,7 @@ export default function ResourcesPage() {
               className="text-center mb-12"
             >
               <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-                How It Works
+                How to Get Started
               </h2>
             </motion.div>
 
@@ -451,18 +509,18 @@ export default function ResourcesPage() {
               {[
                 {
                   step: "1",
-                  title: "Browse Resources",
-                  description: "Explore our collection of roadmaps, templates, and outreach scripts. Each resource has a detailed description.",
+                  title: "Download Samples",
+                  description: "See the actual roadmaps, playbooks, and tools. Make sure it's what you need before buying.",
                 },
                 {
                   step: "2",
-                  title: "Download Sample",
-                  description: "Try before you buy. Download our combined sample PDF with demo versions of all resources to see what you'll get.",
+                  title: "Choose Your Path",
+                  description: `Buy individual resources (${formatPrice(individualPrice, currency)} each) or get full playground access with challenges and community.`,
                 },
                 {
                   step: "3",
-                  title: "Buy What You Need",
-                  description: `Purchase individual resources at ${formatPrice(individualPrice, currency)} each, or get the full bundle at ${formatPrice(bundlePrice, currency)}.`,
+                  title: "Start Building",
+                  description: "Use the tools, join the community, participate in monthly challenges, get partner feedback on your work.",
                 },
               ].map((item, index) => (
                 <motion.div

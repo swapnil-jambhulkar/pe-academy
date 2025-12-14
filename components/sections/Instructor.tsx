@@ -98,7 +98,7 @@ export default function Instructor() {
             {/* Quote */}
             <div className="bg-gray-100 border-l-4 border-black p-4 rounded-r-lg">
               <p className="text-sm text-gray-700 italic">
-                "I can't mentor everyone 1-on-1. But I can give you the exact system that worked for me."
+                "I'll share our actual deals with you. You'll see how we evaluate opportunities - not theory, real decisions."
               </p>
             </div>
           </motion.div>
@@ -191,7 +191,7 @@ export default function Instructor() {
                 </Button>
 
                 <blockquote className="border-l-4 border-black pl-4 py-2 italic text-gray-600">
-                  "I can't mentor everyone 1-on-1. But I can give you the exact system that worked for me."
+                  "I'll share our actual deals with you. You'll see how we evaluate opportunities - not theory, real decisions."
                 </blockquote>
               </motion.div>
             </div>

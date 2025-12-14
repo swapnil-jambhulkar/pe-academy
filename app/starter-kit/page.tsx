@@ -17,6 +17,7 @@ import {
   Star,
   Trophy,
   Image as ImageIcon,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { useCurrency } from "@/hooks/useCurrency";
@@ -24,52 +25,52 @@ import { formatPrice, getPrice, getStarterKitPaymentLink, type Currency } from "
 
 const features = [
   {
-    title: "LBO Model Templates",
+    title: "Real Deal Challenges",
     description:
-      "Ready-to-use Excel templates for building LBO models. Includes step-by-step instructions and example calculations.",
-    icon: FileText,
+      "Monthly challenges on actual deals from Norland pipeline. Not case studies from textbooks - real opportunities we're evaluating.",
+    icon: Trophy,
   },
   {
-    title: "Investment Memo Structures",
+    title: "Two Challenge Tracks",
     description:
-      "Professional templates for writing investment memos that PE firms actually use. Includes sections for deal thesis, financial analysis, and risk assessment.",
-    icon: FileText,
+      "Analyst Path (fundamentals, screening, basic modeling) and Associate Path (deep dives, full LBOs, IC memos). Progress at your level.",
+    icon: Map,
   },
   {
-    title: "Cold Email Scripts",
+    title: "Partner Reviews",
     description:
-      "Proven email templates with a 42% response rate. Includes scripts for reaching out to PE professionals, asking for informational interviews, and following up.",
+      "Submit your work and get feedback from a PE partner. Learn how deals are actually evaluated - not theory, real decisions.",
+    icon: Users,
+  },
+  {
+    title: "Deal Sourcing Playbook",
+    description:
+      "Our proven system: LinkedIn outreach scripts, cold email templates (42% response rate), target research framework.",
     icon: Mail,
-  },
-  {
-    title: "Deal Sourcing Tracker",
-    description:
-      "Excel-based tracker to organize your deal sourcing efforts. Track companies, outreach status, and follow-ups all in one place.",
-    icon: Database,
   },
   {
     title: "Career Roadmaps",
     description:
-      "Step-by-step guides for breaking into PE from different backgrounds (engineering, consulting, CA, etc.). Customized paths based on your starting point.",
+      "Interactive guides for VC→PE, IB→PE, and Non-MBA→PE paths. Month-by-month action plans based on your starting point.",
     icon: Map,
   },
   {
-    title: "Private Discord Community",
+    title: "300+ Member Community",
     description:
-      "Join 300+ active members. Get feedback on your work, ask questions, and network with others on the same journey.",
+      "Private Discord with likeminded people. Share work, get peer feedback, network with others on the same journey.",
     icon: MessageSquare,
+  },
+  {
+    title: "LBO & Screening Tools",
+    description:
+      "Ready-to-use Excel templates with video walkthroughs. Build portfolio-ready models, not just learn theory.",
+    icon: FileText,
   },
   {
     title: "Monthly Office Hours",
     description:
-      "Live Q&A sessions with Swapnil and guest speakers from the PE industry. Get your questions answered and learn from real experiences.",
+      "Live Q&A with Swapnil. Ask anything - deal analysis, career questions, networking strategy. Real answers, not generic advice.",
     icon: Calendar,
-  },
-  {
-    title: "Monthly Challenges",
-    description:
-      "Structured challenges with two paths: Analyst Route and Associate Route. Build skills progressively and get feedback on your work.",
-    icon: Trophy,
   },
 ];
 
@@ -115,10 +116,13 @@ export default function StarterKitPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
+            
+            {/* Mobile: Clean Hero (matching homepage style) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="md:hidden"
             >
               {/* Badge */}
               <motion.div
@@ -127,17 +131,115 @@ export default function StarterKitPage() {
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
-                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                <span className="text-white/90 text-sm font-medium">300+ Members Already Inside</span>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs uppercase tracking-wider text-white/80">Your PE Playground</span>
               </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-                PE Starter Kit
+              <h1 className="text-3xl font-heading font-bold text-white mb-3 leading-tight">
+                Real Deal Challenges.
+              </h1>
+              <h1 className="text-3xl font-heading font-bold text-white mb-4 leading-tight">
+                <span className="relative">
+                  Partner Feedback.
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
+                </span>
+              </h1>
+              <p className="text-base text-white/70 mb-2">
+                Monthly challenges on live deals from Norland.
+              </p>
+              <p className="text-sm text-white/50 mb-6">
+                300+ community • 2 tracks • Lifetime access
+              </p>
+
+              {/* Price */}
+              <div className="mb-6">
+                <div className="flex items-center justify-center gap-3 mb-1">
+                  <span className="text-4xl font-heading font-bold text-white">
+                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
+                  </span>
+                  <span className="text-xl text-white/40 line-through">
+                    {formatPrice(getPrice(currency, "starterKit"), currency)}
+                  </span>
+                </div>
+                <p className="text-white/50 text-sm">One-time • Lifetime access</p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <Button
+                  variant="default"
+                  size="lg"
+                  asChild
+                  className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
+                >
+                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
+                    Get Instant Access
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
+                >
+                  <Link href="/cohort">
+                    Want Live Deal Access? →
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Trust */}
+              <div className="flex items-center justify-center gap-2 text-white/50 text-sm mt-6">
+                <Shield className="w-4 h-4" />
+                <span>3-day money-back guarantee</span>
+              </div>
+            </motion.div>
+
+            {/* Desktop: Full Hero */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hidden md:block"
+            >
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
+              >
+                <Trophy className="w-4 h-4 text-yellow-400" />
+                <span className="text-white/90 text-sm font-medium">Not Templates. A Playground.</span>
+              </motion.div>
+
+              <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+                Your PE Playground
               </h1>
               
-              <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Templates, scripts, and community access to start building your PE portfolio today.
+              <p className="text-xl md:text-2xl text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed">
+                Solve real deal challenges. Get partner feedback. Build with 300+ likeminded people.
               </p>
+              
+              {/* Value Props */}
+              <div className="flex flex-wrap justify-center gap-3 mb-10">
+                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+                  <span className="text-white/90 text-sm">Real Deals from Norland</span>
+                </div>
+                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+                  <span className="text-white/90 text-sm">Partner Reviews</span>
+                </div>
+                <div className="px-4 py-2 bg-white/10 rounded-full border border-white/20">
+                  <span className="text-white/90 text-sm">2 Tracks: Analyst & Associate</span>
+                </div>
+              </div>
               
               {/* Price */}
               <div className="mb-8">
@@ -290,10 +392,10 @@ export default function StarterKitPage() {
               className="text-center mb-8"
             >
               <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-                What's Inside (Simplified)
+                Your Toolkit & Playbooks
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                Everything you need to build a portfolio and break into PE
+                The templates, frameworks, and guides to get you started
               </p>
             </motion.div>
 
@@ -529,8 +631,8 @@ export default function StarterKitPage() {
         </div>
       </section>
 
-      {/* Discord Community Section */}
-      <section className="py-20 bg-black text-white">
+      {/* Community Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -540,11 +642,15 @@ export default function StarterKitPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
-                Join Our Private Discord Community
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full mb-4">
+                <Users className="h-4 w-4" />
+                <span className="text-sm font-semibold">LIKEMINDED COMMUNITY</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
+                You're Not Doing This Alone
               </h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                Connect with 300+ active members. Get feedback, share wins, and build your network.
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+                300+ professionals from engineering, consulting, CA, and non-traditional backgrounds. All working towards PE.
               </p>
             </motion.div>
 
@@ -555,33 +661,46 @@ export default function StarterKitPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="bg-white/5 border-2 border-white/20 rounded-lg p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <MessageSquare className="h-6 w-6 text-white" />
-                    <h3 className="text-xl font-heading font-bold text-white">
-                      What You Get
-                    </h3>
-                  </div>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">Dedicated channels for LBO models, memos, and deal analysis</span>
+                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-6">
+                  <h3 className="text-xl font-heading font-bold text-black mb-6">
+                    What Happens in the Community
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <div className="p-2 bg-black rounded-lg flex-shrink-0">
+                        <Trophy className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-black">Challenge Discussions</p>
+                        <p className="text-sm text-gray-600">Share approaches, debate analysis, learn from each other</p>
+                      </div>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">Peer review and feedback on your work</span>
+                    <li className="flex items-start gap-3">
+                      <div className="p-2 bg-black rounded-lg flex-shrink-0">
+                        <FileText className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-black">Peer Reviews</p>
+                        <p className="text-sm text-gray-600">Get feedback on your models, memos, and analysis</p>
+                      </div>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">Job opportunities and networking threads</span>
+                    <li className="flex items-start gap-3">
+                      <div className="p-2 bg-black rounded-lg flex-shrink-0">
+                        <Mail className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-black">Networking & Job Leads</p>
+                        <p className="text-sm text-gray-600">Members share opportunities, make introductions</p>
+                      </div>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">Monthly office hours announcements</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">Exclusive resources and updates</span>
+                    <li className="flex items-start gap-3">
+                      <div className="p-2 bg-black rounded-lg flex-shrink-0">
+                        <Calendar className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-black">Monthly Office Hours</p>
+                        <p className="text-sm text-gray-600">Live Q&A with Swapnil - ask anything</p>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -592,7 +711,7 @@ export default function StarterKitPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-white/5 border-2 border-white/20 rounded-lg p-4"
+                className="bg-gray-100 border-2 border-gray-200 rounded-lg p-4"
               >
                 <div className="rounded-lg overflow-hidden bg-gray-900 relative">
                   <img
@@ -602,9 +721,9 @@ export default function StarterKitPage() {
                     style={{ maxHeight: '600px', objectFit: 'contain' }}
                   />
                 </div>
-                <div className="mt-4 flex items-center justify-center gap-2 text-white/50 text-xs">
+                <div className="mt-4 flex items-center justify-center gap-2 text-gray-600 text-xs">
                   <Users className="h-4 w-4" />
-                  <span>300+ active members</span>
+                  <span>Active daily discussions</span>
                 </div>
               </motion.div>
             </div>
@@ -612,8 +731,8 @@ export default function StarterKitPage() {
         </div>
       </section>
 
-      {/* Challenges Section */}
-      <section className="py-20 bg-white">
+      {/* Challenges Section - THE CORE VALUE */}
+      <section className="py-20 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -622,77 +741,131 @@ export default function StarterKitPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Trophy className="h-8 w-8 text-black" />
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black">
-                Monthly Challenges
-              </h2>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-4">
+              <Trophy className="h-4 w-4 text-yellow-400" />
+              <span className="text-white text-sm font-semibold">THE REAL VALUE</span>
             </div>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Test your skills and get feedback from the community
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+              Monthly Real Deal Challenges
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Not textbook cases. Real deals from Norland pipeline. Two tracks based on your level.
             </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
+            {/* Analyst Track */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Card className="border-2 border-gray-200 hover:border-black transition-all h-full flex flex-col">
-                <CardContent className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-black rounded-lg">
-                      <Trophy className="h-5 w-5 text-white" />
-                    </div>
-                    <h3 className="text-lg font-heading font-bold text-black">
-                      LBO Modeling Challenge
-                    </h3>
+              <Card className="bg-white/5 border-2 border-white/20 h-full">
+                <CardContent className="p-6">
+                  <div className="inline-block px-3 py-1 bg-blue-500/20 rounded-full border border-blue-400/50 mb-4">
+                    <span className="text-blue-300 text-xs font-semibold uppercase">Analyst Track</span>
                   </div>
-                  <p className="text-gray-700 mb-4 flex-1">
-                    Build an LBO model for a given company. Submit your work for peer review and instructor feedback.
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mt-auto">
-                    <Calendar className="h-4 w-4" />
-                    <span>Monthly challenge</span>
+                  <h3 className="text-xl font-heading font-bold text-white mb-4">
+                    Building Foundations
+                  </h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Deal screening on real companies from pipeline</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Basic LBO modeling challenges</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Industry research & market sizing</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Partner feedback on submissions</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <p className="text-white/60 text-sm">Perfect for: Career changers, early professionals</p>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
 
+            {/* Associate Track */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Card className="border-2 border-gray-200 hover:border-black transition-all h-full flex flex-col">
-                <CardContent className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-black rounded-lg">
-                      <FileText className="h-5 w-5 text-white" />
-                    </div>
-                    <h3 className="text-lg font-heading font-bold text-black">
-                      Investment Memo Challenge
-                    </h3>
+              <Card className="bg-white/5 border-2 border-white/20 h-full">
+                <CardContent className="p-6">
+                  <div className="inline-block px-3 py-1 bg-green-500/20 rounded-full border border-green-400/50 mb-4">
+                    <span className="text-green-300 text-xs font-semibold uppercase">Associate Track</span>
                   </div>
-                  <p className="text-gray-700 mb-4 flex-1">
-                    Write an investment memo for a real company. Get detailed feedback on structure, analysis, and presentation.
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mt-auto">
-                    <Calendar className="h-4 w-4" />
-                    <span>Monthly challenge</span>
+                  <h3 className="text-xl font-heading font-bold text-white mb-4">
+                    Advanced Deep Dives
+                  </h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Full LBO models on actual opportunities</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Investment memo writing (IC-ready)</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Due diligence frameworks</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-white/90">Partner feedback on submissions</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <p className="text-white/60 text-sm">Perfect for: IB analysts, VC associates, experienced professionals</p>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           </div>
+
+          {/* How it works */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+              <h3 className="text-lg font-bold text-white mb-4">How Monthly Challenges Work</h3>
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-white mb-1">1st</div>
+                  <div className="text-xs text-white/60">Challenge drops</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white mb-1">15th</div>
+                  <div className="text-xs text-white/60">Submit work</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white mb-1">20th</div>
+                  <div className="text-xs text-white/60">Partner feedback</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -701,17 +874,17 @@ export default function StarterKitPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-4">
-                Ready to Start Your PE Journey?
+              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black mb-4">
+                Start Building Today
               </h2>
-              <p className="text-white/70 mb-8">
-                Get instant access to all templates, community, and monthly challenges.
+              <p className="text-gray-700 mb-8">
+                Join the playground. Solve real challenges. Get partner feedback.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   variant="default"
                   size="lg"
-                  className="bg-white text-black hover:bg-gray-100 font-bold px-8 py-6"
+                  className="bg-black text-white hover:bg-gray-900 font-bold px-8 py-6"
                   asChild
                 >
                   <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
@@ -722,11 +895,11 @@ export default function StarterKitPage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/30 text-white hover:bg-white/10 font-bold px-8 py-6"
+                  className="border-black text-black hover:bg-black hover:text-white font-bold px-8 py-6"
                   asChild
                 >
                   <Link href="/cohort">
-                    Explore Cohort Program
+                    Want More Access? Apply to Cohort
                   </Link>
                 </Button>
               </div>
@@ -873,102 +1046,199 @@ export default function StarterKitPage() {
       </section>
 
       {/* Pricing & CTA Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-16 md:py-20 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
-                Get Started Today
-              </h2>
-              <p className="text-lg text-white/80">
-                Join 300+ active members building their portfolios
-              </p>
-            </motion.div>
-
-            <Card className="bg-black border-2 border-white/20 shadow-xl">
-              <CardContent className="p-6 md:p-8">
-                <div className="text-center mb-6">
-                  <div className="mb-4">
-                    <div className="inline-block px-3 py-1.5 bg-red-500/20 rounded-full border border-red-400/50 mb-3">
-                      <span className="text-red-200 text-xs font-semibold uppercase tracking-wide">Early Bird</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="text-4xl md:text-5xl font-heading font-bold text-white">
-                        {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                      </div>
-                      <div className="text-2xl md:text-3xl font-heading font-bold text-white line-through">
-                        {formatPrice(getPrice(currency, "starterKit"), currency)}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-white/80 text-sm mb-3">One-time payment, lifetime access</p>
-                  <div className="flex items-center justify-center gap-2 text-white/70 text-xs">
-                    <Users className="h-3 w-3" />
-                    <span>Join 300+ active members</span>
-                  </div>
+            {/* Mobile: Full-Width Professional Card */}
+            <div className="md:hidden">
+              {/* Header */}
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-black rounded-full mb-3">
+                  <Sparkles className="h-4 w-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">Best Value</span>
                 </div>
+                <h2 className="text-2xl font-heading font-bold text-white mb-2">
+                  Get Everything
+                </h2>
+                <p className="text-sm text-white/70">
+                  Real deals. Partner feedback. Community. All included.
+                </p>
+              </div>
 
-                <div className="bg-white/10 rounded-lg p-4 mb-6 border border-white/20">
-                  <h3 className="text-white font-bold mb-3 text-center text-base">What's Included</h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    {features.map((feature, index) => {
-                      const Icon = feature.icon;
-                      return (
-                        <div key={index} className="flex items-start gap-2">
-                          <Check className="h-3.5 w-3.5 text-white flex-shrink-0 mt-0.5" />
-                          <span className="text-white text-xs font-medium">{feature.title}</span>
+              {/* Price */}
+              <div className="text-center mb-6">
+                <div className="flex items-center justify-center gap-3 mb-1">
+                  <span className="text-4xl font-heading font-bold text-white">
+                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
+                  </span>
+                  <span className="text-xl text-white/40 line-through">
+                    {formatPrice(getPrice(currency, "starterKit"), currency)}
+                  </span>
+                </div>
+                <p className="text-white/60 text-sm">One-time payment • Lifetime access</p>
+              </div>
+
+              {/* What You Get */}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-6">
+                <div className="space-y-3">
+                  {[
+                    "Monthly real deal challenges",
+                    "Partner feedback on your work", 
+                    "300+ member community",
+                    "2 tracks: Analyst & Associate",
+                    "Deal sourcing playbooks",
+                    "Career roadmaps (VC/IB/Non-MBA)",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
+                      <span className="text-white text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <Button
+                variant="default"
+                size="lg"
+                className="w-full bg-white text-black hover:bg-gray-50 font-bold py-5 text-lg shadow-2xl mb-4"
+                asChild
+              >
+                <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
+                  Get Access Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+
+              {/* Trust */}
+              <div className="flex items-center justify-center gap-2 text-sm text-white/60">
+                <Shield className="h-4 w-4" />
+                <span>3-day refund guarantee</span>
+              </div>
+
+              {/* Cohort Link */}
+              <div className="mt-6 pt-6 border-t border-white/20 text-center">
+                <p className="text-white/50 text-xs mb-2">Want live deal access with direct partner mentorship?</p>
+                <Link href="/cohort" className="text-white font-medium text-sm underline">
+                  Explore the Cohort Program →
+                </Link>
+              </div>
+            </div>
+
+            {/* Desktop: Full Card */}
+            <div className="hidden md:block">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+                  All This for Less Than a Textbook
+                </h2>
+                <p className="text-lg text-white/80">
+                  Real deals. Partner feedback. Community. Roadmaps. One price, lifetime access.
+                </p>
+              </motion.div>
+
+              <Card className="bg-black border-2 border-white/20 shadow-xl">
+                <CardContent className="p-8">
+                  <div className="text-center mb-6">
+                    <div className="mb-4">
+                      <div className="inline-block px-3 py-1.5 bg-green-500/20 rounded-full border border-green-400/50 mb-3">
+                        <span className="text-green-200 text-xs font-semibold uppercase tracking-wide">Playground Access</span>
+                      </div>
+                      <div className="flex items-center justify-center gap-3">
+                        <div className="text-5xl font-heading font-bold text-white">
+                          {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
                         </div>
-                      );
-                    })}
+                        <div className="text-3xl font-heading font-bold text-white/40 line-through">
+                          {formatPrice(getPrice(currency, "starterKit"), currency)}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-white/80 text-sm mb-3">One-time payment • Lifetime access • All future updates</p>
                   </div>
-                </div>
 
-                {/* Both CTAs Side by Side */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                  <Button
-                    variant="default"
-                    size="lg"
-                    className="w-full bg-white text-black hover:bg-gray-50 text-sm md:text-base font-bold shadow-xl hover:shadow-white/50 transition-all duration-300 py-3 md:py-4 uppercase tracking-wide"
-                    asChild
-                  >
-                    <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                      Buy Now
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full border-2 border-white text-white hover:bg-white hover:text-black text-sm md:text-base font-bold py-3 md:py-4 transition-all duration-300"
-                    asChild
-                  >
-                    <Link href="/cohort#apply" className="flex items-center justify-center gap-2">
-                      Explore Cohort
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
+                  <div className="bg-white/10 rounded-lg p-4 mb-6 border border-white/20">
+                    <h3 className="text-white font-bold mb-3 text-center text-base">What You Get</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">Monthly real deal challenges</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">2 tracks (Analyst + Associate)</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">Partner feedback on work</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">300+ member community</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">Deal sourcing playbook</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">Career roadmaps (VC/IB/Non-MBA)</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">LBO & screening templates</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-white text-sm">Monthly office hours</span>
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="flex items-center gap-2 justify-center text-xs text-white bg-white/10 rounded-lg p-2.5 border border-white/20">
-                  <Shield className="h-3.5 w-3.5 text-white" />
-                  <span className="font-medium">3-day refund guarantee, no questions asked</span>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <Button
+                      variant="default"
+                      size="lg"
+                      className="w-full bg-white text-black hover:bg-gray-50 font-bold shadow-xl py-4 uppercase tracking-wide"
+                      asChild
+                    >
+                      <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                        Get Access Now
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4"
+                      asChild
+                    >
+                      <Link href="/cohort" className="flex items-center justify-center gap-2">
+                        Want Live Deal Access?
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center gap-2 justify-center text-xs text-white bg-white/10 rounded-lg p-2.5 border border-white/20">
+                    <Shield className="h-3.5 w-3.5 text-white" />
+                    <span className="font-medium">3-day refund guarantee • No questions asked</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
 
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -978,10 +1248,10 @@ export default function StarterKitPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-black mb-4">
-              What's Included
+              Everything in the Playground
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Professional resources to help you build a portfolio and break into PE
+              Real challenges. Real feedback. Real community. All for one price.
             </p>
           </motion.div>
 
@@ -996,7 +1266,7 @@ export default function StarterKitPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <Card className="h-full border-2 border-gray-200 hover:border-black transition-all">
+                  <Card className="h-full border-2 border-gray-200 hover:border-black transition-all bg-white">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="p-3 bg-black rounded-lg flex-shrink-0">

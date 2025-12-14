@@ -249,57 +249,56 @@ const condensedCurriculum = [
 ];
 
 const deliverables = [
-  "1 complete LBO model (portfolio-ready)",
-  "1 investment memo (show in interviews)",
-  "Real deal analysis experience",
-  "20+ companies tracked (proof of process)",
-  "5+ warm connections (from cold outreach)",
-  "Mock interview experience (video recorded)",
-  "Optimized resume & LinkedIn profile",
-  "Public portfolio (LinkedIn + personal site)",
+  "Real deal analysis from Norland pipeline",
+  "LBO model on actual company (not case study)",
+  "Investment memo reviewed by PE partner",
+  "IC presentation experience (live feedback)",
+  "See how partners filter 100+ deals to 3",
+  "Mock interviews with real PE feedback",
+  "Portfolio showcasing actual deal work",
+  "Network with 300+ aspiring PE professionals",
 ];
 
 const programTiers = [
   {
-    name: "6-Week Program",
+    name: "6-Week Immersion",
     duration: "6 weeks",
-    description: "Focused program covering foundations and real deal work. Perfect for those who want core PE skills without the extended commitment.",
+    description: "Work on 2-3 live deals from our pipeline. Get direct feedback from a PE partner. Build a portfolio with real deal work.",
     spots: "20 spots",
     earlyBird: { price: 24999, label: "Early Bird" },
     regular: { price: 30000, label: "Regular" },
     features: [
-      "6 weeks of focused learning",
-      "6 live sessions (12 hours)",
-      "3 office hours",
-      "1-on-1 feedback (2 sessions)",
-      "Real deal work experience",
-      "Investment committee presentations",
+      "Work on 2-3 real deals from Norland pipeline",
+      "6 live sessions with partner feedback",
+      "Present to Investment Committee",
+      "See how we evaluate opportunities",
+      "Build portfolio with actual deal work",
+      "1-on-1 feedback sessions (2x)",
       "Lifetime community access",
       "All materials & recordings",
-      "Note: Career building modules exclusive to 12-week program",
+      "Note: Extended career modules in 12-week only",
     ],
     curriculum: condensedCurriculum,
     paymentLink: "[RAZORPAY_LINK_COHORT_6WEEK]",
   },
   {
-    name: "12-Week Program",
+    name: "12-Week Deep Dive",
     duration: "12 weeks",
-    description: "Comprehensive program with full curriculum including advanced career building",
+    description: "Full apprenticeship experience. Work on 4-5 deals. Extended partner access. Complete career transformation.",
     spots: "10 spots only",
     earlyBird: { price: 41999, label: "Early Bird" },
     regular: { price: 50000, label: "Regular" },
     features: [
-      "12 weeks of comprehensive training",
-      "12 live sessions (24 hours)",
-      "6 office hours",
-      "1-on-1 feedback (4 sessions)",
-      "Real deal work with full due diligence",
-      "Extended mock interviews (2 sessions)",
-      "Advanced career building modules",
+      "Work on 4-5 real deals end-to-end",
+      "Full due diligence experience",
+      "Watch IC committee decisions live",
+      "See deal sourcing to close process",
+      "Extended partner mentorship",
+      "Mock interviews with real PE feedback",
+      "Career positioning & networking",
       "Direct access to Swapnil",
       "Post-program mentorship (1 month)",
       "Lifetime community access",
-      "All materials & recordings",
     ],
     curriculum: fullCurriculum,
     paymentLink: "[RAZORPAY_LINK_COHORT_12WEEK]",
@@ -405,14 +404,14 @@ export default function CohortPage() {
           }} />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-12 md:pb-20">
           <div className="max-w-6xl mx-auto">
-            {/* Header */}
+            {/* Desktop Header - Hidden on Mobile */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="hidden md:block text-center mb-16"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -421,11 +420,11 @@ export default function CohortPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
               >
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-white/80 text-sm font-semibold">Live + Mentored Program</span>
+                <span className="text-white/80 text-sm font-semibold">Not a Course. An Apprenticeship.</span>
               </motion.div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6">
                 <span className="relative inline-block">
-                  PE Breakthrough Cohort
+                  The PE Apprenticeship
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
@@ -435,11 +434,14 @@ export default function CohortPage() {
                 </span>
               </h1>
               <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-4">
-                Limited Enrollment. Personalized Attention. Real Results.
+                Work on Real Deals. Get Partner Feedback. Build Your Portfolio.
+              </p>
+              <p className="text-base text-white/50 max-w-2xl mx-auto mb-4">
+                Access live deals from Norland Capital's pipeline. See how partners evaluate opportunities. Get the experience IB analysts have.
               </p>
               <div className="flex items-center justify-center gap-2 text-white/60 text-sm">
                 <AlertCircle className="h-4 w-4" />
-                <span>Only 30 spots total across both programs</span>
+                <span>Selective admission • Only 30 spots total</span>
               </div>
             </motion.div>
 
@@ -468,8 +470,8 @@ export default function CohortPage() {
                   <p className="text-sm text-white/70 font-medium">Days Remaining</p>
                   <p className="text-xs text-white/50 mt-2">
                     {isEarlyBirdActive 
-                      ? `Save up to ${formatPrice(savingsAmount, currency)} with Early Bird pricing`
-                      : "Early Bird pricing has ended"
+                      ? "Early enrollment discount available"
+                      : "Standard enrollment open"
                     }
                   </p>
                 </div>
@@ -557,98 +559,59 @@ export default function CohortPage() {
               </motion.div>
             </div>
 
-            {/* Mobile: Clean Hero CTA */}
+            {/* Mobile: Matching Desktop Style */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6 }}
               className="md:hidden text-center"
             >
-              {/* Urgency Badge */}
-              <div className="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
+              >
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-white/80 text-sm font-semibold">Not a Course. An Apprenticeship.</span>
+              </motion.div>
+
+              <h1 className="text-3xl font-heading font-bold text-white mb-4">
+                <span className="relative inline-block">
+                  The PE Apprenticeship
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
+                  />
                 </span>
-                <span className="text-sm font-bold">Only {spots6Week + spots12Week - filled6Week - filled12Week} spots remaining</span>
+              </h1>
+              
+              <p className="text-lg text-white/80 mb-3">
+                Work on Real Deals. Get Partner Feedback. Build Your Portfolio.
+              </p>
+              
+              <p className="text-sm text-white/50 mb-4">
+                Access live deals from Norland Capital's pipeline. Get the experience IB analysts have.
+              </p>
+              
+              <div className="flex items-center justify-center gap-2 text-white/60 text-xs mb-8">
+                <AlertCircle className="h-3 w-3" />
+                <span>Selective admission • Only 30 spots</span>
               </div>
 
-              {/* Stats Row */}
-              <div className="flex justify-center gap-8 mb-6">
-                <div className="text-center">
-                  <div className="text-3xl font-heading font-bold text-white">{daysRemaining}</div>
-                  <div className="text-xs text-white/60 uppercase tracking-wider">Days Left</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-heading font-bold text-white">6-12</div>
-                  <div className="text-xs text-white/60 uppercase tracking-wider">Weeks</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-heading font-bold text-white">30</div>
-                  <div className="text-xs text-white/60 uppercase tracking-wider">Total Seats</div>
-                </div>
-              </div>
-
-              {/* Primary CTA - Large */}
+              {/* CTA */}
               <Button
                 variant="default"
                 size="lg"
-                className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-lg mb-3 shadow-2xl shadow-white/20"
+                className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
                 onClick={() => setApplicationOpen(true)}
               >
-                Apply Now
-                <ArrowRight className="ml-2 h-6 w-6" />
+                Apply for Access
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-
-              {/* Secondary Link */}
-              <Link 
-                href="#programs" 
-                className="inline-flex items-center gap-1 text-white/70 text-sm hover:text-white transition-colors"
-              >
-                View program details
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              {/* Waitlist - Minimal */}
-              <div className="mt-8 pt-6 border-t border-white/20">
-                <p className="text-white/50 text-xs mb-3">Or join waitlist for updates</p>
-                <form
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    const formData = new FormData(e.target as HTMLFormElement);
-                    const email = formData.get("email") as string;
-                    
-                    try {
-                      const response = await fetch("/api/waitlist", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email }),
-                      });
-                      const result = await response.json();
-                      if (response.ok) {
-                        alert(result.message || "Thank you!");
-                        (e.target as HTMLFormElement).reset();
-                      } else {
-                        alert(result.error || "Failed. Please try again.");
-                      }
-                    } catch (error) {
-                      alert("Failed. Please try again later.");
-                    }
-                  }}
-                  className="flex gap-2 max-w-sm mx-auto"
-                >
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    required
-                    className="flex-1 px-4 py-2.5 border border-white/30 rounded-lg bg-white/5 text-white placeholder-white/40 focus:outline-none focus:border-white/50 text-sm"
-                  />
-                  <Button type="submit" size="sm" className="bg-white/20 text-white hover:bg-white/30 px-4">
-                    <Mail className="h-4 w-4" />
-                  </Button>
-                </form>
-              </div>
             </motion.div>
 
             {/* Desktop: Footer Note with Waitlist */}
@@ -773,50 +736,19 @@ export default function CohortPage() {
                           {tier.description}
                         </CardDescription>
                         <div className="mb-6">
-                          {isEarlyBirdActive ? (
-                            <div>
-                              <div className="flex items-center gap-2 mb-2">
-                                <span className={`px-2 py-1 bg-green-500 text-white text-xs font-bold rounded ${tier.highlighted ? "" : ""}`}>
-                                  EARLY BIRD
-                                </span>
-                                <span className={`text-xs ${tier.highlighted ? "text-white/70" : "text-gray-600"}`}>
-                                  {daysRemaining} days left
-                                </span>
-                              </div>
-                              <div className="flex items-baseline gap-3 mb-1">
-                                <span className={`text-4xl font-heading font-bold ${tier.highlighted ? "text-white" : "text-black"}`}>
-                                  {formatPrice(
-                                    tier.name === "6-Week Program" ? price6Week : price12Week,
-                                    currency
-                                  )}
-                                </span>
-                                <span className={`text-xl line-through ${tier.highlighted ? "text-white/40" : "text-gray-400"}`}>
-                                  {formatPrice(
-                                    tier.name === "6-Week Program" ? regularPrice6Week : regularPrice12Week,
-                                    currency
-                                  )}
-                                </span>
-                              </div>
-                              <p className={`text-sm font-semibold ${tier.highlighted ? "text-green-400" : "text-green-600"}`}>
-                                Save {formatPrice(tier.name === "6-Week Program" ? savings6Week : savings12Week, currency)}
-                              </p>
-                            </div>
-                          ) : (
-                            <div className="flex items-baseline gap-2 mb-2">
-                              <span className={`text-4xl font-heading font-bold ${tier.highlighted ? "text-white" : "text-black"}`}>
-                                {formatPrice(
-                                  tier.name === "6-Week Program" ? price6Week : price12Week,
-                                  currency
-                                )}
-                              </span>
-                              <span className={`text-sm ${tier.highlighted ? "text-white/70" : "text-gray-600"}`}>
-                                Starting from
-                              </span>
-                            </div>
-                          )}
-                          <p className={`text-sm mt-2 ${tier.highlighted ? "text-white/60" : "text-gray-600"}`}>
-                            {tier.spots}
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className={`px-3 py-1.5 ${tier.highlighted ? "bg-white/20 text-white" : "bg-black/10 text-black"} text-xs font-bold rounded-full`}>
+                              APPLICATION REQUIRED
+                            </span>
+                          </div>
+                          <p className={`text-sm ${tier.highlighted ? "text-white/70" : "text-gray-600"}`}>
+                            {tier.spots} • Pricing shared after application review
                           </p>
+                          {isEarlyBirdActive && (
+                            <p className={`text-xs mt-2 ${tier.highlighted ? "text-green-400" : "text-green-600"}`}>
+                              Early enrollment discount available ({daysRemaining} days left)
+                            </p>
+                          )}
                         </div>
                         <ul className="space-y-2 mb-6 flex-1">
                           {tier.features.slice(0, 5).map((feature, idx) => (
@@ -1118,6 +1050,11 @@ export default function CohortPage() {
                     "No prior finance experience is required. The Starter Kit and Cohort are designed for people breaking into PE from non-traditional backgrounds. However, basic Excel skills and a willingness to learn are essential.",
                 },
                 {
+                  question: "How do I find out about pricing?",
+                  answer:
+                    "After submitting your application, our team will review it and schedule a brief call to discuss the program details, answer your questions, and share pricing information. This ensures we can understand your goals and recommend the right program for you.",
+                },
+                {
                   question: "What if I miss a live session?",
                   answer:
                     "All live sessions are recorded and available for replay. You'll have lifetime access to all session recordings, so you can catch up at your own pace.",
@@ -1135,12 +1072,12 @@ export default function CohortPage() {
                 {
                   question: "Do you guarantee job placement?",
                   answer:
-                    "We don't guarantee job placement, but we guarantee you'll have a portfolio-ready LBO model, investment memo, and the skills to land interviews. Our track record shows 3 mentees in PE interview processes, 2 landed internships, and 1 VC role.",
+                    "We don't guarantee placement, but we guarantee something better: real deal experience that IB analysts have. You'll walk away with actual deal work in your portfolio - not case studies from 2015. Our track record: 3 mentees in PE interview processes, 2 landed internships, 1 VC role.",
                 },
                 {
                   question: "What's the difference between Starter Kit and Cohort?",
                   answer:
-                    "The Starter Kit is self-paced with templates, scripts, and community access. The Cohort is a 6-week live program with 1-on-1 feedback, live sessions, and structured curriculum. Choose based on your learning style and timeline.",
+                    "The Starter Kit gives you templates and resources to learn on your own. The Cohort is an apprenticeship where you work on real deals from our pipeline, get partner feedback, and build a portfolio with actual deal work. Choose Starter Kit if you want to learn at your own pace. Choose Cohort if you want hands-on experience with real deals.",
                 },
                 {
                   question: "Can I join from outside India?",

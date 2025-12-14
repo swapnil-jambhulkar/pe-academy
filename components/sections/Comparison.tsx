@@ -8,10 +8,10 @@ import { useCurrency } from "@/hooks/useCurrency";
 import { formatPrice, getPrice } from "@/lib/currency";
 
 const keyDifferences = [
-  { feature: "Live Sessions", starterKit: false, cohort: true },
-  { feature: "1-on-1 Feedback", starterKit: false, cohort: true },
-  { feature: "Real Deal Experience", starterKit: false, cohort: true },
-  { feature: "Personalized Mentorship", starterKit: false, cohort: true },
+  { feature: "Real Deal Access", starterKit: false, cohort: true },
+  { feature: "Partner Feedback", starterKit: false, cohort: true },
+  { feature: "IC Committee Access", starterKit: false, cohort: true },
+  { feature: "Portfolio with Actual Deals", starterKit: false, cohort: true },
 ];
 
 const sharedFeatures = [
@@ -38,10 +38,10 @@ export default function Comparison() {
           className="text-center mb-8 max-w-3xl mx-auto"
         >
           <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black mb-3">
-            Which Program is Right for You?
+            Choose Your Level of Access
           </h2>
           <p className="text-base text-gray-700">
-            Both include core resources. The difference is support and structure.
+            Starter Kit gives you resources. Cohort gives you real deal access and partner feedback.
           </p>
         </motion.div>
 
@@ -82,7 +82,7 @@ export default function Comparison() {
               </div>
               <div className="p-4 text-center border-l border-gray-300 bg-black text-white">
                 <p className="text-sm text-white uppercase tracking-wider font-semibold">Cohort</p>
-                <p className="text-xs text-white/70 mt-1">{formatPrice(getPrice(currency, "cohort6WeekEarlyBird"), currency)}+</p>
+                <p className="text-xs text-white/70 mt-1">Apply for Access</p>
               </div>
             </div>
             {keyDifferences.map((item, index) => (

@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const guarantees = [
-  { title: "Portfolio-Ready Work", desc: "Interview-ready deliverables" },
-  { title: "Real Network Access", desc: "Warm PE introductions" },
-  { title: "Ongoing Support", desc: "Lifetime community access" },
-  { title: "Proven System", desc: "Real results, real placements" },
+  { title: "Real Deal Experience", desc: "Work on actual deals from our pipeline" },
+  { title: "Partner Feedback", desc: "Direct feedback on your work" },
+  { title: "Portfolio You Can Show", desc: "Actual deal analysis, not coursework" },
+  { title: "Track Record", desc: "3 in PE interviews, 2 internships" },
 ];
 
 export default function Guarantee() {
@@ -89,36 +89,36 @@ export default function Guarantee() {
             </h2>
             
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              We're not here to sell you another course. We're here to help you break into PE. Here's our promise:
+              We're not selling a course. We're giving you access to real deals and real feedback. Here's our promise:
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8 text-left max-w-3xl mx-auto">
               <div className="flex items-start gap-3">
                 <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold text-black mb-1">Portfolio-Ready Work</p>
-                  <p className="text-sm text-gray-700">You'll complete interview-ready deliverables. If you don't, we'll work with you until you do.</p>
+                  <p className="font-semibold text-black mb-1">Real Deal Experience</p>
+                  <p className="text-sm text-gray-700">You'll work on actual deals from our pipeline. Not case studies. Real opportunities we're evaluating.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold text-black mb-1">Real Network Access</p>
-                  <p className="text-sm text-gray-700">We'll introduce you to PE professionals. Not just email templates. Actual warm introductions.</p>
+                  <p className="font-semibold text-black mb-1">Partner-Level Feedback</p>
+                  <p className="text-sm text-gray-700">Direct feedback from a PE partner on your work. See how we think about opportunities.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold text-black mb-1">Ongoing Support</p>
-                  <p className="text-sm text-gray-700">Lifetime community access. We're here for your journey, not just the program duration.</p>
+                  <p className="font-semibold text-black mb-1">Portfolio You Can Show</p>
+                  <p className="text-sm text-gray-700">Walk away with actual deal work in your portfolio. Not coursework. Real analysis.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold text-black mb-1">Proven System</p>
-                  <p className="text-sm text-gray-700">3 mentees in PE interviews, 2 internships, 1 VC role. This system works.</p>
+                  <p className="font-semibold text-black mb-1">Track Record</p>
+                  <p className="text-sm text-gray-700">3 mentees in PE interviews, 2 internships, 1 VC role. This access works.</p>
                 </div>
               </div>
             </div>

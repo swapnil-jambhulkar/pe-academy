@@ -15,47 +15,47 @@ import {
 import FrustrationHeatmap from "@/components/ui/frustration-heatmap";
 
 const marketData = {
-  title: "Market Analysis: Private Equity Talent Acquisition",
-  subtitle: "Industry hiring patterns and barriers to entry",
+  title: "What IB Analysts Have That You Don't",
+  subtitle: "The 4 things that get people hired in PE",
   keyFindings: [
     {
-      metric: "<5%",
-      label: "Acceptance Rate",
-      description: "Entry-level positions in mid-market PE firms",
+      metric: "Real Deals",
+      label: "In Their Portfolio",
+      description: "They've worked on actual transactions, not case studies",
     },
     {
-      metric: "85%",
-      label: "Traditional Path",
-      description: "Candidates hired from IB → MBA → PE pipeline",
+      metric: "Partner",
+      label: "Recommendations",
+      description: "MDs and Partners vouch for them directly",
     },
     {
-      metric: "15%",
-      label: "Non-Traditional",
-      description: "Candidates hired without IB/MBA background",
+      metric: "Inside",
+      label: "Network Access",
+      description: "They know people at every fund who can refer them",
     },
     {
-      metric: "5-7 years",
-      label: "Time to Entry",
-      description: "Average duration for traditional path candidates",
+      metric: "Proof",
+      label: "Of Real Work",
+      description: "They can show their deal work in interviews",
     },
   ],
   barriers: [
     {
-      title: "Structural Barriers",
+      title: "What They Have",
       items: [
-        "Limited entry-level positions (8-10 per firm average)",
-        "High preference for Tier-1 MBA credentials",
-        "Network-dependent hiring process",
-        "Requires proven deal experience",
+        "Real deal experience on actual transactions",
+        "Partners and MDs who make introductions",
+        "Network of people already in PE",
+        "Portfolio of real work to show in interviews",
       ],
     },
     {
-      title: "Skill Gaps",
+      title: "What You're Missing",
       items: [
-        "LBO modeling proficiency",
-        "Deal sourcing and evaluation",
-        "Investment memo writing",
-        "Portfolio company analysis",
+        "No real deals to show (just case studies)",
+        "No one to vouch for your work",
+        "No inside network at PE firms",
+        "No way to prove you can do the job",
       ],
     },
   ],
@@ -64,51 +64,51 @@ const marketData = {
 const painPoints = [
   {
     icon: Briefcase,
-    title: "No Real-World Deal Experience",
-    description: "Theory-heavy courses with no live deals, simulations, or actual case studies. Can't bridge theory to practice.",
+    title: "They Have Real Deals",
+    description: "IB analysts work on live transactions. You have case studies that don't count.",
     percentage: "72%",
-    statLabel: "cited this as top frustration",
-    category: "Practical Experience",
+    statLabel: "say this is the biggest gap",
+    category: "Deal Experience",
   },
   {
     icon: Users,
-    title: "No Personalized Mentorship",
-    description: "Existing courses lack industry expert guidance. No one-on-one mentorship from PE veterans who've actually done it.",
+    title: "They Have Partner Access",
+    description: "IB analysts have MDs who make calls. You're sending cold emails into the void.",
     percentage: "68%",
-    statLabel: "cited this as top frustration",
-    category: "Mentorship & Guidance",
+    statLabel: "say this is holding them back",
+    category: "Access Gap",
   },
   {
     icon: Network,
-    title: "Zero PE Network Access",
-    description: "No connections with PE professionals or industry leaders. Missing the network needed to break in.",
+    title: "They Have Inside Networks",
+    description: "IB analysts know people at every fund. You're competing without connections.",
     percentage: "65%",
-    statLabel: "cited this as top frustration",
-    category: "Networking",
+    statLabel: "say this matters most",
+    category: "Network Gap",
   },
   {
     icon: FileQuestion,
-    title: "Generic Resources",
-    description: "Courses are either too expensive or too generic. No accessible, quality resources tailored to non-traditional backgrounds.",
+    title: "They Have Proof of Work",
+    description: "IB analysts show actual deals in interviews. You have nothing to demonstrate.",
     percentage: "61%",
-    statLabel: "cited this as top frustration",
-    category: "Quality Resources",
+    statLabel: "say this blocks them",
+    category: "Credibility Gap",
   },
   {
     icon: BookOpen,
-    title: "Unclear Roadmap",
-    description: "No structured pathway showing how to build skills, gain credibility, and transition into PE roles.",
+    title: "They Have a Clear Path",
+    description: "IB analysts have a pipeline to PE. You're figuring it out alone.",
     percentage: "58%",
-    statLabel: "cited this as top frustration",
-    category: "Clear Roadmap",
+    statLabel: "cite this frustration",
+    category: "Roadmap Gap",
   },
   {
     icon: Target,
-    title: "Pedigree Bias",
-    description: "Industry favors Tier-1 MBAs. No merit-based system that values skills and talent over credentials.",
+    title: "They Have Pedigree",
+    description: "IB analysts have the Tier-1 brand. You need to prove yourself differently.",
     percentage: "54%",
-    statLabel: "cited this as top frustration",
-    category: "Access & Opportunities",
+    statLabel: "cite this frustration",
+    category: "Credential Gap",
   },
 ];
 
@@ -127,11 +127,12 @@ export default function Problem() {
           <div className="md:hidden mb-6 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-full mb-3">
               <BarChart3 className="h-4 w-4" />
-              <span className="text-xs font-semibold uppercase tracking-wider">Market Analysis</span>
+              <span className="text-xs font-semibold uppercase tracking-wider">The Problem</span>
             </div>
-            <h2 className="text-xl font-heading font-bold text-black">
-              Why Breaking Into PE Is Hard
+            <h2 className="text-xl font-heading font-bold text-black mb-2">
+              What IB Analysts Have
             </h2>
+            <p className="text-sm text-gray-600">That you don't... yet</p>
           </div>
 
           {/* Desktop Header - Full Report Style */}
@@ -229,8 +230,9 @@ export default function Problem() {
             {/* Desktop only header */}
             <div className="hidden md:block border-b border-gray-200 pb-4 mb-6">
               <h3 className="text-lg font-heading font-bold text-black uppercase tracking-wide">
-                Top Frustrations: 700+ Survey Responses
+                What's Stopping You (Survey: 700+ Responses)
               </h3>
+              <p className="text-sm text-gray-600 mt-1">Every gap below is something IB analysts already have</p>
             </div>
             
             {/* Mobile: Interactive Heatmap Visualization (has its own header) */}
