@@ -125,7 +125,7 @@ export default function Solution() {
                 Live + Mentored
               </span>
               <div className="text-right">
-                <span className="text-2xl font-heading font-bold text-black">{formatPrice(getPrice(currency, "cohort6Week"), currency)}</span>
+                <span className="text-2xl font-heading font-bold text-black">{formatPrice(getPrice(currency, "cohort6WeekEarlyBird"), currency)}</span>
                 <p className="text-xs text-gray-500">Starting from</p>
               </div>
             </div>
@@ -214,7 +214,7 @@ export default function Solution() {
                     Live + Mentored
                   </span>
                   <div className="text-right">
-                    <span className="text-3xl font-heading font-bold text-white">{formatPrice(getPrice(currency, "cohort6Week"), currency)}</span>
+                    <span className="text-3xl font-heading font-bold text-white">{formatPrice(getPrice(currency, "cohort6WeekEarlyBird"), currency)}</span>
                     <p className="text-xs text-white/70">Starting from</p>
                   </div>
                 </div>

@@ -265,7 +265,7 @@ const programTiers = [
     duration: "6 weeks",
     description: "Focused program covering foundations and real deal work. Perfect for those who want core PE skills without the extended commitment.",
     spots: "20 spots",
-    earlyBird: { price: 25000, label: "Early Bird" },
+    earlyBird: { price: 24999, label: "Early Bird" },
     regular: { price: 30000, label: "Regular" },
     features: [
       "6 weeks of focused learning",
@@ -286,7 +286,7 @@ const programTiers = [
     duration: "12 weeks",
     description: "Comprehensive program with full curriculum including advanced career building",
     spots: "10 spots only",
-    earlyBird: { price: 42000, label: "Early Bird" },
+    earlyBird: { price: 41999, label: "Early Bird" },
     regular: { price: 50000, label: "Regular" },
     features: [
       "12 weeks of comprehensive training",
