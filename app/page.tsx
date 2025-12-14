@@ -28,16 +28,30 @@ const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"), {
 export default function Home() {
   return (
     <>
+      {/* Always show on all devices */}
       <Hero />
-      <Problem />
-      <Solution />
-      <PathwayToInterview />
-      <Comparison />
-      <Testimonials />
-      {/* <Outcomes /> */}
-      <Guarantee />
-      <Instructor />
-      <FinalCTA />
+      
+      {/* Mobile-optimized: Show condensed version */}
+      <div className="md:hidden">
+        <Problem />
+        <Solution />
+        <Instructor />
+        <Guarantee />
+        <FinalCTA />
+      </div>
+
+      {/* Desktop: Show full version with all sections */}
+      <div className="hidden md:block">
+        <Problem />
+        <Solution />
+        <PathwayToInterview />
+        <Comparison />
+        <Testimonials />
+        {/* <Outcomes /> */}
+        <Guarantee />
+        <Instructor />
+        <FinalCTA />
+      </div>
     </>
   );
 }

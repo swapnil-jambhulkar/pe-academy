@@ -5,17 +5,80 @@ import { Shield, Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+const guarantees = [
+  { title: "Portfolio-Ready Work", desc: "Interview-ready deliverables" },
+  { title: "Real Network Access", desc: "Warm PE introductions" },
+  { title: "Ongoing Support", desc: "Lifetime community access" },
+  { title: "Proven System", desc: "Real results, real placements" },
+];
+
 export default function Guarantee() {
   return (
-    <section className="min-h-screen flex items-center bg-white text-black">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
+    <section className="flex items-center bg-white text-black">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 md:py-16">
         <div className="max-w-4xl mx-auto w-full">
+          {/* Mobile: Full-width Layout (matching Market Analysis style) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-gray-50 border-2 border-gray-200 rounded-lg p-8 md:p-12 text-center"
+            className="md:hidden"
+          >
+            {/* Header - matching Market Analysis style */}
+            <div className="mb-6 text-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-full mb-3">
+                <Shield className="h-4 w-4" />
+                <span className="text-xs font-semibold uppercase tracking-wider">Our Promise</span>
+              </div>
+              <h2 className="text-xl font-heading font-bold text-black">
+                Our Commitment to You
+              </h2>
+            </div>
+
+            {/* Guarantees - Full width bars like heatmap */}
+            <div className="space-y-2 mb-6">
+              {guarantees.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-start gap-3"
+                >
+                  <div className="p-1.5 bg-green-100 rounded-full flex-shrink-0">
+                    <Check className="h-4 w-4 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-black">{item.title}</p>
+                    <p className="text-xs text-gray-600 mt-0.5">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <Button
+              variant="default"
+              size="lg"
+              asChild
+              className="w-full bg-black text-white hover:bg-gray-800 py-4"
+            >
+              <Link href="/cohort">
+                See How It Works
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          {/* Desktop: Full Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:block bg-gray-50 border-2 border-gray-200 rounded-lg p-8 md:p-12 text-center"
           >
             <div className="inline-flex p-4 bg-black rounded-full mb-6">
               <Shield className="h-8 w-8 text-white" />

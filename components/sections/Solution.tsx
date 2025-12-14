@@ -28,14 +28,32 @@ export default function Solution() {
   const { currency } = useCurrency();
 
   return (
-    <section id="solution" className="min-h-screen flex items-center bg-black text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
+    <section id="solution" className="flex items-center bg-black text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 md:py-16">
+        {/* Mobile Header - matching style */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 max-w-4xl mx-auto"
+          className="md:hidden text-center mb-6"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-black rounded-full mb-3">
+            <BookOpen className="h-4 w-4" />
+            <span className="text-xs font-semibold uppercase tracking-wider">Programs</span>
+          </div>
+          <h2 className="text-xl font-heading font-bold text-white">
+            Two Paths to Break In
+          </h2>
+        </motion.div>
+
+        {/* Desktop Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="hidden md:block text-center mb-10 max-w-4xl mx-auto"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-white mb-3">
             Two Paths to Break In
@@ -54,7 +72,87 @@ export default function Solution() {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {/* Mobile: Stacked full-width cards */}
+        <div className="md:hidden space-y-4">
+          {/* Starter Kit */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="bg-white/10 border border-white/20 rounded-lg p-4"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <span className="px-2 py-1 bg-red-500/20 text-red-200 text-xs font-semibold rounded-full border border-red-400/50">
+                Early Bird
+              </span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-heading font-bold text-white">{formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}</span>
+                <span className="text-sm text-white/50 line-through">{formatPrice(getPrice(currency, "starterKit"), currency)}</span>
+              </div>
+            </div>
+            <h3 className="text-lg font-heading font-bold text-white mb-2">Starter Kit</h3>
+            <p className="text-sm text-white/70 mb-3">Templates, models, scripts & community access</p>
+            <div className="grid grid-cols-2 gap-2 mb-4">
+              {starterKitFeatures.slice(0, 4).map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index} className="flex items-center gap-2 text-xs text-white/80">
+                    <Icon className="h-3 w-3 flex-shrink-0" />
+                    <span className="truncate">{feature.text.split(' ')[0]} {feature.text.split(' ')[1]}</span>
+                  </div>
+                );
+              })}
+            </div>
+            <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10" asChild>
+              <Link href="/starter-kit">
+                Learn More
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          {/* Cohort */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="bg-white text-black rounded-lg p-4 border-2 border-white"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <span className="px-2 py-1 bg-black text-white text-xs font-semibold rounded-full">
+                Live + Mentored
+              </span>
+              <div className="text-right">
+                <span className="text-2xl font-heading font-bold text-black">{formatPrice(getPrice(currency, "cohort6Week"), currency)}</span>
+                <p className="text-xs text-gray-500">Starting from</p>
+              </div>
+            </div>
+            <h3 className="text-lg font-heading font-bold text-black mb-2">Cohort Program</h3>
+            <p className="text-sm text-gray-600 mb-3">Real mentorship, live deals & networking</p>
+            <div className="grid grid-cols-2 gap-2 mb-4">
+              {cohortFeatures.slice(0, 4).map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index} className="flex items-center gap-2 text-xs text-gray-700">
+                    <Icon className="h-3 w-3 flex-shrink-0" />
+                    <span className="truncate">{feature.text.split(' ').slice(0, 2).join(' ')}</span>
+                  </div>
+                );
+              })}
+            </div>
+            <Button variant="default" className="w-full bg-black text-white hover:bg-gray-800" asChild>
+              <Link href="/cohort#apply">
+                Apply Now
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+
+        {/* Desktop: Side by side cards */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {/* Starter Kit Card */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -153,3 +251,4 @@ export default function Solution() {
     </section>
   );
 }
+

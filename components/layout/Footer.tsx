@@ -36,7 +36,61 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-white text-black border-t border-gray-200 mt-0">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Mobile Footer - Compact */}
+      <div className="md:hidden px-4 py-6">
+        {/* Logo + Social Row */}
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="text-base font-heading font-medium text-black uppercase tracking-tight">Norland Academy</h3>
+            <p className="text-[10px] text-gray-500">By Norland Capital</p>
+          </div>
+          <div className="flex space-x-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-black"
+                  aria-label={social.label}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Links Row */}
+        <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
+          {footerLinks.main.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-gray-600 hover:text-black"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Bottom Row */}
+        <div className="flex items-center justify-between pt-4 border-t border-gray-200 text-[10px] text-gray-500">
+          <span>© {new Date().getFullYear()} Norland Capital</span>
+          <div className="flex gap-3">
+            {footerLinks.legal.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:text-black">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Footer - Full */}
+      <div className="hidden md:block container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left: Logo & Tagline */}
           <div className="space-y-4">

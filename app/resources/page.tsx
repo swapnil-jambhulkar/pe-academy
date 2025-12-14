@@ -206,7 +206,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Full Bundle Section */}
-      <section className="py-16 bg-black text-white">
+      <section className="py-8 md:py-16 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -215,7 +215,80 @@ export default function ResourcesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Card className="border-2 border-white/20 shadow-2xl bg-white/5">
+              {/* Mobile: Premium Bundle Card */}
+              <div className="md:hidden">
+                <div className="bg-gradient-to-b from-white/10 to-white/5 border border-white/20 rounded-2xl p-5 relative overflow-hidden">
+                  {/* Glow effect */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+                  
+                  <div className="relative">
+                    {/* Badge */}
+                    <div className="flex justify-center mb-4">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-black rounded-full">
+                        <Sparkles className="h-3.5 w-3.5" />
+                        <span className="text-xs font-bold uppercase tracking-wide">Best Value</span>
+                      </div>
+                    </div>
+
+                    {/* Title & Price */}
+                    <div className="text-center mb-5">
+                      <h2 className="text-2xl font-heading font-bold text-white mb-3">
+                        Full Starter Kit Bundle
+                      </h2>
+                      <div className="flex items-baseline justify-center gap-2 mb-1">
+                        <span className="text-4xl font-heading font-bold text-white">
+                          {formatPrice(bundlePrice, currency)}
+                        </span>
+                        <span className="text-xl text-white/40 line-through">
+                          {formatPrice(individualPrice * resources.length, currency)}
+                        </span>
+                      </div>
+                      <p className="text-sm text-green-400 font-medium">
+                        Save {formatPrice(individualPrice * resources.length - bundlePrice, currency)}
+                      </p>
+                    </div>
+
+                    {/* Includes - Compact Grid */}
+                    <div className="grid grid-cols-2 gap-2 mb-5">
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
+                        <span className="text-xs text-white">{resources.length} Resources</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
+                        <span className="text-xs text-white">Discord Access</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
+                        <span className="text-xs text-white">Office Hours</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
+                        <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
+                        <span className="text-xs text-white">Challenges</span>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <Button
+                      variant="default"
+                      size="lg"
+                      className="w-full bg-white text-black hover:bg-gray-100 font-bold py-4 text-base shadow-xl"
+                      onClick={handleBuyBundle}
+                    >
+                      Get Full Bundle
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+
+                    {/* Trust */}
+                    <p className="text-center text-xs text-white/50 mt-3">
+                      ✓ 3-day refund guarantee
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop: Full Bundle Card */}
+              <Card className="hidden md:block border-2 border-white/20 shadow-2xl bg-white/5">
                 <CardHeader className="text-center pb-6">
                   <div className="inline-block px-4 py-2 bg-white/10 rounded-full mb-4 border border-white/20">
                     <Sparkles className="h-5 w-5 text-white inline mr-2" />

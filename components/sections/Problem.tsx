@@ -12,6 +12,7 @@ import {
   FileQuestion,
   Network,
 } from "lucide-react";
+import FrustrationHeatmap from "@/components/ui/frustration-heatmap";
 
 const marketData = {
   title: "Market Analysis: Private Equity Talent Acquisition",
@@ -113,8 +114,8 @@ const painPoints = [
 
 export default function Problem() {
   return (
-    <section className="min-h-screen flex items-center bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
+    <section className="flex items-center bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,8 +123,19 @@ export default function Problem() {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
-          {/* Header - Report Style */}
-          <div className="mb-12 border-b border-gray-200 pb-8">
+          {/* Mobile Header - Compact */}
+          <div className="md:hidden mb-6 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-full mb-3">
+              <BarChart3 className="h-4 w-4" />
+              <span className="text-xs font-semibold uppercase tracking-wider">Market Analysis</span>
+            </div>
+            <h2 className="text-xl font-heading font-bold text-black">
+              Why Breaking Into PE Is Hard
+            </h2>
+          </div>
+
+          {/* Desktop Header - Full Report Style */}
+          <div className="hidden md:block mb-12 border-b border-gray-200 pb-8">
             <div className="flex items-center gap-3 mb-4">
               <BarChart3 className="h-6 w-6 text-black" />
               <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black tracking-tight">
@@ -135,8 +147,29 @@ export default function Problem() {
             </p>
           </div>
 
-          {/* Key Metrics Grid - Corporate Report Style */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {/* Mobile: Compact Key Metrics - 2x2 Grid */}
+          <div className="md:hidden grid grid-cols-2 gap-2 mb-6">
+            {marketData.keyFindings.map((finding, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-center"
+              >
+                <div className="text-xl font-heading font-bold text-black mb-0.5 leading-tight">
+                  {finding.metric}
+                </div>
+                <div className="text-[9px] font-semibold text-gray-500 uppercase tracking-wide leading-tight truncate px-1">
+                  {finding.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop: Key Metrics Grid - Full Corporate Style */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {marketData.keyFindings.map((finding, index) => (
               <motion.div
                 key={index}
@@ -159,8 +192,8 @@ export default function Problem() {
             ))}
           </div>
 
-          {/* Barriers Section - Two Column */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Barriers Section - Hidden on mobile, shown on desktop */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8 mb-12">
             {marketData.barriers.map((barrier, index) => (
               <motion.div
                 key={index}
@@ -185,21 +218,39 @@ export default function Problem() {
             ))}
           </div>
 
-          {/* Survey Insights - Professional Table Format */}
+          {/* Survey Insights - Mobile: Condensed Cards, Desktop: Full Table */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12"
+            className="mb-8 md:mb-12"
           >
-            <div className="border-b border-gray-200 pb-4 mb-6">
+            {/* Desktop only header */}
+            <div className="hidden md:block border-b border-gray-200 pb-4 mb-6">
               <h3 className="text-lg font-heading font-bold text-black uppercase tracking-wide">
-                Survey Insights: 700+ Aspiring PE Professionals
+                Top Frustrations: 700+ Survey Responses
               </h3>
             </div>
             
-            <div className="bg-white border border-gray-200">
+            {/* Mobile: Interactive Heatmap Visualization (has its own header) */}
+            <div className="md:hidden">
+              <FrustrationHeatmap
+                data={painPoints.map((point) => {
+                  const Icon = point.icon;
+                  return {
+                    label: point.title,
+                    percentage: parseFloat(point.percentage),
+                    description: point.description,
+                    category: point.category,
+                    icon: Icon,
+                  };
+                })}
+              />
+            </div>
+
+            {/* Desktop: Full table */}
+            <div className="hidden md:block bg-white border border-gray-200">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b border-gray-200">
@@ -266,10 +317,10 @@ export default function Problem() {
             </div>
 
             {/* Data Source Note */}
-            <div className="mt-6 flex items-center justify-between text-xs text-gray-500">
+            <div className="mt-4 md:mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-500">
               <div className="flex items-center gap-2">
                 <BarChart3 className="h-3 w-3" />
-                <span>Data source: Survey of 700+ aspiring PE professionals</span>
+                <span>700+ aspiring PE professionals surveyed</span>
               </div>
               <a 
                 href="https://docs.google.com/spreadsheets/d/1zCwtjR4dk_iPsgL2lodY4aRWxPlMfUuMLOnxphXLyNE/edit?usp=sharing" 
@@ -277,7 +328,7 @@ export default function Problem() {
                 rel="noopener noreferrer"
                 className="text-black underline hover:text-gray-700 flex items-center gap-1"
               >
-                View raw data
+                View full data
                 <ArrowRight className="h-3 w-3" />
               </a>
             </div>

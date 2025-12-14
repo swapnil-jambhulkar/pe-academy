@@ -396,8 +396,8 @@ export default function CohortPage() {
               </div>
             </motion.div>
 
-            {/* Urgency Stats Grid */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {/* Desktop: Urgency Stats Grid - 3 separate cards */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6 mb-12">
               {/* Early Bird Deadline */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -510,12 +510,106 @@ export default function CohortPage() {
               </motion.div>
             </div>
 
-            {/* Footer Note with Waitlist */}
+            {/* Mobile: Clean Hero CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="md:hidden text-center"
+            >
+              {/* Urgency Badge */}
+              <div className="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                <span className="text-sm font-bold">Only {spots6Week + spots12Week - filled6Week - filled12Week} spots remaining</span>
+              </div>
+
+              {/* Stats Row */}
+              <div className="flex justify-center gap-8 mb-6">
+                <div className="text-center">
+                  <div className="text-3xl font-heading font-bold text-white">{daysRemaining}</div>
+                  <div className="text-xs text-white/60 uppercase tracking-wider">Days Left</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-heading font-bold text-white">6-12</div>
+                  <div className="text-xs text-white/60 uppercase tracking-wider">Weeks</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-heading font-bold text-white">30</div>
+                  <div className="text-xs text-white/60 uppercase tracking-wider">Total Seats</div>
+                </div>
+              </div>
+
+              {/* Primary CTA - Large */}
+              <Button
+                variant="default"
+                size="lg"
+                className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-lg mb-3 shadow-2xl shadow-white/20"
+                onClick={() => setApplicationOpen(true)}
+              >
+                Apply Now
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Button>
+
+              {/* Secondary Link */}
+              <Link 
+                href="#programs" 
+                className="inline-flex items-center gap-1 text-white/70 text-sm hover:text-white transition-colors"
+              >
+                View program details
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+              {/* Waitlist - Minimal */}
+              <div className="mt-8 pt-6 border-t border-white/20">
+                <p className="text-white/50 text-xs mb-3">Or join waitlist for updates</p>
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.target as HTMLFormElement);
+                    const email = formData.get("email") as string;
+                    
+                    try {
+                      const response = await fetch("/api/waitlist", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email }),
+                      });
+                      const result = await response.json();
+                      if (response.ok) {
+                        alert(result.message || "Thank you!");
+                        (e.target as HTMLFormElement).reset();
+                      } else {
+                        alert(result.error || "Failed. Please try again.");
+                      }
+                    } catch (error) {
+                      alert("Failed. Please try again later.");
+                    }
+                  }}
+                  className="flex gap-2 max-w-sm mx-auto"
+                >
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                    className="flex-1 px-4 py-2.5 border border-white/30 rounded-lg bg-white/5 text-white placeholder-white/40 focus:outline-none focus:border-white/50 text-sm"
+                  />
+                  <Button type="submit" size="sm" className="bg-white/20 text-white hover:bg-white/30 px-4">
+                    <Mail className="h-4 w-4" />
+                  </Button>
+                </form>
+              </div>
+            </motion.div>
+
+            {/* Desktop: Footer Note with Waitlist */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-center max-w-2xl mx-auto"
+              className="hidden md:block text-center max-w-2xl mx-auto"
             >
               <p className="text-white/60 text-sm mb-4">
                 Next cohort begins April 2026. Applications reviewed on a rolling basis.
