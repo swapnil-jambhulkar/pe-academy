@@ -39,10 +39,10 @@ export default function Footer() {
       {/* Mobile Footer - Compact */}
       <div className="md:hidden px-4 py-6">
         {/* Logo + Social Row */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="text-base font-heading font-medium text-black uppercase tracking-tight">Norland Academy</h3>
-            <p className="text-[10px] text-gray-500">By Norland Capital</p>
+            <p className="text-[10px] text-gray-500">Real Deals. Real Feedback.</p>
           </div>
           <div className="flex space-x-3">
             {socialLinks.map((social) => {
@@ -100,7 +100,7 @@ export default function Footer() {
               <p className="text-xs font-normal text-gray-600 tracking-wide">By Norland Capital</p>
             </div>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Break into Private Equity without the traditional path. Build proof. Get noticed. Land interviews.
+              Work on real deals from our pipeline. Get partner-level feedback. Build a portfolio that gets you interviews.
             </p>
           </div>
 
