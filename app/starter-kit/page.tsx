@@ -281,14 +281,14 @@ export default function StarterKitPage() {
       </section>
 
       {/* Sneak Peek Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
               Sneak Peek Inside the Kit
@@ -298,15 +298,15 @@ export default function StarterKitPage() {
             </p>
           </motion.div>
 
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mb-12">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-4">
             {/* LBO Model Template */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.4, delay: 0.05 }}
             >
-              <Card className="border-2 border-gray-200 hover:border-black transition-all h-full">
+              <Card className="border border-gray-200 hover:border-black transition-all h-full bg-white">
                 <CardContent className="p-6">
                   <div className="bg-gray-100 rounded-lg h-48 overflow-hidden mb-4 relative flex items-center justify-center">
                     <img
@@ -330,9 +330,9 @@ export default function StarterKitPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
-              <Card className="border-2 border-gray-200 hover:border-black transition-all h-full">
+              <Card className="border border-gray-200 hover:border-black transition-all h-full bg-white">
                 <CardContent className="p-6">
                   <div className="bg-gray-100 rounded-lg h-48 overflow-hidden mb-4 relative flex items-center justify-center">
                     <img
@@ -356,9 +356,9 @@ export default function StarterKitPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
             >
-              <Card className="border-2 border-gray-200 hover:border-black transition-all h-full">
+              <Card className="border border-gray-200 hover:border-black transition-all h-full bg-white">
                 <CardContent className="p-6">
                   <div className="bg-gray-100 rounded-lg h-48 overflow-hidden mb-4 relative flex items-center justify-center">
                     <img
@@ -381,7 +381,7 @@ export default function StarterKitPage() {
       </section>
 
       {/* Detailed What's Inside Section */}
-      <section className="pt-12 pb-20 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -389,7 +389,7 @@ export default function StarterKitPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-8"
+              className="text-center mb-10"
             >
               <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
                 Your Toolkit & Playbooks
@@ -399,15 +399,15 @@ export default function StarterKitPage() {
               </p>
             </motion.div>
 
-            <div className="space-y-8">
+            <div className="space-y-3">
               {/* MODULE 1 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.4, delay: 0.05 }}
               >
-                <Card className="border-2 border-gray-200">
+                <Card className="border border-gray-200 bg-white">
                   <CardHeader>
                     <CardTitle className="text-xl font-heading font-bold text-black">
                       MODULE 1: The 2 Financial Models (Core Value)
@@ -446,9 +446,9 @@ export default function StarterKitPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
               >
-                <Card className="border-2 border-gray-200">
+                <Card className="border border-gray-200 bg-white">
                   <CardHeader>
                     <CardTitle className="text-xl font-heading font-bold text-black">
                       MODULE 2: Deal Sourcing Starter Kit
@@ -491,9 +491,9 @@ export default function StarterKitPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
               >
-                <Card className="border-2 border-gray-200">
+                <Card className="border border-gray-200 bg-white">
                   <CardHeader>
                     <CardTitle className="text-xl font-heading font-bold text-black">
                       MODULE 3: Two Career Paths (Interactive PDFs)
@@ -531,9 +531,9 @@ export default function StarterKitPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
               >
-                <Card className="border-2 border-gray-200">
+                <Card className="border border-gray-200 bg-white">
                   <CardHeader>
                     <CardTitle className="text-xl font-heading font-bold text-black">
                       MODULE 4: Quick Start System
@@ -569,9 +569,9 @@ export default function StarterKitPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
+                transition={{ duration: 0.4, delay: 0.25 }}
               >
-                <Card className="border-2 border-black bg-black text-white">
+                <Card className="border border-black bg-black text-white">
                   <CardHeader>
                     <CardTitle className="text-xl font-heading font-bold text-white">
                       BONUS
@@ -613,7 +613,7 @@ export default function StarterKitPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-10 text-center"
+              className="mt-8 text-center"
             >
               <Button
                 variant="default"
@@ -632,7 +632,7 @@ export default function StarterKitPage() {
       </section>
 
       {/* Community Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -640,7 +640,7 @@ export default function StarterKitPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-12"
+              className="text-center mb-10"
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full mb-4">
                 <Users className="h-4 w-4" />
@@ -732,14 +732,14 @@ export default function StarterKitPage() {
       </section>
 
       {/* Challenges Section - THE CORE VALUE */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-16 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-4">
               <Trophy className="h-4 w-4 text-yellow-400" />
@@ -864,59 +864,15 @@ export default function StarterKitPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black mb-4">
-                Start Building Today
-              </h2>
-              <p className="text-gray-700 mb-8">
-                Join the playground. Solve real challenges. Get partner feedback.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  variant="default"
-                  size="lg"
-                  className="bg-black text-white hover:bg-gray-900 font-bold px-8 py-6"
-                  asChild
-                >
-                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                    Get Starter Kit - {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-black text-black hover:bg-black hover:text-white font-bold px-8 py-6"
-                  asChild
-                >
-                  <Link href="/cohort">
-                    Want More Access? Apply to Cohort
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Reviews & Testimonials Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
               What Members Are Saying
@@ -1046,7 +1002,7 @@ export default function StarterKitPage() {
       </section>
 
       {/* Pricing & CTA Section */}
-      <section className="py-16 md:py-20 bg-black text-white">
+      <section className="py-16 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             {/* Mobile: Full-Width Professional Card */}
@@ -1238,14 +1194,14 @@ export default function StarterKitPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-black mb-4">
               Everything in the Playground
