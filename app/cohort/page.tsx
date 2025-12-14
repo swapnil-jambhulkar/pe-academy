@@ -1153,9 +1153,9 @@ export default function CohortPage() {
                     "We run 2-3 cohorts per year. Cohort 1 starts January 6, 2026. Cohort 2 is planned for April 2026. Spots are limited to 30 per cohort to ensure quality.",
                 },
                 {
-                  question: "Why is VIP limited to 10 spots?",
+                  question: "Why is 12-week cohort limited to 10 spots?",
                   answer:
-                    "VIP includes additional 1-on-1 mentorship time and priority feedback. We limit it to 10 spots to ensure each VIP participant gets the attention they need.",
+                    "The 12-week cohort includes additional 1-on-1 mentorship time and priority feedback. We limit it to 10 spots to ensure each participant gets the attention they need.",
                 },
                 {
                   question: "What happens after I complete the Cohort?",
