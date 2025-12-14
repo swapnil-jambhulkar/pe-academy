@@ -1,0 +1,51 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#000000"/>
+  
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#111111;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cccccc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="200" fill="rgba(255,255,255,0.02)"/>
+  <circle cx="1100" cy="530" r="250" fill="rgba(255,255,255,0.02)"/>
+  
+  <!-- Badge -->
+  <rect x="450" y="180" width="300" height="36" rx="18" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="475" cy="198" r="5" fill="#22c55e"/>
+  <text x="600" y="204" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="rgba(255,255,255,0.8)" text-anchor="middle">300+ Members Already Inside</text>
+  
+  <!-- Main Title -->
+  <text x="600" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="middle">Break Into</text>
+  <text x="600" y="365" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="middle">Private Equity</text>
+  
+  <!-- Underline -->
+  <rect x="350" y="380" width="500" height="4" rx="2" fill="url(#textGradient)" opacity="0.6"/>
+  
+  <!-- Subtitle -->
+  <text x="600" y="430" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="rgba(255,255,255,0.7)" text-anchor="middle">Without the Traditional Path</text>
+  
+  <!-- Bottom info -->
+  <text x="600" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="rgba(255,255,255,0.5)" text-anchor="middle">Starter Kit • Live Cohort • Community</text>
+  
+  <!-- Logo/Brand -->
+  <text x="600" y="580" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="3">NORLAND ACADEMY</text>
+</svg>
+

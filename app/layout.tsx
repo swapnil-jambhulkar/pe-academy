@@ -38,6 +38,23 @@ export const metadata: Metadata = {
     description:
       "Join 300+ aspiring PE professionals. Build proof with our Starter Kit (₹2,999) or 6-week live Cohort (₹25K).",
     type: "website",
+    url: "https://norlandacademy.com",
+    siteName: "Norland Academy",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Norland Academy - Break Into Private Equity",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Break Into PE Without MBA | Norland Academy",
+    description:
+      "Join 300+ aspiring PE professionals. Build proof with our Starter Kit or live Cohort program.",
+    images: ["/og-image.svg"],
   },
 };
 

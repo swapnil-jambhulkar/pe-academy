@@ -1,0 +1,14 @@
+<svg width="1584" height="396" viewBox="0 0 1584 396" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clean black background -->
+  <rect width="1584" height="396" fill="#000000"/>
+  
+  <!-- Main Text -->
+  <text x="120" y="220" font-family="Georgia, Times, serif" font-size="72" font-weight="700" fill="#ffffff">Norland</text>
+  <text x="370" y="220" font-family="Georgia, Times, serif" font-size="72" font-weight="400" fill="rgba(255,255,255,0.8)">Academy</text>
+  
+  <!-- Tagline -->
+  <text x="120" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" fill="rgba(255,255,255,0.5)">Break Into Private Equity</text>
+  
+  <!-- Simple line accent -->
+  <rect x="120" y="290" width="80" height="2" fill="rgba(255,255,255,0.3)"/>
+</svg>
