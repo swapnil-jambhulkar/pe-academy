@@ -67,26 +67,26 @@ export const PRICING: Record<Currency, {
   },
 };
 
-// Direct payment links per currency
+// Direct payment links - Razorpay for all (handles international payments)
 export const PAYMENT_LINKS: Record<Currency, {
   starterKit: string;
   individualResource: string;
 }> = {
   INR: {
-    starterKit: "https://rzp.io/rzp/yMC89rS", // Razorpay for India
-    individualResource: "https://rzp.io/rzp/LpMQ5cX", // Razorpay for ₹999 individual resources
+    starterKit: "https://rzp.io/rzp/yMC89rS", // Razorpay ₹2,999
+    individualResource: "https://rzp.io/rzp/LpMQ5cX", // Razorpay ₹999
   },
   USD: {
-    starterKit: "[SKYDO_LINK_STARTER_USD]", // Skydo for USA - TODO: Add actual link
-    individualResource: "[SKYDO_LINK_INDIVIDUAL_RESOURCE_USD]", // TODO: Add Skydo link for $12
+    starterKit: "https://rzp.io/rzp/yMC89rS", // Razorpay (auto-converts)
+    individualResource: "https://rzp.io/rzp/LpMQ5cX", // Razorpay (auto-converts)
   },
   GBP: {
-    starterKit: "[SKYDO_LINK_STARTER_GBP]", // Skydo for UK - TODO: Add actual link
-    individualResource: "[SKYDO_LINK_INDIVIDUAL_RESOURCE_GBP]", // TODO: Add Skydo link for £10
+    starterKit: "https://rzp.io/rzp/yMC89rS", // Razorpay (auto-converts)
+    individualResource: "https://rzp.io/rzp/LpMQ5cX", // Razorpay (auto-converts)
   },
   EUR: {
-    starterKit: "[SKYDO_LINK_STARTER_EUR]", // Skydo for Europe - TODO: Add actual link
-    individualResource: "[SKYDO_LINK_INDIVIDUAL_RESOURCE_EUR]", // TODO: Add Skydo link for €12
+    starterKit: "https://rzp.io/rzp/yMC89rS", // Razorpay (auto-converts)
+    individualResource: "https://rzp.io/rzp/LpMQ5cX", // Razorpay (auto-converts)
   },
 };
 
