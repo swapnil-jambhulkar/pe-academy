@@ -799,6 +799,14 @@ export default function CohortPage() {
                 </div>
               </CardContent>
             </Card>
+            
+            {/* No Refund Policy Notice */}
+            <div className="mt-6 flex items-center justify-center gap-2 text-center">
+              <AlertCircle className="h-4 w-4 text-gray-500" />
+              <p className="text-sm text-gray-600">
+                <span className="font-semibold">No Refund Policy:</span> All cohort payments are final and non-refundable due to limited spots and personalized program structure.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1067,7 +1075,7 @@ export default function CohortPage() {
                 {
                   question: "What's your refund policy?",
                   answer:
-                    "We offer a 3-day money-back guarantee for the Starter Kit, no questions asked. For the Cohort, refunds are available up to 7 days before the program starts.",
+                    "We offer a 3-day money-back guarantee for the Starter Kit, no questions asked. For the Cohort Program, all payments are final and non-refundable. Due to the limited spots, personalized nature of the program, and significant resources allocated to each participant, we cannot offer refunds once enrollment is confirmed. Please ensure you can commit to the program before applying.",
                 },
                 {
                   question: "Do you guarantee job placement?",
