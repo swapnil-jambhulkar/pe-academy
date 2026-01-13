@@ -22,6 +22,9 @@ export const PRICING: Record<Currency, {
   cohort12Week: number;
   cohort6WeekEarlyBird: number;
   cohort12WeekEarlyBird: number;
+  // Tuition & Scholarship pricing (UK-focused)
+  cohortStandardTuition: number;
+  cohortScholarshipTuition: number;
   individualResource: number;
   resourceBundle: number;
 }> = {
@@ -32,6 +35,8 @@ export const PRICING: Record<Currency, {
     cohort12Week: 50000,
     cohort6WeekEarlyBird: 24999,
     cohort12WeekEarlyBird: 41999,
+    cohortStandardTuition: 100000,
+    cohortScholarshipTuition: 50000,
     individualResource: 999,
     resourceBundle: 2999,
   },
@@ -42,6 +47,8 @@ export const PRICING: Record<Currency, {
     cohort12Week: 599,
     cohort6WeekEarlyBird: 349,
     cohort12WeekEarlyBird: 499,
+    cohortStandardTuition: 1200,
+    cohortScholarshipTuition: 600,
     individualResource: 12,
     resourceBundle: 39,
   },
@@ -52,6 +59,8 @@ export const PRICING: Record<Currency, {
     cohort12Week: 499,
     cohort6WeekEarlyBird: 249,
     cohort12WeekEarlyBird: 399,
+    cohortStandardTuition: 1000,
+    cohortScholarshipTuition: 500,
     individualResource: 10,
     resourceBundle: 29,
   },
@@ -62,6 +71,8 @@ export const PRICING: Record<Currency, {
     cohort12Week: 499,
     cohort6WeekEarlyBird: 249,
     cohort12WeekEarlyBird: 399,
+    cohortStandardTuition: 1100,
+    cohortScholarshipTuition: 550,
     individualResource: 12,
     resourceBundle: 39,
   },
@@ -126,7 +137,7 @@ export function detectCurrency(): Currency {
 }
 
 // Get price for a product in current currency
-export function getPrice(currency: Currency, product: "starterKit" | "starterKitEarlyBird" | "cohort6Week" | "cohort12Week" | "cohort6WeekEarlyBird" | "cohort12WeekEarlyBird" | "individualResource" | "resourceBundle"): number {
+export function getPrice(currency: Currency, product: "starterKit" | "starterKitEarlyBird" | "cohort6Week" | "cohort12Week" | "cohort6WeekEarlyBird" | "cohort12WeekEarlyBird" | "cohortStandardTuition" | "cohortScholarshipTuition" | "individualResource" | "resourceBundle"): number {
   return PRICING[currency][product];
 }
 

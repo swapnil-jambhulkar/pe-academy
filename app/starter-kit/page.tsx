@@ -585,7 +585,7 @@ export default function StarterKitPage() {
                     <div className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-white flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-white/90">Resume templates (</span>
+                        <span className="text-white/90">CV templates (</span>
                         <span className="text-white font-semibold">2 versions</span>
                         <span className="text-white/90">)</span>
                       </div>

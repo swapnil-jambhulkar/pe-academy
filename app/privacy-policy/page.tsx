@@ -51,8 +51,8 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p className="text-gray-700">
                 If you have questions about this Privacy Policy, please contact us at{" "}
-                <a href="mailto:contact@norlandcapital.co.uk" className="text-black underline hover:text-gray-700">
-                  contact@norlandcapital.co.uk
+                <a href="mailto:swapnilj@norlandacademy.com" className="text-black underline hover:text-gray-700">
+                  swapnilj@norlandacademy.com
                 </a>
               </p>
             </div>

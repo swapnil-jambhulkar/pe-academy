@@ -9,7 +9,7 @@ const testimonials = [
     name: "Rahul M.",
     background: "B.Tech, no MBA",
     quote: "I'd tried expensive courses before. This was different. Real feedback, real connections. Got my first PE interview within 3 months.",
-    before: "No PE network, generic resume",
+    before: "No PE network, generic CV",
     after: "Final round at mid-market PE firm",
     timeline: "3 months",
     highlight: "First PE interview",

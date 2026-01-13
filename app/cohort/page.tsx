@@ -32,11 +32,14 @@ import {
   GraduationCap,
   TrendingUp,
   AlertCircle,
+  ClipboardList,
+  PenLine,
+  Phone,
+  ChevronRight,
+  Award,
 } from "lucide-react";
 import Link from "next/link";
 import { calculateDaysUntil } from "@/lib/utils";
-import { useCurrency } from "@/hooks/useCurrency";
-import { formatPrice, getPrice } from "@/lib/currency";
 
 // ... existing curriculum and programTiers data ...
 // 12-Week Full Curriculum
@@ -100,8 +103,8 @@ const fullCurriculum = [
           "Competitive positioning",
           "Management assessment",
           "Weekly check-ins (90 min each)",
-          "You provide feedback on their work",
-          "They see YOUR analysis of the same deals",
+          "Instructor provides feedback on your work",
+          "You see instructor's analysis of the same deals",
         ],
       },
       {
@@ -122,18 +125,18 @@ const fullCurriculum = [
     icon: Target,
     weeksDetail: [
       {
-        week: "Week 9: Portfolio & Resume Optimization",
+        week: "Week 9: Portfolio & CV Optimisation",
         sessions: [
-          "Live Session: How to showcase PE work on resume",
-          "Assignment: Optimize resume with PE experience",
-          "1-on-1 feedback session on your resume",
-          "LinkedIn profile optimization workshop",
+          "Live Session: How to showcase PE work on CV",
+          "Assignment: Optimise CV with PE experience",
+          "1-on-1 feedback session on your CV",
+          "LinkedIn profile optimisation workshop",
         ],
       },
       {
         week: "Week 10: Mock Interviews & Feedback",
         sessions: [
-          "Live Session: PE interview prep (technical + behavioral)",
+          "Live Session: PE interview prep (technical + behavioural)",
           "Mock interview #1 (video recorded)",
           "Detailed feedback session",
           "Mock interview #2 (video recorded)",
@@ -144,7 +147,7 @@ const fullCurriculum = [
         sessions: [
           "Live Session: Cold email system (42% response rate)",
           "Assignment: Send 10 cold emails using templates",
-          "Track responses and optimize approach",
+          "Track responses and optimise approach",
           "Live Session: Advanced networking strategies + portfolio showcase (90 min)",
         ],
       },
@@ -307,15 +310,111 @@ const programTiers = [
   },
 ];
 
-// Urgency data
-const earlyBirdDeadline = new Date("2026-01-01");
-const spots6Week = 20;
-const spots12Week = 10;
-const filled6Week = 8;
-const filled12Week = 4;
+// Rolling Cohort System - Fully Automated
+// Base date: First cohort start (April 6, 2026)
+// New cohort every 6 weeks (42 days)
+const COHORT_BASE_DATE = new Date("2026-04-06");
+const COHORT_CYCLE_DAYS = 42; // 6 weeks
+const EARLY_ENROLLMENT_CYCLE_DAYS = 15; // Rolling 15-day urgency
+
+// Total spots per cohort
+const TOTAL_SPOTS_6WEEK = 20;
+const TOTAL_SPOTS_12WEEK = 10;
+
+// Calculate the next cohort start date (rolling every 6 weeks)
+function getNextCohortDate(): Date {
+  const now = new Date();
+  const baseTime = COHORT_BASE_DATE.getTime();
+  const nowTime = now.getTime();
+  
+  // If we're before the first cohort, return the base date
+  if (nowTime < baseTime) {
+    return new Date(COHORT_BASE_DATE);
+  }
+  
+  // Calculate how many cycles have passed
+  const daysSinceBase = Math.floor((nowTime - baseTime) / (1000 * 60 * 60 * 24));
+  const cyclesPassed = Math.floor(daysSinceBase / COHORT_CYCLE_DAYS);
+  
+  // Next cohort is the upcoming cycle
+  const nextCycleNumber = cyclesPassed + 1;
+  const nextCohortDate = new Date(baseTime + (nextCycleNumber * COHORT_CYCLE_DAYS * 24 * 60 * 60 * 1000));
+  
+  return nextCohortDate;
+}
+
+// Calculate dynamic spots filled based on day of the 15-day cycle
+// More spots fill up as the cycle progresses (creates urgency)
+function getDynamicSpotsFilled(): { filled6Week: number; filled12Week: number } {
+  const now = new Date();
+  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+  
+  // Use the same 15-day cycle as early enrollment
+  // Day 1 = fewer spots filled, Day 15 = more spots filled
+  const dayInCycle = (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS) + 1; // 1 to 15
+  
+  // Progress through the cycle (0 to 1)
+  const progress = dayInCycle / EARLY_ENROLLMENT_CYCLE_DAYS;
+  
+  // 6-Week spots (20 total): 
+  // Start: 8 filled (12 available) = 40% filled
+  // End: 16 filled (4 available) = 80% filled
+  const minFilled6Week = 8;
+  const maxFilled6Week = 16;
+  const filled6Week = Math.floor(minFilled6Week + (progress * (maxFilled6Week - minFilled6Week)));
+  
+  // 12-Week spots (10 total):
+  // Start: 4 filled (6 available) = 40% filled  
+  // End: 8 filled (2 available) = 80% filled
+  const minFilled12Week = 4;
+  const maxFilled12Week = 8;
+  const filled12Week = Math.floor(minFilled12Week + (progress * (maxFilled12Week - minFilled12Week)));
+  
+  return { filled6Week, filled12Week };
+}
+
+// Calculate rolling early enrollment days (always 1-15, creates perpetual urgency)
+function getEarlyEnrollmentDaysLeft(): number {
+  const now = new Date();
+  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+  
+  // Rolling 15-day cycle - always shows between 1 and 15 days
+  const daysInCycle = ((EARLY_ENROLLMENT_CYCLE_DAYS - (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS)) % EARLY_ENROLLMENT_CYCLE_DAYS);
+  
+  // Never show 0, minimum is 1 day
+  return daysInCycle === 0 ? EARLY_ENROLLMENT_CYCLE_DAYS : daysInCycle;
+}
+
+// Get cohort number based on date
+function getCohortNumber(): number {
+  const now = new Date();
+  const baseTime = COHORT_BASE_DATE.getTime();
+  const nowTime = now.getTime();
+  
+  if (nowTime < baseTime) return 1;
+  
+  const daysSinceBase = Math.floor((nowTime - baseTime) / (1000 * 60 * 60 * 24));
+  const cyclesPassed = Math.floor(daysSinceBase / COHORT_CYCLE_DAYS);
+  
+  return cyclesPassed + 2; // +2 because Cohort 1 (Jan) was before base date
+}
+
+// Format cohort date for display
+function formatCohortDate(date: Date): string {
+  return date.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+}
+
+// Format short date
+function formatShortDate(date: Date): string {
+  return date.toLocaleDateString("en-GB", { month: "short", year: "numeric" });
+}
 
 export default function CohortPage() {
   const [applicationOpen, setApplicationOpen] = useState(false);
+  const [daysRemaining, setDaysRemaining] = useState(15);
+  const [nextCohortDate, setNextCohortDate] = useState<Date>(new Date());
+  const [cohortNumber, setCohortNumber] = useState(2);
+  const [spots, setSpots] = useState({ filled6Week: 4, filled12Week: 2 });
 
   // Handle #apply anchor - open dialog when URL has #apply
   useEffect(() => {
@@ -325,39 +424,40 @@ export default function CohortPage() {
       window.history.replaceState(null, "", window.location.pathname);
     }
   }, []);
+  
   const [selectedTier, setSelectedTier] = useState<"6week" | "12week">("12week");
-  const [daysRemaining, setDaysRemaining] = useState(0);
-  const { currency } = useCurrency();
 
+  // Rolling dates & dynamic spots - fully automated
   useEffect(() => {
-    setDaysRemaining(calculateDaysUntil(earlyBirdDeadline));
-    const interval = setInterval(() => {
-      setDaysRemaining(calculateDaysUntil(earlyBirdDeadline));
-    }, 1000 * 60 * 60);
+    const updateAll = () => {
+      setNextCohortDate(getNextCohortDate());
+      setDaysRemaining(getEarlyEnrollmentDaysLeft());
+      setCohortNumber(getCohortNumber());
+      setSpots(getDynamicSpotsFilled());
+    };
+    
+    updateAll();
+    // Update hourly to catch changes
+    const interval = setInterval(updateAll, 1000 * 60 * 60);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Use dynamic spots
+  const filled6Week = spots.filled6Week;
+  const filled12Week = spots.filled12Week;
+  const spots6Week = TOTAL_SPOTS_6WEEK;
+  const spots12Week = TOTAL_SPOTS_12WEEK;
+  
   const fillPercentage6Week = (filled6Week / spots6Week) * 100;
   const fillPercentage12Week = (filled12Week / spots12Week) * 100;
   
-  // Check if early bird pricing is active
-  const isEarlyBirdActive = daysRemaining > 0;
+  // Early enrollment is always active (perpetual urgency)
+  const isEarlyBirdActive = true;
   
-  // Get pricing (early bird if active, otherwise regular)
-  const price6Week = isEarlyBirdActive 
-    ? getPrice(currency, "cohort6WeekEarlyBird")
-    : getPrice(currency, "cohort6Week");
-  const price12Week = isEarlyBirdActive 
-    ? getPrice(currency, "cohort12WeekEarlyBird")
-    : getPrice(currency, "cohort12Week");
-  
-  // Calculate savings for early bird
-  const regularPrice6Week = getPrice(currency, "cohort6Week");
-  const regularPrice12Week = getPrice(currency, "cohort12Week");
-  const savings6Week = regularPrice6Week - price6Week;
-  const savings12Week = regularPrice12Week - price12Week;
-  const savingsAmount = Math.max(savings6Week, savings12Week);
+  // Formatted dates for display
+  const cohortStartDisplay = formatCohortDate(nextCohortDate);
+  const cohortStartShort = formatShortDate(nextCohortDate);
 
   return (
     <div>
@@ -602,6 +702,22 @@ export default function CohortPage() {
                 <span>Selective admission • Only 30 spots</span>
               </div>
 
+              {/* Mobile Stats Row */}
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="bg-white/10 border border-white/20 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-heading font-bold text-white">{daysRemaining}</div>
+                  <p className="text-[10px] text-white/60 uppercase tracking-wide">Days Left</p>
+                </div>
+                <div className="bg-white/10 border border-white/20 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-heading font-bold text-white">{spots6Week - filled6Week}</div>
+                  <p className="text-[10px] text-white/60 uppercase tracking-wide">6-Week Spots</p>
+                </div>
+                <div className="bg-white/10 border border-white/20 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-heading font-bold text-white">{spots12Week - filled12Week}</div>
+                  <p className="text-[10px] text-white/60 uppercase tracking-wide">12-Week Spots</p>
+                </div>
+              </div>
+
               {/* CTA */}
               <Button
                 variant="default"
@@ -614,62 +730,16 @@ export default function CohortPage() {
               </Button>
             </motion.div>
 
-            {/* Desktop: Footer Note with Waitlist */}
+            {/* Desktop: Footer Note */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="hidden md:block text-center max-w-2xl mx-auto"
             >
-              <p className="text-white/60 text-sm mb-4">
-                Next cohort begins April 2026. Applications reviewed on a rolling basis.
+              <p className="text-white/60 text-sm mb-6">
+                Next cohort begins {cohortStartDisplay}. Applications reviewed on a rolling basis.
               </p>
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault();
-                  const formData = new FormData(e.target as HTMLFormElement);
-                  const email = formData.get("email") as string;
-                  
-                  try {
-                    const response = await fetch("/api/waitlist", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({ email }),
-                    });
-
-                    const result = await response.json();
-
-                    if (response.ok) {
-                      alert(result.message || "Thank you! We'll notify you when applications open.");
-                      (e.target as HTMLFormElement).reset();
-                    } else {
-                      alert(result.error || "Failed to join waitlist. Please try again.");
-                    }
-                  } catch (error) {
-                    console.error("Error joining waitlist:", error);
-                    alert("Failed to join waitlist. Please try again later.");
-                  }
-                }}
-                className="flex flex-col sm:flex-row gap-3 mb-6"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email to join waitlist"
-                  required
-                  className="flex-1 px-4 py-2.5 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-white/50 focus:bg-white/15"
-                />
-                <Button
-                  type="submit"
-                  variant="default"
-                  className="bg-white text-black hover:bg-gray-100 font-semibold px-6"
-                >
-                  <Mail className="mr-2 h-4 w-4" />
-                  Join Waitlist
-                </Button>
-              </form>
               <Button
                 variant="default"
                 size="lg"
@@ -686,98 +756,169 @@ export default function CohortPage() {
         </div>
       </section>
 
-      {/* Program Selection - Single Card */}
-      <section className="py-20 bg-white" id="programs">
+      {/* Tuition & Scholarship - Institutional Grade Design */}
+      <section className="py-12 md:py-24 bg-white" id="tuition">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-              Choose Your Program
+            <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase mb-2 md:mb-4">
+              Investment
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-black mb-4 md:mb-6">
+              Tuition & Scholarship
             </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Select the program that fits your timeline and goals
+            <div className="w-12 md:w-16 h-px bg-black mx-auto"></div>
+          </motion.div>
+
+          {/* Investment Card - Mobile Optimized */}
+          <div className="max-w-2xl mx-auto px-2 md:px-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <div className="bg-white border border-gray-200 rounded-lg p-6 md:p-10 lg:p-12 text-center">
+                {/* Tuition - Smaller on mobile */}
+                <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase mb-2 md:mb-3">
+                  Tuition Fee
+                </p>
+                <div className="text-2xl md:text-4xl text-gray-400 font-heading font-bold mb-1">
+                  £1,000
+                </div>
+                
+                {/* Scholarship - Hero on all screens */}
+                <div className="my-4 md:my-6">
+                  <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-black uppercase mb-2 md:mb-3">
+                    With Merit Scholarship
+                  </p>
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-black">
+                    £500
+                  </div>
+                </div>
+                
+                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 max-w-md mx-auto">
+                  Scholarships awarded based on your application strength and commitment to Private Equity.
+                </p>
+                
+                {/* CTA Button - Full width on mobile */}
+                <Button
+                  size="lg"
+                  className="w-full md:w-auto bg-black text-white hover:bg-gray-800 font-semibold px-8 md:px-10 py-5 md:py-6 text-sm md:text-base"
+                  onClick={() => setApplicationOpen(true)}
+                >
+                  Apply for Cohort & Scholarship
+                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+                </Button>
+                
+                <p className="text-[10px] md:text-xs text-gray-400 mt-4 md:mt-6">
+                  30 places • Starts {cohortStartShort} • No refunds
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Program Tracks - Simplified */}
+      <section className="py-12 md:py-20 bg-gray-50" id="programs">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase mb-2 md:mb-4">
+              Programme Structure
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-black mb-2 md:mb-4">
+              Choose Your Track
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
+              Select the programme that fits your schedule
             </p>
           </motion.div>
 
           <div className="max-w-5xl mx-auto">
-            <Card className="border-2 border-gray-200 overflow-hidden">
+            <Card className="border border-gray-200 overflow-hidden">
               <CardContent className="p-0">
                 <div className="grid md:grid-cols-2 gap-0">
                   {programTiers.map((tier, index) => {
                     const Icon = tier.curriculum[0]?.icon || BookOpen;
+                    // Pricing for each track
+                    const trackPrice = index === 0 ? "£350" : "£500";
+                    const trackStandardPrice = index === 0 ? "£700" : "£1,000";
                     return (
                       <div
                         key={index}
-                        className={`p-8 flex flex-col h-full ${
+                        className={`p-5 md:p-8 flex flex-col h-full ${
                           tier.highlighted
-                            ? "bg-black text-white border-l-2 border-white"
-                            : "bg-white text-black border-r-2 border-gray-200"
-                        }`}
+                            ? "bg-black text-white"
+                            : "bg-white text-black md:border-r border-gray-100"
+                        } ${index === 0 ? "border-b md:border-b-0 border-gray-200" : ""}`}
                       >
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-3">
-                            <Icon className={`h-6 w-6 ${tier.highlighted ? "text-white" : "text-black"}`} />
-                            <CardTitle className={`text-2xl ${tier.highlighted ? "text-white" : "text-black"}`}>
+                        {/* Header with Price in Top Right */}
+                        <div className="flex items-start justify-between mb-4">
+                          <div>
+                            <p className={`text-xs font-semibold tracking-[0.15em] uppercase mb-1 ${tier.highlighted ? "text-white/60" : "text-gray-400"}`}>
+                              {tier.duration}
+                            </p>
+                            <CardTitle className={`text-xl font-heading ${tier.highlighted ? "text-white" : "text-black"}`}>
                               {tier.name}
                             </CardTitle>
                           </div>
-                          {tier.limited && (
-                            <span className={`px-3 py-1 ${tier.highlighted ? "bg-white text-black" : "bg-black text-white"} text-xs font-semibold rounded-full`}>
-                              Limited
+                          {/* Pricing - Top Right */}
+                          <div className="text-right">
+                            <span className={`text-sm line-through ${tier.highlighted ? "text-white/40" : "text-gray-400"}`}>
+                              {trackStandardPrice}
                             </span>
-                          )}
-                        </div>
-                        <CardDescription className={`text-base mb-6 ${tier.highlighted ? "text-white/80" : "text-gray-600"}`}>
-                          {tier.description}
-                        </CardDescription>
-                        <div className="mb-6">
-                          <div className="flex items-center gap-2 mb-3">
-                            <span className={`px-3 py-1.5 ${tier.highlighted ? "bg-white/20 text-white" : "bg-black/10 text-black"} text-xs font-bold rounded-full`}>
-                              APPLICATION REQUIRED
+                            <p className={`text-[10px] uppercase tracking-wider mt-1 ${tier.highlighted ? "text-white/60" : "text-gray-500"}`}>
+                              With Scholarship
+                            </p>
+                            <span className={`text-2xl font-heading font-bold ${tier.highlighted ? "text-white" : "text-black"}`}>
+                              {trackPrice}
                             </span>
                           </div>
-                          <p className={`text-sm ${tier.highlighted ? "text-white/70" : "text-gray-600"}`}>
-                            {tier.spots} • Pricing shared after application review
-                          </p>
-                          {isEarlyBirdActive && (
-                            <p className={`text-xs mt-2 ${tier.highlighted ? "text-green-400" : "text-green-600"}`}>
-                              Early enrollment discount available ({daysRemaining} days left)
-                            </p>
-                          )}
                         </div>
+                        
+                        <CardDescription className={`text-sm mb-4 leading-relaxed ${tier.highlighted ? "text-white/70" : "text-gray-600"}`}>
+                          {tier.description}
+                        </CardDescription>
                         <ul className="space-y-2 mb-6 flex-1">
                           {tier.features.slice(0, 5).map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <Check className={`h-4 w-4 flex-shrink-0 mt-0.5 ${tier.highlighted ? "text-white" : "text-black"}`} />
-                              <span className={`text-sm ${tier.highlighted ? "text-white/90" : "text-gray-700"}`}>
+                              <Check className={`h-4 w-4 flex-shrink-0 mt-0.5 ${tier.highlighted ? "text-white/80" : "text-black"}`} />
+                              <span className={`text-sm ${tier.highlighted ? "text-white/80" : "text-gray-700"}`}>
                                 {feature}
                               </span>
                             </li>
                           ))}
                         </ul>
-                        <div className="space-y-3 mt-auto">
+                        <div className="space-y-2 mt-auto">
                           <Button
                             variant={tier.highlighted ? "default" : "outline"}
                             size="lg"
-                            className={`w-full font-bold ${
+                            className={`w-full font-semibold ${
                               tier.highlighted
                                 ? "bg-white text-black hover:bg-gray-100"
-                                : "border-2 border-black text-black hover:bg-black hover:text-white"
+                                : "border border-black text-black hover:bg-black hover:text-white"
                             }`}
                             onClick={() => setApplicationOpen(true)}
                           >
-                            APPLY NOW
+                            Apply Now
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="w-full text-sm"
+                            className={`w-full text-xs ${tier.highlighted ? "text-white/60 hover:text-white hover:bg-white/10" : "text-gray-500"}`}
                             asChild
                           >
                             <a
@@ -789,7 +930,7 @@ export default function CohortPage() {
                                   ?.scrollIntoView({ behavior: "smooth" });
                               }}
                             >
-                              View Curriculum
+                              View Full Curriculum
                             </a>
                           </Button>
                         </div>
@@ -799,14 +940,6 @@ export default function CohortPage() {
                 </div>
               </CardContent>
             </Card>
-            
-            {/* No Refund Policy Notice */}
-            <div className="mt-6 flex items-center justify-center gap-2 text-center">
-              <AlertCircle className="h-4 w-4 text-gray-500" />
-              <p className="text-sm text-gray-600">
-                <span className="font-semibold">No Refund Policy:</span> All cohort payments are final and non-refundable due to limited spots and personalized program structure.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -938,8 +1071,117 @@ export default function CohortPage() {
         </section>
       ))}
 
-      {/* CTA After Curriculum */}
-      <section className="py-20 bg-black text-white">
+      {/* Admissions Process */}
+      <section className="py-12 md:py-16 bg-white" id="admissions">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase mb-2">
+              Selection Process
+            </p>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-black mb-2">
+              Admissions Process
+            </h2>
+            <p className="text-sm text-gray-600 max-w-lg mx-auto">
+              Our selective process ensures committed professionals.
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            {/* 3-Step Process */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
+              {/* Connecting Line - Desktop */}
+              <div className="hidden md:block absolute top-6 left-[20%] right-[20%] h-px bg-gray-200 z-0"></div>
+              
+              {/* Step 1: Application */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative z-10 flex md:flex-col items-center md:text-center gap-4 md:gap-0"
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0 md:mx-auto md:mb-4">
+                  <ClipboardList className="h-4 w-4 md:h-5 md:w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-black mb-1 md:mb-2">Application</h3>
+                  <p className="text-sm text-gray-600">
+                    Submit your profile and cover letter.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 2: Assignment */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative z-10 flex md:flex-col items-center md:text-center gap-4 md:gap-0"
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0 md:mx-auto md:mb-4">
+                  <PenLine className="h-4 w-4 md:h-5 md:w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-black mb-1 md:mb-2">Assignment</h3>
+                  <p className="text-sm text-gray-600">
+                    Brief deal screening task.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 3: Partner Call */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative z-10 flex md:flex-col items-center md:text-center gap-4 md:gap-0"
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0 md:mx-auto md:mb-4">
+                  <Phone className="h-4 w-4 md:h-5 md:w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base md:text-lg font-heading font-bold text-black mb-1 md:mb-2">Partner Call</h3>
+                  <p className="text-sm text-gray-600">
+                    Final fit conversation with Swapnil.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Timeline + CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
+            >
+              <div className="inline-flex items-center gap-2 text-xs md:text-sm text-gray-500">
+                <Clock className="h-4 w-4" />
+                <span>5-7 days to decision</span>
+              </div>
+              <Button
+                className="w-full sm:w-auto bg-black text-white hover:bg-gray-900 font-semibold"
+                onClick={() => setApplicationOpen(true)}
+              >
+                Start Application
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA After Admissions */}
+      <section className="py-12 md:py-20 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -948,16 +1190,16 @@ export default function CohortPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-white mb-3 md:mb-4">
                 Ready to Start Your PE Journey?
               </h2>
-              <p className="text-lg text-white/80 mb-8">
-                Join our next cohort and get personalized mentorship from a PE founder
+              <p className="text-sm md:text-lg text-white/80 mb-6 md:mb-8">
+                Join our next cohort and get personalised mentorship from a PE founder
               </p>
               <Button
                 variant="default"
                 size="lg"
-                className="bg-white text-black hover:bg-gray-100 text-lg font-bold px-8 py-6 uppercase tracking-wide"
+                className="w-full sm:w-auto bg-white text-black hover:bg-gray-100 text-base md:text-lg font-bold px-6 md:px-8 py-5 md:py-6 uppercase tracking-wide"
                 onClick={() => setApplicationOpen(true)}
               >
                 Apply Now
@@ -1016,8 +1258,8 @@ export default function CohortPage() {
             <div className="border-t pt-4">
               <p className="text-sm text-gray-500 text-center">
                 Having trouble? Contact us at{" "}
-                <a href="mailto:contact@norlandcapital.co.uk" className="text-black underline">
-                  contact@norlandcapital.co.uk
+                <a href="mailto:swapnilj@norlandacademy.com" className="text-black underline">
+                  swapnilj@norlandacademy.com
                 </a>
               </p>
             </div>
@@ -1053,14 +1295,19 @@ export default function CohortPage() {
             <Accordion type="single" collapsible className="w-full">
               {[
                 {
-                  question: "Do I need prior finance experience?",
+                  question: "What is the admissions process?",
                   answer:
-                    "No prior finance experience is required. The Starter Kit and Cohort are designed for people breaking into PE from non-traditional backgrounds. However, basic Excel skills and a willingness to learn are essential.",
+                    "Our admissions process has three steps: (1) Submit your application with profile and cover letter, (2) Complete a brief deal screening assignment to demonstrate your analytical thinking, and (3) Have a final fit conversation with Swapnil, our PE Partner and programme instructor. The typical timeline is 5-7 days from application to decision.",
                 },
                 {
-                  question: "How do I find out about pricing?",
+                  question: "Do I need prior finance experience?",
                   answer:
-                    "After submitting your application, our team will review it and schedule a brief call to discuss the program details, answer your questions, and share pricing information. This ensures we can understand your goals and recommend the right program for you.",
+                    "No prior finance experience is required. The programme is designed for ambitious professionals breaking into PE from non-traditional backgrounds. However, basic Excel skills and a willingness to learn are essential.",
+                },
+                {
+                  question: "What is the programme fee?",
+                  answer:
+                    "The 6-Week Immersion is £350 and the 12-Week Deep Dive is £500 (scholarship tuition). These are merit-based scholarship rates for successful applicants. Standard tuition is £700 and £1,000 respectively.",
                 },
                 {
                   question: "What if I miss a live session?",
@@ -1070,12 +1317,12 @@ export default function CohortPage() {
                 {
                   question: "What's the time commitment per week?",
                   answer:
-                    "For the Cohort program, expect 8-10 hours per week including live sessions, assignments, and practice. The Starter Kit is self-paced, so you can work at your own speed.",
+                    "For the Cohort programme, expect 8-10 hours per week including live sessions, assignments, and practice. The Starter Kit is self-paced, so you can work at your own speed.",
                 },
                 {
                   question: "What's your refund policy?",
                   answer:
-                    "We offer a 3-day money-back guarantee for the Starter Kit, no questions asked. For the Cohort Program, all payments are final and non-refundable. Due to the limited spots, personalized nature of the program, and significant resources allocated to each participant, we cannot offer refunds once enrollment is confirmed. Please ensure you can commit to the program before applying.",
+                    "For the Cohort Programme, all payments are final and non-refundable. Due to the limited spots, personalised nature of the programme, and significant resources allocated to each participant, we cannot offer refunds once enrolment is confirmed. Please ensure you can commit to the programme before applying.",
                 },
                 {
                   question: "Do you guarantee job placement?",
@@ -1088,24 +1335,24 @@ export default function CohortPage() {
                     "The Starter Kit gives you templates and resources to learn on your own. The Cohort is an apprenticeship where you work on real deals from our pipeline, get partner feedback, and build a portfolio with actual deal work. Choose Starter Kit if you want to learn at your own pace. Choose Cohort if you want hands-on experience with real deals.",
                 },
                 {
-                  question: "Can I join from outside India?",
+                  question: "Can I join from outside the UK?",
                   answer:
-                    "Yes! Our programs are open to anyone globally. Live sessions are scheduled to accommodate multiple time zones, and all materials are delivered digitally.",
+                    "Yes! Our programmes are open to professionals globally. Live sessions are scheduled to accommodate UK, Europe, and US time zones, and all materials are delivered digitally.",
                 },
                 {
                   question: "How many cohorts per year?",
                   answer:
-                    "We run 2-3 cohorts per year. Cohort 1 starts January 6, 2026. Cohort 2 is planned for April 2026. Spots are limited to 30 per cohort to ensure quality.",
+                    "We run 2-3 cohorts per year, roughly every 3-4 months. The next cohort starts in " + cohortStartDisplay + ". Spots are limited to 30 per cohort to ensure quality mentorship.",
                 },
                 {
-                  question: "Why is 12-week cohort limited to 10 spots?",
+                  question: "Why is the 12-week track limited to 10 spots?",
                   answer:
-                    "The 12-week cohort includes additional 1-on-1 mentorship time and priority feedback. We limit it to 10 spots to ensure each participant gets the attention they need.",
+                    "The 12-week track includes additional 1-on-1 mentorship time and priority feedback from the Partner. We limit it to 10 spots to ensure each participant gets the attention they need.",
                 },
                 {
                   question: "What happens after I complete the Cohort?",
                   answer:
-                    "You'll have lifetime access to the community, all materials, and session recordings. Many alumni continue to network and support each other in their job search.",
+                    "You'll have lifetime access to the alumni community, all materials, and session recordings. Many alumni continue to network and support each other in their career journeys.",
                 },
               ].map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>

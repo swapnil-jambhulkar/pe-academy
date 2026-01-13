@@ -75,7 +75,7 @@ export default function ResourcesPage() {
       window.open(paymentLink, "_blank");
     } else {
       // Fallback if link not set up yet
-      alert("Payment link is being set up. Please contact us at contact@norlandcapital.co.uk");
+      alert("Payment link is being set up. Please contact us at swapnilj@norlandacademy.com");
     }
   };
 
