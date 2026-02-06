@@ -97,10 +97,10 @@ export default function ContactPage() {
                       <div>
                         <p className="font-semibold text-black">Email</p>
                         <a
-                          href="mailto:swapnilj@norlandacademy.com"
+                          href="mailto:admissions@norlandacademy.com"
                           className="text-gray-700 hover:text-black transition-colors"
                         >
-                          swapnilj@norlandacademy.com
+                          admissions@norlandacademy.com
                         </a>
                       </div>
                     </div>

@@ -51,8 +51,8 @@ export default function TermsOfServicePage() {
               </h2>
               <p className="text-gray-700">
                 If you have questions about these Terms, please contact us at{" "}
-                <a href="mailto:swapnilj@norlandacademy.com" className="text-black underline hover:text-gray-700">
-                  swapnilj@norlandacademy.com
+                <a href="mailto:admissions@norlandacademy.com" className="text-black underline hover:text-gray-700">
+                  admissions@norlandacademy.com
                 </a>
               </p>
             </div>

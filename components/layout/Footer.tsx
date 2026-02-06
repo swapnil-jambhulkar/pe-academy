@@ -23,7 +23,7 @@ const socialLinks = [
   },
   {
     icon: Mail,
-    href: "mailto:swapnilj@norlandacademy.com",
+    href: "mailto:admissions@norlandacademy.com",
     label: "Email",
   },
 ];
@@ -138,10 +138,10 @@ export default function Footer() {
             </div>
             <p className="text-sm font-medium text-gray-700">
               <a
-                href="mailto:swapnilj@norlandacademy.com"
+                href="mailto:admissions@norlandacademy.com"
                 className="hover:text-black transition-colors"
               >
-                swapnilj@norlandacademy.com
+                admissions@norlandacademy.com
               </a>
             </p>
             <p className="text-sm font-medium text-gray-700 mt-2">

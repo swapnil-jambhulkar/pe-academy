@@ -1258,8 +1258,8 @@ export default function CohortPage() {
             <div className="border-t pt-4">
               <p className="text-sm text-gray-500 text-center">
                 Having trouble? Contact us at{" "}
-                <a href="mailto:swapnilj@norlandacademy.com" className="text-black underline">
-                  swapnilj@norlandacademy.com
+                <a href="mailto:admissions@norlandacademy.com" className="text-black underline">
+                  admissions@norlandacademy.com
                 </a>
               </p>
             </div>
