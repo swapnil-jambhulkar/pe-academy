@@ -2,14 +2,10 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 
-// Lazy load sections below the fold for better initial load performance
-const Solution = dynamic(() => import("@/components/sections/Solution"), {
+const Programmes = dynamic(() => import("@/components/sections/Programmes"), {
   loading: () => <div className="min-h-[400px]" />,
 });
 const PathwayToInterview = dynamic(() => import("@/components/sections/PathwayToInterview"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
-const Comparison = dynamic(() => import("@/components/sections/Comparison"), {
   loading: () => <div className="min-h-[400px]" />,
 });
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), {
@@ -28,26 +24,21 @@ const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"), {
 export default function Home() {
   return (
     <>
-      {/* Always show on all devices */}
       <Hero />
-      
-      {/* Mobile-optimized: Show condensed version */}
+
       <div className="md:hidden">
         <Problem />
-        <Solution />
+        <Programmes />
         <Instructor />
         <Guarantee />
         <FinalCTA />
       </div>
 
-      {/* Desktop: Show full version with all sections */}
       <div className="hidden md:block">
         <Problem />
-        <Solution />
+        <Programmes />
         <PathwayToInterview />
-        <Comparison />
         <Testimonials />
-        {/* <Outcomes /> */}
         <Guarantee />
         <Instructor />
         <FinalCTA />

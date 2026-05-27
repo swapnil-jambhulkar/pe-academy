@@ -52,7 +52,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-black text-white">
+      <section className="pt-24 pb-20 bg-white text-black border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -60,10 +60,10 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-black mb-6">
                 Get In Touch
               </h1>
-              <p className="text-xl text-white/80">
+              <p className="text-xl text-gray-700">
                 Have questions? We're here to help.
               </p>
             </motion.div>
@@ -72,7 +72,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">

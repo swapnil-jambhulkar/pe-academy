@@ -114,7 +114,7 @@ const painPoints = [
 
 export default function Problem() {
   return (
-    <section className="flex items-center bg-white">
+    <section className="flex items-center bg-gray-50 border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ export default function Problem() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-center"
+                className="bg-white border border-gray-200 rounded-lg p-2.5 text-center shadow-sm"
               >
                 <div className="text-xl font-heading font-bold text-black mb-0.5 leading-tight">
                   {finding.metric}

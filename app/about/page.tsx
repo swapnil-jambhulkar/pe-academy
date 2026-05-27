@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-black text-white">
+      <section className="pt-24 pb-20 bg-white text-black border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -19,10 +19,10 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-black mb-6">
                 About Norland Capital
               </h1>
-              <p className="text-xl text-white/80">
+              <p className="text-xl text-gray-700">
                 Norland Academy
               </p>
             </motion.div>
@@ -31,7 +31,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -139,7 +139,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50 border-t border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <motion.div
@@ -156,14 +156,14 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="default" size="lg" className="bg-black text-white hover:bg-gray-800" asChild>
-                  <Link href="/cohort#apply">
-                    Join Cohort
+                  <Link href="/cohort">
+                    Apply for GCPE
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" className="border-2 border-black text-black hover:bg-black hover:text-white" asChild>
-                  <Link href="/starter-kit">
-                    Get Starter Kit
+                  <Link href="/simulator">
+                    Try Day One Simulator
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>

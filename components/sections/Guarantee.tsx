@@ -14,7 +14,7 @@ const guarantees = [
 
 export default function Guarantee() {
   return (
-    <section className="flex items-center bg-white text-black">
+    <section className="flex items-center bg-gray-50 text-black border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 md:py-16">
         <div className="max-w-4xl mx-auto w-full">
           {/* Mobile: Full-width Layout (matching Market Analysis style) */}

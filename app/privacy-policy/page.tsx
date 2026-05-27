@@ -1,7 +1,7 @@
 export default function PrivacyPolicyPage() {
   return (
     <div>
-      <section className="pt-24 pb-20 bg-white">
+      <section className="pt-24 pb-20 bg-gray-50 min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-black mb-6 text-center">

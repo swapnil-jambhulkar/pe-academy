@@ -8,9 +8,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Starter Kit", href: "/starter-kit" },
-  { label: "Resources", href: "/resources" },
-  { label: "Cohort", href: "/cohort" },
+  { label: "Simulator", href: "/simulator" },
+  { label: "GCPE", href: "/cohort" },
+  { label: "PGP", href: "/pgp" },
+  { label: "Insights", href: "/insights/lbo" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -31,8 +32,8 @@ export default function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-md border-b border-gray-200"
-          : "bg-white"
+          ? "bg-black/95 backdrop-blur-sm shadow-md border-b border-white/10"
+          : "bg-black border-b border-white/10"
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,11 +41,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="flex flex-col">
-              <span className="text-lg font-heading font-medium text-black tracking-tight uppercase">
+              <span className="text-lg font-heading font-medium text-white tracking-tight uppercase">
                 Norland Academy
               </span>
-              <div className="h-px w-full bg-gray-400 my-1"></div>
-              <span className="text-xs font-normal text-gray-600 tracking-wide">
+              <div className="h-px w-full bg-white/30 my-1"></div>
+              <span className="text-xs font-normal text-white/70 tracking-wide">
                 By Norland Capital
               </span>
             </div>
@@ -56,7 +57,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-sans font-bold text-black hover:text-gray-800 transition-colors uppercase tracking-wide"
+                className="text-sm font-sans font-bold text-white hover:text-white/70 transition-colors uppercase tracking-wide"
               >
                 {item.label}
               </Link>
@@ -65,7 +66,7 @@ export default function Header() {
               variant="default"
               size="default"
               asChild
-              className="ml-4 bg-black text-white hover:bg-gray-800 font-bold"
+              className="ml-4 bg-white text-black hover:bg-gray-200 font-bold"
             >
               <Link href="/cohort#apply">APPLY NOW</Link>
             </Button>
@@ -78,9 +79,9 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-black" />
+              <X className="h-6 w-6 text-white" />
             ) : (
-              <Menu className="h-6 w-6 text-black" />
+              <Menu className="h-6 w-6 text-white" />
             )}
           </button>
         </div>
@@ -92,13 +93,13 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block text-sm font-bold text-black hover:text-gray-800 transition-colors uppercase tracking-wide"
+                className="block text-sm font-bold text-white hover:text-white/70 transition-colors uppercase tracking-wide"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Button variant="default" size="default" asChild className="w-full mt-4 bg-black text-white hover:bg-gray-800 font-bold">
+            <Button variant="default" size="default" asChild className="w-full mt-4 bg-white text-black hover:bg-gray-200 font-bold">
               <Link href="/cohort#apply" onClick={() => setIsMobileMenuOpen(false)}>
                 APPLY NOW
               </Link>

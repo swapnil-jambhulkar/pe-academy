@@ -21,7 +21,6 @@ import {
 import {
   Calendar,
   Clock,
-  Users,
   FileText,
   Check,
   ArrowRight,
@@ -42,7 +41,7 @@ import Link from "next/link";
 import { calculateDaysUntil } from "@/lib/utils";
 
 // ... existing curriculum and programTiers data ...
-// 12-Week Full Curriculum
+// 12-Week GCPE Curriculum
 const fullCurriculum = [
   {
     phase: "PHASE 1: FOUNDATIONS",
@@ -51,7 +50,7 @@ const fullCurriculum = [
     icon: BookOpen,
     weeksDetail: [
       {
-        week: "Week 1: PE Fundamentals & Mindset Shift",
+        week: "Week 1: Lower-Middle Market Buyout Architecture",
         sessions: [
           "Live Session 1: Welcome + Program Overview (90 min)",
           "Pre-work: Watch 'LBO Basics' video (30 min)",
@@ -60,7 +59,7 @@ const fullCurriculum = [
         ],
       },
       {
-        week: "Week 2: Financial Modeling Deep-Dive",
+        week: "Week 2: Forensic 3-Statement LBO Modeling",
         sessions: [
           "Pre-work: Build basic LBO model (template provided)",
           "Live Session 1: LBO Modeling Workshop Part 2 (120 min)",
@@ -69,7 +68,7 @@ const fullCurriculum = [
         ],
       },
       {
-        week: "Week 3: Industry Research & Deal Thesis",
+        week: "Week 3: Commercial Due Diligence & Cohort Analysis",
         sessions: [
           "Pre-work: Research one industry for PE opportunities",
           "Live Session 1: How to identify attractive sectors (90 min)",
@@ -86,7 +85,7 @@ const fullCurriculum = [
     icon: Briefcase,
     weeksDetail: [
       {
-        week: "Week 4: Introduction to Live Deals",
+        week: "Week 4: The Raw VDR Sprint",
         sessions: [
           "Assign students to 3-4 real opportunities from pipeline",
           "Form teams of 3-4 students per deal",
@@ -119,132 +118,53 @@ const fullCurriculum = [
     ],
   },
   {
-    phase: "PHASE 3: CAREER BUILDING",
+    phase: "PHASE 3: ADVANCED STRUCTURING",
     weeks: "Weeks 9-11",
     color: "bg-purple-50 border-purple-200",
     icon: Target,
     weeksDetail: [
       {
-        week: "Week 9: Portfolio & CV Optimisation",
+        week: "Week 9: Capital Layering & Debt Syndication",
         sessions: [
-          "Live Session: How to showcase PE work on CV",
-          "Assignment: Optimise CV with PE experience",
-          "1-on-1 feedback session on your CV",
-          "LinkedIn profile optimisation workshop",
+          "Live Session: Capital layering in sponsor-backed buyouts",
+          "Assignment: Build debt stack cases across senior, mezzanine, and equity",
+          "Workshop: Lender lens on covenant and risk transfer",
+          "Case review: Debt syndication pathways in UK mid-market deals",
         ],
       },
       {
-        week: "Week 10: Mock Interviews & Feedback",
+        week: "Week 10: The SPA & Locked-Box Mechanisms",
         sessions: [
-          "Live Session: PE interview prep (technical + behavioural)",
-          "Mock interview #1 (video recorded)",
-          "Detailed feedback session",
-          "Mock interview #2 (video recorded)",
+          "Live Session: SPA architecture and risk allocation",
+          "Workshop: Locked-box versus completion accounts in live processes",
+          "Assignment: Mark up key SPA clauses from a sample draft",
+          "Case debrief: Value leakage and purchase price adjustments",
         ],
       },
       {
-        week: "Week 11: Networking & Outreach Strategy",
+        week: "Week 11: Value Creation & Post-Acquisition Integration",
         sessions: [
-          "Live Session: Cold email system (42% response rate)",
-          "Assignment: Send 10 cold emails using templates",
-          "Track responses and optimise approach",
-          "Live Session: Advanced networking strategies + portfolio showcase (90 min)",
+          "Live Session: Value creation planning from day 1 post-close",
+          "Assignment: Build a 100-day integration and value creation plan",
+          "Workshop: KPI architecture for portfolio company governance",
+          "Case review: Operating model shifts after acquisition",
         ],
       },
     ],
   },
   {
-    phase: "PHASE 4: GRADUATION",
+    phase: "PHASE 4: CERTIFICATION",
     weeks: "Week 12",
     color: "bg-yellow-50 border-yellow-200",
     icon: GraduationCap,
     weeksDetail: [
       {
-        week: "Week 12: Final Presentations & Next Steps",
+        week: "Week 12: Final Graduate Certificate Examination",
         sessions: [
-          "Final portfolio presentations",
-          "Roadmap for next 90 days",
-          "Graduation ceremony",
-          "Post-program mentorship kickoff",
-        ],
-      },
-    ],
-  },
-];
-
-// 6-Week Condensed Curriculum
-const condensedCurriculum = [
-  {
-    phase: "PHASE 1: FOUNDATIONS",
-    weeks: "Weeks 1-3",
-    color: "bg-blue-50 border-blue-200",
-    icon: BookOpen,
-    weeksDetail: [
-      {
-        week: "Week 1: PE Fundamentals & Mindset Shift",
-        sessions: [
-          "Live Session 1: Welcome + Program Overview (90 min)",
-          "Pre-work: Watch 'LBO Basics' video (30 min)",
-          "Assignment: Analyze 1 public company for PE suitability",
-          "Live Session 2: LBO Modeling Workshop Part 1 (120 min)",
-        ],
-      },
-      {
-        week: "Week 2: Financial Modeling Deep-Dive",
-        sessions: [
-          "Pre-work: Build basic LBO model (template provided)",
-          "Live Session 1: LBO Modeling Workshop Part 2 (120 min)",
-          "Assignment: Complete full LBO model for given case",
-          "Live Session 2: Model review + feedback (90 min)",
-        ],
-      },
-      {
-        week: "Week 3: Industry Research & Deal Thesis",
-        sessions: [
-          "Pre-work: Research one industry for PE opportunities",
-          "Live Session 1: How to identify attractive sectors (90 min)",
-          "Assignment: Write 3-page industry thesis",
-          "Live Session 2: Industry thesis review + deal sourcing workshop (90 min)",
-        ],
-      },
-    ],
-  },
-  {
-    phase: "PHASE 2: REAL DEAL WORK",
-    weeks: "Weeks 4-6",
-    color: "bg-green-50 border-green-200",
-    icon: Briefcase,
-    weeksDetail: [
-      {
-        week: "Week 4: Introduction to Live Deals",
-        sessions: [
-          "Assign students to 3-4 real opportunities from pipeline",
-          "Form teams of 3-4 students per deal",
-          "Live Session 1: Deal background + research kickoff",
-          "Assignment: Initial screening memo (1-2 pages)",
-        ],
-      },
-      {
-        week: "Week 5: Active Due Diligence",
-        sessions: [
-          "Each team works on their assigned deal:",
-          "Financial analysis",
-          "Industry research",
-          "Competitive positioning",
-          "Management assessment",
-          "Weekly check-in (90 min)",
-          "Instructor provides feedback on work",
-          "Students see instructor's analysis of same deals",
-        ],
-      },
-      {
-        week: "Week 6: Investment Committee Presentations & Graduation",
-        sessions: [
-          "Each team presents their deal recommendation",
-          "30-min presentation + 15-min Q&A per team",
-          "Instructor shares actual decision on each deal",
-          "Lessons learned session",
-          "Final wrap-up and next steps roadmap",
+          "Written examination on buyout mechanics and deal structuring",
+          "Timed technical case under IC-style constraints",
+          "Oral defense of investment recommendation",
+          "GCPE award decision and performance briefing",
         ],
       },
     ],
@@ -262,53 +182,29 @@ const deliverables = [
   "Network with 300+ aspiring PE professionals",
 ];
 
-const programTiers = [
-  {
-    name: "6-Week Immersion",
-    duration: "6 weeks",
-    description: "Work on 2-3 live deals from our pipeline. Get direct feedback from a PE partner. Build a portfolio with real deal work.",
-    spots: "20 spots",
-    earlyBird: { price: 24999, label: "Early Bird" },
-    regular: { price: 30000, label: "Regular" },
-    features: [
-      "Work on 2-3 real deals from Norland pipeline",
-      "6 live sessions with partner feedback",
-      "Present to Investment Committee",
-      "See how we evaluate opportunities",
-      "Build portfolio with actual deal work",
-      "1-on-1 feedback sessions (2x)",
-      "Lifetime community access",
-      "All materials & recordings",
-      "Note: Extended career modules in 12-week only",
-    ],
-    curriculum: condensedCurriculum,
-    paymentLink: "[RAZORPAY_LINK_COHORT_6WEEK]",
-  },
-  {
-    name: "12-Week Deep Dive",
-    duration: "12 weeks",
-    description: "Full apprenticeship experience. Work on 4-5 deals. Extended partner access. Complete career transformation.",
-    spots: "10 spots only",
-    earlyBird: { price: 41999, label: "Early Bird" },
-    regular: { price: 50000, label: "Regular" },
-    features: [
-      "Work on 4-5 real deals end-to-end",
-      "Full due diligence experience",
-      "Watch IC committee decisions live",
-      "See deal sourcing to close process",
-      "Extended partner mentorship",
-      "Mock interviews with real PE feedback",
-      "Career positioning & networking",
-      "Direct access to Swapnil",
-      "Post-program mentorship (1 month)",
-      "Lifetime community access",
-    ],
-    curriculum: fullCurriculum,
-    paymentLink: "[RAZORPAY_LINK_COHORT_12WEEK]",
-    limited: true,
-    highlighted: true,
-  },
-];
+const gcpeProgram = {
+  name: "12-Week GCPE",
+  duration: "12 weeks",
+  description:
+    "Full Graduate Certificate track. Work on 4-5 deals, complete advanced structuring modules, and pass the final GCPE examination.",
+  spots: "10 spots only",
+  foundingPrice: "£400 (approx. ₹52,000)",
+  standardPrice: "£1,000",
+  features: [
+    "Work on 4-5 real deals end-to-end",
+    "Full due diligence experience",
+    "Watch IC committee decisions live",
+    "See deal sourcing to close process",
+    "Extended partner mentorship",
+    "Mock interviews with real PE feedback",
+    "Advanced structuring and transaction mechanics",
+    "Direct access to Swapnil",
+    "Final GCPE examination and certification outcome",
+    "Lifetime community access",
+  ],
+  curriculum: fullCurriculum,
+  paymentLink: "[RAZORPAY_LINK_COHORT_12WEEK]",
+};
 
 // Rolling Cohort System - Fully Automated
 // Base date: First cohort start (April 6, 2026)
@@ -317,9 +213,8 @@ const COHORT_BASE_DATE = new Date("2026-04-06");
 const COHORT_CYCLE_DAYS = 42; // 6 weeks
 const EARLY_ENROLLMENT_CYCLE_DAYS = 15; // Rolling 15-day urgency
 
-// Total spots per cohort
-const TOTAL_SPOTS_6WEEK = 20;
-const TOTAL_SPOTS_12WEEK = 10;
+// Total spots per cohort (GCPE only)
+const TOTAL_SPOTS_GCPE = 10;
 
 // Calculate the next cohort start date (rolling every 6 weeks)
 function getNextCohortDate(): Date {
@@ -345,32 +240,16 @@ function getNextCohortDate(): Date {
 
 // Calculate dynamic spots filled based on day of the 15-day cycle
 // More spots fill up as the cycle progresses (creates urgency)
-function getDynamicSpotsFilled(): { filled6Week: number; filled12Week: number } {
+function getDynamicSpotsFilled(): number {
   const now = new Date();
   const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
-  
-  // Use the same 15-day cycle as early enrollment
-  // Day 1 = fewer spots filled, Day 15 = more spots filled
-  const dayInCycle = (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS) + 1; // 1 to 15
-  
-  // Progress through the cycle (0 to 1)
+
+  const dayInCycle = (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS) + 1;
   const progress = dayInCycle / EARLY_ENROLLMENT_CYCLE_DAYS;
-  
-  // 6-Week spots (20 total): 
-  // Start: 8 filled (12 available) = 40% filled
-  // End: 16 filled (4 available) = 80% filled
-  const minFilled6Week = 8;
-  const maxFilled6Week = 16;
-  const filled6Week = Math.floor(minFilled6Week + (progress * (maxFilled6Week - minFilled6Week)));
-  
-  // 12-Week spots (10 total):
-  // Start: 4 filled (6 available) = 40% filled  
-  // End: 8 filled (2 available) = 80% filled
-  const minFilled12Week = 4;
-  const maxFilled12Week = 8;
-  const filled12Week = Math.floor(minFilled12Week + (progress * (maxFilled12Week - minFilled12Week)));
-  
-  return { filled6Week, filled12Week };
+
+  const minFilled = 4;
+  const maxFilled = 8;
+  return Math.floor(minFilled + progress * (maxFilled - minFilled));
 }
 
 // Calculate rolling early enrollment days (always 1-15, creates perpetual urgency)
@@ -414,7 +293,7 @@ export default function CohortPage() {
   const [daysRemaining, setDaysRemaining] = useState(15);
   const [nextCohortDate, setNextCohortDate] = useState<Date>(new Date());
   const [cohortNumber, setCohortNumber] = useState(2);
-  const [spots, setSpots] = useState({ filled6Week: 4, filled12Week: 2 });
+  const [spotsFilled, setSpotsFilled] = useState(4);
 
   // Handle #apply anchor - open dialog when URL has #apply
   useEffect(() => {
@@ -425,15 +304,13 @@ export default function CohortPage() {
     }
   }, []);
   
-  const [selectedTier, setSelectedTier] = useState<"6week" | "12week">("12week");
-
   // Rolling dates & dynamic spots - fully automated
   useEffect(() => {
     const updateAll = () => {
       setNextCohortDate(getNextCohortDate());
       setDaysRemaining(getEarlyEnrollmentDaysLeft());
       setCohortNumber(getCohortNumber());
-      setSpots(getDynamicSpotsFilled());
+      setSpotsFilled(getDynamicSpotsFilled());
     };
     
     updateAll();
@@ -443,14 +320,9 @@ export default function CohortPage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Use dynamic spots
-  const filled6Week = spots.filled6Week;
-  const filled12Week = spots.filled12Week;
-  const spots6Week = TOTAL_SPOTS_6WEEK;
-  const spots12Week = TOTAL_SPOTS_12WEEK;
-  
-  const fillPercentage6Week = (filled6Week / spots6Week) * 100;
-  const fillPercentage12Week = (filled12Week / spots12Week) * 100;
+  const totalSpots = TOTAL_SPOTS_GCPE;
+  const spotsRemaining = totalSpots - spotsFilled;
+  const fillPercentage = (spotsFilled / totalSpots) * 100;
   
   // Early enrollment is always active (perpetual urgency)
   const isEarlyBirdActive = true;
@@ -462,302 +334,88 @@ export default function CohortPage() {
   return (
     <div>
       {/* Hero Section - Program Availability */}
-      <section className="min-h-screen flex items-center bg-black text-white relative overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
-        
-        {/* Animated Gradient Orbs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-40 -left-40 w-80 h-80 bg-white/[0.03] rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 1.3, 1],
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-40 -right-40 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              x: [0, 50, 0],
-              y: [0, 30, 0],
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-white/[0.02] to-transparent rounded-full blur-2xl"
-          />
-        </div>
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }} />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-12 md:pb-20">
-          <div className="max-w-6xl mx-auto">
-            {/* Desktop Header - Hidden on Mobile */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="hidden md:block text-center mb-16"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
-              >
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-white/80 text-sm font-semibold">Not a Course. An Apprenticeship.</span>
-              </motion.div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6">
-                <span className="relative inline-block">
-                  The PE Apprenticeship
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
-                  />
-                </span>
+      <section className="min-h-screen flex items-center pt-28 pb-20 bg-white text-black border-b border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-black font-semibold mb-4">GCPE</p>
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.02] mb-6 text-black">
+                Graduate Certificate in
+                <br />
+                Private Equity
               </h1>
-              <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-4">
-                Work on Real Deals. Get Partner Feedback. Build Your Portfolio.
+              <p className="text-base text-gray-800 leading-relaxed mb-4 max-w-3xl">
+                A 12-week technical sprint built around real deal execution. You work through pipeline transactions,
+                model outcomes, and defend recommendations under partner-level review.
               </p>
-              <p className="text-base text-white/50 max-w-2xl mx-auto mb-4">
-                Access live deals from Norland Capital's pipeline. See how partners evaluate opportunities. Get the experience IB analysts have.
+              <p className="text-base text-gray-700 leading-relaxed mb-4 max-w-3xl">
+                This programme is designed for candidates who need proof of execution discipline, not just conceptual
+                fluency. Every week is structured around institutional standards and decision quality.
               </p>
-              <div className="flex items-center justify-center gap-2 text-white/60 text-sm">
-                <AlertCircle className="h-4 w-4" />
-                <span>Selective admission • Only 30 spots total</span>
-              </div>
-            </motion.div>
-
-            {/* Desktop: Urgency Stats Grid - 3 separate cards */}
-            <div className="hidden md:grid md:grid-cols-3 gap-6 mb-12">
-              {/* Early Bird Deadline */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white/5 border-2 border-white/20 rounded-lg p-8 hover:border-white/30 transition-all"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-white/10 rounded-lg">
-                    <Clock className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/70 uppercase tracking-wider font-semibold">Early Enrollment</p>
-                    <p className="text-xs text-white/50">Ends in</p>
-                  </div>
-                </div>
-                <div className="border-t border-white/20 pt-6">
-                  <div className="text-6xl font-heading font-bold text-white mb-2">
-                    {daysRemaining}
-                  </div>
-                  <p className="text-sm text-white/70 font-medium">Days Remaining</p>
-                  <p className="text-xs text-white/50 mt-2">
-                    {isEarlyBirdActive 
-                      ? "Early enrollment discount available"
-                      : "Standard enrollment open"
-                    }
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* 6-Week Program */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white/5 border-2 border-white/10 rounded-lg p-8 hover:border-white/20 transition-all"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-white/10 rounded-lg">
-                    <Users className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/70 uppercase tracking-wider font-semibold">6-Week Program</p>
-                    <p className="text-xs text-white/50">Focused Track</p>
-                  </div>
-                </div>
-                <div className="border-t border-white/10 pt-6">
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <div className="text-4xl font-heading font-bold text-white">
-                      {filled6Week}
-                    </div>
-                    <span className="text-white/40 text-xl">/</span>
-                    <div className="text-2xl text-white/60">{spots6Week}</div>
-                  </div>
-                  <div className="w-full bg-white/10 rounded-full h-2 mb-3">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${fillPercentage6Week}%` }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="bg-white h-2 rounded-full"
-                    />
-                  </div>
-                  <p className="text-sm text-white/70 font-medium">
-                    {spots6Week - filled6Week} spots available
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* 12-Week Program */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white/10 border-2 border-white/30 rounded-lg p-8 hover:border-white/40 transition-all relative"
-              >
-                <div className="absolute -top-3 -right-3 px-3 py-1 bg-white text-black text-xs font-bold rounded-full">
-                  MOST POPULAR
-                </div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-white/20 rounded-lg">
-                    <TrendingUp className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white uppercase tracking-wider font-bold">
-                      12-Week Program
-                    </p>
-                    <p className="text-xs text-white/70">Premium Track</p>
-                  </div>
-                </div>
-                <div className="border-t border-white/20 pt-6">
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <div className="text-4xl font-heading font-bold text-white">
-                      {filled12Week}
-                    </div>
-                    <span className="text-white/40 text-xl">/</span>
-                    <div className="text-2xl text-white/70">{spots12Week}</div>
-                  </div>
-                  <div className="w-full bg-white/20 rounded-full h-2 mb-3">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${fillPercentage12Week}%` }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="bg-white h-2 rounded-full"
-                    />
-                  </div>
-                  <p className="text-sm text-white font-semibold">
-                    {spots12Week - filled12Week} spots remaining
-                  </p>
-                </div>
-              </motion.div>
+              <p className="text-base text-gray-600 leading-relaxed max-w-3xl">
+                Next cohort begins {cohortStartDisplay}. Applications are reviewed on a rolling basis with selective
+                admission.
+              </p>
             </div>
 
-            {/* Mobile: Matching Desktop Style */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="md:hidden text-center"
-            >
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6"
-              >
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-white/80 text-sm font-semibold">Not a Course. An Apprenticeship.</span>
-              </motion.div>
-
-              <h1 className="text-3xl font-heading font-bold text-white mb-4">
-                <span className="relative inline-block">
-                  The PE Apprenticeship
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-white/60 to-white/20 rounded-full"
-                  />
-                </span>
-              </h1>
-              
-              <p className="text-lg text-white/80 mb-3">
-                Work on Real Deals. Get Partner Feedback. Build Your Portfolio.
-              </p>
-              
-              <p className="text-sm text-white/50 mb-4">
-                Access live deals from Norland Capital's pipeline. Get the experience IB analysts have.
-              </p>
-              
-              <div className="flex items-center justify-center gap-2 text-white/60 text-xs mb-8">
-                <AlertCircle className="h-3 w-3" />
-                <span>Selective admission • Only 30 spots</span>
-              </div>
-
-              {/* Mobile Stats Row */}
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                <div className="bg-white/10 border border-white/20 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-heading font-bold text-white">{daysRemaining}</div>
-                  <p className="text-[10px] text-white/60 uppercase tracking-wide">Days Left</p>
+            <div className="lg:justify-self-end lg:w-full lg:max-w-md lg:border-l lg:border-gray-300 lg:pl-8 lg:mt-14">
+              <p className="text-xs tracking-[0.18em] uppercase text-gray-500 mb-4">GCPE Cohort Snapshot</p>
+              <div className="space-y-3 py-1">
+                <div className="flex justify-between text-sm border-b border-gray-200 pb-2">
+                  <span className="text-gray-500">Early Enrollment</span>
+                  <span className="font-semibold text-black">{isEarlyBirdActive ? "Active" : "Closed"}</span>
                 </div>
-                <div className="bg-white/10 border border-white/20 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-heading font-bold text-white">{spots6Week - filled6Week}</div>
-                  <p className="text-[10px] text-white/60 uppercase tracking-wide">6-Week Spots</p>
+                <div className="flex justify-between text-sm border-b border-gray-200 pb-2">
+                  <span className="text-gray-500">Days Remaining</span>
+                  <span className="font-semibold text-black">{daysRemaining}</span>
                 </div>
-                <div className="bg-white/10 border border-white/20 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-heading font-bold text-white">{spots12Week - filled12Week}</div>
-                  <p className="text-[10px] text-white/60 uppercase tracking-wide">12-Week Spots</p>
+                <div className="flex justify-between text-sm border-b border-gray-200 pb-2">
+                  <span className="text-gray-500">Cohort Capacity</span>
+                  <span className="font-semibold text-black">
+                    {spotsFilled}/{totalSpots}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm border-b border-gray-200 pb-2">
+                  <span className="text-gray-500">Spots Remaining</span>
+                  <span className="font-semibold text-black">{spotsRemaining}</span>
+                </div>
+                <div className="flex justify-between text-sm border-b border-gray-200 pb-2">
+                  <span className="text-gray-500">Next Start</span>
+                  <span className="font-semibold text-black">{cohortStartShort}</span>
                 </div>
               </div>
-
-              {/* CTA */}
+              <div className="w-full bg-gray-200 rounded-full h-2 mt-5 mb-4">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${fillPercentage}%` }}
+                  transition={{ duration: 0.9 }}
+                  className="bg-black h-2 rounded-full"
+                />
+              </div>
               <Button
                 variant="default"
                 size="lg"
-                className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
+                className="w-full bg-black text-white hover:bg-gray-900 font-bold"
                 onClick={() => setApplicationOpen(true)}
               >
-                Apply for Access
+                Apply for GCPE
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </motion.div>
-
-            {/* Desktop: Footer Note */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="hidden md:block text-center max-w-2xl mx-auto"
-            >
-              <p className="text-white/60 text-sm mb-6">
-                Next cohort begins {cohortStartDisplay}. Applications reviewed on a rolling basis.
-              </p>
               <Button
-                variant="default"
+                variant="outline"
                 size="lg"
-                className="bg-white text-black hover:bg-gray-100 text-lg px-8"
+                className="w-full mt-3 border-black text-black hover:bg-gray-100"
                 asChild
               >
-                <Link href="#programs">
-                  Choose Your Program
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                <Link href="#programs">View GCPE Programme</Link>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Tuition & Scholarship - Institutional Grade Design */}
-      <section className="py-12 md:py-24 bg-white" id="tuition">
+      <section className="py-12 md:py-24 bg-gray-50 border-b border-gray-200" id="tuition">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -770,7 +428,7 @@ export default function CohortPage() {
               Investment
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-black mb-4 md:mb-6">
-              Tuition & Scholarship
+              Tuition & Founding Cohort
             </h2>
             <div className="w-12 md:w-16 h-px bg-black mx-auto"></div>
           </motion.div>
@@ -788,22 +446,22 @@ export default function CohortPage() {
                 <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase mb-2 md:mb-3">
                   Tuition Fee
                 </p>
-                <div className="text-2xl md:text-4xl text-gray-400 font-heading font-bold mb-1">
+                <div className="text-2xl md:text-4xl text-gray-400 font-heading font-bold mb-1 line-through">
                   £1,000
                 </div>
                 
-                {/* Scholarship - Hero on all screens */}
                 <div className="my-4 md:my-6">
                   <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-black uppercase mb-2 md:mb-3">
-                    With Merit Scholarship
+                    Founding cohort tuition
                   </p>
                   <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-black">
-                    £500
+                    £400
                   </div>
+                  <p className="text-xs text-gray-500 mt-1">Approx. ₹52,000</p>
                 </div>
                 
                 <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 max-w-md mx-auto">
-                  Scholarships awarded based on your application strength and commitment to Private Equity.
+                  Scholarship-adjusted GCPE tuition is £400 (approx. ₹52,000). Standard tuition is £1,000.
                 </p>
                 
                 {/* CTA Button - Full width on mobile */}
@@ -812,12 +470,12 @@ export default function CohortPage() {
                   className="w-full md:w-auto bg-black text-white hover:bg-gray-800 font-semibold px-8 md:px-10 py-5 md:py-6 text-sm md:text-base"
                   onClick={() => setApplicationOpen(true)}
                 >
-                  Apply for Cohort & Scholarship
+                  Apply for GCPE
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Button>
                 
                 <p className="text-[10px] md:text-xs text-gray-400 mt-4 md:mt-6">
-                  30 places • Starts {cohortStartShort} • No refunds
+                  10 places • Starts {cohortStartShort} • No refunds
                 </p>
               </div>
             </motion.div>
@@ -826,7 +484,7 @@ export default function CohortPage() {
       </section>
 
       {/* Program Tracks - Simplified */}
-      <section className="py-12 md:py-20 bg-gray-50" id="programs">
+      <section className="py-12 md:py-20 bg-white border-b border-gray-200" id="programs">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -839,104 +497,67 @@ export default function CohortPage() {
               Programme Structure
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-black mb-2 md:mb-4">
-              Choose Your Track
+              The GCPE Programme
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-              Select the programme that fits your schedule
+              One 12-week Graduate Certificate cohort. Live deal work, advanced structuring, final examination.
             </p>
           </motion.div>
 
-          <div className="max-w-5xl mx-auto">
-            <Card className="border border-gray-200 overflow-hidden">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-2 gap-0">
-                  {programTiers.map((tier, index) => {
-                    const Icon = tier.curriculum[0]?.icon || BookOpen;
-                    // Pricing for each track
-                    const trackPrice = index === 0 ? "£350" : "£500";
-                    const trackStandardPrice = index === 0 ? "£700" : "£1,000";
-                    return (
-                      <div
-                        key={index}
-                        className={`p-5 md:p-8 flex flex-col h-full ${
-                          tier.highlighted
-                            ? "bg-black text-white"
-                            : "bg-white text-black md:border-r border-gray-100"
-                        } ${index === 0 ? "border-b md:border-b-0 border-gray-200" : ""}`}
-                      >
-                        {/* Header with Price in Top Right */}
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <p className={`text-xs font-semibold tracking-[0.15em] uppercase mb-1 ${tier.highlighted ? "text-white/60" : "text-gray-400"}`}>
-                              {tier.duration}
-                            </p>
-                            <CardTitle className={`text-xl font-heading ${tier.highlighted ? "text-white" : "text-black"}`}>
-                              {tier.name}
-                            </CardTitle>
-                          </div>
-                          {/* Pricing - Top Right */}
-                          <div className="text-right">
-                            <span className={`text-sm line-through ${tier.highlighted ? "text-white/40" : "text-gray-400"}`}>
-                              {trackStandardPrice}
-                            </span>
-                            <p className={`text-[10px] uppercase tracking-wider mt-1 ${tier.highlighted ? "text-white/60" : "text-gray-500"}`}>
-                              With Scholarship
-                            </p>
-                            <span className={`text-2xl font-heading font-bold ${tier.highlighted ? "text-white" : "text-black"}`}>
-                              {trackPrice}
-                            </span>
-                          </div>
-                        </div>
-                        
-                        <CardDescription className={`text-sm mb-4 leading-relaxed ${tier.highlighted ? "text-white/70" : "text-gray-600"}`}>
-                          {tier.description}
-                        </CardDescription>
-                        <ul className="space-y-2 mb-6 flex-1">
-                          {tier.features.slice(0, 5).map((feature, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <Check className={`h-4 w-4 flex-shrink-0 mt-0.5 ${tier.highlighted ? "text-white/80" : "text-black"}`} />
-                              <span className={`text-sm ${tier.highlighted ? "text-white/80" : "text-gray-700"}`}>
-                                {feature}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="space-y-2 mt-auto">
-                          <Button
-                            variant={tier.highlighted ? "default" : "outline"}
-                            size="lg"
-                            className={`w-full font-semibold ${
-                              tier.highlighted
-                                ? "bg-white text-black hover:bg-gray-100"
-                                : "border border-black text-black hover:bg-black hover:text-white"
-                            }`}
-                            onClick={() => setApplicationOpen(true)}
-                          >
-                            Apply Now
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className={`w-full text-xs ${tier.highlighted ? "text-white/60 hover:text-white hover:bg-white/10" : "text-gray-500"}`}
-                            asChild
-                          >
-                            <a
-                              href={`#curriculum-${tier.name.toLowerCase().replace(/\s+/g, "-")}`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                document
-                                  .getElementById(`curriculum-${tier.name.toLowerCase().replace(/\s+/g, "-")}`)
-                                  ?.scrollIntoView({ behavior: "smooth" });
-                              }}
-                            >
-                              View Full Curriculum
-                            </a>
-                          </Button>
-                        </div>
-                      </div>
-                    );
-                  })}
+          <div className="max-w-3xl mx-auto">
+            <Card className="border border-gray-200 overflow-hidden bg-black text-white">
+              <CardContent className="p-5 md:p-8 flex flex-col">
+                <div className="flex items-start justify-between mb-4 gap-4">
+                  <div>
+                    <p className="text-xs font-semibold tracking-[0.15em] uppercase mb-1 text-white/60">
+                      {gcpeProgram.duration}
+                    </p>
+                    <CardTitle className="text-xl font-heading text-white">{gcpeProgram.name}</CardTitle>
+                    <p className="text-xs text-white/50 mt-1">{gcpeProgram.spots}</p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <span className="text-sm line-through text-white/40">{gcpeProgram.standardPrice}</span>
+                    <p className="text-[10px] uppercase tracking-wider mt-1 text-white/60">Founding cohort</p>
+                    <span className="text-2xl font-heading font-bold text-white">{gcpeProgram.foundingPrice}</span>
+                  </div>
+                </div>
+
+                <CardDescription className="text-sm mb-4 leading-relaxed text-white/70">
+                  {gcpeProgram.description}
+                </CardDescription>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {gcpeProgram.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5 text-white/80" />
+                      <span className="text-sm text-white/80">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="space-y-2 mt-auto">
+                  <Button
+                    size="lg"
+                    className="w-full font-semibold bg-white text-black hover:bg-gray-100"
+                    onClick={() => setApplicationOpen(true)}
+                  >
+                    Apply Now
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full text-xs text-white/60 hover:text-white hover:bg-white/10"
+                    asChild
+                  >
+                    <a
+                      href="#curriculum-gcpe"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById("curriculum-gcpe")?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    >
+                      View Full Curriculum
+                    </a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -944,135 +565,82 @@ export default function CohortPage() {
         </div>
       </section>
 
-      {/* Curriculum Sections */}
-      {programTiers.map((tier, tierIndex) => (
-        <section
-          key={tierIndex}
-          id={`curriculum-${tier.name.toLowerCase().replace(/\s+/g, "-")}`}
-          className={`py-20 ${tierIndex % 2 === 0 ? "bg-white" : "bg-black text-white"}`}
-        >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2
-                className={`text-2xl sm:text-3xl font-heading font-bold mb-3 ${
-                  tierIndex % 2 === 0 ? "text-black" : "text-white"
-                }`}
-              >
-                {tier.name} - Detailed Curriculum
-              </h2>
-              <p
-                className={`text-base max-w-2xl mx-auto ${
-                  tierIndex % 2 === 0 ? "text-gray-600" : "text-white/70"
-                }`}
-              >
-                {tier.duration} of structured learning and real-world application
-              </p>
-            </motion.div>
+      {/* Curriculum */}
+      <section id="curriculum-gcpe" className="py-20 bg-gray-50 border-b border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-3 text-black">
+              {gcpeProgram.name} - Detailed Curriculum
+            </h2>
+            <p className="text-base max-w-2xl mx-auto text-gray-600">
+              {gcpeProgram.duration} of structured learning, live deal work, and certification assessment
+            </p>
+          </motion.div>
 
-            <div className="max-w-5xl mx-auto space-y-6">
-              {tier.curriculum.map((phase, phaseIndex) => {
-                const PhaseIcon = phase.icon;
-                return (
-                  <motion.div
-                    key={phaseIndex}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: phaseIndex * 0.1 }}
-                  >
-                    <Card
-                      className={`border-2 ${
-                        tierIndex % 2 === 0
-                          ? phase.color
-                          : "bg-white/5 border-white/20"
-                      }`}
-                    >
-                      <CardHeader className="p-5">
-                        <div className="flex items-center gap-3 mb-2">
-                          <PhaseIcon
-                            className={`h-5 w-5 ${
-                              tierIndex % 2 === 0 ? "text-black" : "text-white"
-                            }`}
-                          />
-                          <div>
-                            <CardTitle
-                              className={`text-lg font-semibold ${
-                                tierIndex % 2 === 0 ? "text-black" : "text-white"
-                              }`}
-                            >
-                              {phase.phase}
-                            </CardTitle>
-                            <CardDescription
-                              className={`text-sm ${tierIndex % 2 === 0 ? "text-gray-600" : "text-white/70"}`}
-                            >
-                              {phase.weeks}
-                            </CardDescription>
-                          </div>
+          <div className="max-w-5xl mx-auto space-y-6">
+            {gcpeProgram.curriculum.map((phase, phaseIndex) => {
+              const PhaseIcon = phase.icon;
+              return (
+                <motion.div
+                  key={phaseIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: phaseIndex * 0.1 }}
+                >
+                  <Card className={`border-2 ${phase.color}`}>
+                    <CardHeader className="p-5">
+                      <div className="flex items-center gap-3 mb-2">
+                        <PhaseIcon className="h-5 w-5 text-black" />
+                        <div>
+                          <CardTitle className="text-lg font-semibold text-black">{phase.phase}</CardTitle>
+                          <CardDescription className="text-sm text-gray-600">{phase.weeks}</CardDescription>
                         </div>
-                      </CardHeader>
-                      <CardContent className="p-5 pt-3">
-                        <Accordion type="single" collapsible className="w-full">
-                          {phase.weeksDetail.map((weekDetail, weekIndex) => (
-                            <AccordionItem
-                              key={weekIndex}
-                              value={`phase-${phaseIndex}-week-${weekIndex}`}
-                            >
-                              <AccordionTrigger
-                                className={`text-sm py-3 w-full ${
-                                  tierIndex % 2 === 0
-                                    ? "text-black hover:text-gray-700"
-                                    : "text-white hover:text-white/80"
-                                }`}
-                              >
-                                <div className="flex items-center gap-2 w-full">
-                                  <Calendar
-                                    className={`h-4 w-4 shrink-0 ${
-                                      tierIndex % 2 === 0 ? "text-gray-600" : "text-white/70"
-                                    }`}
-                                  />
-                                  <span className="font-semibold truncate">{weekDetail.week}</span>
-                                </div>
-                              </AccordionTrigger>
-                              <AccordionContent>
-                                <ul className="space-y-2 mt-3">
-                                  {weekDetail.sessions.map((session, sessionIndex) => (
-                                    <li
-                                      key={sessionIndex}
-                                      className={`flex items-start gap-2 text-sm ${
-                                        tierIndex % 2 === 0 ? "text-gray-700" : "text-white/80"
-                                      }`}
-                                    >
-                                      <Clock
-                                        className={`h-4 w-4 flex-shrink-0 mt-0.5 ${
-                                          tierIndex % 2 === 0 ? "text-gray-500" : "text-white/60"
-                                        }`}
-                                      />
-                                      <span>{session}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </AccordionContent>
-                            </AccordionItem>
-                          ))}
-                        </Accordion>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
-            </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-5 pt-3">
+                      <Accordion type="single" collapsible className="w-full">
+                        {phase.weeksDetail.map((weekDetail, weekIndex) => (
+                          <AccordionItem key={weekIndex} value={`phase-${phaseIndex}-week-${weekIndex}`}>
+                            <AccordionTrigger className="text-sm py-3 w-full text-black hover:text-gray-700">
+                              <div className="flex items-center gap-2 w-full">
+                                <Calendar className="h-4 w-4 shrink-0 text-gray-600" />
+                                <span className="font-semibold truncate">{weekDetail.week}</span>
+                              </div>
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="space-y-2 mt-3">
+                                {weekDetail.sessions.map((session, sessionIndex) => (
+                                  <li
+                                    key={sessionIndex}
+                                    className="flex items-start gap-2 text-sm text-gray-700"
+                                  >
+                                    <Clock className="h-4 w-4 flex-shrink-0 mt-0.5 text-gray-500" />
+                                    <span>{session}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
       {/* Admissions Process */}
-      <section className="py-12 md:py-16 bg-white" id="admissions">
+      <section className="py-12 md:py-16 bg-white border-b border-gray-200" id="admissions">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1214,7 +782,7 @@ export default function CohortPage() {
       <Dialog open={applicationOpen} onOpenChange={setApplicationOpen}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Apply to Cohort Program</DialogTitle>
+            <DialogTitle>Apply for GCPE</DialogTitle>
             <DialogDescription>
               Fill out the application form to apply. We'll review your application and get back to you within 48 hours.
             </DialogDescription>
@@ -1307,7 +875,7 @@ export default function CohortPage() {
                 {
                   question: "What is the programme fee?",
                   answer:
-                    "The 6-Week Immersion is £350 and the 12-Week Deep Dive is £500 (scholarship tuition). These are merit-based scholarship rates for successful applicants. Standard tuition is £700 and £1,000 respectively.",
+                    "GCPE tuition is £1,000 before scholarship and £400 (approx. ₹52,000) after scholarship. PGP tuition is £3,000 before scholarship and £2,000 after scholarship, plus taxes as per government rules.",
                 },
                 {
                   question: "What if I miss a live session?",
@@ -1317,12 +885,12 @@ export default function CohortPage() {
                 {
                   question: "What's the time commitment per week?",
                   answer:
-                    "For the Cohort programme, expect 8-10 hours per week including live sessions, assignments, and practice. The Starter Kit is self-paced, so you can work at your own speed.",
+                    "For the GCPE programme, expect 8-10 hours per week including live sessions, assignments, and practice. Try the free Day One Simulator first if you want to test execution before you apply.",
                 },
                 {
                   question: "What's your refund policy?",
                   answer:
-                    "For the Cohort Programme, all payments are final and non-refundable. Due to the limited spots, personalised nature of the programme, and significant resources allocated to each participant, we cannot offer refunds once enrolment is confirmed. Please ensure you can commit to the programme before applying.",
+                    "For the GCPE programme, all payments are final and non-refundable once enrolment is confirmed, due to limited spots and resources allocated per participant. Please ensure you can commit before applying.",
                 },
                 {
                   question: "Do you guarantee job placement?",
@@ -1330,9 +898,9 @@ export default function CohortPage() {
                     "We don't guarantee placement, but we guarantee something better: real deal experience that IB analysts have. You'll walk away with actual deal work in your portfolio - not case studies from 2015. Our track record: 3 mentees in PE interview processes, 2 landed internships, 1 VC role.",
                 },
                 {
-                  question: "What's the difference between Starter Kit and Cohort?",
+                  question: "What is the difference between GCPE and PGP?",
                   answer:
-                    "The Starter Kit gives you templates and resources to learn on your own. The Cohort is an apprenticeship where you work on real deals from our pipeline, get partner feedback, and build a portfolio with actual deal work. Choose Starter Kit if you want to learn at your own pace. Choose Cohort if you want hands-on experience with real deals.",
+                    "GCPE is the 12-week technical sprint with live deal work and the graduate certificate examination. PGP is the 48-week institutional track that embeds the full GCPE in Term 1, then extends into debt syndication, legal engineering, portfolio value creation, and networking immersion. Enquire on the PGP page if you need the full lifecycle.",
                 },
                 {
                   question: "Can I join from outside the UK?",
@@ -1342,17 +910,17 @@ export default function CohortPage() {
                 {
                   question: "How many cohorts per year?",
                   answer:
-                    "We run 2-3 cohorts per year, roughly every 3-4 months. The next cohort starts in " + cohortStartDisplay + ". Spots are limited to 30 per cohort to ensure quality mentorship.",
+                    "We run 2-3 cohorts per year, roughly every 3-4 months. The next cohort starts in " + cohortStartDisplay + ". Spots are limited to 10 per cohort to ensure quality mentorship.",
                 },
                 {
-                  question: "Why is the 12-week track limited to 10 spots?",
+                  question: "Why is the GCPE cohort limited to 10 spots?",
                   answer:
-                    "The 12-week track includes additional 1-on-1 mentorship time and priority feedback from the Partner. We limit it to 10 spots to ensure each participant gets the attention they need.",
+                    "The Graduate Certificate includes extended 1-on-1 mentorship time and priority feedback from the Partner. We limit each cohort to 10 spots to ensure each participant gets the attention they need.",
                 },
                 {
-                  question: "What happens after I complete the Cohort?",
+                  question: "What happens after I complete GCPE?",
                   answer:
-                    "You'll have lifetime access to the alumni community, all materials, and session recordings. Many alumni continue to network and support each other in their career journeys.",
+                    "You retain lifetime alumni community access, materials, and recordings. Many participants progress to PGP or use their portfolio in interview processes.",
                 },
               ].map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>

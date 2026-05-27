@@ -37,7 +37,7 @@ const pathwaySteps = [
 
 export default function PathwayToInterview() {
   return (
-    <section className="min-h-screen flex items-center bg-white">
+    <section className="min-h-screen flex items-center bg-gray-50 border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

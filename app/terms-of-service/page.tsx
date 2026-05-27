@@ -1,7 +1,7 @@
 export default function TermsOfServicePage() {
   return (
     <div>
-      <section className="pt-24 pb-20 bg-white">
+      <section className="pt-24 pb-20 bg-gray-50 min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-black mb-6 text-center">
@@ -19,16 +19,15 @@ export default function TermsOfServicePage() {
                 Program Enrollment
               </h2>
               <p className="text-gray-700">
-                Enrollment in our programs (Starter Kit or Cohort) is subject to availability.
+                Enrollment in our programmes (GCPE, PGP, and related offerings) is subject to availability.
                 We reserve the right to refuse enrollment at our discretion.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
                 Refund Policy
               </h2>
               <p className="text-gray-700">
-                Starter Kit: 3-day money-back guarantee, no questions asked.
-                Cohort: Refunds available up to 7 days before program start date.
-                No refunds after the program has started.
+                GCPE and PGP: Payments are final once enrolment is confirmed unless otherwise stated in your offer letter.
+                No refunds after the programme has started.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
                 Intellectual Property

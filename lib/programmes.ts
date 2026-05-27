@@ -1,0 +1,54 @@
+/** Shared programme definitions for marketing pages and homepage. */
+
+export const GCPE = {
+  id: "gcpe",
+  slug: "/cohort",
+  shortName: "GCPE",
+  name: "Graduate Certificate in Private Equity",
+  duration: "12 weeks",
+  tagline: "The Technical Sprint",
+  audience: "Junior analysts, investment bankers, and chartered accountants who need day-one execution capability.",
+  narrative:
+    "A localized, live-fire deal desk experience. You enter a real data room from the Norland pipeline, build the LBO, and present your investment memo. You leave with raw execution capability.",
+  foundingPrice: "£400 (approx. ₹52,000)",
+  standardPrice: "£1,000",
+  features: [
+    "Live VDR work on Norland pipeline deals",
+    "Forensic LBO and quality-of-earnings judgment",
+    "Investment Committee presentation experience",
+    "Partner-level feedback on every workstream",
+    "GCPE examination and graduate certificate outcome",
+  ],
+} as const;
+
+export const PGP = {
+  id: "pgp",
+  slug: "/pgp",
+  shortName: "PGP",
+  name: "Post Graduate Programme in Private Equity & Deal Engineering",
+  duration: "48 weeks",
+  tagline: "The Institutional Track",
+  audience:
+    "Mid-level professionals, elite graduates, and high-potential transactors who want to command fund economics and structure cross-border deals.",
+  narrative:
+    "The complete lifecycle of a private equity professional. Includes the full GCPE technical sprint, plus debt syndication, legal engineering, portfolio value creation, domestic networking immersion, and structured preparation for global charter examinations.",
+  includesGcpe: true,
+  features: [
+    "Full 12-week GCPE embedded in Term 1",
+    "Capital layering, SPA markups, and close mechanics",
+    "Portfolio value creation and post-acquisition integration",
+    "Domestic and BKC networking immersion",
+    "Principal-level deal engineering modules",
+    "Dedicated cohort director and partner office hours",
+  ],
+  scholarshipPrice: "£2,000 + taxes",
+  standardPrice: "£3,000 + taxes",
+  applyNote: "Applications reviewed selectively. Tuition is published upfront and finalized at offer stage.",
+} as const;
+
+export const SIMULATOR = {
+  slug: "/simulator",
+  name: "Day One Analyst Simulator",
+  tagline: "Prove execution before you apply",
+  body: "A mock secure workstation: Outlook, VDR, and live deal judgment calls from the Norland desk. Built for juniors who know the theory but fear getting exposed on day one.",
+} as const;

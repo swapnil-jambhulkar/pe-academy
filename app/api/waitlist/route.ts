@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
             </h2>
             <div style="margin-top: 20px;">
               <p>Thank you for joining! We'll notify you when the next cohort opens for applications.</p>
-              <p style="margin-top: 15px;">In the meantime, check out our <a href="https://norlandacademy.com/starter-kit" style="color: #000; text-decoration: underline;">Starter Kit</a> to get started building your PE portfolio.</p>
+              <p style="margin-top: 15px;">In the meantime, try the <a href="https://norlandacademy.com/simulator" style="color: #000; text-decoration: underline;">Day One Analyst Simulator</a> or review the <a href="https://norlandacademy.com/cohort" style="color: #000; text-decoration: underline;">GCPE programme</a>.</p>
             </div>
             <p style="margin-top: 20px; color: #666; font-size: 12px;">
               Norland Academy

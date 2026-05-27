@@ -61,6 +61,12 @@
   }
 }
 
+/* Day One Simulator: hide site chrome while immersive (workstation is fixed full-viewport) */
+body[data-simulator-immersive="true"] > header,
+body[data-simulator-immersive="true"] > footer {
+  display: none;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

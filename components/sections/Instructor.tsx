@@ -23,7 +23,7 @@ const mobileCredentials = [
 
 export default function Instructor() {
   return (
-    <section className="flex items-center bg-white">
+    <section className="flex items-center bg-white border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 md:py-16">
         {/* Mobile: Full-width Layout (matching Market Analysis style) */}
         <div className="md:hidden">

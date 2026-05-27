@@ -182,8 +182,8 @@ export default function ResourcesPage() {
                   asChild
                   className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
                 >
-                  <Link href="/starter-kit">
-                    Get Full Access
+                  <Link href="/cohort">
+                    View GCPE Programme
                   </Link>
                 </Button>
               </div>
