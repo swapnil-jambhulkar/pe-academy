@@ -355,51 +355,51 @@ export default function DayOneSimulator() {
           animate={{ opacity: 1, y: 0 }}
           className="min-h-[min(100vh-12rem,720px)] h-full flex items-start justify-center p-4 md:p-8 bg-[#d4d0c7] overflow-auto"
         >
-          <div className="w-full max-w-2xl bg-[#fefefe] shadow-[0_12px_40px_rgba(0,0,0,0.18)] border border-zinc-300/80 rounded-sm overflow-hidden">
-            <div className="h-1.5 bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800" aria-hidden />
-            <div className="px-8 pt-8 pb-2 border-b border-zinc-200">
-              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">Norland Capital · Deal execution</p>
-              <h2 className="text-2xl font-heading font-bold text-zinc-900 mt-2">Post-Mortem Report</h2>
-              <p className="text-sm text-zinc-600 mt-1">Project Apex - preliminary desk review</p>
+          {!postMortemFormCompleted ? (
+            <div className="w-full max-w-xl">
+              <SimulatorAccessGate
+                onComplete={() => setPostMortemFormCompleted(true)}
+                title="Unlock your post-mortem report"
+                description="Submit your details and CV to view the full deal execution report and recommended programme path."
+                submitLabel="View post-mortem report"
+              />
             </div>
-            <div className="px-8 py-8 space-y-6 text-sm text-zinc-800 leading-relaxed">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-100 pb-6">
-                <div>
-                  <p className="text-[10px] font-mono uppercase text-zinc-500 tracking-wide">Performance rating</p>
-                  <p className="text-2xl font-heading font-bold text-zinc-900 mt-1">{rating.title}</p>
-                </div>
-                <div className="text-left sm:text-right">
-                  <p className="text-[10px] font-mono uppercase text-zinc-500 tracking-wide">Live deal score</p>
-                  <p className="text-3xl font-mono font-bold text-zinc-900 tabular-nums">{rating.scorePercent}%</p>
-                  <p className="text-xs text-zinc-500">
-                    {rating.correctCount}/{SCENARIOS.length} workstreams
-                  </p>
-                </div>
+          ) : (
+            <div className="w-full max-w-2xl bg-[#fefefe] shadow-[0_12px_40px_rgba(0,0,0,0.18)] border border-zinc-300/80 rounded-sm overflow-hidden">
+              <div className="h-1.5 bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800" aria-hidden />
+              <div className="px-8 pt-8 pb-2 border-b border-zinc-200">
+                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">Norland Capital · Deal execution</p>
+                <h2 className="text-2xl font-heading font-bold text-zinc-900 mt-2">Post-Mortem Report</h2>
+                <p className="text-sm text-zinc-600 mt-1">Project Apex - preliminary desk review</p>
               </div>
-
-              <div>
-                <h3 className="text-xs font-heading font-bold text-zinc-900 uppercase tracking-widest">The hard truth</h3>
-                <p className="mt-2">{postMortemHardTruth(rating)}</p>
-              </div>
-
-              {rating.correctCount === SCENARIOS.length && (
-                <p className="text-zinc-700 border-l-2 border-emerald-600 pl-4">{POSITIVE_CLOSE_COPY}</p>
-              )}
-
-              <div className="rounded-sm bg-zinc-50 border border-zinc-200 p-5">
-                <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-500 mb-2">Recommended path</p>
-                <h3 className="font-heading text-2xl text-zinc-900 mb-2">{ctaCopy.title}</h3>
-                <p className="text-zinc-800 leading-relaxed">{ctaCopy.body}</p>
-                {!postMortemFormCompleted ? (
-                  <div className="mt-5">
-                    <SimulatorAccessGate
-                      onComplete={() => setPostMortemFormCompleted(true)}
-                      title="Unlock your recommended path"
-                      description="Submit your details and CV to unlock your programme recommendation and interview pathway options."
-                      submitLabel="Unlock recommendation"
-                    />
+              <div className="px-8 py-8 space-y-6 text-sm text-zinc-800 leading-relaxed">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-100 pb-6">
+                  <div>
+                    <p className="text-[10px] font-mono uppercase text-zinc-500 tracking-wide">Performance rating</p>
+                    <p className="text-2xl font-heading font-bold text-zinc-900 mt-1">{rating.title}</p>
                   </div>
-                ) : (
+                  <div className="text-left sm:text-right">
+                    <p className="text-[10px] font-mono uppercase text-zinc-500 tracking-wide">Live deal score</p>
+                    <p className="text-3xl font-mono font-bold text-zinc-900 tabular-nums">{rating.scorePercent}%</p>
+                    <p className="text-xs text-zinc-500">
+                      {rating.correctCount}/{SCENARIOS.length} workstreams
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xs font-heading font-bold text-zinc-900 uppercase tracking-widest">The hard truth</h3>
+                  <p className="mt-2">{postMortemHardTruth(rating)}</p>
+                </div>
+
+                {rating.correctCount === SCENARIOS.length && (
+                  <p className="text-zinc-700 border-l-2 border-emerald-600 pl-4">{POSITIVE_CLOSE_COPY}</p>
+                )}
+
+                <div className="rounded-sm bg-zinc-50 border border-zinc-200 p-5">
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-500 mb-2">Recommended path</p>
+                  <h3 className="font-heading text-2xl text-zinc-900 mb-2">{ctaCopy.title}</h3>
+                  <p className="text-zinc-800 leading-relaxed">{ctaCopy.body}</p>
                   <div className="mt-5">
                     <Button asChild size="lg" className="w-full sm:w-auto bg-black text-white hover:bg-zinc-800 font-semibold">
                       <Link href={ctaCopy.primaryHref}>
@@ -411,11 +411,11 @@ export default function DayOneSimulator() {
                       <Link href={ctaCopy.secondaryHref}>{ctaCopy.secondaryLabel}</Link>
                     </Button>
                   </div>
-                )}
-                <p className="text-xs text-zinc-500 mt-4">{CONVERSION_WALL_COPY}</p>
+                  <p className="text-xs text-zinc-500 mt-4">{CONVERSION_WALL_COPY}</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
