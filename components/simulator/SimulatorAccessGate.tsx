@@ -21,6 +21,9 @@ export type SimulatorRegistrationForm = {
 
 type SimulatorAccessGateProps = {
   onComplete: () => void;
+  title?: string;
+  description?: string;
+  submitLabel?: string;
 };
 
 const inputClassName =
@@ -28,13 +31,21 @@ const inputClassName =
 
 const labelClassName = "block text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-1.5";
 
-export default function SimulatorAccessGate({ onComplete }: SimulatorAccessGateProps) {
+export default function SimulatorAccessGate({
+  onComplete,
+  title = "Register before you begin",
+  description = "The simulator uses live deal judgment scenarios from the Norland desk. Share your profile and resume so we can review your background and follow up on GCPE or PGP if relevant.",
+  submitLabel = "Continue to simulator",
+}: SimulatorAccessGateProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<SimulatorRegistrationForm>();
+  const resumeList = watch("resume");
+  const selectedResume = resumeList?.[0];
 
   const onSubmit = async (data: SimulatorRegistrationForm) => {
     setSubmitError(null);
@@ -54,16 +65,18 @@ export default function SimulatorAccessGate({ onComplete }: SimulatorAccessGateP
     body.append("experienceLevel", data.experienceLevel);
     body.append("peGoal", data.peGoal ?? "");
     body.append("resume", file);
+    body.append("submissionId", `${data.email.trim().toLowerCase()}-sim-${Date.now()}`);
 
     try {
       const response = await fetch("/api/simulator/register", {
         method: "POST",
         body,
       });
-      const result = (await response.json()) as { error?: string; success?: boolean };
+      const result = (await response.json()) as { error?: string; details?: string; success?: boolean };
 
       if (!response.ok) {
-        setSubmitError(result.error ?? "Registration failed. Please try again.");
+        const detail = result.details ? ` (${result.details.slice(0, 120)})` : "";
+        setSubmitError((result.error ?? "Registration failed. Please try again.") + detail);
         return;
       }
 
@@ -84,11 +97,10 @@ export default function SimulatorAccessGate({ onComplete }: SimulatorAccessGateP
         Norland Academy · Day One Analyst Simulator
       </p>
       <h1 className="text-2xl sm:text-3xl font-heading font-bold text-black tracking-tight">
-        Register before you begin
+        {title}
       </h1>
       <p className="text-sm text-zinc-600 mt-3 leading-relaxed">
-        The simulator uses live deal judgment scenarios from the Norland desk. Share your profile and resume so we can
-        review your background and follow up on GCPE or PGP if relevant.
+        {description}
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4" noValidate>
@@ -246,6 +258,12 @@ export default function SimulatorAccessGate({ onComplete }: SimulatorAccessGateP
                   <span className="block text-xs text-zinc-500 mt-0.5">PDF or Word, max 5 MB</span>
                 </span>
               </label>
+              {selectedResume ? (
+                <div className="mt-2 rounded border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
+                  Selected: <span className="font-semibold">{selectedResume.name}</span> (
+                  {Math.round(selectedResume.size / 1024)} KB)
+                </div>
+              ) : null}
             </div>
             {errors.resume && (
               <p className="text-red-600 text-xs mt-1" role="alert">
@@ -279,7 +297,7 @@ export default function SimulatorAccessGate({ onComplete }: SimulatorAccessGateP
             </>
           ) : (
             <>
-              Continue to simulator
+              {submitLabel}
               <ArrowRight className="ml-2 h-4 w-4" />
             </>
           )}

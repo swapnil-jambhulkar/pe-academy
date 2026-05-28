@@ -26,21 +26,14 @@ import WorkstationFrame from "./WorkstationFrame";
 import ScenarioSimulationPanel from "./ScenarioSimulationPanel";
 import VdrSideColumn from "./VdrSideColumn";
 import SimulatorAccessGate from "./SimulatorAccessGate";
-import { hasSimulatorAccess } from "@/lib/simulator/access";
 
 export default function DayOneSimulator() {
   const [state, dispatch] = useReducer(simulatorReducer, initialSimulatorState);
   const [mailSelected, setMailSelected] = useState("briefing");
   const [vdrSelectedId, setVdrSelectedId] = useState<string | null>(null);
-  const [accessGranted, setAccessGranted] = useState(false);
-  const [accessChecked, setAccessChecked] = useState(false);
+  const [postMortemFormCompleted, setPostMortemFormCompleted] = useState(false);
   const [vdrWidthPercent, setVdrWidthPercent] = useState(42);
   const [mailboxWidthPx, setMailboxWidthPx] = useState(240);
-
-  useEffect(() => {
-    setAccessGranted(hasSimulatorAccess());
-    setAccessChecked(true);
-  }, []);
 
   const thread = useMemo(() => buildMailThread(state), [state]);
   const selectedMail = thread.find((m) => m.id === mailSelected) ?? thread[0];
@@ -397,19 +390,28 @@ export default function DayOneSimulator() {
                 <p className="text-[10px] uppercase tracking-[0.15em] text-zinc-500 mb-2">Recommended path</p>
                 <h3 className="font-heading text-2xl text-zinc-900 mb-2">{ctaCopy.title}</h3>
                 <p className="text-zinc-800 leading-relaxed">{ctaCopy.body}</p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="mt-5 w-full sm:w-auto bg-black text-white hover:bg-zinc-800 font-semibold"
-                >
-                  <Link href={ctaCopy.primaryHref}>
-                    {ctaCopy.primaryLabel}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="mt-3 w-full sm:w-auto sm:ml-3">
-                  <Link href={ctaCopy.secondaryHref}>{ctaCopy.secondaryLabel}</Link>
-                </Button>
+                {!postMortemFormCompleted ? (
+                  <div className="mt-5">
+                    <SimulatorAccessGate
+                      onComplete={() => setPostMortemFormCompleted(true)}
+                      title="Unlock your recommended path"
+                      description="Submit your details and CV to unlock your programme recommendation and interview pathway options."
+                      submitLabel="Unlock recommendation"
+                    />
+                  </div>
+                ) : (
+                  <div className="mt-5">
+                    <Button asChild size="lg" className="w-full sm:w-auto bg-black text-white hover:bg-zinc-800 font-semibold">
+                      <Link href={ctaCopy.primaryHref}>
+                        {ctaCopy.primaryLabel}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="mt-3 w-full sm:w-auto sm:ml-3">
+                      <Link href={ctaCopy.secondaryHref}>{ctaCopy.secondaryLabel}</Link>
+                    </Button>
+                  </div>
+                )}
                 <p className="text-xs text-zinc-500 mt-4">{CONVERSION_WALL_COPY}</p>
               </div>
             </div>
@@ -418,22 +420,6 @@ export default function DayOneSimulator() {
       )}
     </AnimatePresence>
   );
-
-  if (!accessChecked) {
-    return (
-      <div className="min-h-[calc(100vh-5rem)] bg-zinc-100 flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-xl mx-auto h-48 rounded-xl border border-zinc-200 bg-white animate-pulse" aria-hidden />
-      </div>
-    );
-  }
-
-  if (!accessGranted) {
-    return (
-      <div className="min-h-[calc(100vh-5rem)] bg-zinc-100 flex items-center justify-center px-4 py-12 font-sans text-zinc-900">
-        <SimulatorAccessGate onComplete={() => setAccessGranted(true)} />
-      </div>
-    );
-  }
 
   return (
     <div
@@ -444,7 +430,10 @@ export default function DayOneSimulator() {
       {immersive ? (
         <WorkstationFrame
           activeWindowTitle={activeWindowTitle}
-          onReset={() => dispatch({ type: "RESET" })}
+          onReset={() => {
+            dispatch({ type: "RESET" });
+            setPostMortemFormCompleted(false);
+          }}
           timerActive={timerActive}
           statusLabel={stageLabel}
         >
