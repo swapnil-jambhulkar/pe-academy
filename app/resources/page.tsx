@@ -15,8 +15,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
-import { useCurrency } from "@/hooks/useCurrency";
-import { formatPrice, getPrice, getStarterKitPaymentLink, getIndividualResourcePaymentLink, type Currency } from "@/lib/currency";
 
 const resources = [
   {
@@ -64,26 +62,6 @@ const resources = [
 ];
 
 export default function ResourcesPage() {
-  const { currency } = useCurrency();
-  const individualPrice = getPrice(currency, "individualResource");
-  const bundlePrice = getPrice(currency, "resourceBundle");
-
-  const handleBuyResource = (resourceId: string) => {
-    // Redirect directly to payment link
-    const paymentLink = getIndividualResourcePaymentLink(currency);
-    if (paymentLink && !paymentLink.includes("[")) {
-      window.open(paymentLink, "_blank");
-    } else {
-      // Fallback if link not set up yet
-      alert("Payment link is being set up. Please contact us at admissions@norlandacademy.com");
-    }
-  };
-
-  const handleBuyBundle = () => {
-    // Redirect to Starter Kit payment link (same as bundle)
-    window.open(getStarterKitPaymentLink(currency), "_blank");
-  };
-
   return (
     <div>
       {/* Hero Section */}
@@ -265,7 +243,7 @@ export default function ResourcesPage() {
                 Individual Resources
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                Each resource is {formatPrice(individualPrice, currency)}. Buy individually or get the full bundle.
+                Request individual resources or get the full bundle through admissions.
               </p>
             </motion.div>
 
@@ -301,10 +279,12 @@ export default function ResourcesPage() {
                         <Button
                           variant="default"
                           className="w-full bg-black text-white hover:bg-gray-800 py-6 text-base font-bold"
-                          onClick={() => handleBuyResource(resource.id)}
+                          asChild
                         >
-                          <ShoppingCart className="mr-2 h-4 w-4" />
-                          Buy Now - {formatPrice(individualPrice, currency)}
+                          <Link href="/contact">
+                            <ShoppingCart className="mr-2 h-4 w-4" />
+                            Request access
+                          </Link>
                         </Button>
                       </CardContent>
                     </Card>
@@ -341,22 +321,12 @@ export default function ResourcesPage() {
                       </div>
                     </div>
 
-                    {/* Title & Price */}
+                    {/* Title */}
                     <div className="text-center mb-5">
                       <h2 className="text-2xl font-heading font-bold text-white mb-3">
                         Get Everything + Community
                       </h2>
-                      <div className="flex items-baseline justify-center gap-2 mb-1">
-                        <span className="text-4xl font-heading font-bold text-white">
-                          {formatPrice(bundlePrice, currency)}
-                        </span>
-                        <span className="text-xl text-white/40 line-through">
-                          {formatPrice(individualPrice * resources.length, currency)}
-                        </span>
-                      </div>
-                      <p className="text-sm text-green-400 font-medium">
-                        Save {formatPrice(individualPrice * resources.length - bundlePrice, currency)}
-                      </p>
+                      <p className="text-sm text-white/70">Contact admissions for full playground access</p>
                     </div>
 
                     {/* Includes - Compact Grid */}
@@ -384,10 +354,12 @@ export default function ResourcesPage() {
                       variant="default"
                       size="lg"
                       className="w-full bg-white text-black hover:bg-gray-100 font-bold py-4 text-base shadow-xl"
-                      onClick={handleBuyBundle}
+                      asChild
                     >
-                      Get Playground Access
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <Link href="/contact">
+                        Request playground access
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
                     </Button>
 
                     {/* Trust */}
@@ -414,17 +386,7 @@ export default function ResourcesPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-center mb-8">
-                    <div className="flex items-center justify-center gap-3 mb-2">
-                      <span className="text-5xl font-heading font-bold text-white">
-                        {formatPrice(bundlePrice, currency)}
-                      </span>
-                      <span className="text-2xl text-white/40 line-through">
-                        {formatPrice(individualPrice * resources.length, currency)}
-                      </span>
-                    </div>
-                    <p className="text-sm text-white/70">
-                      Save {formatPrice(individualPrice * resources.length - bundlePrice, currency)} • Lifetime access
-                    </p>
+                    <p className="text-sm text-white/70">Contact admissions for full playground access • Lifetime access</p>
                   </div>
 
                   <div className="bg-white/10 rounded-lg p-6 mb-6 border border-white/20">
@@ -463,15 +425,17 @@ export default function ResourcesPage() {
                     variant="default"
                     size="lg"
                     className="w-full bg-white text-black hover:bg-gray-100 text-xl font-bold mb-4 shadow-2xl hover:shadow-white/50 transition-all duration-300 py-6 uppercase tracking-wide"
-                    onClick={handleBuyBundle}
+                    asChild
                   >
-                    Get Full Access
-                    <ArrowRight className="ml-2 h-6 w-6" />
+                    <Link href="/contact">
+                      Request full access
+                      <ArrowRight className="ml-2 h-6 w-6" />
+                    </Link>
                   </Button>
 
                   <div className="flex items-center gap-2 justify-center text-sm text-white/80 bg-white/10 rounded-lg p-3 border border-white/20">
                     <Check className="h-4 w-4 text-white" />
-                    <span className="font-medium">3-day refund guarantee • No questions asked</span>
+                    <span className="font-medium">Contact admissions to enrol</span>
                   </div>
                 </CardContent>
               </Card>
@@ -506,7 +470,7 @@ export default function ResourcesPage() {
                 {
                   step: "2",
                   title: "Choose Your Path",
-                  description: `Buy individual resources (${formatPrice(individualPrice, currency)} each) or get full playground access with challenges and community.`,
+                  description: "Request individual resources or full playground access with challenges and community.",
                 },
                 {
                   step: "3",

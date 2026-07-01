@@ -27,7 +27,7 @@ const faqs = [
   {
     question: "What's your refund policy?",
     answer:
-      "GCPE and PGP payments are final once enrolment is confirmed, due to limited cohort places and resources allocated per participant. Review programme details before you apply.",
+      "GCPE and PGP enrolment is confirmed after offer acceptance. Cohort places are limited. Review programme details before you apply.",
   },
   {
     question: "Do you guarantee job placement?",

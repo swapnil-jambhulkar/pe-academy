@@ -188,8 +188,6 @@ const gcpeProgram = {
   description:
     "Full Graduate Certificate track. Work on 4-5 deals, complete advanced structuring modules, and pass the final GCPE examination.",
   spots: "10 spots only",
-  foundingPrice: "£400 (approx. ₹52,000)",
-  standardPrice: "£1,000",
   features: [
     "Work on 4-5 real deals end-to-end",
     "Full due diligence experience",
@@ -414,8 +412,8 @@ export default function CohortPage() {
         </div>
       </section>
 
-      {/* Tuition & Scholarship - Institutional Grade Design */}
-      <section className="py-12 md:py-24 bg-gray-50 border-b border-gray-200" id="tuition">
+      {/* Application-based cohort */}
+      <section className="py-12 md:py-24 bg-gray-50 border-b border-gray-200" id="apply">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -425,15 +423,14 @@ export default function CohortPage() {
             className="text-center mb-8 md:mb-16"
           >
             <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase mb-2 md:mb-4">
-              Investment
+              Admissions
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-black mb-4 md:mb-6">
-              Tuition & Founding Cohort
+              Application-based cohort
             </h2>
             <div className="w-12 md:w-16 h-px bg-black mx-auto"></div>
           </motion.div>
 
-          {/* Investment Card - Mobile Optimized */}
           <div className="max-w-2xl mx-auto px-2 md:px-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -442,29 +439,11 @@ export default function CohortPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <div className="bg-white border border-gray-200 rounded-lg p-6 md:p-10 lg:p-12 text-center">
-                {/* Tuition - Smaller on mobile */}
-                <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase mb-2 md:mb-3">
-                  Tuition Fee
+                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 max-w-md mx-auto leading-relaxed">
+                  GCPE admits by application only. Submit your profile, complete the screening assignment, and receive
+                  an offer after the fit conversation with our programme team.
                 </p>
-                <div className="text-2xl md:text-4xl text-gray-400 font-heading font-bold mb-1 line-through">
-                  £1,000
-                </div>
-                
-                <div className="my-4 md:my-6">
-                  <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-black uppercase mb-2 md:mb-3">
-                    Founding cohort tuition
-                  </p>
-                  <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-black">
-                    £400
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">Approx. ₹52,000</p>
-                </div>
-                
-                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 max-w-md mx-auto">
-                  Scholarship-adjusted GCPE tuition is £400 (approx. ₹52,000). Standard tuition is £1,000.
-                </p>
-                
-                {/* CTA Button - Full width on mobile */}
+
                 <Button
                   size="lg"
                   className="w-full md:w-auto bg-black text-white hover:bg-gray-800 font-semibold px-8 md:px-10 py-5 md:py-6 text-sm md:text-base"
@@ -473,9 +452,9 @@ export default function CohortPage() {
                   Apply for GCPE
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Button>
-                
+
                 <p className="text-[10px] md:text-xs text-gray-400 mt-4 md:mt-6">
-                  10 places • Starts {cohortStartShort} • No refunds
+                  10 places • Starts {cohortStartShort} • Selective admissions
                 </p>
               </div>
             </motion.div>
@@ -515,11 +494,9 @@ export default function CohortPage() {
                     <CardTitle className="text-xl font-heading text-white">{gcpeProgram.name}</CardTitle>
                     <p className="text-xs text-white/50 mt-1">{gcpeProgram.spots}</p>
                   </div>
-                  <div className="text-right shrink-0">
-                    <span className="text-sm line-through text-white/40">{gcpeProgram.standardPrice}</span>
-                    <p className="text-[10px] uppercase tracking-wider mt-1 text-white/60">Founding cohort</p>
-                    <span className="text-2xl font-heading font-bold text-white">{gcpeProgram.foundingPrice}</span>
-                  </div>
+                  <span className="px-2 py-1 bg-white/10 text-white text-[10px] font-semibold uppercase rounded border border-white/20">
+                    Application-based cohort
+                  </span>
                 </div>
 
                 <CardDescription className="text-sm mb-4 leading-relaxed text-white/70">
@@ -873,9 +850,9 @@ export default function CohortPage() {
                     "No prior finance experience is required. The programme is designed for ambitious professionals breaking into PE from non-traditional backgrounds. However, basic Excel skills and a willingness to learn are essential.",
                 },
                 {
-                  question: "What is the programme fee?",
+                  question: "How does admissions work?",
                   answer:
-                    "GCPE tuition is £1,000 before scholarship and £400 (approx. ₹52,000) after scholarship. PGP tuition is £3,000 before scholarship and £2,000 after scholarship, plus taxes as per government rules.",
+                    "GCPE and PGP are application-based cohorts. Submit your application, complete the screening assignment, and attend a fit conversation. Offers are issued selectively after review. Contact admissions for programme documentation if your employer requires it.",
                 },
                 {
                   question: "What if I miss a live session?",
@@ -890,7 +867,7 @@ export default function CohortPage() {
                 {
                   question: "What's your refund policy?",
                   answer:
-                    "For the GCPE programme, all payments are final and non-refundable once enrolment is confirmed, due to limited spots and resources allocated per participant. Please ensure you can commit before applying.",
+                    "Enrolment is confirmed after offer acceptance. Cohort places are limited and allocated per participant. Please ensure you can commit before applying.",
                 },
                 {
                   question: "Do you guarantee job placement?",

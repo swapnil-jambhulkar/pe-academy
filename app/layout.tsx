@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import ScrollToTop from "@/components/ui/scroll-to-top";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 // Using Inter for all text - clean, professional, matches corporate PE firm aesthetic
 // Optimized: Only loading weights we actually use (400, 500, 600, 700)
@@ -100,10 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <ScrollToTop />
+        <SiteChrome>{children}</SiteChrome>
         <Analytics />
       </body>
     </html>

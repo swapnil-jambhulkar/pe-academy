@@ -1,56 +1,74 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { saveContactSubmission } from "@/lib/google/submissions";
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, subject, message } = body;
+    const { name, email, subject, message, submissionId } = body as {
+      name?: string;
+      email?: string;
+      subject?: string;
+      message?: string;
+      submissionId?: string;
+    };
 
-    // Validate required fields
     if (!name || !email || !subject || !message) {
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    }
+
+    if (!EMAIL_REGEX.test(email)) {
+      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
+    }
+
+    const submittedAt = new Date().toISOString();
+    const resolvedSubmissionId =
+      submissionId || `${email.trim().toLowerCase()}-${submittedAt}`;
+
+    const storageResult = await saveContactSubmission({
+      submittedAt,
+      submissionId: resolvedSubmissionId,
+      name,
+      email,
+      subject,
+      message,
+    });
+
+    if (!storageResult.ok) {
       return NextResponse.json(
-        { error: "All fields are required" },
-        { status: 400 }
+        {
+          error: storageResult.error || "Contact could not be saved.",
+          details: storageResult.details,
+        },
+        { status: 502 }
       );
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: "Invalid email address" },
-        { status: 400 }
-      );
-    }
-
-    // Check if Resend API key is configured
     if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not configured");
-      // Fallback: log to console if API key is missing
       console.log("Contact Form Submission:", {
         name,
         email,
         subject,
-        message,
-        timestamp: new Date().toISOString(),
+        submissionId: resolvedSubmissionId,
+        submittedAt,
+        storage: storageResult.method,
       });
-      
       return NextResponse.json(
-        { 
-          success: true, 
-          message: "Thank you! Your message has been received. We'll get back to you soon." 
+        {
+          success: true,
+          message: "Thank you! Your message has been received. We'll get back to you soon.",
         },
         { status: 200 }
       );
     }
 
-    // Initialize Resend only when needed (not at module level)
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // Send email using Resend
     try {
       await resend.emails.send({
-        from: "Norland Academy <onboarding@resend.dev>", // Change to your verified domain
+        from: "Norland Academy <onboarding@resend.dev>",
         to: ["contact@norlandcapital.co.uk"],
         replyTo: email,
         subject: `Contact Form: ${subject}`,
@@ -78,22 +96,17 @@ export async function POST(request: NextRequest) {
       });
     } catch (emailError) {
       console.error("Resend email error:", emailError);
-      // Still return success to user, but log the error
     }
 
     return NextResponse.json(
-      { 
-        success: true, 
-        message: "Thank you! Your message has been sent. We'll get back to you soon." 
+      {
+        success: true,
+        message: "Thank you! Your message has been sent. We'll get back to you soon.",
       },
       { status: 200 }
     );
   } catch (error) {
     console.error("Contact form error:", error);
-    return NextResponse.json(
-      { error: "Failed to send message. Please try again later." },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to send message. Please try again later." }, { status: 500 });
   }
 }
-

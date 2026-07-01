@@ -137,8 +137,6 @@ export default function PgpPage() {
                 <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Workshops</span><span className="font-semibold text-black">3 in-person convenings</span></div>
                 <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Apply by</span><span className="font-semibold text-black">30 June 2026</span></div>
                 <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Begins</span><span className="font-semibold text-black">20 July 2026</span></div>
-                <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Fee (before scholarship)</span><span className="font-semibold text-black">£3,000 + taxes</span></div>
-                <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Fee (after scholarship)</span><span className="font-semibold text-black">£2,000 + taxes</span></div>
               </div>
               <Button className="w-full mt-6 bg-black text-white hover:bg-gray-900" asChild>
                 <Link href="/contact">
@@ -272,20 +270,20 @@ export default function PgpPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-start">
             <div>
-              <h2 className="font-heading text-5xl leading-[1.02] mb-5 text-white">Application process and fees</h2>
+              <h2 className="font-heading text-5xl leading-[1.02] mb-5 text-white">Application process</h2>
               <div className="border-t border-white/25 pt-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/60 mb-2">Programme fee</p>
-                <p className="font-heading text-5xl text-white">£2,000 + taxes</p>
+                <p className="text-xs uppercase tracking-[0.16em] text-white/60 mb-2">Admissions model</p>
+                <p className="font-heading text-3xl text-white">Application-based cohort</p>
                 <p className="text-xs text-white/60 mt-3">
-                  Standard fee is £3,000 + taxes before scholarship. Scholarship-adjusted fee is £2,000 + taxes.
-                  Fees are non-refundable once enrolled. Deferrals may be reviewed on documented grounds.
+                  PGP admits selectively after profile review, screening assignment, and fit conversation. Offers are
+                  issued to candidates who meet programme standards. Deferrals may be reviewed on documented grounds.
                 </p>
               </div>
             </div>
             <div className="border border-white/25 bg-white text-black">
               {[
                 ["Eligibility", "Undergraduate degree in any field. Prior transaction exposure is preferred but not mandatory."],
-                ["Scholarships", "Merit scholarships are considered for high-potential applicants in limited numbers."],
+                ["Merit review", "High-potential applicants are considered in limited numbers after application review."],
                 ["Corporate sponsorship", "Employer-sponsored seats are available for institutions developing analyst pipelines."],
                 ["More questions", "For profile fit, timelines, and sponsorship details, contact admissions directly."],
               ].map(([title, copy]) => (

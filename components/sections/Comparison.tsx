@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { Check, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useCurrency } from "@/hooks/useCurrency";
-import { formatPrice, getPrice } from "@/lib/currency";
 
 const keyDifferences = [
   { feature: "Real Deal Access", starterKit: false, cohort: true },
@@ -25,8 +23,6 @@ const sharedFeatures = [
 ];
 
 export default function Comparison() {
-  const { currency } = useCurrency();
-
   return (
     <section className="min-h-screen flex items-center bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
@@ -78,7 +74,7 @@ export default function Comparison() {
               </div>
               <div className="p-4 text-center border-l border-gray-300">
                 <p className="text-sm text-gray-600 uppercase tracking-wider font-semibold">Starter Kit</p>
-                <p className="text-xs text-gray-400 mt-1">{formatPrice(getPrice(currency, "starterKit"), currency)}</p>
+                <p className="text-xs text-gray-400 mt-1">Request access</p>
               </div>
               <div className="p-4 text-center border-l border-gray-300 bg-black text-white">
                 <p className="text-sm text-white uppercase tracking-wider font-semibold">Cohort</p>
@@ -130,7 +126,7 @@ export default function Comparison() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-gray-700">
                   <span className="text-gray-400 mt-1">•</span>
-                  <span>You have a limited budget ({formatPrice(getPrice(currency, "starterKit"), currency)})</span>
+                  <span>You want self-paced resources first</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-gray-700">
                   <span className="text-gray-400 mt-1">•</span>

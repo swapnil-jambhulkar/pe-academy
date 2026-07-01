@@ -20,18 +20,23 @@ export default function ContactPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
+    if (isSubmitting) return;
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          submissionId: `${data.email.trim().toLowerCase()}-${Date.now()}`,
+        }),
       });
 
       const result = await response.json();
@@ -219,8 +224,14 @@ export default function ContactPage() {
                           )}
                         </div>
 
-                        <Button type="submit" variant="default" className="w-full bg-black text-white hover:bg-gray-800" size="lg">
-                          Send Message
+                        <Button
+                          type="submit"
+                          variant="default"
+                          disabled={isSubmitting}
+                          className="w-full bg-black text-white hover:bg-gray-800 disabled:opacity-60"
+                          size="lg"
+                        >
+                          {isSubmitting ? "Sending..." : "Send Message"}
                           <Send className="ml-2 h-4 w-4" />
                         </Button>
                       </form>

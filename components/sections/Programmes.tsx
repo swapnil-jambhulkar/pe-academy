@@ -45,11 +45,9 @@ export default function Programmes() {
                     {GCPE.duration}
                   </span>
                 </div>
-                <div className="text-right shrink-0">
-                  <span className="text-sm line-through text-gray-400">{GCPE.standardPrice}</span>
-                  <p className="text-[10px] uppercase tracking-wide text-gray-500">Founding cohort</p>
-                  <p className="text-2xl font-heading font-bold">{GCPE.foundingPrice}</p>
-                </div>
+                <span className="px-2 py-1 bg-black text-white text-[10px] font-semibold uppercase rounded border border-black">
+                  Application-based cohort
+                </span>
               </div>
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">{GCPE.tagline}</p>
               <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">{GCPE.shortName}</h3>

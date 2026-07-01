@@ -21,8 +21,6 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
-import { useCurrency } from "@/hooks/useCurrency";
-import { formatPrice, getPrice, getStarterKitPaymentLink, type Currency } from "@/lib/currency";
 
 const features = [
   {
@@ -76,8 +74,6 @@ const features = [
 ];
 
 export default function StarterKitPage() {
-  const { currency } = useCurrency();
-
   return (
     <div>
       {/* Hero Section */}
@@ -158,7 +154,7 @@ export default function StarterKitPage() {
               
               <div className="flex items-center justify-center gap-2 text-white/60 text-xs mb-8">
                 <AlertCircle className="h-3 w-3" />
-                <span>Lifetime access • 3-day money-back guarantee</span>
+                <span>Lifetime access • Contact for enrolment</span>
               </div>
 
               {/* CTA */}
@@ -169,10 +165,10 @@ export default function StarterKitPage() {
                   asChild
                   className="w-full bg-white text-black hover:bg-gray-100 font-bold py-5 text-base shadow-xl shadow-white/10"
                 >
-                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                    Get Access - {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
+                  <Link href="/contact">
+                    Request access
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
+                  </Link>
                 </Button>
                 
                 <Button
@@ -228,7 +224,7 @@ export default function StarterKitPage() {
               
               <div className="flex items-center justify-center gap-2 text-white/60 text-sm mb-10">
                 <AlertCircle className="h-4 w-4" />
-                <span>Lifetime access • One-time payment • 3-day money-back guarantee</span>
+                <span>Lifetime access • Contact for enrolment</span>
               </div>
 
               {/* CTA */}
@@ -239,10 +235,10 @@ export default function StarterKitPage() {
                   className="bg-white text-black hover:bg-gray-100 text-base font-semibold px-8 py-6"
                   asChild
                 >
-                  <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                    Get Access - {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
+                  <Link href="/contact">
+                    Request access
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -625,10 +621,10 @@ export default function StarterKitPage() {
                 className="bg-black text-white hover:bg-gray-900 text-lg font-bold px-8 py-6 uppercase tracking-wide"
                 asChild
               >
-                <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                  Get Started Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+                <Link href="/contact" className="flex items-center justify-center gap-2">
+                  Request access
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -1025,17 +1021,8 @@ export default function StarterKitPage() {
                 </p>
               </div>
 
-              {/* Price */}
               <div className="text-center mb-6">
-                <div className="flex items-center justify-center gap-3 mb-1">
-                  <span className="text-4xl font-heading font-bold text-white">
-                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                  </span>
-                  <span className="text-xl text-white/40 line-through">
-                    {formatPrice(getPrice(currency, "starterKit"), currency)}
-                  </span>
-                </div>
-                <p className="text-white/60 text-sm">One-time payment • Lifetime access</p>
+                <p className="text-white/80 text-sm">Contact admissions for access details</p>
               </div>
 
               {/* What You Get */}
@@ -1064,16 +1051,16 @@ export default function StarterKitPage() {
                 className="w-full bg-white text-black hover:bg-gray-50 font-bold py-5 text-lg shadow-2xl mb-4"
                 asChild
               >
-                <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer">
-                  Get Access Now
+                <Link href="/contact">
+                  Request access
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+                </Link>
               </Button>
 
               {/* Trust */}
               <div className="flex items-center justify-center gap-2 text-sm text-white/60">
                 <Shield className="h-4 w-4" />
-                <span>3-day refund guarantee</span>
+                <span>Contact admissions to enrol</span>
               </div>
 
               {/* Cohort Link */}
@@ -1095,10 +1082,10 @@ export default function StarterKitPage() {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
-                  All This for Less Than a Textbook
+                  Full playground access
                 </h2>
                 <p className="text-lg text-white/80">
-                  Real deals. Partner feedback. Community. Roadmaps. One price, lifetime access.
+                  Real deals. Partner feedback. Community. Roadmaps. Lifetime access.
                 </p>
               </motion.div>
 
@@ -1109,16 +1096,9 @@ export default function StarterKitPage() {
                       <div className="inline-block px-3 py-1.5 bg-green-500/20 rounded-full border border-green-400/50 mb-3">
                         <span className="text-green-200 text-xs font-semibold uppercase tracking-wide">Playground Access</span>
                       </div>
-                      <div className="flex items-center justify-center gap-3">
-                        <div className="text-5xl font-heading font-bold text-white">
-                          {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                        </div>
-                        <div className="text-3xl font-heading font-bold text-white/40 line-through">
-                          {formatPrice(getPrice(currency, "starterKit"), currency)}
-                        </div>
-                      </div>
+                      <p className="text-white/80 text-sm">Contact admissions for access details</p>
                     </div>
-                    <p className="text-white/80 text-sm mb-3">One-time payment • Lifetime access • All future updates</p>
+                    <p className="text-white/80 text-sm mb-3">Lifetime access • All future updates</p>
                   </div>
 
                   <div className="bg-white/10 rounded-lg p-4 mb-6 border border-white/20">
@@ -1166,10 +1146,10 @@ export default function StarterKitPage() {
                       className="w-full bg-white text-black hover:bg-gray-50 font-bold shadow-xl py-4 uppercase tracking-wide"
                       asChild
                     >
-                      <a href={getStarterKitPaymentLink(currency)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                        Get Access Now
+                      <Link href="/contact" className="flex items-center justify-center gap-2">
+                        Request access
                         <ArrowRight className="h-4 w-4" />
-                      </a>
+                      </Link>
                     </Button>
                     
                     <Button
@@ -1187,7 +1167,7 @@ export default function StarterKitPage() {
 
                   <div className="flex items-center gap-2 justify-center text-xs text-white bg-white/10 rounded-lg p-2.5 border border-white/20">
                     <Shield className="h-3.5 w-3.5 text-white" />
-                    <span className="font-medium">3-day refund guarantee • No questions asked</span>
+                    <span className="font-medium">Contact admissions to enrol</span>
                   </div>
                 </CardContent>
               </Card>
@@ -1211,7 +1191,7 @@ export default function StarterKitPage() {
               Everything in the Playground
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Real challenges. Real feedback. Real community. All for one price.
+              Real challenges. Real feedback. Real community.
             </p>
           </motion.div>
 

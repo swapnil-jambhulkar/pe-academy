@@ -10,7 +10,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Programme structure, fees, and admissions for GCPE, PGP, and the Day One Simulator.
+            Programme structure and admissions for GCPE, PGP, and the Day One Simulator.
           </p>
         </div>
       </section>

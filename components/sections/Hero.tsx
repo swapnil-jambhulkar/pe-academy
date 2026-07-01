@@ -53,8 +53,6 @@ export default function Hero() {
             <div className="space-y-3 py-1">
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">GCPE</span><span className="font-semibold">12 weeks</span></div>
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">PGP</span><span className="font-semibold">48 weeks</span></div>
-              <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">GCPE fee</span><span className="font-semibold">£1,000 / £400</span></div>
-              <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">PGP fee</span><span className="font-semibold">£3,000 / £2,000 + taxes</span></div>
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Funnel</span><span className="font-semibold">Day One Simulator</span></div>
             </div>
             <Button className="w-full mt-6 bg-black text-white hover:bg-gray-900" asChild>

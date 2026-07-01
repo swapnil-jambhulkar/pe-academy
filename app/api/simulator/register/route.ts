@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { saveSimulatorSubmission } from "@/lib/google/submissions";
 
 const MAX_RESUME_BYTES = 5 * 1024 * 1024;
 const ALLOWED_RESUME_TYPES = new Set([
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
     const organization = getString(formData, "organization");
     const experienceLevel = getString(formData, "experienceLevel");
     const peGoal = getString(formData, "peGoal");
+    const submissionId = getString(formData, "submissionId");
 
     const resume = formData.get("resume");
 
@@ -67,9 +69,14 @@ export async function POST(request: NextRequest) {
 
     const submittedAt = new Date().toISOString();
     const safeName = escapeHtml(fullName);
-    const safeEmail = escapeHtml(email);
 
-    const payloadSummary = {
+    const resumeBuffer = Buffer.from(await resume.arrayBuffer());
+    const resolvedSubmissionId =
+      submissionId || `${email.trim().toLowerCase()}-sim-${Date.now()}`;
+
+    const storageResult = await saveSimulatorSubmission({
+      submittedAt,
+      submissionId: resolvedSubmissionId,
       fullName,
       email,
       phone,
@@ -79,12 +86,29 @@ export async function POST(request: NextRequest) {
       experienceLevel,
       peGoal,
       resumeFileName: resume.name,
+      resumeMimeType: resume.type,
       resumeSize: resume.size,
-      submittedAt,
-    };
+      resumeBytes: resumeBuffer,
+    });
+
+    if (!storageResult.ok) {
+      return NextResponse.json(
+        {
+          error: storageResult.error || "Simulator submission could not be saved.",
+          details: storageResult.details,
+        },
+        { status: 502 }
+      );
+    }
 
     if (!process.env.RESEND_API_KEY) {
-      console.log("Simulator registration (no RESEND_API_KEY):", payloadSummary);
+      console.log("Simulator registration:", {
+        fullName,
+        email,
+        submittedAt,
+        storage: storageResult.method,
+        resumeUrl: storageResult.resumeUrl,
+      });
       return NextResponse.json(
         {
           success: true,
@@ -95,7 +119,6 @@ export async function POST(request: NextRequest) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const resumeBuffer = Buffer.from(await resume.arrayBuffer());
     const adminTo = process.env.SIMULATOR_ADMIN_EMAIL ?? "contact@norlandcapital.co.uk";
 
     const detailRows = [
@@ -108,6 +131,7 @@ export async function POST(request: NextRequest) {
       ["Experience", experienceLevel],
       ["PE goal", peGoal || "Not provided"],
       ["Submitted", submittedAt],
+      ["Resume", storageResult.resumeUrl || "Uploaded to Drive"],
     ]
       .map(
         ([label, value]) =>
@@ -169,9 +193,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Simulator registration error:", error);
-    return NextResponse.json(
-      { error: "Registration failed. Please try again." },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Registration failed. Please try again." }, { status: 500 });
   }
 }

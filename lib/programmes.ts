@@ -10,8 +10,7 @@ export const GCPE = {
   audience: "Junior analysts, investment bankers, and chartered accountants who need day-one execution capability.",
   narrative:
     "A localized, live-fire deal desk experience. You enter a real data room from the Norland pipeline, build the LBO, and present your investment memo. You leave with raw execution capability.",
-  foundingPrice: "£400 (approx. ₹52,000)",
-  standardPrice: "£1,000",
+  admissionsNote: "Application-based cohort",
   features: [
     "Live VDR work on Norland pipeline deals",
     "Forensic LBO and quality-of-earnings judgment",
@@ -41,9 +40,8 @@ export const PGP = {
     "Principal-level deal engineering modules",
     "Dedicated cohort director and partner office hours",
   ],
-  scholarshipPrice: "£2,000 + taxes",
-  standardPrice: "£3,000 + taxes",
-  applyNote: "Applications reviewed selectively. Tuition is published upfront and finalized at offer stage.",
+  admissionsNote: "Application-based cohort",
+  applyNote: "Applications reviewed selectively. Offers issued after application and fit review.",
 } as const;
 
 export const SIMULATOR = {

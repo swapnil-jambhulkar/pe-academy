@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, AlertCircle } from "lucide-react";
-import { useCurrency } from "@/hooks/useCurrency";
-import { formatPrice, getPrice } from "@/lib/currency";
 
 const starterKitFeatures = [
   "Monthly real deal challenges",
@@ -22,8 +20,6 @@ const cohortFeatures = [
 ];
 
 export default function Solution() {
-  const { currency } = useCurrency();
-
   return (
     <section id="solution" className="bg-black text-white py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,14 +63,9 @@ export default function Solution() {
                 <span className="px-3 py-1.5 bg-white/10 text-white/80 text-xs font-semibold rounded-full border border-white/20">
                   Self-Paced
                 </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl md:text-3xl font-heading font-bold text-white">
-                    {formatPrice(getPrice(currency, "starterKitEarlyBird"), currency)}
-                  </span>
-                  <span className="text-sm text-white/40 line-through">
-                    {formatPrice(getPrice(currency, "starterKit"), currency)}
-                  </span>
-                </div>
+                <span className="px-3 py-1.5 bg-white/10 text-white/80 text-xs font-semibold rounded-full border border-white/20">
+                  Request access
+                </span>
               </div>
 
               <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2">

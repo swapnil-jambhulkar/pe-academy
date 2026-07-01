@@ -3,32 +3,23 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, AlertCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 function CtaBlock({ mobile }: { mobile: boolean }) {
   return (
     <>
       <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-        <span className="text-white/80 text-sm font-semibold">Founding cohort open</span>
+        <span className="text-white/80 text-sm font-semibold">Application-based cohort</span>
       </div>
 
       <h2 className={`font-heading font-bold text-white mb-4 ${mobile ? "text-2xl" : "text-4xl md:text-5xl"}`}>
         Ready for institutional PE training?
       </h2>
 
-      <p className={`text-white/70 mb-4 ${mobile ? "text-base" : "text-xl max-w-2xl mx-auto"}`}>
+      <p className={`text-white/70 mb-8 ${mobile ? "text-base" : "text-xl max-w-2xl mx-auto mb-10"}`}>
         Start with the Day One Simulator, then apply for the 12-week GCPE or enquire about the 48-week PGP.
       </p>
-
-      <div
-        className={`flex items-center justify-center gap-2 text-white/60 mb-8 ${
-          mobile ? "text-xs" : "text-sm mb-10"
-        }`}
-      >
-        <AlertCircle className={mobile ? "h-3 w-3" : "h-4 w-4"} />
-        <span>GCPE tuition £400 (approx. ₹52,000) · Standard £1,000</span>
-      </div>
 
       <div className={mobile ? "space-y-3" : "flex flex-row flex-wrap gap-4 justify-center items-center mb-12"}>
         <Button

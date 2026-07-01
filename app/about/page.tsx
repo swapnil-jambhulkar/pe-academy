@@ -46,7 +46,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Norland Academy was founded to democratize access to Private Equity careers.
-                We believe that breaking into PE shouldn't require a ₹50L+ MBA or years in investment banking.
+                We believe that breaking into PE should not require a premium MBA or years in investment banking.
                 With the right system, templates, and mentorship, anyone with the drive can build proof they can do PE work.
               </p>
             </motion.div>
