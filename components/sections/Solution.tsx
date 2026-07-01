@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, AlertCircle } from "lucide-react";
+import { PAID_PROGRAMME_NOTE } from "@/lib/programmes";
 
 const starterKitFeatures = [
   "Monthly real deal challenges",
@@ -118,9 +119,10 @@ export default function Solution() {
                 Cohort Program
               </h3>
               
-              <p className="text-gray-600 text-sm mb-6">
+              <p className="text-gray-600 text-sm mb-2">
                 Work directly on our pipeline deals. Get partner mentorship.
               </p>
+              <p className="text-xs text-gray-500 mb-6">{PAID_PROGRAMME_NOTE}</p>
 
               <div className="space-y-3 mb-6">
                 {cohortFeatures.map((feature, index) => (
@@ -154,7 +156,7 @@ export default function Solution() {
           >
             <div className="flex items-center justify-center gap-2 text-white/50 text-sm">
               <AlertCircle className="h-4 w-4" />
-              <span>Not sure? Start with Starter Kit. Upgrade to Cohort anytime.</span>
+              <span>GCPE and PGP are paid programmes. The Day One Simulator is free. Not sure? Start with Starter Kit.</span>
             </div>
           </motion.div>
         </div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, GraduationCap, Layers, MonitorPlay } from "lucide-react";
-import { GCPE, PGP, SIMULATOR } from "@/lib/programmes";
+import { GCPE, PGP, SIMULATOR, FREE_VS_PAID_NOTE, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
 
 export default function Programmes() {
   return (
@@ -27,6 +27,7 @@ export default function Programmes() {
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Norland Academy trains private equity professionals on real transactions, not classroom case studies.
             </p>
+            <p className="text-sm text-gray-500 max-w-2xl mx-auto mt-4">{FREE_VS_PAID_NOTE}</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-6 mb-10">
@@ -46,13 +47,14 @@ export default function Programmes() {
                   </span>
                 </div>
                 <span className="px-2 py-1 bg-black text-white text-[10px] font-semibold uppercase rounded border border-black">
-                  Application-based cohort
+                  {GCPE.admissionsNote}
                 </span>
               </div>
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">{GCPE.tagline}</p>
               <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">{GCPE.shortName}</h3>
               <p className="text-sm text-gray-600 mb-1 font-medium">{GCPE.name}</p>
               <p className="text-sm text-gray-600 mb-4 leading-relaxed">{GCPE.narrative}</p>
+              <p className="text-xs text-gray-500 mb-4">{PAID_PROGRAMME_NOTE}</p>
               <ul className="space-y-2 mb-6 flex-1">
                 {GCPE.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-gray-700">
@@ -85,13 +87,14 @@ export default function Programmes() {
                   </span>
                 </div>
                 <span className="px-2 py-1 bg-black text-white text-[10px] font-semibold uppercase rounded border border-black">
-                  Applications open
+                  {PGP.admissionsNote}
                 </span>
               </div>
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">{PGP.tagline}</p>
               <h3 className="text-xl md:text-2xl font-heading font-bold mb-2">{PGP.shortName}</h3>
               <p className="text-sm text-gray-700 mb-1 font-medium">{PGP.name}</p>
               <p className="text-sm text-gray-600 mb-4 leading-relaxed">{PGP.narrative}</p>
+              <p className="text-xs text-gray-500 mb-4">{PAID_PROGRAMME_NOTE}</p>
               <ul className="space-y-2 mb-6 flex-1">
                 {PGP.features.slice(0, 5).map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-gray-700">

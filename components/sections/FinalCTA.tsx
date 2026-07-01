@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { PAID_PROGRAMME_NOTE } from "@/lib/programmes";
 
 function CtaBlock({ mobile }: { mobile: boolean }) {
   return (
@@ -17,8 +18,11 @@ function CtaBlock({ mobile }: { mobile: boolean }) {
         Ready for institutional PE training?
       </h2>
 
-      <p className={`text-white/70 mb-8 ${mobile ? "text-base" : "text-xl max-w-2xl mx-auto mb-10"}`}>
+      <p className={`text-white/70 mb-4 ${mobile ? "text-base" : "text-xl max-w-2xl mx-auto"}`}>
         Start with the Day One Simulator, then apply for the 12-week GCPE or enquire about the 48-week PGP.
+      </p>
+      <p className={`text-white/50 mb-8 ${mobile ? "text-xs" : "text-sm max-w-2xl mx-auto mb-10"}`}>
+        {PAID_PROGRAMME_NOTE}
       </p>
 
       <div className={mobile ? "space-y-3" : "flex flex-row flex-wrap gap-4 justify-center items-center mb-12"}>

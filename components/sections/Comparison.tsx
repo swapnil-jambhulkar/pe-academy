@@ -78,7 +78,7 @@ export default function Comparison() {
               </div>
               <div className="p-4 text-center border-l border-gray-300 bg-black text-white">
                 <p className="text-sm text-white uppercase tracking-wider font-semibold">Cohort</p>
-                <p className="text-xs text-white/70 mt-1">Apply for Access</p>
+                <p className="text-xs text-white/70 mt-1">Paid programme · Apply</p>
               </div>
             </div>
             {keyDifferences.map((item, index) => (

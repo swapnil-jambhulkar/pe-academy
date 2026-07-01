@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PAID_PROGRAMME_NOTE } from "@/lib/programmes";
 
 type Term = {
   id: string;
@@ -275,8 +276,9 @@ export default function PgpPage() {
                 <p className="text-xs uppercase tracking-[0.16em] text-white/60 mb-2">Admissions model</p>
                 <p className="font-heading text-3xl text-white">Application-based cohort</p>
                 <p className="text-xs text-white/60 mt-3">
-                  PGP admits selectively after profile review, screening assignment, and fit conversation. Offers are
-                  issued to candidates who meet programme standards. Deferrals may be reviewed on documented grounds.
+                  PGP is a paid programme. It admits selectively after profile review, screening assignment, and fit
+                  conversation. Offers are issued to candidates who meet programme standards. Tuition is confirmed at
+                  offer stage. Deferrals may be reviewed on documented grounds.
                 </p>
               </div>
             </div>

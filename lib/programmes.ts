@@ -1,5 +1,11 @@
 /** Shared programme definitions for marketing pages and homepage. */
 
+export const PAID_PROGRAMME_NOTE =
+  "GCPE and PGP are paid programmes. Tuition is confirmed at offer stage after application review.";
+
+export const FREE_VS_PAID_NOTE =
+  "The Day One Simulator is free. GCPE and PGP are paid programmes admitted by application.";
+
 export const GCPE = {
   id: "gcpe",
   slug: "/cohort",
@@ -10,7 +16,7 @@ export const GCPE = {
   audience: "Junior analysts, investment bankers, and chartered accountants who need day-one execution capability.",
   narrative:
     "A localized, live-fire deal desk experience. You enter a real data room from the Norland pipeline, build the LBO, and present your investment memo. You leave with raw execution capability.",
-  admissionsNote: "Application-based cohort",
+  admissionsNote: "Paid programme · Application-based cohort",
   features: [
     "Live VDR work on Norland pipeline deals",
     "Forensic LBO and quality-of-earnings judgment",
@@ -40,7 +46,7 @@ export const PGP = {
     "Principal-level deal engineering modules",
     "Dedicated cohort director and partner office hours",
   ],
-  admissionsNote: "Application-based cohort",
+  admissionsNote: "Paid programme · Application-based cohort",
   applyNote: "Applications reviewed selectively. Offers issued after application and fit review.",
 } as const;
 

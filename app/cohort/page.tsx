@@ -39,6 +39,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { calculateDaysUntil } from "@/lib/utils";
+import { GCPE, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
 
 // ... existing curriculum and programTiers data ...
 // 12-Week GCPE Curriculum
@@ -439,9 +440,12 @@ export default function CohortPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <div className="bg-white border border-gray-200 rounded-lg p-6 md:p-10 lg:p-12 text-center">
-                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 max-w-md mx-auto leading-relaxed">
                   GCPE admits by application only. Submit your profile, complete the screening assignment, and receive
                   an offer after the fit conversation with our programme team.
+                </p>
+                <p className="text-xs text-gray-500 mb-6 md:mb-8 max-w-md mx-auto leading-relaxed">
+                  {PAID_PROGRAMME_NOTE}
                 </p>
 
                 <Button
@@ -454,7 +458,7 @@ export default function CohortPage() {
                 </Button>
 
                 <p className="text-[10px] md:text-xs text-gray-400 mt-4 md:mt-6">
-                  10 places • Starts {cohortStartShort} • Selective admissions
+                  10 places • Starts {cohortStartShort} • Selective admissions • Paid programme
                 </p>
               </div>
             </motion.div>
@@ -495,7 +499,7 @@ export default function CohortPage() {
                     <p className="text-xs text-white/50 mt-1">{gcpeProgram.spots}</p>
                   </div>
                   <span className="px-2 py-1 bg-white/10 text-white text-[10px] font-semibold uppercase rounded border border-white/20">
-                    Application-based cohort
+                    {GCPE.admissionsNote}
                   </span>
                 </div>
 
@@ -850,9 +854,14 @@ export default function CohortPage() {
                     "No prior finance experience is required. The programme is designed for ambitious professionals breaking into PE from non-traditional backgrounds. However, basic Excel skills and a willingness to learn are essential.",
                 },
                 {
+                  question: "Are GCPE and PGP free?",
+                  answer:
+                    "No. GCPE and PGP are paid programmes. The Day One Simulator is free. Tuition for cohort programmes is confirmed at offer stage after your application is reviewed.",
+                },
+                {
                   question: "How does admissions work?",
                   answer:
-                    "GCPE and PGP are application-based cohorts. Submit your application, complete the screening assignment, and attend a fit conversation. Offers are issued selectively after review. Contact admissions for programme documentation if your employer requires it.",
+                    "GCPE and PGP are paid, application-based cohorts. Submit your application, complete the screening assignment, and attend a fit conversation. Offers are issued selectively after review. Contact admissions for programme documentation if your employer requires it.",
                 },
                 {
                   question: "What if I miss a live session?",

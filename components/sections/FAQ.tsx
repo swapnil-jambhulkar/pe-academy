@@ -10,6 +10,11 @@ import {
 
 const faqs = [
   {
+    question: "Are GCPE and PGP free?",
+    answer:
+      "No. GCPE and PGP are paid programmes. The Day One Simulator is free. Tuition is confirmed at offer stage after application review.",
+  },
+  {
     question: "Do I need prior finance experience?",
     answer:
       "No prior finance experience is required. GCPE and PGP are designed for ambitious professionals breaking into PE from non-traditional backgrounds. Basic Excel skills and a willingness to learn are essential.",

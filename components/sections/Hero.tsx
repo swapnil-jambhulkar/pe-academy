@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { FREE_VS_PAID_NOTE } from "@/lib/programmes";
 
 export default function Hero() {
   return (
@@ -26,6 +27,9 @@ export default function Hero() {
             <p className="text-base text-gray-700 leading-relaxed mb-6 max-w-3xl">
               The Day One Simulator remains the fastest way to benchmark readiness before application. Every pathway is
               designed around real transaction judgement, not generic classroom content.
+            </p>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-3xl">
+              {FREE_VS_PAID_NOTE}
             </p>
             <div className="flex flex-wrap gap-3">
               <Button className="bg-black text-white hover:bg-gray-900" asChild>
@@ -53,7 +57,8 @@ export default function Hero() {
             <div className="space-y-3 py-1">
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">GCPE</span><span className="font-semibold">12 weeks</span></div>
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">PGP</span><span className="font-semibold">48 weeks</span></div>
-              <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Funnel</span><span className="font-semibold">Day One Simulator</span></div>
+              <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Simulator</span><span className="font-semibold">Free</span></div>
+              <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">GCPE / PGP</span><span className="font-semibold">Paid programmes</span></div>
             </div>
             <Button className="w-full mt-6 bg-black text-white hover:bg-gray-900" asChild>
               <Link href="/cohort">
