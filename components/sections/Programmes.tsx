@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, GraduationCap, Layers, MonitorPlay } from "lucide-react";
+import { ArrowRight, Check, GraduationCap, Layers, MonitorPlay, Users } from "lucide-react";
 import { GCPE, PGP, SIMULATOR, FREE_VS_PAID_NOTE, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
+import { GUILD } from "@/lib/guild";
 
 export default function Programmes() {
   return (
@@ -121,7 +122,7 @@ export default function Programmes() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8 max-w-3xl mx-auto"
+            className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8 max-w-3xl mx-auto mb-4"
           >
             <div className="relative flex flex-col items-center text-center md:flex-row md:items-center md:justify-between md:text-left gap-6">
               <div className="flex gap-4">
@@ -145,6 +146,40 @@ export default function Programmes() {
               >
                 <Link href="/simulator">
                   Start simulation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Guild strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 }}
+            className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8 max-w-3xl mx-auto"
+          >
+            <div className="relative flex flex-col items-center text-center md:flex-row md:items-center md:justify-between md:text-left gap-6">
+              <div className="flex gap-4">
+                <div className="h-12 w-12 rounded-lg bg-black flex items-center justify-center shrink-0">
+                  <Users className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">
+                    {GUILD.badge}
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-heading font-bold text-black mb-2">{GUILD.name}</h3>
+                  <p className="text-sm text-gray-700 max-w-xl leading-relaxed">{GUILD.body}</p>
+                </div>
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="shrink-0 bg-black hover:bg-gray-900 text-white font-semibold w-full md:w-auto"
+              >
+                <Link href={GUILD.slug}>
+                  Apply to join
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

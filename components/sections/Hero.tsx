@@ -5,6 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FREE_VS_PAID_NOTE } from "@/lib/programmes";
+import { GUILD, GUILD_AIRTABLE_FORM_URL } from "@/lib/guild";
+
+const guildApplyHref = GUILD_AIRTABLE_FORM_URL || `${GUILD.slug}#apply`;
+const guildApplyExternal = Boolean(GUILD_AIRTABLE_FORM_URL);
 
 export default function Hero() {
   return (
@@ -57,12 +61,26 @@ export default function Hero() {
             <div className="space-y-3 py-1">
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">GCPE</span><span className="font-semibold">12 weeks</span></div>
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">PGP</span><span className="font-semibold">48 weeks</span></div>
+              <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Forum</span><span className="font-semibold">Free community</span></div>
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">Simulator</span><span className="font-semibold">Free</span></div>
               <div className="flex justify-between text-sm border-b border-gray-200 pb-2"><span className="text-gray-500">GCPE / PGP</span><span className="font-semibold">Paid programmes</span></div>
             </div>
             <Button className="w-full mt-6 bg-black text-white hover:bg-gray-900" asChild>
               <Link href="/cohort">
                 Start with GCPE
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full mt-3 border-black text-black hover:bg-gray-100"
+              asChild
+            >
+              <Link
+                href={guildApplyHref}
+                {...(guildApplyExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                Apply to the {GUILD.shortName}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

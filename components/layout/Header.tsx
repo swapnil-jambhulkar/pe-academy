@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Home", href: "/" },
+  { label: "Forum", href: "/guild" },
   { label: "Simulator", href: "/simulator" },
   { label: "GCPE", href: "/cohort" },
   { label: "PGP", href: "/pgp" },
-  { label: "Insights", href: "/insights/lbo" },
   { label: "Contact", href: "/contact" },
 ];
 

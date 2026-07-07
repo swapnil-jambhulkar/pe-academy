@@ -4,6 +4,7 @@ import { Linkedin, Mail } from "lucide-react";
 const footerLinks = {
   main: [
     { label: "Home", href: "/" },
+    { label: "The Private Equity Forum", href: "/guild" },
     { label: "Day One Simulator", href: "/simulator" },
     { label: "GCPE (12 weeks)", href: "/cohort" },
     { label: "PGP (48 weeks)", href: "/pgp" },

@@ -30,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/guild`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
       url: `${baseUrl}/insights`,
       lastModified: new Date(),
       changeFrequency: "weekly",
