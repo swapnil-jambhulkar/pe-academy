@@ -10,6 +10,7 @@ import GuildFaqSection from "@/components/guild/GuildFaqSection";
 import GuildHero from "@/components/guild/GuildHero";
 import GuildHowItWorks from "@/components/guild/GuildHowItWorks";
 import GuildMemberBenefits from "@/components/guild/GuildMemberBenefits";
+import GuildPartnerships from "@/components/guild/GuildPartnerships";
 import GuildWhoItsFor from "@/components/guild/GuildWhoItsFor";
 import {
   GUILD_AIRTABLE_FORM_URL,
@@ -49,6 +50,8 @@ export default function GuildPageContent() {
       <GuildHowItWorks />
 
       <GuildWhoItsFor />
+
+      <GuildPartnerships />
 
       <GuildApply />
 

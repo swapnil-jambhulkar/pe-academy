@@ -159,6 +159,65 @@ export const guildNotForList = [
   "Anyone expecting job guarantees",
 ] as const;
 
+export const guildPartnershipOfferings = [
+  {
+    title: "Campus events",
+    body: "Co-hosted Forum sessions on campus: deal teardowns, practitioner panels, and application workshops for students serious about buyout finance.",
+  },
+  {
+    title: "Society partnerships",
+    body: "Finance and investment societies receive a direct line to city chapter calendars, speaker pipelines, and a filtered application path for members.",
+  },
+  {
+    title: "Careers office access",
+    body: "University careers teams receive Forum event calendars and briefing materials for students exploring private equity, without a paid programme requirement.",
+  },
+] as const;
+
+export const guildPartnershipAudience = [
+  "Business schools and MBA programmes",
+  "Undergraduate finance and investment societies",
+  "University careers and employability teams",
+  "Law and accounting faculties with PE interest",
+] as const;
+
+export const guildPeFirms = [
+  { id: "blackstone", name: "Blackstone", logo: "/partners/pe/blackstone.svg" },
+  { id: "kkr", name: "KKR", logo: "/partners/pe/kkr.svg" },
+  { id: "carlyle", name: "The Carlyle Group", logo: "/partners/pe/carlyle.svg" },
+  { id: "apollo", name: "Apollo Global Management", logo: "/partners/pe/apollo.svg" },
+  { id: "brookfield", name: "Brookfield", logo: "/partners/pe/brookfield.svg" },
+  { id: "tpg", name: "TPG", logo: "/partners/pe/tpg.svg" },
+  { id: "bain-capital", name: "Bain Capital", logo: "/partners/pe/bain-capital.png" },
+  { id: "cvc", name: "CVC Capital Partners", logo: "/partners/pe/cvc.svg" },
+  { id: "eqt", name: "EQT", logo: "/partners/pe/eqt.svg" },
+  { id: "warburg", name: "Warburg Pincus", logo: "/partners/pe/warburg-pincus.svg" },
+  { id: "silver-lake", name: "Silver Lake", logo: "/partners/pe/silver-lake.png" },
+  { id: "general-atlantic", name: "General Atlantic", logo: "/partners/pe/general-atlantic.svg" },
+] as const;
+
+export const guildHeroProfessions = [
+  "Investment banking and M&A professionals",
+  "Big 4 and transaction services",
+  "Consultants",
+  "Corporate lawyers",
+] as const;
+
+export const guildMbaCampuses = [
+  { id: "hbs", name: "Harvard Business School", logo: "/partners/mba/hbs.svg" },
+  { id: "wharton", name: "The Wharton School", logo: "/partners/mba/wharton.svg" },
+  { id: "stanford", name: "Stanford GSB", logo: "/partners/mba/stanford-gsb.svg" },
+  { id: "insead", name: "INSEAD", logo: "/partners/mba/insead.svg" },
+  { id: "lbs", name: "London Business School", logo: "/partners/mba/lbs.svg" },
+  { id: "columbia", name: "Columbia Business School", logo: "/partners/mba/columbia.png" },
+  { id: "booth", name: "Chicago Booth", logo: "/partners/mba/booth.svg" },
+  { id: "sloan", name: "MIT Sloan", logo: "/partners/mba/sloan.svg" },
+  { id: "kellogg", name: "Kellogg School", logo: "/partners/mba/kellogg.svg" },
+  { id: "oxford", name: "Oxford Saïd", logo: "/partners/mba/oxford-said.svg" },
+  { id: "isb", name: "ISB", logo: "/partners/mba/isb.png" },
+  { id: "iima", name: "IIM Ahmedabad", logo: "/partners/mba/iima.svg" },
+] as const;
+
 export const guildFaqs = [
   {
     question: "Is it really free?",

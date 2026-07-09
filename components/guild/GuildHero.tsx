@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import GuildHeroTickers from "@/components/guild/GuildHeroTickers";
 import { GUILD, guildEventImages, type GuildChapterFilter } from "@/lib/guild";
 
 const ROTATE_MS = 5500;
@@ -51,10 +52,10 @@ export default function GuildHero({ applyButton }: GuildHeroProps) {
   return (
     <section
       id="guild-hero"
-      className="min-h-screen flex items-center pt-28 pb-20 bg-white text-black border-b border-gray-200 scroll-mt-20"
+      className="min-h-screen flex flex-col pt-28 pb-8 bg-white text-black border-b border-gray-200 scroll-mt-20"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full flex-1 flex items-center">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start w-full">
           <div>
             <p className="text-xs tracking-[0.2em] uppercase text-gray-500 font-semibold mb-4">{GUILD.kicker}</p>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.02] mb-6 text-black">
@@ -174,6 +175,10 @@ export default function GuildHero({ applyButton }: GuildHeroProps) {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full">
+        <GuildHeroTickers />
       </div>
     </section>
   );

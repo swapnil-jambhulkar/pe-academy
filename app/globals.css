@@ -67,6 +67,57 @@ body[data-simulator-immersive="true"] > footer {
   display: none;
 }
 
+/* Forum campus logo ticker */
+@keyframes campus-ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.campus-ticker {
+  overflow: hidden;
+}
+
+.campus-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+  animation: campus-ticker-scroll 50s linear infinite;
+}
+
+.campus-ticker-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-ticker-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem 2.5rem;
+    padding-inline: 1rem;
+  }
+}
+
+.campus-ticker-track--text {
+  gap: 0;
+  animation-duration: 35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-ticker-track--text {
+    gap: 0.75rem 1.5rem;
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
