@@ -1,10 +1,7 @@
-/** The Private Equity Forum marketing constants and Airtable configuration. */
+/** The Private Equity Forum marketing constants and application form configuration. */
 
-export const GUILD_AIRTABLE_FORM_URL =
-  process.env.NEXT_PUBLIC_GUILD_AIRTABLE_FORM_URL ?? "";
-
-export const GUILD_AIRTABLE_EMBED_URL =
-  process.env.NEXT_PUBLIC_GUILD_AIRTABLE_EMBED_URL ?? "";
+export const GUILD_APPLY_FORM_URL =
+  process.env.NEXT_PUBLIC_GUILD_APPLY_FORM_URL ?? "https://tally.so/r/obQPQN";
 
 export const GUILD_MUMBAI_FIRST_EVENT_DATE =
   process.env.NEXT_PUBLIC_GUILD_MUMBAI_FIRST_EVENT_DATE ?? "14 August 2026";

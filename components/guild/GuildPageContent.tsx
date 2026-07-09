@@ -13,20 +13,13 @@ import GuildMemberBenefits from "@/components/guild/GuildMemberBenefits";
 import GuildPartnerships from "@/components/guild/GuildPartnerships";
 import GuildWhoItsFor from "@/components/guild/GuildWhoItsFor";
 import {
-  GUILD_AIRTABLE_FORM_URL,
+  GUILD_APPLY_FORM_URL,
 } from "@/lib/guild";
 
-function applyHref(): string {
-  return GUILD_AIRTABLE_FORM_URL || "#apply";
-}
-
 function ApplyButton({ className }: { className?: string }) {
-  const href = applyHref();
-  const external = Boolean(GUILD_AIRTABLE_FORM_URL);
-
   return (
     <Button className={className} asChild>
-      <Link href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+      <Link href={GUILD_APPLY_FORM_URL} target="_blank" rel="noopener noreferrer">
         Apply to join
         <ArrowRight className="ml-2 h-4 w-4" />
       </Link>
@@ -67,10 +60,7 @@ export default function GuildPageContent() {
             Founding members shape the chapters, the events, and the committee.
           </p>
           <Button size="lg" className="bg-white text-black hover:bg-gray-200 font-semibold px-8" asChild>
-            <Link
-              href={applyHref()}
-              {...(GUILD_AIRTABLE_FORM_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            >
+            <Link href={GUILD_APPLY_FORM_URL} target="_blank" rel="noopener noreferrer">
               Apply to join
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

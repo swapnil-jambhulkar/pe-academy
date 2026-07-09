@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FREE_VS_PAID_NOTE } from "@/lib/programmes";
-import { GUILD, GUILD_AIRTABLE_FORM_URL } from "@/lib/guild";
+import { GUILD, GUILD_APPLY_FORM_URL } from "@/lib/guild";
 
-const guildApplyHref = GUILD_AIRTABLE_FORM_URL || `${GUILD.slug}#apply`;
-const guildApplyExternal = Boolean(GUILD_AIRTABLE_FORM_URL);
+const guildApplyHref = GUILD_APPLY_FORM_URL;
+const guildApplyExternal = true;
 
 export default function Hero() {
   return (

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, GraduationCap, Layers, MonitorPlay, Users } from "lucide-react";
 import { GCPE, PGP, SIMULATOR, FREE_VS_PAID_NOTE, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
-import { GUILD } from "@/lib/guild";
+import { GUILD, GUILD_APPLY_FORM_URL } from "@/lib/guild";
 
 export default function Programmes() {
   return (
@@ -178,7 +178,7 @@ export default function Programmes() {
                 size="lg"
                 className="shrink-0 bg-black hover:bg-gray-900 text-white font-semibold w-full md:w-auto"
               >
-                <Link href={GUILD.slug}>
+                <Link href={GUILD_APPLY_FORM_URL} target="_blank" rel="noopener noreferrer">
                   Apply to join
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
