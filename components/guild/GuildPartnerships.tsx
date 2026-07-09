@@ -7,7 +7,7 @@ import {
 } from "@/lib/guild";
 import GuildCampusTicker from "@/components/guild/GuildCampusTicker";
 import GuildSectionHeader, { GuildSection } from "@/components/guild/GuildSection";
-import { guildCard } from "@/components/guild/guild-ui";
+import { guildCard, guildCardWhite } from "@/components/guild/guild-ui";
 
 const offeringIcons = [GraduationCap, Users, Building2] as const;
 
@@ -49,16 +49,16 @@ export default function GuildPartnerships() {
           </ul>
         </article>
 
-        <article className="rounded-2xl border border-black bg-black text-white p-6 md:p-8 flex flex-col justify-center">
-          <p className="text-xs font-semibold tracking-[0.2em] text-white/50 uppercase mb-3">Partnership enquiries</p>
-          <h3 className="text-xl md:text-2xl font-heading font-bold leading-tight mb-3">
+        <article className={`${guildCardWhite} flex flex-col justify-center`}>
+          <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase mb-3">Partnership enquiries</p>
+          <h3 className="text-xl md:text-2xl font-heading font-bold text-black leading-tight mb-3">
             Discuss a campus or university partnership
           </h3>
-          <p className="text-sm text-white/75 leading-relaxed mb-6">
+          <p className="text-sm text-gray-700 leading-relaxed mb-6">
             Tell us your institution, society, or careers team. We will respond with chapter format options and next
             steps.
           </p>
-          <Button className="bg-white text-black hover:bg-gray-200 font-semibold w-full sm:w-auto" asChild>
+          <Button className="bg-black text-white hover:bg-gray-900 font-semibold w-full sm:w-auto" asChild>
             <Link href="/contact">
               Contact partnerships
               <ArrowRight className="ml-2 h-4 w-4" />
