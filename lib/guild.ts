@@ -237,6 +237,6 @@ export const guildFaqs = [
   {
     question: "What's the relationship with Norland Academy?",
     answer:
-      "The Forum is a Norland Academy initiative. Membership is free and independent of our paid programmes.",
+      "The Forum is a Norland Academy initiative, education arm of Stator Capital. Membership is free and independent of our paid programmes.",
   },
 ] as const;

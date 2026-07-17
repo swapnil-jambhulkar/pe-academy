@@ -368,7 +368,7 @@ export default function DayOneSimulator() {
             <div className="w-full max-w-2xl bg-[#fefefe] shadow-[0_12px_40px_rgba(0,0,0,0.18)] border border-zinc-300/80 rounded-sm overflow-hidden">
               <div className="h-1.5 bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800" aria-hidden />
               <div className="px-8 pt-8 pb-2 border-b border-zinc-200">
-                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">Norland Capital · Deal execution</p>
+                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">Stator Capital · Deal execution</p>
                 <h2 className="text-2xl font-heading font-bold text-zinc-900 mt-2">Post-Mortem Report</h2>
                 <p className="text-sm text-zinc-600 mt-1">Project Apex - preliminary desk review</p>
               </div>

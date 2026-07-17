@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
               </h2>
               <p className="text-gray-700">
                 All program materials, templates, and content are the intellectual property of
-                Norland Capital. You may use them for personal learning and portfolio building,
+                Stator Capital. You may use them for personal learning and portfolio building,
                 but may not redistribute or resell them.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">

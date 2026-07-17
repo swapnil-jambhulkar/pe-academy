@@ -20,10 +20,10 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-black mb-6">
-                About Norland Capital
+                About Norland Academy
               </h1>
               <p className="text-xl text-gray-700">
-                Norland Academy
+                By Stator Capital
               </p>
             </motion.div>
           </div>

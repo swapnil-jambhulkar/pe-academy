@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
                 Last updated: {new Date().toLocaleDateString()}
               </p>
               <p className="text-gray-700">
-                Norland Capital ("we", "our", or "us") is committed to protecting your privacy.
+                Stator Capital ("we", "our", or "us") is committed to protecting your privacy.
                 This Privacy Policy explains how we collect, use, and safeguard your information when you use our website and services.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">

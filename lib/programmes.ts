@@ -15,10 +15,10 @@ export const GCPE = {
   tagline: "The Technical Sprint",
   audience: "Junior analysts, investment bankers, and chartered accountants who need day-one execution capability.",
   narrative:
-    "A localized, live-fire deal desk experience. You enter a real data room from the Norland pipeline, build the LBO, and present your investment memo. You leave with raw execution capability.",
+    "A localized, live-fire deal desk experience. You enter a real data room from the Stator pipeline, build the LBO, and present your investment memo. You leave with raw execution capability.",
   admissionsNote: "Paid programme · Application-based cohort",
   features: [
-    "Live VDR work on Norland pipeline deals",
+    "Live VDR work on Stator pipeline deals",
     "Forensic LBO and quality-of-earnings judgment",
     "Investment Committee presentation experience",
     "Partner-level feedback on every workstream",
@@ -54,5 +54,5 @@ export const SIMULATOR = {
   slug: "/simulator",
   name: "Day One Analyst Simulator",
   tagline: "Prove execution before you apply",
-  body: "A mock secure workstation: Outlook, VDR, and live deal judgment calls from the Norland desk. Built for juniors who know the theory but fear getting exposed on day one.",
+  body: "A mock secure workstation: Outlook, VDR, and live deal judgment calls from the Stator desk. Built for juniors who know the theory but fear getting exposed on day one.",
 } as const;

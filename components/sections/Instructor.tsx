@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, Check } from "lucide-react";
 
 const credentials = [
-  "Founded Norland Capital (mid-market PE, Europe focus)",
+  "Founded Stator Capital (mid-market PE, Europe focus)",
   "Broke into PE in 2023-24 from VC background without IB/MBA",
   "Built 12 models, sent 100+ cold emails, 42% response rate",
   "Mentored 20+ people (3 in PE interviews, 2 landed internships, 1 VC role)",
@@ -15,7 +15,7 @@ const credentials = [
 
 // Shorter credentials for mobile
 const mobileCredentials = [
-  "Founded Norland Capital (PE, Europe)",
+  "Founded Stator Capital (PE, Europe)",
   "Broke into PE without IB/MBA",
   "42% cold email response rate",
   "Mentored 20+ people into PE",
@@ -50,7 +50,7 @@ export default function Instructor() {
                 <div className="relative w-20 h-20 flex-shrink-0">
                   <Image
                     src="/images/swapnil.jpg"
-                    alt="Swapnil - Founder of Norland Capital"
+                    alt="Swapnil - Founder of Stator Capital"
                     width={80}
                     height={80}
                     className="w-full h-full rounded-full object-cover border-2 border-white/30"
@@ -63,7 +63,7 @@ export default function Instructor() {
                     Swapnil Jambhulakar
                   </h3>
                   <p className="text-sm text-white/70 mb-2">
-                    Founder, Norland Capital
+                    Founder, Stator Capital
                   </p>
                   <a
                     href="https://www.linkedin.com/in/swapniljambhulkar/"
@@ -131,7 +131,7 @@ export default function Instructor() {
                 <div className="relative w-full max-w-sm">
                   <Image
                     src="/images/swapnil.jpg"
-                    alt="Swapnil - Founder of Norland Capital"
+                    alt="Swapnil - Founder of Stator Capital"
                     width={400}
                     height={500}
                     className="w-full h-auto rounded-lg object-contain"
@@ -158,7 +158,7 @@ export default function Instructor() {
                     Swapnil Jambhulakar
                   </h3>
                   <p className="text-lg text-gray-600 mb-4">
-                    Founder, Norland Capital
+                    Founder, Stator Capital
                   </p>
                 </div>
 

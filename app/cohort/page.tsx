@@ -38,6 +38,7 @@ import {
   Award,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { calculateDaysUntil } from "@/lib/utils";
 import { GCPE, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
 
@@ -173,7 +174,7 @@ const fullCurriculum = [
 ];
 
 const deliverables = [
-  "Real deal analysis from Norland pipeline",
+  "Real deal analysis from Stator pipeline",
   "LBO model on actual company (not case study)",
   "Investment memo reviewed by PE partner",
   "IC presentation experience (live feedback)",
@@ -620,8 +621,55 @@ export default function CohortPage() {
         </div>
       </section>
 
+      {/* Graduate Charter Certificate */}
+      <section className="py-12 md:py-20 bg-white border-b border-gray-200" id="certificate">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <p className="text-xs font-semibold tracking-[0.2em] text-gray-500 uppercase mb-2 md:mb-4">
+              Credential
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-black mb-3 md:mb-4">
+              The GCPE Graduate Charter
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
+              Completing the 12-week programme and examination confers the Graduate Certificate in Private Equity.
+              The charter below is the credential awarded to successful candidates.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="relative w-full overflow-hidden border border-gray-200 bg-gray-50 shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
+              <Image
+                src="/images/gcpe-graduate-charter.jpg"
+                alt="GCPE Graduate Charter certificate sample from Norland Academy"
+                width={1920}
+                height={1080}
+                className="w-full h-auto"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                priority={false}
+              />
+            </div>
+            <p className="text-center text-xs text-gray-500 mt-4 md:mt-6">
+              Sample Graduate Charter. Candidate name and certificate number are issued on successful completion.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Admissions Process */}
-      <section className="py-12 md:py-16 bg-white border-b border-gray-200" id="admissions">
+      <section className="py-12 md:py-16 bg-gray-50 border-b border-gray-200" id="admissions">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

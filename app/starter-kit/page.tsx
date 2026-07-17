@@ -26,7 +26,7 @@ const features = [
   {
     title: "Real Deal Challenges",
     description:
-      "Monthly challenges on actual deals from Norland pipeline. Not case studies from textbooks - real opportunities we're evaluating.",
+      "Monthly challenges on actual deals from Stator pipeline. Not case studies from textbooks - real opportunities we're evaluating.",
     icon: Trophy,
   },
   {
@@ -149,7 +149,7 @@ export default function StarterKitPage() {
               </p>
               
               <p className="text-sm text-white/50 mb-4">
-                Monthly challenges on live deals from Norland pipeline. Two tracks for Analyst and Associate level. 300+ community.
+                Monthly challenges on live deals from Stator pipeline. Two tracks for Analyst and Associate level. 300+ community.
               </p>
               
               <div className="flex items-center justify-center gap-2 text-white/60 text-xs mb-8">
@@ -219,7 +219,7 @@ export default function StarterKitPage() {
               </p>
               
               <p className="text-base text-white/50 max-w-2xl mx-auto mb-4">
-                Monthly challenges on live deals from Norland pipeline. Two tracks for Analyst and Associate level. Build with 300+ likeminded people working towards PE.
+                Monthly challenges on live deals from Stator pipeline. Two tracks for Analyst and Associate level. Build with 300+ likeminded people working towards PE.
               </p>
               
               <div className="flex items-center justify-center gap-2 text-white/60 text-sm mb-10">
@@ -749,7 +749,7 @@ export default function StarterKitPage() {
               Monthly Real Deal Challenges
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Not textbook cases. Real deals from Norland pipeline. Two tracks based on your level.
+              Not textbook cases. Real deals from Stator pipeline. Two tracks based on your level.
             </p>
           </motion.div>
 

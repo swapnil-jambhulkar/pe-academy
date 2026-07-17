@@ -46,7 +46,7 @@ export default function Header() {
               </span>
               <div className="h-px w-full bg-white/30 my-1"></div>
               <span className="text-xs font-normal text-white/70 tracking-wide">
-                By Norland Capital
+                By Stator Capital
               </span>
             </div>
           </Link>

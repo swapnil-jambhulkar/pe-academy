@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
               <p style="margin-top: 15px;">In the meantime, try the <a href="https://norlandacademy.com/simulator" style="color: #000; text-decoration: underline;">Day One Analyst Simulator</a> or review the <a href="https://norlandacademy.com/cohort" style="color: #000; text-decoration: underline;">GCPE programme</a>.</p>
             </div>
             <p style="margin-top: 20px; color: #666; font-size: 12px;">
-              Norland Academy
+              Norland Academy · By Stator Capital
             </p>
           </div>
         `,

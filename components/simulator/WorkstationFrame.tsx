@@ -57,7 +57,7 @@ export default function WorkstationFrame({
       <header className="relative z-10 flex h-9 shrink-0 items-center justify-between px-3 text-[11px] text-zinc-700 bg-zinc-100/95 border-b border-zinc-300">
         <div className="flex items-center gap-2 min-w-0">
           <Shield className="h-3.5 w-3.5 text-emerald-600 shrink-0" aria-hidden />
-          <span className="truncate font-medium tracking-tight">Norland Capital · Secure workstation</span>
+          <span className="truncate font-medium tracking-tight">Stator Capital · Secure workstation</span>
         </div>
         <div className="flex items-center gap-3 shrink-0 tabular-nums">
           {timerActive && (

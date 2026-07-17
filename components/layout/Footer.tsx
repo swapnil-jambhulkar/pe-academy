@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="text-base font-heading font-medium text-white uppercase tracking-tight">Norland Academy</h3>
-            <p className="text-[10px] text-white/60">Real Deals. Real Feedback.</p>
+            <p className="text-[10px] text-white/60">By Stator Capital</p>
           </div>
           <div className="flex space-x-3">
             {socialLinks.map((social) => {
@@ -77,7 +77,7 @@ export default function Footer() {
 
         {/* Bottom Row */}
         <div className="flex items-center justify-between pt-4 border-t border-white/10 text-[10px] text-white/60">
-          <span>© {new Date().getFullYear()} Norland Capital</span>
+          <span>© {new Date().getFullYear()} Stator Capital</span>
           <div className="flex gap-3">
             {footerLinks.legal.map((link) => (
               <Link key={link.href} href={link.href} className="hover:text-white">
@@ -96,7 +96,7 @@ export default function Footer() {
             <div>
               <h3 className="text-xl font-heading font-medium text-white uppercase tracking-tight">Norland Academy</h3>
               <div className="h-px w-full bg-white/30 my-1"></div>
-              <p className="text-xs font-normal text-white/70 tracking-wide">By Norland Capital</p>
+              <p className="text-xs font-normal text-white/70 tracking-wide">By Stator Capital</p>
             </div>
             <p className="text-sm text-white/75 leading-relaxed">
               Work on real deals from our pipeline. Get partner-level feedback. Build a portfolio that gets you interviews.
@@ -148,23 +148,13 @@ export default function Footer() {
                 admissions@norlandacademy.com
               </a>
             </p>
-            <p className="text-sm font-medium text-white/75 mt-2">
-              <a
-                href="https://norlandcapital.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                norlandcapital.co.uk
-              </a>
-            </p>
           </div>
         </div>
 
         {/* Bottom: Copyright & Legal */}
         <div className="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-sm font-medium text-white">
-            © {new Date().getFullYear()} Norland Capital. All rights reserved.
+            © {new Date().getFullYear()} Stator Capital. All rights reserved.
           </p>
           <div className="flex space-x-6">
             {footerLinks.legal.map((link) => (

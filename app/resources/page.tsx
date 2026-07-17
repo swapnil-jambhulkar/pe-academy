@@ -137,7 +137,7 @@ export default function ResourcesPage() {
               </p>
               
               <p className="text-sm text-white/50 mb-8">
-                The same tools and frameworks we use at Norland Capital. {resources.length} resources with 42% response rate on cold outreach.
+                The same tools and frameworks we use at Stator Capital. {resources.length} resources with 42% response rate on cold outreach.
               </p>
 
               {/* CTA */}
@@ -202,7 +202,7 @@ export default function ResourcesPage() {
               </p>
               
               <p className="text-base text-white/50 max-w-2xl mx-auto mb-10">
-                The same tools and frameworks we use at Norland Capital. Career roadmaps, outreach playbooks with 42% response rate, and deal sourcing systems.
+                The same tools and frameworks we use at Stator Capital. Career roadmaps, outreach playbooks with 42% response rate, and deal sourcing systems.
               </p>
 
               {/* Stats */}

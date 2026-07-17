@@ -159,7 +159,7 @@ export default function PgpPage() {
               ["Live webinars and masterclasses", "Weekly live technical sessions with practitioner breakdowns and implementation drills."],
               ["Three in-person workshops", "In-person convenings focused on negotiation, committee defence, and case debrief."],
               ["Capstone project", "A full buyout case with model, investment memo, and oral defence before reviewers."],
-              ["Certificate and alumni network", "Completion certificate and long-term access to the Norland professional network."],
+              ["Certificate and alumni network", "Completion certificate and long-term access to the Stator professional network."],
             ].map(([title, body]) => (
               <div key={title} className="p-6 border-b md:border-b-0 md:border-r border-gray-200 last:border-r-0">
                 <h3 className="font-heading text-2xl mb-2">{title}</h3>

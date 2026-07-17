@@ -176,7 +176,7 @@ export async function POST(request: NextRequest) {
             <p style="margin-top: 16px;">
               <a href="https://norlandacademy.com/simulator" style="color: #000; font-weight: 600;">Open Day One Simulator</a>
             </p>
-            <p style="margin-top: 20px; color: #666; font-size: 12px;">Norland Academy</p>
+            <p style="margin-top: 20px; color: #666; font-size: 12px;">Norland Academy · By Stator Capital</p>
           </div>
         `,
       });

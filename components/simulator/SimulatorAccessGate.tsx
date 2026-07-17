@@ -34,7 +34,7 @@ const labelClassName = "block text-xs font-semibold uppercase tracking-wider tex
 export default function SimulatorAccessGate({
   onComplete,
   title = "Register before you begin",
-  description = "The simulator uses live deal judgment scenarios from the Norland desk. Share your profile and resume so we can review your background and follow up on GCPE or PGP if relevant.",
+  description = "The simulator uses live deal judgment scenarios from the Stator desk. Share your profile and resume so we can review your background and follow up on GCPE or PGP if relevant.",
   submitLabel = "Continue to simulator",
 }: SimulatorAccessGateProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
