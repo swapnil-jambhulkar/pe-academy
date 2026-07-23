@@ -172,18 +172,33 @@ export default function OpenRole({
             >
               Compensation &amp; Equity Structure
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed mb-6">
+            <p className="text-base text-gray-700 leading-relaxed mb-8">
               This is a partner-level role designed for an operator who wants
-              meaningful equity upside based on performance.
+              meaningful cash upside and equity based on performance.
             </p>
-            <h3 className="text-lg sm:text-xl font-heading font-semibold text-black mb-3">
-              Equity Allocation
-            </h3>
-            <ul className="space-y-3 text-base text-gray-700 leading-relaxed list-disc pl-5">
-              <li>
-                5.0% – 10.0% Equity / Profit Interest (Vested over milestones).
-              </li>
-            </ul>
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-lg sm:text-xl font-heading font-semibold text-black mb-3">
+                  High Cash Commissions (Immediate Liquidity)
+                </h3>
+                <ul className="space-y-3 text-base text-gray-700 leading-relaxed list-disc pl-5">
+                  <li>
+                    Projected Year 1 Cash Earnings: $60,000 – $100,000+ USD.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-heading font-semibold text-black mb-3">
+                  Equity Allocation
+                </h3>
+                <ul className="space-y-3 text-base text-gray-700 leading-relaxed list-disc pl-5">
+                  <li>
+                    5.0% – 10.0% Equity / Profit Interest (Vested over
+                    milestones).
+                  </li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section aria-labelledby="trial-heading">
