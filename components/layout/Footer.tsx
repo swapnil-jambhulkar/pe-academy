@@ -1,23 +1,38 @@
 import Link from "next/link";
 import { Linkedin, Mail } from "lucide-react";
 
-const footerLinks = {
-  main: [
-    { label: "Home", href: "/" },
-    { label: "The Private Equity Forum", href: "/guild" },
-    { label: "Day One Simulator", href: "/simulator" },
-    { label: "GCPE (12 weeks)", href: "/cohort" },
-    { label: "PGP (48 weeks)", href: "/pgp" },
-    { label: "LBO Industry Library", href: "/insights/lbo" },
-    { label: "Deal Mechanics Glossary", href: "/glossary/private-equity-deal-mechanics" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "/contact" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms of Service", href: "/terms-of-service" },
-  ],
-};
+const linkGroups = [
+  {
+    title: "Programmes",
+    links: [
+      { label: "GCPE", href: "/cohort" },
+      { label: "PGP", href: "/pgp" },
+      { label: "Day One Simulator", href: "/simulator" },
+      { label: "PE Forum", href: "/guild" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "LBO Library", href: "/insights/lbo" },
+      { label: "Deal Glossary", href: "/glossary/private-equity-deal-mechanics" },
+      { label: "FAQ", href: "/faq" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+];
+
+const legalLinks = [
+  { label: "Privacy", href: "/privacy-policy" },
+  { label: "Terms", href: "/terms-of-service" },
+];
 
 const socialLinks = [
   {
@@ -34,142 +49,90 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white border-t border-white/10 mt-0">
-      {/* Mobile Footer - Compact */}
-      <div className="md:hidden px-4 py-6">
-        {/* Logo + Social Row */}
-        <div className="flex items-center justify-between mb-3">
-          <div>
-            <h3 className="text-base font-heading font-medium text-white uppercase tracking-tight">Norland Academy</h3>
-            <p className="text-[10px] text-white/60">By Stator Capital</p>
-          </div>
-          <div className="flex space-x-3">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white"
-                  aria-label={social.label}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Links Row */}
-        <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
-          {footerLinks.main.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-white/70 hover:text-white"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Bottom Row */}
-        <div className="flex items-center justify-between pt-4 border-t border-white/10 text-[10px] text-white/60">
-          <span>© {new Date().getFullYear()} Stator Capital</span>
-          <div className="flex gap-3">
-            {footerLinks.legal.map((link) => (
-              <Link key={link.href} href={link.href} className="hover:text-white">
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop Footer - Full */}
-      <div className="hidden md:block container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Left: Logo & Tagline */}
-          <div className="space-y-4">
+    <footer className="bg-black text-white border-t border-white/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1 space-y-4">
             <div>
-              <h3 className="text-xl font-heading font-medium text-white uppercase tracking-tight">Norland Academy</h3>
-              <div className="h-px w-full bg-white/30 my-1"></div>
-              <p className="text-xs font-normal text-white/70 tracking-wide">By Stator Capital</p>
+              <h3 className="text-lg font-heading font-medium text-white uppercase tracking-tight">
+                Norland Academy
+              </h3>
+              <p className="mt-1 text-xs text-white/50 tracking-wide">
+                By Stator Capital
+              </p>
             </div>
-            <p className="text-sm text-white/75 leading-relaxed">
-              Work on real deals from our pipeline. Get partner-level feedback. Build a portfolio that gets you interviews.
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
+              Live deal training for private equity careers.
             </p>
-          </div>
-
-          {/* Middle: Quick Links */}
-          <div>
-            <h4 className="font-bold text-white mb-4 text-base uppercase tracking-wide">Navigation</h4>
-            <ul className="space-y-2">
-              {footerLinks.main.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm font-medium text-white/75 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right: Social & Contact */}
-          <div>
-            <h4 className="font-bold text-white mb-4 text-base uppercase tracking-wide">Contact</h4>
-            <div className="flex space-x-4 mb-4">
+            <div className="flex items-center gap-4 pt-1">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
                   <a
                     key={social.label}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/75 hover:text-white transition-colors"
+                    target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={
+                      social.href.startsWith("mailto:")
+                        ? undefined
+                        : "noopener noreferrer"
+                    }
+                    className="text-white/50 hover:text-white transition-colors"
                     aria-label={social.label}
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-4 w-4" />
                   </a>
                 );
               })}
             </div>
-            <p className="text-sm font-medium text-white/75">
-              <a
-                href="mailto:admissions@norlandacademy.com"
-                className="hover:text-white transition-colors"
-              >
-                admissions@norlandacademy.com
-              </a>
-            </p>
           </div>
+
+          {/* Link groups */}
+          {linkGroups.map((group) => (
+            <div key={group.title}>
+              <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/40 mb-4">
+                {group.title}
+              </h4>
+              <ul className="space-y-3">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom: Copyright & Legal */}
-        <div className="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-sm font-medium text-white">
-            © {new Date().getFullYear()} Stator Capital. All rights reserved.
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} Stator Capital
           </p>
-          <div className="flex space-x-6">
-            {footerLinks.legal.map((link) => (
+          <div className="flex items-center gap-5">
+            {legalLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-bold text-white hover:text-white/70 transition-colors underline"
+                className="text-xs text-white/40 hover:text-white/70 transition-colors"
               >
                 {link.label}
               </Link>
             ))}
+            <a
+              href="mailto:admissions@norlandacademy.com"
+              className="text-xs text-white/40 hover:text-white/70 transition-colors"
+            >
+              admissions@norlandacademy.com
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-
