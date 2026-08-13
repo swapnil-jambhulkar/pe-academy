@@ -5,7 +5,7 @@ import { PROGRAMME } from "@/lib/programmes";
 
 export default function FinalCTA() {
   return (
-    <section className="relative bg-black text-white py-16 md:py-24 overflow-hidden">
+    <section id="apply" className="relative bg-black text-white py-16 md:py-24 overflow-hidden scroll-mt-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.06]"

@@ -7,7 +7,7 @@ import Reveal from "@/components/ui/reveal";
 
 export default function FreeBeforeYouApply() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200">
+    <section id="free" className="py-16 md:py-24 bg-gray-50 border-b border-gray-200 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         <Reveal>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Before you apply</p>

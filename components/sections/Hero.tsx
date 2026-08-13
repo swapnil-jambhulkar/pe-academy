@@ -6,7 +6,7 @@ import { PROGRAMME } from "@/lib/programmes";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center pt-28 pb-20 bg-white text-black border-b border-gray-200 overflow-hidden">
+    <section id="hero" className="relative min-h-[85vh] flex items-center pt-28 pb-20 bg-white text-black border-b border-gray-200 overflow-hidden scroll-mt-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.035]"

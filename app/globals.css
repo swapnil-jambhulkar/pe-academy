@@ -146,6 +146,11 @@ html {
   }
 }
 
+/* Sticky section anchors clear fixed header */
+.scroll-mt-24 {
+  scroll-margin-top: 6rem;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
