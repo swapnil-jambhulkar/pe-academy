@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "investment committee",
   ],
   authors: [{ name: "Norland Academy", url: "https://norlandacademy.com" }],
-  creator: "Stator Capital",
+  creator: "Norland Academy",
   publisher: "Norland Academy",
   robots: {
     index: true,
@@ -81,10 +81,6 @@ export const metadata: Metadata = {
     description:
       "You have executed deals and never owned one. Twelve week cohort for mid career deal professionals.",
     images: ["/og-image.svg"],
-    creator: "@norlandcapital",
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
   category: "Education",
 };
