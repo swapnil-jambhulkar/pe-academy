@@ -2,14 +2,14 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PROGRAMME, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
-import { programmeWeeks } from "@/data/programme-weeks";
 import { committee } from "@/data/committee";
-import { faculty } from "@/data/faculty";
-import { CommitteeCards, FacultyCards } from "@/components/programme/SeatCards";
+import { CommitteeCards } from "@/components/programme/SeatCards";
+import CurriculumSchedule from "@/components/programme/CurriculumSchedule";
 import Reveal from "@/components/ui/reveal";
 
 const pageLinks = [
   { href: "#format", label: "Format" },
+  { href: "#guest-faculty", label: "Guest lectures" },
   { href: "#curriculum", label: "Schedule" },
   { href: "#admissions", label: "Admissions" },
   { href: "#committee", label: "Committee" },
@@ -21,6 +21,7 @@ const formatDetails = [
   { label: "Admissions", value: "By application only" },
   { label: "Live sessions", value: "Weekly, with written deliverables due before each session" },
   { label: "Commitment", value: "Ten to twelve hours per week including preparation" },
+  { label: "Guest lectures", value: "Weeks 6, 7, and 12. Practitioners, not staff." },
   { label: "Tuition", value: PAID_PROGRAMME_NOTE },
 ];
 
@@ -57,8 +58,8 @@ export default function ProgrammeContent() {
               Twelve weeks. Five seats. One live defence.
             </h1>
             <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 max-w-3xl">
-              The prospectus for {PROGRAMME.name}. Week by week schedule, format, admissions bar, and the committee
-              that votes. The homepage explains why the programme exists. This page is how it runs.
+              The prospectus for {PROGRAMME.name}. Lectures, live sessions, three guest faculty weeks, and the
+              committee that votes. The homepage explains why the programme exists. This page is how it runs.
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <Button className="bg-black text-white hover:bg-gray-900" asChild>
@@ -68,7 +69,7 @@ export default function ProgrammeContent() {
                 </Link>
               </Button>
               <Button variant="outline" className="border-black text-black hover:bg-gray-100" asChild>
-                <Link href="#curriculum">Read the schedule</Link>
+                <Link href="#guest-faculty">Guest lectures</Link>
               </Button>
             </div>
             <nav aria-label="Programme sections" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
@@ -92,12 +93,32 @@ export default function ProgrammeContent() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Format</p>
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-10">How the cohort runs</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {formatDetails.map((item) => (
-                <div key={item.label} className="border border-gray-200 p-5 bg-white">
-                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{item.label}</p>
-                  <p className="text-base font-medium text-black">{item.value}</p>
-                </div>
-              ))}
+              {formatDetails.map((item) => {
+                const isGuest = item.label === "Guest lectures";
+                return (
+                  <div
+                    key={item.label}
+                    className={
+                      isGuest
+                        ? "border border-black bg-black text-white p-5"
+                        : "border border-gray-200 p-5 bg-white"
+                    }
+                  >
+                    <p
+                      className={
+                        isGuest
+                          ? "text-xs uppercase tracking-wide text-white/60 mb-1 font-bold"
+                          : "text-xs uppercase tracking-wide text-gray-500 mb-1"
+                      }
+                    >
+                      {item.label}
+                    </p>
+                    <p className={isGuest ? "text-base font-bold text-white" : "text-base font-medium text-black"}>
+                      {item.value}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
             <ul className="mt-10 space-y-3 max-w-3xl">
               {cohortRules.map((item) => (
@@ -115,31 +136,14 @@ export default function ProgrammeContent() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Curriculum</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">Twelve week schedule</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
+              Lectures, live sessions, guest faculty
+            </h2>
             <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
-              Each week has one live session and one written deliverable due before it. You work on a sector and target
-              universe you chose, not a case study handed to you.
+              Each week has one live session and one written deliverable due before it. Guest lectures sit in weeks 6,
+              7, and 12. Week 11 is the investment committee.
             </p>
-            <div className="overflow-x-auto border border-gray-200 bg-white">
-              <table className="w-full text-sm text-left">
-                <thead>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <th className="px-4 py-3 font-semibold text-black w-16">Week</th>
-                    <th className="px-4 py-3 font-semibold text-black">Session</th>
-                    <th className="px-4 py-3 font-semibold text-black">Deliverable</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {programmeWeeks.map((row) => (
-                    <tr key={row.week} className="border-b border-gray-100 last:border-b-0">
-                      <td className="px-4 py-3 text-gray-500 font-medium tabular-nums">{row.week}</td>
-                      <td className="px-4 py-3 text-gray-800">{row.session}</td>
-                      <td className="px-4 py-3 text-gray-700">{row.deliverable}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <CurriculumSchedule />
           </Reveal>
         </div>
       </section>
@@ -185,13 +189,6 @@ export default function ProgrammeContent() {
               advance, question the participants for three hours, and vote. Names are published as they are confirmed.
             </p>
             <CommitteeCards members={committee} />
-            <div className="mt-16">
-              <h3 className="text-2xl font-heading font-bold text-black mb-4">Guest faculty</h3>
-              <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
-                Practitioners join for weeks six, seven, and twelve. Names are published as they are confirmed.
-              </p>
-              <FacultyCards members={faculty} />
-            </div>
           </Reveal>
         </div>
       </section>
