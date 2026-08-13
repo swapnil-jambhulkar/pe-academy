@@ -15,6 +15,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProgrammePage() {
+export default function PgpPage() {
   return <ProgrammeContent />;
 }

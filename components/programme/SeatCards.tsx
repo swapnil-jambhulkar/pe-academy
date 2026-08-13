@@ -8,7 +8,7 @@ type Seat = {
 
 function SeatCard({ member, week }: { member: Seat; week?: number }) {
   return (
-    <article className="border border-gray-200 bg-white p-6 h-full">
+    <article className="border border-gray-200 bg-white p-6 h-full hover:border-black hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#000] transition-all duration-300">
       <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-500 mb-3">
         {week ? `Week ${week} · ${member.seat}` : member.seat}
       </p>

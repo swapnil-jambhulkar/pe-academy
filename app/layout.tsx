@@ -23,12 +23,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://norlandacademy.com"),
   title: {
-    default: "Norland Academy | The Principal Programme",
+    default: "Norland Academy | PGP · The Principal Programme",
     template: "%s | Norland Academy",
   },
   description:
-    "The Principal Programme: twelve weeks, five seats, by application. Source your own acquisition target and defend it to an investment committee. Free Day One Simulator.",
+    "PGP · The Principal Programme: twelve weeks, five seats, by application. Source your own acquisition target and defend it to an investment committee. Free Day One Simulator.",
   keywords: [
+    "PGP private equity",
     "principal programme private equity",
     "private equity training",
     "LBO modelling course",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Norland Academy | The Principal Programme",
+    title: "Norland Academy | PGP · The Principal Programme",
     description:
       "Twelve weeks. Five seats. Source your own acquisition target, price it, structure it, and defend the recommendation to an investment committee that votes.",
     type: "website",
@@ -71,13 +72,13 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Norland Academy - The Principal Programme",
+        alt: "Norland Academy - PGP · The Principal Programme",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Norland Academy | The Principal Programme",
+    title: "Norland Academy | PGP · The Principal Programme",
     description:
       "You have executed deals and never owned one. Twelve week cohort for mid career deal professionals.",
     images: ["/og-image.svg"],

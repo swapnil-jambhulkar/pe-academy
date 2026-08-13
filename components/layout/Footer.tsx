@@ -5,7 +5,7 @@ const linkGroups = [
   {
     title: "Programme",
     links: [
-      { label: "The Principal Programme", href: "/programme" },
+      { label: "PGP", href: "/pgp" },
       { label: "Apply", href: "/apply" },
       { label: "Day One Simulator", href: "/simulator" },
       { label: "PE Forum", href: "/guild" },

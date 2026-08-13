@@ -6,6 +6,7 @@ import InvestmentCommittee from "@/components/sections/InvestmentCommittee";
 import FreeBeforeYouApply from "@/components/sections/FreeBeforeYouApply";
 import WhoRunsIt from "@/components/sections/WhoRunsIt";
 import FinalCTA from "@/components/sections/FinalCTA";
+import FloatingCTA from "@/components/ui/floating-cta";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <FreeBeforeYouApply />
       <WhoRunsIt />
       <FinalCTA />
+      <FloatingCTA />
     </>
   );
 }

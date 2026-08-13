@@ -7,32 +7,22 @@ const nextConfig = {
     return [
       {
         source: "/cohort",
-        destination: "/programme",
+        destination: "/pgp",
         permanent: true,
       },
       {
         source: "/cohort/:path*",
-        destination: "/programme",
-        permanent: true,
-      },
-      {
-        source: "/pgp",
-        destination: "/programme",
-        permanent: true,
-      },
-      {
-        source: "/pgp/:path*",
-        destination: "/programme",
+        destination: "/pgp",
         permanent: true,
       },
       {
         source: "/starter-kit",
-        destination: "/programme",
+        destination: "/pgp",
         permanent: true,
       },
       {
         source: "/starter-kit/:path*",
-        destination: "/programme",
+        destination: "/pgp",
         permanent: true,
       },
     ];

@@ -68,8 +68,8 @@ export default function AboutPage() {
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Button className="bg-white text-black hover:bg-gray-100" asChild>
-              <Link href="/programme">
-                Read the programme
+              <Link href="/pgp">
+                Read the PGP
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

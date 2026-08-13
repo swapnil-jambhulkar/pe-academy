@@ -3,11 +3,12 @@
 export const PAID_PROGRAMME_NOTE = "Tuition is confirmed at offer stage.";
 
 export const PROGRAMME = {
-  id: "principal",
-  slug: "/programme",
+  id: "pgp",
+  slug: "/pgp",
   applySlug: "/apply",
-  shortName: "Principal Programme",
+  shortName: "PGP",
   name: "The Principal Programme",
+  fullName: "PGP · The Principal Programme",
   duration: "Twelve weeks",
   seats: 5,
   tagline: "You have executed deals and never owned one.",

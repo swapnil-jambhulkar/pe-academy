@@ -56,28 +56,28 @@ export default function DayOneSimulator() {
     if (rating.scorePercent >= 80) {
       return {
         title: "You are operating at a strong analyst baseline.",
-        body: "You may be ready to apply for The Principal Programme. Submit your application with a sector thesis and transaction reflection.",
+        body: "You may be ready to apply for PGP. Submit your application with a sector thesis and transaction reflection.",
         primaryHref: "/apply",
-        primaryLabel: "Apply for the Principal Programme",
-        secondaryHref: "/programme",
-        secondaryLabel: "Read the programme",
+        primaryLabel: "Apply for PGP",
+        secondaryHref: "/pgp",
+        secondaryLabel: "Read the PGP",
       };
     }
     if (rating.scorePercent >= 55) {
       return {
         title: "You are close to analyst-ready, with gaps to close.",
-        body: "Review the programme structure and consider whether you can commit ten to twelve hours per week before applying.",
-        primaryHref: "/programme",
-        primaryLabel: "Read the programme",
+        body: "Review the PGP structure and consider whether you can commit ten to twelve hours per week before applying.",
+        primaryHref: "/pgp",
+        primaryLabel: "Read the PGP",
         secondaryHref: "/apply",
         secondaryLabel: "Apply anyway",
       };
     }
     return {
       title: "You need stronger execution reps before applying.",
-      body: "Retake the simulator after reviewing the programme requirements, or read the curriculum before you commit to an application.",
-      primaryHref: "/programme",
-      primaryLabel: "Read the programme",
+      body: "Retake the simulator after reviewing the PGP requirements, or read the curriculum before you commit to an application.",
+      primaryHref: "/pgp",
+      primaryLabel: "Read the PGP",
       secondaryHref: "/simulator",
       secondaryLabel: "Retake simulator",
     };

@@ -92,8 +92,8 @@ export default async function IndustryLboPage({ params }: PageProps) {
             chose, with written deliverables and a live investment committee vote.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/programme" className="px-5 py-3 bg-black text-white rounded-md text-sm font-semibold">
-              Read the Principal Programme
+            <Link href="/pgp" className="px-5 py-3 bg-black text-white rounded-md text-sm font-semibold">
+              Read the PGP
             </Link>
             <Link href="/simulator" className="px-5 py-3 border border-black text-black rounded-md text-sm font-semibold">
               Try Day One Simulator
