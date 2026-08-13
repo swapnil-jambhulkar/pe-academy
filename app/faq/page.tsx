@@ -1,20 +1,5 @@
-import type { Metadata } from "next";
 import FAQ from "@/components/sections/FAQ";
 import { programmeFaqs } from "@/data/programme-faq";
-
-export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Admissions, format, time commitment, and placement policy for The Principal Programme and the Day One Simulator.",
-  alternates: { canonical: "/faq" },
-  openGraph: {
-    title: "FAQ | Norland Academy",
-    description:
-      "Answers on who should apply, weekly hours, the investment committee, and whether the programme places candidates.",
-    url: "/faq",
-    type: "website",
-  },
-};
 
 const faqSchema = {
   "@context": "https://schema.org",

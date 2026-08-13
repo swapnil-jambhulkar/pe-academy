@@ -5,7 +5,7 @@ const organizationSchema = {
   url: "https://norlandacademy.com",
   email: "admissions@norlandacademy.com",
   description:
-    "PGP · The Principal Programme: twelve weeks, five seats, by application. Source your own acquisition target and defend it to an investment committee.",
+    "Graduate Certificate in Private Equity (GCPE), 48-week PGP, and the Day One Analyst Simulator. Live deal execution from the Norland Capital pipeline.",
   parentOrganization: {
     "@type": "Organization",
     name: "Stator Capital",

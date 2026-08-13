@@ -1,21 +1,6 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Norland Academy is operated by Stator Capital. The Principal Programme trains mid career deal professionals to source, price, structure, and defend an acquisition recommendation.",
-  alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About | Norland Academy",
-    description:
-      "A UK programme for professionals who have executed deals and never owned one. Twelve weeks, five seats, by application.",
-    url: "/about",
-    type: "website",
-  },
-};
 
 export default function AboutPage() {
   return (

@@ -1,18 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "Terms for using the Norland Academy website and enrolling in The Principal Programme, including refunds and the absence of any job placement guarantee.",
-  alternates: { canonical: "/terms-of-service" },
-  openGraph: {
-    title: "Terms of Service | Norland Academy",
-    description: "Website and programme terms for Norland Academy, operated by Stator Capital.",
-    url: "/terms-of-service",
-    type: "website",
-  },
-};
-
 export default function TermsOfServicePage() {
   return (
     <div>

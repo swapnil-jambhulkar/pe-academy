@@ -1,18 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How Stator Capital collects, uses, and stores personal information when you use the Norland Academy website, apply to The Principal Programme, or contact admissions.",
-  alternates: { canonical: "/privacy-policy" },
-  openGraph: {
-    title: "Privacy Policy | Norland Academy",
-    description: "Privacy policy for the Norland Academy website and admissions process.",
-    url: "/privacy-policy",
-    type: "website",
-  },
-};
-
 export default function PrivacyPolicyPage() {
   return (
     <div>
