@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { programmeWeeks } from "@/data/programme-weeks";
 
-const phases = [
-  { label: "Thesis", weeks: [1, 2, 3], tone: "bg-gray-200" },
-  { label: "Diligence", weeks: [4, 5, 6], tone: "bg-gray-300" },
-  { label: "Structure", weeks: [7, 8, 9], tone: "bg-gray-400" },
-  { label: "IC", weeks: [10, 11, 12], tone: "bg-black" },
-];
+function phaseForWeek(week: number) {
+  if (week <= 3) return "Thesis";
+  if (week <= 6) return "Diligence";
+  if (week <= 9) return "Structure";
+  return "Investment committee";
+}
 
 export default function CurriculumTimeline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,33 +43,14 @@ export default function CurriculumTimeline() {
           <h3 className="text-xl font-heading font-bold text-black">Curriculum intensity</h3>
         </div>
         <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
-          Hover or select a week. Live session plus a written deliverable due before it.
+          Select a week. Live session plus a written deliverable due before it.
         </p>
       </div>
 
-      <div className="mb-6 grid grid-cols-4 gap-2">
-        {phases.map((phase) => (
-          <div key={phase.label} className="text-center">
-            <div
-              className={cn(
-                "h-2 mb-2 transition-transform duration-500",
-                phase.tone,
-                active ? "scale-x-100" : "scale-x-0",
-                "origin-left"
-              )}
-            />
-            <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-gray-500">
-              {phase.label}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <div className="flex items-end gap-1.5 sm:gap-2 h-36 mb-6">
+      <div className="flex items-end gap-1.5 sm:gap-2 h-36 mb-3">
         {programmeWeeks.map((row) => {
           const height = 28 + row.week * 5.5;
           const isSelected = week === row.week;
-          const isIc = row.week === 11;
           return (
             <button
               key={row.week}
@@ -82,11 +63,8 @@ export default function CurriculumTimeline() {
             >
               <div
                 className={cn(
-                  "w-full transition-all duration-500 ease-out border",
-                  isSelected || isIc
-                    ? "bg-black border-black"
-                    : "bg-gray-200 border-transparent group-hover:bg-gray-400",
-                  active ? "opacity-100" : "opacity-0"
+                  "w-full transition-all duration-500 ease-out",
+                  isSelected ? "bg-black" : "bg-gray-200 group-hover:bg-gray-300"
                 )}
                 style={{
                   height: active ? `${height}%` : "0%",
@@ -106,16 +84,21 @@ export default function CurriculumTimeline() {
         })}
       </div>
 
+      <div className="grid grid-cols-4 gap-2 mb-6 text-center">
+        <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-gray-400">Weeks 1 to 3 · Thesis</p>
+        <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-gray-400">Weeks 4 to 6 · Diligence</p>
+        <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-gray-400">Weeks 7 to 9 · Structure</p>
+        <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-gray-400">Weeks 10 to 12 · IC</p>
+      </div>
+
       <div className="border border-gray-200 bg-gray-50 p-5 min-h-[120px]">
-        <div className="flex items-center gap-3 mb-2">
+        <div className="flex flex-wrap items-center gap-3 mb-2">
           <span className="border border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em]">
             Week {selected.week}
           </span>
-          {selected.week === 11 ? (
-            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-gray-500">
-              Investment committee
-            </span>
-          ) : null}
+          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-gray-500">
+            {phaseForWeek(selected.week)}
+          </span>
         </div>
         <p className="text-base font-heading font-semibold text-black mb-1">{selected.session}</p>
         <p className="text-sm text-gray-600 leading-relaxed">
