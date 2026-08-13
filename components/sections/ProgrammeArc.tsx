@@ -11,10 +11,11 @@ export default function ProgrammeArc() {
             How PGP works
           </p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-            The twelve week arc
+            The twelve week pack
           </h2>
           <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
-            Not a lecture sequence. A compounding set of judgements that ends in a live vote.
+            Same structure as a live deal room. Open a workstream, then a file. Thesis, diligence, structure,
+            then the IC pack.
           </p>
         </Reveal>
 
