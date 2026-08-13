@@ -25,6 +25,16 @@ const nextConfig = {
         destination: "/pgp",
         permanent: true,
       },
+      {
+        source: "/resources",
+        destination: "/insights",
+        permanent: true,
+      },
+      {
+        source: "/resources/:path*",
+        destination: "/insights",
+        permanent: true,
+      },
     ];
   },
   images: {

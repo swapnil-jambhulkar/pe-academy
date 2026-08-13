@@ -237,7 +237,11 @@ export default function ApplyForm() {
         ) : null}
       </fieldset>
 
-      {submitError ? <p className="text-red-600 text-sm">{submitError}</p> : null}
+      {submitError ? (
+        <p className="text-red-600 text-sm" role="alert" aria-live="polite">
+          {submitError}
+        </p>
+      ) : null}
 
       <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-black text-white hover:bg-gray-900">
         {isSubmitting ? (

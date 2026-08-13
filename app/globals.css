@@ -5,6 +5,26 @@
 @tailwind utilities;
 
 @layer base {
+  .skip-to-content {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    z-index: 100;
+    transform: translateY(-150%);
+    padding: 0.75rem 1rem;
+    background: #000;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .skip-to-content:focus {
+    transform: translateY(1rem);
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
   body {
     @apply bg-white text-black font-sans antialiased;
     font-feature-settings: "kern" 1, "liga" 1;
@@ -63,7 +83,8 @@
 
 /* Day One Simulator: hide site chrome while immersive (workstation is fixed full-viewport) */
 body[data-simulator-immersive="true"] > header,
-body[data-simulator-immersive="true"] > footer {
+body[data-simulator-immersive="true"] > footer,
+body[data-simulator-immersive="true"] > .skip-to-content {
   display: none;
 }
 

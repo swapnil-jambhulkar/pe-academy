@@ -1,3 +1,18 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How Stator Capital collects, uses, and stores personal information when you use the Norland Academy website, apply to The Principal Programme, or contact admissions.",
+  alternates: { canonical: "/privacy-policy" },
+  openGraph: {
+    title: "Privacy Policy | Norland Academy",
+    description: "Privacy policy for the Norland Academy website and admissions process.",
+    url: "/privacy-policy",
+    type: "website",
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div>
@@ -8,47 +23,33 @@ export default function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <div className="prose prose-neutral max-w-none space-y-6">
+              <p className="text-gray-700">Last updated: 13 August 2026</p>
               <p className="text-gray-700">
-                Last updated: {new Date().toLocaleDateString()}
+                Stator Capital (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy
+                explains how we collect, use, and safeguard your information when you use our website and services.
               </p>
-              <p className="text-gray-700">
-                Stator Capital ("we", "our", or "us") is committed to protecting your privacy.
-                This Privacy Policy explains how we collect, use, and safeguard your information when you use our website and services.
-              </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Information We Collect
-              </h2>
-              <p className="text-gray-700">
-                We collect information that you provide directly to us, including:
-              </p>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Information We Collect</h2>
+              <p className="text-gray-700">We collect information that you provide directly to us, including:</p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Name and email address when you sign up for our programs or newsletter</li>
-                <li>Payment information (processed securely through Razorpay)</li>
+                <li>Name and email address when you apply, contact us, or register for the Day One Simulator</li>
                 <li>Application information when you apply for The Principal Programme</li>
+                <li>Payment details if you enrol, processed by our payment provider</li>
                 <li>Any other information you choose to provide</li>
               </ul>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                How We Use Your Information
-              </h2>
-              <p className="text-gray-700">
-                We use the information we collect to:
-              </p>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">How We Use Your Information</h2>
+              <p className="text-gray-700">We use the information we collect to:</p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
                 <li>Provide, maintain, and improve our services</li>
-                <li>Process payments and send you program materials</li>
-                <li>Send you updates about our programs and services</li>
-                <li>Respond to your inquiries and provide customer support</li>
+                <li>Review applications and communicate about enrolment</li>
+                <li>Process payments and send programme materials where relevant</li>
+                <li>Respond to enquiries</li>
               </ul>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Data Security
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Data Security</h2>
               <p className="text-gray-700">
-                We implement appropriate security measures to protect your personal information.
-                However, no method of transmission over the Internet is 100% secure.
+                We implement appropriate security measures to protect your personal information. However, no method of
+                transmission over the Internet is 100% secure.
               </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Contact Us
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Contact Us</h2>
               <p className="text-gray-700">
                 If you have questions about this Privacy Policy, please contact us at{" "}
                 <a href="mailto:admissions@norlandacademy.com" className="text-black underline hover:text-gray-700">

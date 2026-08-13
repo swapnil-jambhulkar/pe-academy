@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
+import OrganizationJsonLd from "@/components/seo/OrganizationJsonLd";
 
 // Using Inter for all text - clean, professional, matches corporate PE firm aesthetic
 // Optimized: Only loading weights we actually use (400, 500, 600, 700)
@@ -94,6 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="flex flex-col min-h-screen">
+        <OrganizationJsonLd />
         <SiteChrome>{children}</SiteChrome>
         <Analytics />
       </body>

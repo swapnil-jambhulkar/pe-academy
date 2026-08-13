@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import CohortTicker from "@/components/sections/CohortTicker";
 import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
@@ -11,6 +12,10 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import FloatingCTA from "@/components/ui/floating-cta";
 import ScrollProgress from "@/components/ui/scroll-progress";
 import SectionRail from "@/components/ui/section-rail";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
