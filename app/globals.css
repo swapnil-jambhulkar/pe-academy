@@ -89,6 +89,23 @@ body[data-simulator-immersive="true"] > footer {
   animation: campus-ticker-scroll 50s linear infinite;
 }
 
+.campus-ticker-track--reverse {
+  animation-name: campus-ticker-scroll-reverse;
+}
+
+.campus-ticker:hover .campus-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes campus-ticker-scroll-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .campus-ticker-item {
   flex-shrink: 0;
   display: flex;
@@ -97,7 +114,8 @@ body[data-simulator-immersive="true"] > footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .campus-ticker-track {
+  .campus-ticker-track,
+  .campus-ticker-track--reverse {
     animation: none;
     flex-wrap: wrap;
     justify-content: center;

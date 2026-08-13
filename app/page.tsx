@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import CohortTicker from "@/components/sections/CohortTicker";
 import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
 import WhatIsMissing from "@/components/sections/WhatIsMissing";
 import ProgrammeArc from "@/components/sections/ProgrammeArc";
@@ -17,6 +18,7 @@ export default function Home() {
       <ScrollProgress />
       <SectionRail />
       <Hero />
+      <CohortTicker />
       <WhoThisIsFor />
       <WhatIsMissing />
       <ProgrammeArc />

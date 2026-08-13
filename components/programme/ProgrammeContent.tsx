@@ -7,6 +7,7 @@ import { committee } from "@/data/committee";
 import { faculty } from "@/data/faculty";
 import { CommitteeCards, FacultyCards } from "@/components/programme/SeatCards";
 import Reveal from "@/components/ui/reveal";
+import CohortTicker from "@/components/sections/CohortTicker";
 
 const entryForYou = [
   "Three to eight years in transaction services, investment banking, corporate development, or strategy consulting with commercial diligence exposure",
@@ -79,6 +80,8 @@ export default function ProgrammeContent() {
           </Reveal>
         </div>
       </section>
+
+      <CohortTicker />
 
       <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200" id="requirements">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
