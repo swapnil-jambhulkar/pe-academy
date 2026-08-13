@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 const gaps = [
   { title: "Origination", body: "You have only ever seen deals that arrived. Broker processes, or a target handed down by an MD." },
   { title: "The screen", body: "You can analyse a company once told to. You have never decided in ninety minutes whether one deserves ninety hours." },
@@ -15,7 +11,7 @@ export default function WhatIsMissing() {
   return (
     <section className="py-16 md:py-24 bg-white border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <div>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">The gap</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-10">What is missing</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -26,7 +22,7 @@ export default function WhatIsMissing() {
               </article>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

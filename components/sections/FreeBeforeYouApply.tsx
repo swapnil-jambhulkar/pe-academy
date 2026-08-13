@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -11,7 +8,7 @@ export default function FreeBeforeYouApply() {
   return (
     <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <div>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Before you apply</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-10">Free before you apply</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -32,7 +29,7 @@ export default function FreeBeforeYouApply() {
               </Button>
             </article>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

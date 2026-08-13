@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 const forYou = [
   "You are three to eight years into transaction services, investment banking, corporate development, or strategy consulting with commercial diligence exposure",
   "You can build a leveraged buyout model unaided",
@@ -19,7 +15,7 @@ export default function WhoThisIsFor() {
   return (
     <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <div>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Audience</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-10">Who this is for</h2>
           <div className="grid md:grid-cols-2 gap-10 md:gap-16">
@@ -41,7 +37,7 @@ export default function WhoThisIsFor() {
             </div>
           </div>
           <p className="mt-10 text-sm text-gray-500">We do not place anyone and we do not claim to.</p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
