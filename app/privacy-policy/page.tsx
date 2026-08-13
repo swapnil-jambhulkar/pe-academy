@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
                 <li>Name and email address when you sign up for our programs or newsletter</li>
                 <li>Payment information (processed securely through Razorpay)</li>
-                <li>Application information when you apply for our Cohort program</li>
+                <li>Application information when you apply for The Principal Programme</li>
                 <li>Any other information you choose to provide</li>
               </ul>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">

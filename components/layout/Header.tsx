@@ -7,12 +7,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", href: "/" },
+  { label: "Programme", href: "/programme" },
   { label: "Forum", href: "/guild" },
   { label: "Simulator", href: "/simulator" },
-  { label: "GCPE", href: "/cohort" },
-  { label: "PGP", href: "/pgp" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Header() {
@@ -38,7 +36,6 @@ export default function Header() {
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="flex flex-col">
               <span className="text-lg font-heading font-medium text-white tracking-tight uppercase">
@@ -51,7 +48,6 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -68,11 +64,10 @@ export default function Header() {
               asChild
               className="ml-4 bg-white text-black hover:bg-gray-200 font-bold"
             >
-              <Link href="/cohort#apply">APPLY NOW</Link>
+              <Link href="/apply">Apply</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -86,7 +81,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden pb-6 space-y-4">
             {navItems.map((item) => (
@@ -100,8 +94,8 @@ export default function Header() {
               </Link>
             ))}
             <Button variant="default" size="default" asChild className="w-full mt-4 bg-white text-black hover:bg-gray-200 font-bold">
-              <Link href="/cohort#apply" onClick={() => setIsMobileMenuOpen(false)}>
-                APPLY NOW
+              <Link href="/apply" onClick={() => setIsMobileMenuOpen(false)}>
+                Apply
               </Link>
             </Button>
           </div>
@@ -110,4 +104,3 @@ export default function Header() {
     </header>
   );
 }
-

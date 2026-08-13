@@ -160,8 +160,8 @@ export default function ResourcesPage() {
                   asChild
                   className="w-full border-white/30 text-white hover:bg-white/10 font-medium py-5 text-base"
                 >
-                  <Link href="/cohort">
-                    View GCPE Programme
+                  <Link href="/programme">
+                    View the Principal Programme
                   </Link>
                 </Button>
               </div>

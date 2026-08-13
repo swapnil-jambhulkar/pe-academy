@@ -88,12 +88,12 @@ export default async function IndustryLboPage({ params }: PageProps) {
         <section className="border-t border-gray-200 pt-8">
           <h2 className="text-2xl font-heading font-bold text-black mb-3">Move from theory to execution</h2>
           <p className="text-gray-700 mb-4">
-            This guide is an orientation layer. The GCPE programme runs these judgments inside live data-room workflows
-            with partner-level feedback.
+            This guide is an orientation layer. The Principal Programme runs these judgments on a target universe you
+            chose, with written deliverables and a live investment committee vote.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/cohort" className="px-5 py-3 bg-black text-white rounded-md text-sm font-semibold">
-              Apply for GCPE
+            <Link href="/programme" className="px-5 py-3 bg-black text-white rounded-md text-sm font-semibold">
+              Read the Principal Programme
             </Link>
             <Link href="/simulator" className="px-5 py-3 border border-black text-black rounded-md text-sm font-semibold">
               Try Day One Simulator

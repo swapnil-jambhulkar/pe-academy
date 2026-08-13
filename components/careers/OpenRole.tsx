@@ -35,8 +35,7 @@ export default function OpenRole({
               Founding Partner &amp; Head of Global Admissions
             </h1>
             <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mb-8">
-              Partner-track role owning candidate conversion and global cohort
-              enrollment for Norland Academy.
+              Founding role owning candidate conversion and admissions for The Principal Programme at Norland Academy.
             </p>
             <Button asChild size="lg">
               <a href={APPLY_HREF}>Apply for this Role</a>
@@ -55,13 +54,10 @@ export default function OpenRole({
               About Norland Academy
             </h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              Norland Academy is an elite private equity training institution
-              incubated by Stator Capital, an independent sponsor focused on
-              lower middle market (LMM) control transactions. We bridge the gap
-              between classroom theory and live buyout execution, training
-              investment bankers, consultants, and finance professionals through
-              our Post Graduate Program (PGP) in Private Equity and short-course
-              cohorts.
+              Norland Academy is operated by Stator Capital, an independent sponsor focused on lower middle market
+              control transactions. We train mid career deal professionals through The Principal Programme: a twelve week
+              cohort where participants source their own acquisition target and defend it to an external investment
+              committee.
             </p>
           </section>
 
@@ -74,20 +70,15 @@ export default function OpenRole({
             </h2>
             <div className="space-y-4 text-base text-gray-700 leading-relaxed">
               <p>
-                We are bringing on a Founding Partner &amp; Head of Global
-                Admissions to own candidate conversion and scale our cohort
-                enrollment globally. You will not be dialing cold leads. You
-                will manage incoming high-intent applications from bankers,
-                consultants, and finance professionals across Europe, the UK,
-                the US, and Asia, conducting admissions interviews, managing
-                pipeline conversion, and establishing referral channels with top
-                university finance clubs and headhunting networks.
+                We are bringing on a Founding Partner &amp; Head of Global Admissions to own candidate conversion for
+                The Principal Programme. You will manage incoming high-intent applications from bankers, consultants,
+                and finance professionals across Europe, the UK, the US, and Asia, conducting admissions interviews,
+                managing pipeline conversion, and establishing referral channels with university finance clubs and
+                headhunting networks.
               </p>
               <p>
-                This is an entrepreneurial, partner-track role designed for a
-                high-performing sales operator, finance career coach, or
-                ex-headhunter who wants long-term equity upside in a PE-backed
-                ecosystem.
+                This is an entrepreneurial founding role designed for a high-performing sales operator, finance career
+                coach, or ex-headhunter who wants long-term equity upside in a PE-backed ecosystem.
               </p>
             </div>
           </section>
@@ -104,30 +95,26 @@ export default function OpenRole({
                 <span className="font-semibold text-black">
                   Own the Candidate Pipeline:
                 </span>{" "}
-                Run admissions calls with pre-qualified applicants for our Post
-                Graduate Program and short cohorts.
+                Run admissions calls with pre-qualified applicants for The Principal Programme.
               </li>
               <li>
                 <span className="font-semibold text-black">
                   Build Distribution Channels:
                 </span>{" "}
-                Establish partnerships with university finance societies,
-                finance career coaches, and recruitment networks to funnel elite
-                applicants into Norland.
+                Establish partnerships with university finance societies, finance career coaches, and recruitment
+                networks to funnel qualified applicants into Norland.
               </li>
               <li>
                 <span className="font-semibold text-black">
                   Convert Enrollments:
                 </span>{" "}
-                Maintain a minimum 20–25% conversion rate on qualified
-                admissions interviews.
+                Maintain a minimum 20–25% conversion rate on qualified admissions interviews.
               </li>
               <li>
                 <span className="font-semibold text-black">
                   Scale the Admissions Desk:
                 </span>{" "}
-                As volume grows, recruit and manage sub-admissions advisors to
-                handle regional cohorts.
+                As volume grows, recruit and manage sub-admissions advisors to handle regional intake.
               </li>
             </ul>
           </section>
@@ -144,23 +131,21 @@ export default function OpenRole({
                 <span className="font-semibold text-black">
                   Experienced Sales Operator / Recruiter:
                 </span>{" "}
-                5+ years in executive search, educational sales, finance
-                recruiting, or career coaching.
+                5+ years in executive search, educational sales, finance recruiting, or career coaching.
               </li>
               <li>
                 <span className="font-semibold text-black">
                   Financially Literate:
                 </span>{" "}
-                Comfortable speaking with investment bankers, Big 4 advisors,
-                and PE aspirants about deal mechanics, financial modeling, and
-                career trajectories.
+                Comfortable speaking with investment bankers, Big 4 advisors, and PE aspirants about deal mechanics,
+                financial modelling, and career trajectories.
               </li>
               <li>
                 <span className="font-semibold text-black">
                   Self-Driven Rainmaker:
                 </span>{" "}
-                Thrives in an autonomous environment with zero micromanagement.
-                You care about closed deals and measurable results.
+                Thrives in an autonomous environment with zero micromanagement. You care about closed deals and
+                measurable results.
               </li>
             </ul>
           </section>
@@ -173,8 +158,8 @@ export default function OpenRole({
               Compensation &amp; Equity Structure
             </h2>
             <p className="text-base text-gray-700 leading-relaxed mb-8">
-              This is a partner-level role designed for an operator who wants
-              meaningful cash upside and equity based on performance.
+              This is a founding role designed for an operator who wants meaningful cash upside and equity based on
+              performance.
             </p>
             <div className="space-y-8">
               <div>
@@ -193,8 +178,7 @@ export default function OpenRole({
                 </h3>
                 <ul className="space-y-3 text-base text-gray-700 leading-relaxed list-disc pl-5">
                   <li>
-                    5.0% – 10.0% Equity / Profit Interest (Vested over
-                    milestones).
+                    5.0% – 10.0% Equity / Profit Interest (Vested over milestones).
                   </li>
                 </ul>
               </div>
@@ -209,17 +193,15 @@ export default function OpenRole({
               The 60-Day Trial Milestones
             </h2>
             <p className="text-base text-gray-700 leading-relaxed mb-6">
-              To protect company equity, all founding partners undergo a 60-day
-              execution trial. To pass the trial and permanently unlock equity
-              vesting, you must:
+              To protect company equity, all founding partners undergo a 60-day execution trial. To pass the trial and
+              permanently unlock equity vesting, you must:
             </p>
             <ul className="space-y-3 text-base text-gray-700 leading-relaxed list-disc pl-5">
               <li>
-                Enroll 3 PGP students OR 10 short-course candidates within your
-                first 60 days.
+                Enrol three Principal Programme participants within your first 60 days.
               </li>
               <li>
-                Establish 2 active university or network referral channels.
+                Establish two active university or network referral channels.
               </li>
             </ul>
           </section>
@@ -229,8 +211,7 @@ export default function OpenRole({
               Apply
             </h2>
             <p className="text-gray-700 leading-relaxed mb-6 max-w-xl">
-              Send your CV and a brief note on relevant admissions, recruiting,
-              or sales experience to{" "}
+              Send your CV and a brief note on relevant admissions, recruiting, or sales experience to{" "}
               <a
                 href={APPLY_HREF}
                 className="text-black underline underline-offset-4 hover:text-gray-700"

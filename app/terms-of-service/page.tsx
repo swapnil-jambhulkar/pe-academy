@@ -19,14 +19,14 @@ export default function TermsOfServicePage() {
                 Program Enrollment
               </h2>
               <p className="text-gray-700">
-                Enrollment in our programmes (GCPE, PGP, and related offerings) is subject to availability.
+                Enrollment in The Principal Programme and related offerings is subject to availability.
                 We reserve the right to refuse enrollment at our discretion.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
                 Refund Policy
               </h2>
               <p className="text-gray-700">
-                GCPE and PGP: Payments are final once enrolment is confirmed unless otherwise stated in your offer letter.
+                The Principal Programme: payments are final once enrolment is confirmed unless otherwise stated in your offer letter.
                 No refunds after the programme has started.
               </p>
               <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">

@@ -4,14 +4,14 @@ import OpenRole from "@/components/careers/OpenRole";
 export const metadata: Metadata = {
   title: "Founding Partner & Head of Global Admissions",
   description:
-    "Partner-track open role at Norland Academy: own candidate conversion, scale global cohort enrollment, and build with founding equity upside.",
+    "Founding open role at Norland Academy: own admissions conversion for The Principal Programme and build with founding equity upside.",
   alternates: {
     canonical: "/careers/founding-partner-head-of-global-admissions",
   },
   openGraph: {
     title: "Founding Partner & Head of Global Admissions | Norland Academy",
     description:
-      "Own admissions conversion for Norland Academy PGP and short-course cohorts. Partner-track role with founding equity.",
+      "Own admissions conversion for The Principal Programme at Norland Academy. Founding role with equity upside.",
     url: "/careers/founding-partner-head-of-global-admissions",
     type: "website",
   },

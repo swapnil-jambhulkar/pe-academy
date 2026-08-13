@@ -35,10 +35,10 @@ export default function FloatingCTA() {
         >
           <div className="bg-white border-2 border-black shadow-2xl rounded-lg p-4 max-w-xs">
             <p className="text-sm font-semibold text-black mb-2">
-              Ready to break into PE?
+              Ready to own a deal?
             </p>
             <p className="text-xs text-gray-600 mb-3">
-              Join 300+ professionals building their PE careers
+              Five seats per cohort. By application.
             </p>
             <Button
               variant="default"
@@ -46,8 +46,8 @@ export default function FloatingCTA() {
               asChild
               className="w-full bg-black text-white hover:bg-gray-800 font-semibold"
             >
-              <Link href="/cohort#apply">
-                Apply Now
+              <Link href="/apply">
+                Apply
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

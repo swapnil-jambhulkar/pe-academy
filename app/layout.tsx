@@ -23,25 +23,24 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://norlandacademy.com"),
   title: {
-    default: "Norland Academy | GCPE, PGP & Day One PE Training",
+    default: "Norland Academy | The Principal Programme",
     template: "%s | Norland Academy",
   },
   description:
-    "Graduate Certificate in Private Equity (GCPE), 48-week PGP, and the Day One Analyst Simulator. Live deal execution from the Norland Capital pipeline.",
+    "The Principal Programme: twelve weeks, five seats, by application. Source your own acquisition target and defend it to an investment committee. Free Day One Simulator.",
   keywords: [
-    "graduate certificate private equity",
-    "GCPE private equity",
-    "PGP private equity programme",
+    "principal programme private equity",
     "private equity training",
-    "LBO modeling course",
+    "LBO modelling course",
     "day one analyst PE",
     "private equity simulator",
-    "break into private equity",
+    "mid career private equity",
     "Norland Academy",
-    "real deal experience",
+    "deal training",
+    "investment committee",
   ],
   authors: [{ name: "Norland Academy", url: "https://norlandacademy.com" }],
-  creator: "Norland Capital",
+  creator: "Stator Capital",
   publisher: "Norland Academy",
   robots: {
     index: true,
@@ -60,27 +59,27 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Norland Academy | GCPE, PGP & Day One PE Training",
+    title: "Norland Academy | The Principal Programme",
     description:
-      "GCPE technical sprint, 48-week PGP institutional track, and free Day One Analyst Simulator. Training on live Norland Capital transactions.",
+      "Twelve weeks. Five seats. Source your own acquisition target, price it, structure it, and defend the recommendation to an investment committee that votes.",
     type: "website",
     url: "https://norlandacademy.com",
     siteName: "Norland Academy",
-    locale: "en_US",
+    locale: "en_GB",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Norland Academy - Work on Real PE Deals",
+        alt: "Norland Academy - The Principal Programme",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Norland Academy | Work on Real PE Deals",
+    title: "Norland Academy | The Principal Programme",
     description:
-      "Work on real PE deals from Norland Capital's pipeline. Get partner-level feedback. No IB required.",
+      "You have executed deals and never owned one. Twelve week cohort for mid career deal professionals.",
     images: ["/og-image.svg"],
     creator: "@norlandcapital",
   },

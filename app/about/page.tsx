@@ -1,174 +1,81 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Check } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-white text-black border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-black mb-6">
-                About Norland Academy
-              </h1>
-              <p className="text-xl text-gray-700">
-                By Stator Capital
-              </p>
-            </motion.div>
-          </div>
+      <section className="pt-28 pb-16 bg-white text-black border-b border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">About</p>
+          <h1 className="text-4xl sm:text-5xl font-heading font-bold text-black mb-6">
+            About Norland Academy
+          </h1>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            By Stator Capital
+          </p>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-20 bg-gray-50 border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-                Our Mission
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Norland Academy was founded to democratize access to Private Equity careers.
-                We believe that breaking into PE should not require a premium MBA or years in investment banking.
-                With the right system, templates, and mentorship, anyone with the drive can build proof they can do PE work.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8 mt-12">
-              <Card className="border-2 border-gray-200">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-black mb-4">
-                    What We Do
-                  </h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Provide proven templates and systems</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Offer live mentorship and feedback</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Build a community of aspiring PE professionals</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Help you create a portfolio that gets interviews</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 border-gray-200">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-black mb-4">
-                    Why We Exist
-                  </h3>
-                  <p className="text-gray-700 mb-4">
-                    The traditional path to PE (IB to MBA to PE) is expensive, time-consuming, and exclusive.
-                    But the skills needed for PE work can be learned and demonstrated without that path.
-                  </p>
-                  <p className="text-gray-700">
-                    We've proven it works. Our founder broke into PE without IB/MBA, and we've helped
-                    mentees land interviews, internships, and roles. Now we're scaling that system.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+      <section className="py-16 md:py-20 bg-gray-50 border-b border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-6 text-gray-800 leading-relaxed">
+          <p>
+            Norland Academy trains mid career deal professionals to think and act as principals. Not as analysts
+            supporting somebody else&apos;s thesis, but as the person who sources the target, prices it, structures it, and
+            defends the recommendation in a room that votes.
+          </p>
+          <p>
+            The Principal Programme is the core offering: twelve weeks, five seats, by application. Participants build a
+            proprietary target universe, screen live, write an investment memorandum, and face an external investment
+            committee of people who invest for a living.
+          </p>
+          <p>
+            Norland Academy is operated by Stator Capital, a UK holding company acquiring owner managed businesses in the
+            lower middle market. Stator is working towards its first completion. The programme does not rest on a record
+            of closed transactions and does not claim one. It rests on participants doing real work on real companies,
+            judged by an external committee.
+          </p>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
-                By The Numbers
-              </h2>
-            </motion.div>
-
-            <div className="grid sm:grid-cols-3 gap-6">
-              <Card className="text-center bg-white/5 border-white/10">
-                <CardContent className="p-6">
-                  <div className="text-4xl font-heading font-bold text-white mb-2">300+</div>
-                  <div className="text-white/70">Aspiring PE professionals</div>
-                </CardContent>
-              </Card>
-              <Card className="text-center bg-white/5 border-white/10">
-                <CardContent className="p-6">
-                  <div className="text-4xl font-heading font-bold text-white mb-2">20+</div>
-                  <div className="text-white/70">Mentees helped</div>
-                </CardContent>
-              </Card>
-              <Card className="text-center bg-white/5 border-white/10">
-                <CardContent className="p-6">
-                  <div className="text-4xl font-heading font-bold text-white mb-2">42%</div>
-                  <div className="text-white/70">Cold email response rate</div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+          <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black mb-6">What we offer</h2>
+          <ul className="space-y-4 text-gray-800 leading-relaxed list-disc pl-5">
+            <li>
+              <span className="font-semibold text-black">The Principal Programme</span>: a selective twelve week cohort
+              for professionals who have executed deals and never owned one
+            </li>
+            <li>
+              <span className="font-semibold text-black">Day One Analyst Simulator</span>: a free mock secure workstation
+              to test deal judgment before you apply
+            </li>
+            <li>
+              <span className="font-semibold text-black">The Forum</span>: a community for deal professionals working
+              through sourcing, screening, and structuring questions
+            </li>
+          </ul>
+          <p className="mt-8 text-sm text-gray-500">
+            We do not place anyone, do not guarantee outcomes, and do not claim placement rates.
+          </p>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-50 border-t border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-                Ready to Start Your Journey?
-              </h2>
-              <p className="text-lg text-gray-700 mb-8">
-                Join hundreds of others breaking into PE without the traditional path.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="default" size="lg" className="bg-black text-white hover:bg-gray-800" asChild>
-                  <Link href="/cohort">
-                    Apply for GCPE
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="border-2 border-black text-black hover:bg-black hover:text-white" asChild>
-                  <Link href="/simulator">
-                    Try Day One Simulator
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
+      <section className="py-16 md:py-20 bg-black text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
+          <h2 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-6">
+            Read the programme or apply
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button className="bg-white text-black hover:bg-gray-100" asChild>
+              <Link href="/programme">
+                Read the programme
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" className="border-white/40 text-white hover:bg-white/10" asChild>
+              <Link href="/apply">Apply</Link>
+            </Button>
           </div>
         </div>
       </section>

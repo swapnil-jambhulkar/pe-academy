@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { INDUSTRY_PAGES } from "@/lib/seo/industry-pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://academy.norlandcapital.co.uk";
+  const baseUrl = "https://norlandacademy.com";
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -12,13 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/cohort`,
+      url: `${baseUrl}/programme`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
-      url: `${baseUrl}/pgp`,
+      url: `${baseUrl}/apply`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,

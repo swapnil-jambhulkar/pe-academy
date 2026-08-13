@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, AlertCircle } from "lucide-react";
-import { PAID_PROGRAMME_NOTE } from "@/lib/programmes";
+import { PAID_PROGRAMME_NOTE, PROGRAMME, SIMULATOR } from "@/lib/programmes";
 
-const starterKitFeatures = [
-  "Monthly real deal challenges",
-  "Partner feedback on work",
-  "300+ member community",
-  "Career roadmaps & playbooks",
+const programmeFeatures = [
+  "Source your own acquisition target in a sector you choose",
+  "Written deliverables every week with live session defence",
+  "External investment committee that reads, questions, and votes",
+  "Investment memorandum, structure, and hundred day plan",
 ];
 
-const cohortFeatures = [
-  "Work on live deals from pipeline",
-  "Direct partner mentorship",
-  "IC committee presentations",
-  "Portfolio with real deal work",
+const simulatorFeatures = [
+  "Three live deal judgment scenarios",
+  "Mock secure workstation: Outlook and VDR",
+  "Free, self-paced, before you apply",
+  "Tests execution under time pressure",
 ];
 
 export default function Solution() {
@@ -25,8 +25,6 @@ export default function Solution() {
     <section id="solution" className="bg-black text-white py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,25 +32,21 @@ export default function Solution() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-white/80 text-sm font-semibold">Two Paths to Real Access</span>
+              <span className="text-white/80 text-sm font-semibold">Programme and simulator</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-4">
-              Choose Your Path
+              Choose your entry point
             </h2>
-            
+
             <p className="text-lg text-white/70 max-w-2xl mx-auto">
-              Both give you real deal experience. Choose based on your timeline and goals.
+              Try the free simulator first, or read the full programme if you are ready to apply.
             </p>
           </motion.div>
 
-          {/* Cards */}
           <div className="grid md:grid-cols-2 gap-6">
-            
-            {/* Starter Kit Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -62,24 +56,22 @@ export default function Solution() {
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1.5 bg-white/10 text-white/80 text-xs font-semibold rounded-full border border-white/20">
-                  Self-Paced
+                  Free
                 </span>
                 <span className="px-3 py-1.5 bg-white/10 text-white/80 text-xs font-semibold rounded-full border border-white/20">
-                  Request access
+                  Self-paced
                 </span>
               </div>
 
               <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2">
-                Starter Kit
+                {SIMULATOR.name}
               </h3>
-              
-              <p className="text-white/60 text-sm mb-6">
-                Monthly challenges on real deals. Build at your own pace.
-              </p>
+
+              <p className="text-white/60 text-sm mb-6">{SIMULATOR.tagline}</p>
 
               <div className="space-y-3 mb-6">
-                {starterKitFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
+                {simulatorFeatures.map((feature) => (
+                  <div key={feature} className="flex items-center gap-3">
                     <Check className="h-4 w-4 text-white/60 flex-shrink-0" />
                     <span className="text-white/80 text-sm">{feature}</span>
                   </div>
@@ -91,14 +83,13 @@ export default function Solution() {
                 className="w-full border-white/30 text-white hover:bg-white/10 hover:border-white/50 py-5"
                 asChild
               >
-                <Link href="/starter-kit">
-                  Learn More
+                <Link href={SIMULATOR.slug}>
+                  Open the simulator
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </motion.div>
 
-            {/* Cohort Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -108,45 +99,43 @@ export default function Solution() {
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1.5 bg-black text-white text-xs font-semibold rounded-full">
-                  Live + Mentored
+                  Twelve weeks
                 </span>
                 <span className="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">
-                  Application Required
+                  Five seats · By application
                 </span>
               </div>
 
               <h3 className="text-xl md:text-2xl font-heading font-bold text-black mb-2">
-                Cohort Program
+                {PROGRAMME.name}
               </h3>
-              
-              <p className="text-gray-600 text-sm mb-2">
-                Work directly on our pipeline deals. Get partner mentorship.
-              </p>
+
+              <p className="text-gray-600 text-sm mb-2">{PROGRAMME.tagline}</p>
               <p className="text-xs text-gray-500 mb-6">{PAID_PROGRAMME_NOTE}</p>
 
               <div className="space-y-3 mb-6">
-                {cohortFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
+                {programmeFeatures.map((feature) => (
+                  <div key={feature} className="flex items-center gap-3">
                     <Check className="h-4 w-4 text-black flex-shrink-0" />
                     <span className="text-gray-700 text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <Button
-                variant="default"
-                className="w-full bg-black text-white hover:bg-gray-800 py-5"
-                asChild
-              >
-                <Link href="/cohort">
-                  Apply Now
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="space-y-2">
+                <Button variant="default" className="w-full bg-black text-white hover:bg-gray-800 py-5" asChild>
+                  <Link href={PROGRAMME.applySlug}>
+                    Apply
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="ghost" size="sm" className="w-full text-xs text-gray-600 hover:text-black" asChild>
+                  <Link href={PROGRAMME.slug}>Read the programme</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
 
-          {/* Bottom Note */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -156,7 +145,7 @@ export default function Solution() {
           >
             <div className="flex items-center justify-center gap-2 text-white/50 text-sm">
               <AlertCircle className="h-4 w-4" />
-              <span>GCPE and PGP are paid programmes. The Day One Simulator is free. Not sure? Start with Starter Kit.</span>
+              <span>The Principal Programme is paid. The Day One Simulator is free. Most applications are declined.</span>
             </div>
           </motion.div>
         </div>

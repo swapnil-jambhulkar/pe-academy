@@ -6,13 +6,33 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/cohort",
+        destination: "/programme",
+        permanent: true,
+      },
+      {
+        source: "/cohort/:path*",
+        destination: "/programme",
+        permanent: true,
+      },
+      {
+        source: "/pgp",
+        destination: "/programme",
+        permanent: true,
+      },
+      {
+        source: "/pgp/:path*",
+        destination: "/programme",
+        permanent: true,
+      },
+      {
         source: "/starter-kit",
-        destination: "/cohort",
+        destination: "/programme",
         permanent: true,
       },
       {
         source: "/starter-kit/:path*",
-        destination: "/cohort",
+        destination: "/programme",
         permanent: true,
       },
     ];
@@ -39,4 +59,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-

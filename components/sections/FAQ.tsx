@@ -10,54 +10,54 @@ import {
 
 const faqs = [
   {
-    question: "Are GCPE and PGP free?",
+    question: "What is The Principal Programme?",
     answer:
-      "No. GCPE and PGP are paid programmes. The Day One Simulator is free. Tuition is confirmed at offer stage after application review.",
+      "A twelve week cohort for mid career deal professionals. You source your own acquisition target in a sector you choose, price it, structure it, write an investment memorandum, and defend the recommendation to an external investment committee that votes. Five seats per cohort. By application.",
   },
   {
-    question: "Do I need prior finance experience?",
+    question: "Is the programme free?",
     answer:
-      "No prior finance experience is required. GCPE and PGP are designed for ambitious professionals breaking into PE from non-traditional backgrounds. Basic Excel skills and a willingness to learn are essential.",
+      "No. The Principal Programme is a paid programme. Tuition is confirmed at offer stage after your application is reviewed. The Day One Simulator and Forum resources are free.",
+  },
+  {
+    question: "Who should apply?",
+    answer:
+      "Professionals with three to eight years in transaction services, investment banking, corporate development, or strategy consulting who can build an LBO model unaided and have never owned a deal end to end. This is not for students, recent graduates, or anyone who needs modelling taught from first principles.",
+  },
+  {
+    question: "What is the admissions process?",
+    answer:
+      "Submit the application form with your sector thesis and a reflection on a transaction you worked on. We review every application individually. If your profile fits, we invite you to a fit conversation before any offer is made. Most applications are declined.",
+  },
+  {
+    question: "What is the weekly time commitment?",
+    answer:
+      "Ten to twelve hours per week including live sessions, preparation, and written deliverables due before each session. You must confirm this commitment on the application form.",
   },
   {
     question: "What if I miss a live session?",
     answer:
-      "All live sessions are recorded and available for replay. You will have lifetime access to session recordings for your cohort.",
-  },
-  {
-    question: "What's the time commitment per week?",
-    answer:
-      "For GCPE, expect 8-10 hours per week including live sessions, assignments, and practice. PGP requires a sustained commitment across 48 weeks. The Day One Simulator is free and self-paced.",
-  },
-  {
-    question: "What's your refund policy?",
-    answer:
-      "GCPE and PGP enrolment is confirmed after offer acceptance. Cohort places are limited. Review programme details before you apply.",
+      "Sessions are recorded. Participants retain access to recordings and materials after the programme. Deliverables are still due on schedule.",
   },
   {
     question: "Do you guarantee job placement?",
     answer:
-      "We do not guarantee placement. You will leave with real deal work in your portfolio, partner-level feedback, and execution proof institutions recognise.",
-  },
-  {
-    question: "What is the difference between GCPE and PGP?",
-    answer:
-      "GCPE is the 12-week technical sprint with live deal work and the graduate certificate examination. PGP is the 48-week institutional track that embeds GCPE in Term 1, then extends into deal engineering, portfolio work, and networking immersion.",
+      "No. We do not place anyone and we do not claim to. You leave with work product you chose and defended: a target universe, screened names, a memorandum, a structure, and a hundred day plan.",
   },
   {
     question: "Can I join from outside the UK?",
     answer:
-      "Yes. Programmes are open globally. Live sessions are scheduled for UK, Europe, and US time zones where possible. Materials are delivered digitally.",
+      "Yes. Live sessions are scheduled to accommodate UK, European, and Gulf time zones where possible. Materials are delivered digitally.",
   },
   {
-    question: "How many cohorts per year?",
+    question: "How is the investment committee structured?",
     answer:
-      "We run rolling GCPE cohorts roughly every six weeks, limited to 10 places per cohort. PGP starts are announced selectively. Contact admissions for the next PGP intake.",
+      "Three external members who invest for a living and are not employees of the programme. They read memoranda in advance, question participants for three hours in week eleven, and vote. Recommendations can be and are rejected.",
   },
   {
-    question: "What happens after I complete GCPE?",
+    question: "Should I try the simulator before applying?",
     answer:
-      "You retain lifetime alumni community access, materials, and recordings. Many participants continue to PGP or use their GCPE portfolio in interview processes.",
+      "Yes, if you want to test deal judgment under time pressure before committing to an application. The Day One Analyst Simulator is free and available on the site.",
   },
 ];
 
@@ -81,7 +81,7 @@ export default function FAQ({ showHeader = true }: FAQProps) {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Everything you need to know about our programmes.
+              Admissions, format, and expectations for The Principal Programme.
             </p>
           </motion.div>
         ) : null}
