@@ -20,6 +20,8 @@ export const bulgeBracketFirms: CohortFirm[] = [
   { id: "barclays", name: "Barclays" },
   { id: "ubs", name: "UBS" },
   { id: "db", name: "Deutsche Bank" },
+  { id: "wells-fargo", name: "Wells Fargo" },
+  { id: "state-street", name: "State Street" },
 ];
 
 export const peFirms: CohortFirm[] = [
