@@ -1,7 +1,7 @@
 Royalty-free stock used on the site (Pexels Licence: free for commercial use, no attribution required, model/property released where applicable).
 
-- hero-ic-pitch.mp4
-  Source: https://www.pexels.com/video/8124000/
-  Author: RDNE Stock project on Pexels
-  Use: homepage hero. Standing pitch in a board meeting with a live market screen and agenda board.
+- hero-ic-committee.mp4
+  Source: https://www.pexels.com/video/people-having-conference-7552420/
+  Author: Vlada Karpovich on Pexels
+  Use: homepage hero. Investment committee reviewing charts and papers around a boardroom table.
   Note: Licensed stock, not proprietary PE-firm internal footage.
