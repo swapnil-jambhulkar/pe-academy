@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 48" role="img" aria-label="McKinsey &amp; Company">
-  <text
-    x="0"
-    y="34"
-    fill="#111111"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="28"
-    font-weight="600"
-    letter-spacing="0.02em"
-  >McKinsey &amp; Company</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 48" role="img" aria-label="McKinsey &amp; Company">
+  <g fill="#111111">
+    <path d="M8 40V8h8.2l10.4 22.6L37 8H45v32h-7.2V18.4L27.6 40h-6.8L10.6 18.4V40H8z"/>
+    <path d="M56 40V8h7.2v32H56z"/>
+    <path d="M72 40V8h7.2v25.6H96V40H72z"/>
+    <path d="M104 40V8h23.2c7.6 0 12.4 4.2 12.4 10.4 0 4.4-2.4 7.6-6.4 9.2 4.8 1.4 8 5.2 8 10.4 0 6.6-5 10-12.8 10H104zm7.2-18.4h14.8c3.4 0 5.6-1.6 5.6-4.4s-2.2-4.2-5.6-4.2h-14.8v8.6zm0 13h16.4c3.8 0 6.2-1.8 6.2-4.8s-2.4-4.6-6.2-4.6h-16.4v9.4z"/>
+    <path d="M148 40V8h7.2v32H148z"/>
+    <path d="M164 40l14.2-32h8.4L201 40h-7.8l-2.8-6.8h-15.2L172.4 40H164zm12.6-12.8h11.2l-5.6-13.6-5.6 13.6z"/>
+    <path d="M208 40V8h7.2v25.6H232V40h-24z"/>
+    <path d="M240 40V8h23.2c7.6 0 12.4 4.2 12.4 10.4 0 4.4-2.4 7.6-6.4 9.2 4.8 1.4 8 5.2 8 10.4 0 6.6-5 10-12.8 10H240zm7.2-18.4h14.8c3.4 0 5.6-1.6 5.6-4.4s-2.2-4.2-5.6-4.2h-14.8v8.6zm0 13h16.4c3.8 0 6.2-1.8 6.2-4.8s-2.4-4.6-6.2-4.6h-16.4v9.4z"/>
+  </g>
 </svg>

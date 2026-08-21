@@ -15,10 +15,10 @@ export default function CohortTicker() {
           id="cohort-ticker-heading"
           className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 text-center"
         >
-          Who the programme is built for
+          Previous cohorts
         </p>
         <p className="mt-2 text-sm text-gray-600 text-center">
-          Bulge-bracket banking, Big Four, and top-tier consulting.
+          People in the last three cohorts came from these firms.
         </p>
       </div>
 

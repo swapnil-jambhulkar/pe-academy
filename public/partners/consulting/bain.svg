@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" role="img" aria-label="Bain &amp; Company">
-  <text
-    x="0"
-    y="34"
-    fill="#111111"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="28"
-    font-weight="600"
-    letter-spacing="0.02em"
-  >Bain &amp; Company</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" role="img" aria-label="Bain &amp; Company">
+  <g fill="#111111">
+    <path d="M8 40V8h22c8.2 0 13.6 4.4 13.6 11.2 0 4.6-2.6 8-7 9.8 5.4 1.6 9 5.6 9 11.2 0 7.2-5.6 13.8-15.2 13.8H8zm8.4-18.8h12.4c3.8 0 6.2-1.8 6.2-5s-2.4-4.6-6.2-4.6H16.4v9.6zm0 13.4h14c4.2 0 6.8-2 6.8-5.4s-2.6-5.2-6.8-5.2h-14v10.6z"/>
+    <path d="M52 40V8h8.4l14.8 22.8V8H84v32h-8.4L60.8 17.2V40H52z"/>
+    <path d="M92 40V8h8.4v32H92z"/>
+    <path d="M110 40V8h8.4v25.6H136V40h-26z"/>
+  </g>
 </svg>
