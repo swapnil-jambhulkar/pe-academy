@@ -24,9 +24,9 @@ const personas: Persona[] = [
     role: "Transaction services",
     years: "3 to 8 years",
     hook: "You have written the quality of earnings. Someone else signed the letter.",
-    already: "You can take a CIM apart in a day and build the model without a template.",
-    missing: "The partner still owns the client. You have never chosen the company.",
-    fit: "PGP is for the person who can execute and has never originated.",
+    already: "You can take accounts apart and build the model without a template.",
+    missing: "You have never chosen the company, run proprietary outreach, or owned the investment verdict.",
+    fit: "PGP is for the TS professional who can execute and has never originated.",
   },
   {
     id: "ib",
@@ -45,7 +45,7 @@ const personas: Persona[] = [
     years: "Mid career",
     hook: "You run process on businesses the CEO already wants.",
     already: "You can diligence a target once it is on the list and brief the board cleanly.",
-    missing: "You do not pick the name. You have never built a proprietary universe.",
+    missing: "You do not pick the name. You have never built a proprietary universe of owner-managed businesses.",
     fit: "PGP is for the corp dev lead who wants to decide what deserves ninety hours.",
   },
   {

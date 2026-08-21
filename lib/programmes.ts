@@ -13,6 +13,9 @@ export const PROGRAMME = {
   seats: 5,
   tagline: "You have executed deals and never owned one.",
   admissionsNote: "Five seats. By application.",
+  dealUniverse: "£5 to £30 million owner-managed UK businesses",
+  dealUniverseDetail:
+    "No CIM. No banker book. Proprietary outreach to owner-managers. Lower mid-market and independent-sponsor process, not mega-fund auctions.",
 } as const;
 
 export const SIMULATOR = {

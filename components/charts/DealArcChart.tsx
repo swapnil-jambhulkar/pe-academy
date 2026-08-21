@@ -12,7 +12,7 @@ const stages = [
   {
     id: "source",
     label: "Source",
-    detail: "Find companies nobody assigned you. Build a proprietary universe.",
+    detail: "Find owner-managed businesses nobody assigned you. Build a proprietary universe. No CIM.",
   },
   {
     id: "decide",

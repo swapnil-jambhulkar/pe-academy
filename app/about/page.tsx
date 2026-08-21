@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PROGRAMME } from "@/lib/programmes";
 
 export default function AboutPage() {
   return (
@@ -26,8 +27,11 @@ export default function AboutPage() {
           </p>
           <p>
             The Principal Programme is the core offering: twelve weeks, five seats, by application. Participants build a
-            proprietary target universe, screen live, write an investment memorandum, and face an external investment
-            committee of people who invest for a living.
+            proprietary target universe among {PROGRAMME.dealUniverse}, run real owner outreach, write an investment
+            memorandum, and face an external investment committee of people who invest for a living.
+          </p>
+          <p>
+            The curriculum is benchmarked to lower mid-market and independent-sponsor process: {PROGRAMME.dealUniverseDetail}
           </p>
           <p>
             Norland Academy is operated by Stator Capital, a UK holding company acquiring owner managed businesses in the

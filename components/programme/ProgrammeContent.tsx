@@ -8,6 +8,7 @@ import CurriculumSchedule from "@/components/programme/CurriculumSchedule";
 import Reveal from "@/components/ui/reveal";
 
 const pageLinks = [
+  { href: "#pillars", label: "Signature" },
   { href: "#format", label: "Format" },
   { href: "#guest-faculty", label: "Guest lectures" },
   { href: "#curriculum", label: "Schedule" },
@@ -18,17 +19,31 @@ const pageLinks = [
 const formatDetails = [
   { label: "Duration", value: "Twelve weeks" },
   { label: "Seats", value: "Five per cohort" },
-  { label: "Admissions", value: "By application only" },
+  { label: "Deal universe", value: PROGRAMME.dealUniverse },
   { label: "Live sessions", value: "Weekly, with written deliverables due before each session" },
   { label: "Commitment", value: "Ten to twelve hours per week including preparation" },
-  { label: "Guest lectures", value: "Weeks 6, 7, and 12. Practitioners, not staff." },
+  { label: "Guest lectures", value: "Weeks 6, 7, and 12. TS, lending, and corporate counsel." },
   { label: "Tuition", value: PAID_PROGRAMME_NOTE },
 ];
 
+const pillars = [
+  {
+    id: "origination",
+    title: "Real owner outreach",
+    body: "You build a proprietary universe and run live outreach to owner-managers. No CIM. No banker book. You write as a learner on the programme, not as an authorised adviser.",
+  },
+  {
+    id: "ic",
+    title: "External IC that votes",
+    body: "Three practising investors, not programme staff. They read your memorandum in advance, question you for three hours, and vote. Recommendations can be rejected.",
+  },
+];
+
 const cohortRules = [
-  "You choose the sector and build the target universe yourself",
-  "Week eleven is a live investment committee. Recommendations can be and are rejected",
-  "Guest practitioners join for diligence, debt capacity, and completion mechanics",
+  "Benchmarked to lower mid-market and independent-sponsor process, not mega-fund auctions",
+  "Origination sprint across weeks 1 to 4, including real owner outreach",
+  "Deliberate practice: live screen, LBO, then memorandum draft and redraft before the IC",
+  "Guest practitioners for transaction services, lending, and corporate counsel",
   "Sessions are recorded. Materials remain available to participants after the programme",
 ];
 
@@ -57,10 +72,12 @@ export default function ProgrammeContent() {
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 max-w-4xl">
               Twelve weeks. Five seats. One live defence.
             </h1>
-            <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 max-w-3xl">
-              The prospectus for {PROGRAMME.name}. Lectures, live sessions, three guest faculty weeks, and the
-              committee that votes. The homepage explains why the programme exists. This page is how it runs.
+            <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 max-w-3xl">
+              A mid-career cohort for professionals who can execute and have never owned the recommendation. You source
+              a proprietary acquisition target in the {PROGRAMME.dealUniverse} range, price it, structure it, and defend
+              it to an external investment committee that votes.
             </p>
+            <p className="text-sm text-gray-600 leading-relaxed mb-8 max-w-3xl">{PROGRAMME.dealUniverseDetail}</p>
             <div className="flex flex-wrap gap-3 mb-10">
               <Button className="bg-black text-white hover:bg-gray-900" asChild>
                 <Link href={PROGRAMME.applySlug}>
@@ -69,7 +86,7 @@ export default function ProgrammeContent() {
                 </Link>
               </Button>
               <Button variant="outline" className="border-black text-black hover:bg-gray-100" asChild>
-                <Link href="#guest-faculty">Guest lectures</Link>
+                <Link href="#pillars">Signature features</Link>
               </Button>
             </div>
             <nav aria-label="Programme sections" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
@@ -87,6 +104,28 @@ export default function ProgrammeContent() {
         </div>
       </section>
 
+      <section className="py-16 md:py-24 bg-black text-white border-b border-white/10" id="pillars">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <Reveal>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-3">Signature</p>
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+              Two features nobody else offers commercially
+            </h2>
+            <p className="text-base text-white/70 leading-relaxed max-w-3xl mb-10">
+              Protect these. Everything else in the curriculum exists to make them real.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+              {pillars.map((pillar) => (
+                <article key={pillar.id} className="border border-white/20 bg-white/5 p-6 md:p-8">
+                  <h3 className="text-2xl font-heading font-bold text-white mb-3">{pillar.title}</h3>
+                  <p className="text-sm text-white/75 leading-relaxed">{pillar.body}</p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200" id="format">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
@@ -95,25 +134,27 @@ export default function ProgrammeContent() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {formatDetails.map((item) => {
                 const isGuest = item.label === "Guest lectures";
+                const isUniverse = item.label === "Deal universe";
+                const emphasize = isGuest || isUniverse;
                 return (
                   <div
                     key={item.label}
                     className={
-                      isGuest
+                      emphasize
                         ? "border border-black bg-black text-white p-5"
                         : "border border-gray-200 p-5 bg-white"
                     }
                   >
                     <p
                       className={
-                        isGuest
+                        emphasize
                           ? "text-xs uppercase tracking-wide text-white/60 mb-1 font-bold"
                           : "text-xs uppercase tracking-wide text-gray-500 mb-1"
                       }
                     >
                       {item.label}
                     </p>
-                    <p className={isGuest ? "text-base font-bold text-white" : "text-base font-medium text-black"}>
+                    <p className={emphasize ? "text-base font-bold text-white" : "text-base font-medium text-black"}>
                       {item.value}
                     </p>
                   </div>
@@ -137,11 +178,12 @@ export default function ProgrammeContent() {
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Curriculum</p>
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
-              Lectures, live sessions, guest faculty
+              Origination, diligence, structure, defence
             </h2>
             <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
               Each week has one live session and one written deliverable due before it. Guest lectures sit in weeks 6,
-              7, and 12. Week 11 is the investment committee.
+              7, and 12. Week 11 is the investment committee. Core artefacts get more than one practice cycle: screen,
+              LBO, then memorandum draft and redraft.
             </p>
             <CurriculumSchedule />
           </Reveal>

@@ -1,13 +1,32 @@
 import Reveal from "@/components/ui/reveal";
 import CapabilityBars from "@/components/charts/CapabilityBars";
+import { PROGRAMME } from "@/lib/programmes";
 
 const gaps = [
-  { title: "Origination", body: "You have only ever seen deals that arrived. Broker processes, or a target handed down by an MD." },
-  { title: "The screen", body: "You can analyse a company once told to. You have never decided in ninety minutes whether one deserves ninety hours." },
-  { title: "The owner", body: "You have never sat opposite someone selling the business they built." },
-  { title: "The verdict", body: "Nobody has ever voted no on your work in a room." },
-  { title: "The structure", body: "You can model a waterfall. You have never designed one." },
-  { title: "Monday morning", body: "You disappear at signing. You have never had to answer what happens next." },
+  {
+    title: "Origination",
+    body: "You have only ever seen deals that arrived. Broker processes, or a target handed down by an MD. Owner-managed businesses do not come with a CIM.",
+  },
+  {
+    title: "The screen",
+    body: "You can analyse a company once told to. You have never decided in ninety minutes whether one deserves ninety hours.",
+  },
+  {
+    title: "The owner",
+    body: "You have never sat opposite someone selling the business they built, without an adviser in the room.",
+  },
+  {
+    title: "The verdict",
+    body: "Nobody has ever voted no on your work in a room where you owned the recommendation.",
+  },
+  {
+    title: "The structure",
+    body: "You can model a waterfall. You have never designed one against what a mid-market lender will actually underwrite.",
+  },
+  {
+    title: "Monday morning",
+    body: "You disappear at signing. You have never written the hundred day plan the owner will run.",
+  },
 ];
 
 export default function WhatIsMissing() {
@@ -18,7 +37,8 @@ export default function WhatIsMissing() {
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">The gap</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">What is missing</h2>
           <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
-            Strong operators are often missing the judgements that sit with the person who owns the deal.
+            Strong operators are often missing the judgements that sit with the person who owns a proprietary deal.
+            The programme is built for that gap on {PROGRAMME.dealUniverse}, not mega-fund auction process.
           </p>
         </Reveal>
 

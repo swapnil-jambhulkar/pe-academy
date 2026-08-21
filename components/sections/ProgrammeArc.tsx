@@ -1,6 +1,7 @@
 import Reveal from "@/components/ui/reveal";
 import DealArcChart from "@/components/charts/DealArcChart";
 import CurriculumTimeline from "@/components/charts/CurriculumTimeline";
+import { PROGRAMME } from "@/lib/programmes";
 
 export default function ProgrammeArc() {
   return (
@@ -14,8 +15,8 @@ export default function ProgrammeArc() {
             The twelve week pack
           </h2>
           <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
-            Same structure as a live deal room. Open a workstream, then a file. Thesis, diligence, structure,
-            then the IC pack.
+            Built for proprietary deals on {PROGRAMME.dealUniverse}. Open a workstream, then a file. Origination,
+            diligence, structure, then the IC pack and completion.
           </p>
         </Reveal>
 

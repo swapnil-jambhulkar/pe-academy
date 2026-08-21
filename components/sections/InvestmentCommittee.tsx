@@ -26,8 +26,8 @@ export default function InvestmentCommittee() {
           <div className="mt-16">
             <h3 className="text-2xl font-heading font-bold text-black mb-4">Guest faculty</h3>
             <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
-              Practitioners join for diligence, debt capacity, and completion mechanics. Names are published as they are
-              confirmed.
+              Practitioners join for transaction services, lending, and corporate counsel. Names are published as they
+              are confirmed.
             </p>
             <FacultyCards members={faculty} />
           </div>

@@ -2,7 +2,7 @@ export const programmeFaqs = [
   {
     question: "What is The Principal Programme?",
     answer:
-      "A twelve week cohort for mid career deal professionals. You source your own acquisition target in a sector you choose, price it, structure it, write an investment memorandum, and defend the recommendation to an external investment committee that votes. Five seats per cohort. By application.",
+      "A twelve week cohort for mid career deal professionals. You source a proprietary acquisition target among £5 to £30 million owner-managed UK businesses, run real owner outreach, price it, structure it, write an investment memorandum, and defend the recommendation to an external investment committee that votes. Five seats per cohort. By application.",
   },
   {
     question: "Is the programme free?",

@@ -46,8 +46,7 @@ function GuestFacultyStrip() {
         Three guest lectures. Practitioners, not staff.
       </h3>
       <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
-        Diligence, debt, and completion are taught by people who do that work for a living. Names are published as they
-        are confirmed.
+        Transaction services, lending, and corporate counsel. Names are published as they are confirmed.
       </p>
       <div className="grid md:grid-cols-3 gap-4">
         {guestWeeks.map((row) => {
@@ -89,12 +88,7 @@ function WeekRow({ row }: { row: ProgrammeWeek }) {
       )}
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span
-          className={cn(
-            "text-sm font-bold tabular-nums",
-            isEmphasis ? "text-white" : "text-black"
-          )}
-        >
+        <span className={cn("text-sm font-bold tabular-nums", isEmphasis ? "text-white" : "text-black")}>
           Week {String(row.week).padStart(2, "0")}
         </span>
         <KindBadge kind={row.kind} onDark={isEmphasis} />
@@ -115,7 +109,12 @@ function WeekRow({ row }: { row: ProgrammeWeek }) {
       <p className={cn("text-sm leading-relaxed mb-4", isEmphasis ? "text-white/80" : "text-gray-700")}>
         {row.lecture}
       </p>
-      <p className={cn("text-xs uppercase tracking-[0.14em] font-semibold mb-1", isEmphasis ? "text-white/50" : "text-gray-400")}>
+      <p
+        className={cn(
+          "text-xs uppercase tracking-[0.14em] font-semibold mb-1",
+          isEmphasis ? "text-white/50" : "text-gray-400"
+        )}
+      >
         Written deliverable
       </p>
       <p className={cn("text-sm", isEmphasis ? "text-white" : "text-gray-800")}>{row.deliverable}</p>

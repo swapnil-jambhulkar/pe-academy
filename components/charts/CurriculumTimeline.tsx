@@ -12,21 +12,21 @@ type Workstream = {
 };
 
 const workstreams: Workstream[] = [
-  { id: "thesis", folder: "01_Thesis", weeks: [1, 2, 3] },
-  { id: "diligence", folder: "02_Diligence", weeks: [4, 5, 6] },
-  { id: "structure", folder: "03_Structure", weeks: [7, 8, 9] },
-  { id: "ic", folder: "04_IC_and_Completion", weeks: [10, 11, 12] },
+  { id: "origination", folder: "01_Origination", weeks: [1, 2, 3, 4] },
+  { id: "diligence", folder: "02_Diligence", weeks: [5, 6] },
+  { id: "structure", folder: "03_Structure", weeks: [7, 8] },
+  { id: "defence", folder: "04_IC_and_Completion", weeks: [9, 10, 11, 12] },
 ];
 
 const files: Record<number, { name: string; kind: "pdf" | "xlsx" }> = {
   1: { name: "01_Investment_Thesis.pdf", kind: "pdf" },
   2: { name: "02_Target_Universe.xlsx", kind: "xlsx" },
-  3: { name: "03_Screen_and_Kill_Reasons.pdf", kind: "pdf" },
-  4: { name: "04_Pipeline_Review.xlsx", kind: "xlsx" },
+  3: { name: "03_Outreach_Log.xlsx", kind: "xlsx" },
+  4: { name: "04_Screen_and_Kill_Reasons.pdf", kind: "pdf" },
   5: { name: "05_Owner_Call_Plan.pdf", kind: "pdf" },
   6: { name: "06_Diligence_Request_List.pdf", kind: "pdf" },
   7: { name: "07_Debt_Capacity.xlsx", kind: "xlsx" },
-  8: { name: "08_Structure_and_Entry_Price.xlsx", kind: "xlsx" },
+  8: { name: "08_First_Round_LBO.xlsx", kind: "xlsx" },
   9: { name: "09_IM_Draft_v1.pdf", kind: "pdf" },
   10: { name: "10_IM_Final.pdf", kind: "pdf" },
   11: { name: "11_IC_Pack.pdf", kind: "pdf" },
@@ -36,10 +36,10 @@ const files: Record<number, { name: string; kind: "pdf" | "xlsx" }> = {
 export default function CurriculumTimeline() {
   const [week, setWeek] = useState(1);
   const [open, setOpen] = useState<Record<string, boolean>>({
-    thesis: true,
+    origination: true,
     diligence: true,
     structure: true,
-    ic: true,
+    defence: true,
   });
 
   const selected = programmeWeeks.find((row) => row.week === week) ?? programmeWeeks[0];

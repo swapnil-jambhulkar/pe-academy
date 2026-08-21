@@ -32,10 +32,11 @@ export default function Hero() {
             You have executed deals and never owned one.
           </h1>
           <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 max-w-3xl">
-            {PROGRAMME.fullName} is a twelve week cohort for mid career deal professionals. You source your own
-            acquisition target, price it, structure it, and defend the recommendation to an investment committee that
-            votes.
+            {PROGRAMME.fullName} is a twelve week cohort for mid career deal professionals. You source a proprietary
+            acquisition target among {PROGRAMME.dealUniverse}, price it, structure it, and defend the recommendation to
+            an investment committee that votes.
           </p>
+          <p className="text-sm text-gray-600 leading-relaxed mb-4 max-w-3xl">{PROGRAMME.dealUniverseDetail}</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500 mb-8">
             <span>{PROGRAMME.duration}</span>
             <span className="hidden sm:inline text-gray-300">|</span>

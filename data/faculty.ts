@@ -10,20 +10,20 @@ export type FacultyMember = {
 export const faculty: FacultyMember[] = [
   {
     week: 6,
-    seat: "Diligence",
-    profile: "Guest practitioner on scoping diligence as a principal",
+    seat: "TS",
+    profile: "Guest practitioner from transaction services on scoping financial diligence as a principal",
     name: null,
   },
   {
     week: 7,
     seat: "Debt",
-    profile: "Guest practitioner on debt capacity and capital structure",
+    profile: "Guest practitioner from lending on debt capacity and mid-market underwriting",
     name: null,
   },
   {
     week: 12,
-    seat: "Completion",
-    profile: "Guest practitioner on completion mechanics and the hundred day plan",
+    seat: "Counsel",
+    profile: "Guest practitioner from corporate law on locked box, completion accounts, and SPA mechanics",
     name: null,
   },
 ];
