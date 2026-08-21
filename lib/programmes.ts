@@ -2,6 +2,9 @@
 
 export const PAID_PROGRAMME_NOTE = "Tuition is confirmed at offer stage.";
 
+/** Set NEXT_PUBLIC_DISCORD_INVITE_URL when the Discord invite is live. */
+export const DISCORD_INVITE_URL = process.env.NEXT_PUBLIC_DISCORD_INVITE_URL?.trim() || null;
+
 export const PROGRAMME = {
   id: "pgp",
   slug: "/pgp",
@@ -16,6 +19,9 @@ export const PROGRAMME = {
   dealUniverse: "£5 to £30 million owner-managed UK businesses",
   dealUniverseDetail:
     "No CIM. No banker book. Proprietary outreach to owner-managers. Lower mid-market and independent-sponsor process, not mega-fund auctions.",
+  /** Applications are closed until this cohort window. Use waitlist + community CTAs. */
+  applicationsOpenLabel: "January 2027",
+  waitlistMode: true,
 } as const;
 
 export const SIMULATOR = {

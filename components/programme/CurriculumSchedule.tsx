@@ -8,6 +8,7 @@ import {
   type SessionKind,
 } from "@/data/programme-weeks";
 import { faculty } from "@/data/faculty";
+import { FacultyCards } from "@/components/programme/SeatCards";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
@@ -47,8 +48,6 @@ function KindBadge({ kind, tone }: { kind: SessionKind; tone: "light" | "dark" }
 }
 
 function GuestFacultyStrip() {
-  const guestWeeks = programmeWeeks.filter((row) => row.kind === "guest-lecture");
-
   return (
     <div id="guest-faculty" className="mb-14 scroll-mt-28">
       <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Guest faculty</p>
@@ -56,45 +55,26 @@ function GuestFacultyStrip() {
         Three guest lectures. Practitioners, not staff.
       </h3>
       <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
-        Transaction services, lending, and corporate counsel. Names are published as they are confirmed.
+        Transaction services, lending, and corporate counsel. Names and photos are published as each seat is confirmed.
+        Until then, seats show as to be announced.
       </p>
-      <div className="grid md:grid-cols-3 gap-4">
-        {guestWeeks.map((row) => {
-          const seat = faculty.find((member) => member.week === row.week);
-          return (
-            <a
-              key={row.week}
-              href={`#week-${row.week}`}
-              className="group block bg-black text-white p-6 hover:bg-gray-900 transition-colors"
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/70 mb-3">
-                Week {row.week} · Guest lecture
-              </p>
-              <p className="text-xl font-heading font-bold mb-2">{row.guestSeat ?? row.session}</p>
-              <p className="text-sm text-white/80 leading-relaxed mb-4">{row.session}</p>
-              <p className="text-xs uppercase tracking-wide text-white/50">
-                {seat?.name ?? "Faculty to be announced"}
-              </p>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/60 group-hover:text-white">
-                Read week {row.week}
-              </p>
-            </a>
-          );
-        })}
-      </div>
+      <FacultyCards members={faculty} />
     </div>
   );
 }
 
 function WeekRow({ row }: { row: ProgrammeWeek }) {
   const isEmphasis = row.kind === "guest-lecture" || row.kind === "committee";
+  const liveLabel = row.kind === "committee" ? "Live IC" : "Guest lecture";
 
   return (
     <article
       id={`week-${row.week}`}
       className={cn(
         "scroll-mt-28 grid gap-5 border md:grid-cols-[5.5rem_1fr] md:gap-0",
-        isEmphasis ? "border-black bg-black text-white" : "border-gray-200 bg-white text-black"
+        isEmphasis
+          ? "pgp-live-card border-black bg-black text-white"
+          : "border-gray-200 bg-white text-black"
       )}
     >
       <div
@@ -112,12 +92,23 @@ function WeekRow({ row }: { row: ProgrammeWeek }) {
           >
             Week
           </p>
-          <p className={cn("font-heading text-4xl font-bold tabular-nums leading-none mt-1", isEmphasis ? "text-white" : "text-black")}>
+          <p
+            className={cn(
+              "font-heading text-4xl font-bold tabular-nums leading-none mt-1",
+              isEmphasis ? "text-white" : "text-black"
+            )}
+          >
             {String(row.week).padStart(2, "0")}
           </p>
         </div>
-        <div className="md:mt-5">
+        <div className="md:mt-5 space-y-2">
           <KindBadge kind={row.kind} tone={isEmphasis ? "dark" : "light"} />
+          {isEmphasis ? (
+            <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+              <span className="pgp-live-dot h-2 w-2 rounded-full bg-white" aria-hidden />
+              {liveLabel}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -142,12 +133,7 @@ function WeekRow({ row }: { row: ProgrammeWeek }) {
           {row.lecture}
         </p>
 
-        <div
-          className={cn(
-            "mt-5 border-t pt-4",
-            isEmphasis ? "border-white/20" : "border-gray-200"
-          )}
-        >
+        <div className={cn("mt-5 border-t pt-4", isEmphasis ? "border-white/20" : "border-gray-200")}>
           <div className="flex gap-3">
             <span className={cn("mt-1 h-8 w-1 shrink-0", isEmphasis ? "bg-white" : "bg-black")} aria-hidden />
             <div>

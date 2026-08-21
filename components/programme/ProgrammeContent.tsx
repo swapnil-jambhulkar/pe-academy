@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PROGRAMME, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
+import { PROGRAMME, PAID_PROGRAMME_NOTE, DISCORD_INVITE_URL } from "@/lib/programmes";
+import { GUILD } from "@/lib/guild";
 import { committee } from "@/data/committee";
 import { CommitteeCards } from "@/components/programme/SeatCards";
 import CurriculumSchedule from "@/components/programme/CurriculumSchedule";
 import Reveal from "@/components/ui/reveal";
+import WaitlistForm from "@/components/forms/WaitlistForm";
 
 const pageLinks = [
   { href: "#pillars", label: "Signature" },
@@ -14,9 +16,10 @@ const pageLinks = [
   { href: "#curriculum", label: "Schedule" },
   { href: "#admissions", label: "Admissions" },
   { href: "#committee", label: "Committee" },
+  { href: "#waitlist", label: "Waitlist" },
 ];
 
-const formatDetails = [
+const formatFacts = [
   { label: "Duration", value: "Twelve weeks" },
   { label: "Seats", value: "Five per cohort" },
   { label: "Deal universe", value: PROGRAMME.dealUniverse },
@@ -24,6 +27,7 @@ const formatDetails = [
   { label: "Commitment", value: "Ten to twelve hours per week including preparation" },
   { label: "Guest lectures", value: "Weeks 6, 7, and 12. TS, lending, and corporate counsel." },
   { label: "Tuition", value: PAID_PROGRAMME_NOTE },
+  { label: "Applications", value: `Waitlist open. Applications open ${PROGRAMME.applicationsOpenLabel}.` },
 ];
 
 const pillars = [
@@ -60,36 +64,48 @@ const entryNotForYou = [
   "Your first question is what percentage of graduates get placed",
 ];
 
+const communityHref = DISCORD_INVITE_URL ?? GUILD.slug;
+const communityLabel = DISCORD_INVITE_URL ? "Join Discord" : "Join the Forum";
+const communityIsExternal = Boolean(DISCORD_INVITE_URL);
+
 export default function ProgrammeContent() {
   return (
     <div>
-      <section className="pt-28 pb-16 bg-white text-black border-b border-gray-200">
+      <section className="pt-28 pb-14 bg-white text-black border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">
               {PROGRAMME.fullName}
             </p>
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6 max-w-4xl">
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-5 max-w-4xl">
               Twelve weeks. Five seats. One live defence.
             </h1>
-            <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 max-w-3xl">
-              A mid-career cohort for professionals who can execute and have never owned the recommendation. You source
-              a proprietary acquisition target in the {PROGRAMME.dealUniverse} range, price it, structure it, and defend
-              it to an external investment committee that votes.
+            <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-3 max-w-2xl">
+              Source a proprietary £5 to £30 million UK target, structure the deal, and defend it to a voting investment
+              committee.
             </p>
-            <p className="text-sm text-gray-600 leading-relaxed mb-8 max-w-3xl">{PROGRAMME.dealUniverseDetail}</p>
-            <div className="flex flex-wrap gap-3 mb-10">
+            <p className="text-sm text-gray-600 mb-8 max-w-2xl">
+              Applications open {PROGRAMME.applicationsOpenLabel}. Join the waitlist now, or learn with the community
+              while seats and faculty are confirmed.
+            </p>
+            <div className="flex flex-wrap gap-3 mb-8">
               <Button className="bg-black text-white hover:bg-gray-900" asChild>
-                <Link href={PROGRAMME.applySlug}>
-                  Apply
+                <Link href="#waitlist">
+                  Join the waitlist
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="outline" className="border-black text-black hover:bg-gray-100" asChild>
-                <Link href="#pillars">Signature features</Link>
+                {communityIsExternal ? (
+                  <a href={communityHref} target="_blank" rel="noopener noreferrer">
+                    {communityLabel}
+                  </a>
+                ) : (
+                  <Link href={communityHref}>{communityLabel}</Link>
+                )}
               </Button>
             </div>
-            <nav aria-label="Programme sections" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <nav aria-label="Programme sections" className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
               {pageLinks.map((link) => (
                 <a
                   key={link.href}
@@ -104,17 +120,17 @@ export default function ProgrammeContent() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-black text-white border-b border-white/10" id="pillars">
+      <section className="py-14 md:py-20 bg-black text-white border-b border-white/10" id="pillars">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-3">Signature</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-3">
               Two features nobody else offers commercially
             </h2>
-            <p className="text-base text-white/70 leading-relaxed max-w-3xl mb-10">
+            <p className="text-base text-white/70 leading-relaxed max-w-3xl mb-8">
               Protect these. Everything else in the curriculum exists to make them real.
             </p>
-            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               {pillars.map((pillar) => (
                 <article key={pillar.id} className="border border-white/20 bg-white/5 p-6 md:p-8">
                   <h3 className="text-2xl font-heading font-bold text-white mb-3">{pillar.title}</h3>
@@ -126,75 +142,63 @@ export default function ProgrammeContent() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200" id="format">
+      <section className="py-14 md:py-16 bg-gray-50 border-b border-gray-200" id="format">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Format</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-10">How the cohort runs</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {formatDetails.map((item) => {
-                const isGuest = item.label === "Guest lectures";
-                const isUniverse = item.label === "Deal universe";
-                const emphasize = isGuest || isUniverse;
-                return (
-                  <div
-                    key={item.label}
-                    className={
-                      emphasize
-                        ? "border border-black bg-black text-white p-5"
-                        : "border border-gray-200 p-5 bg-white"
-                    }
-                  >
-                    <p
-                      className={
-                        emphasize
-                          ? "text-xs uppercase tracking-wide text-white/60 mb-1 font-bold"
-                          : "text-xs uppercase tracking-wide text-gray-500 mb-1"
-                      }
-                    >
-                      {item.label}
-                    </p>
-                    <p className={emphasize ? "text-base font-bold text-white" : "text-base font-medium text-black"}>
-                      {item.value}
-                    </p>
-                  </div>
-                );
-              })}
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-8">How the cohort runs</h2>
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+              <div className="bg-white border border-gray-200 p-6 md:p-8">
+                <h3 className="text-lg font-heading font-semibold text-black mb-5">Key facts</h3>
+                <dl className="space-y-4">
+                  {formatFacts.map((item) => (
+                    <div key={item.label} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
+                      <dt className="text-xs uppercase tracking-[0.14em] font-semibold text-gray-500 mb-1">
+                        {item.label}
+                      </dt>
+                      <dd className="text-sm text-black leading-relaxed">{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+              <div className="bg-white border border-gray-200 p-6 md:p-8">
+                <h3 className="text-lg font-heading font-semibold text-black mb-5">Operating rules</h3>
+                <ul className="space-y-4">
+                  {cohortRules.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
+                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5 text-black" aria-hidden />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <ul className="mt-10 space-y-3 max-w-3xl">
-              {cohortRules.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-gray-700">
-                  <Check className="h-4 w-4 flex-shrink-0 mt-1 text-black" aria-hidden />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
           </Reveal>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white border-b border-gray-200" id="curriculum">
+      <section className="py-14 md:py-20 bg-white border-b border-gray-200" id="curriculum">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Curriculum</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-3">
               Origination, diligence, structure, defence
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
-              Four phases. Open each one for the week-by-week sessions and written deliverables. Guest lectures sit in
-              weeks 6, 7, and 12. Week 11 is the investment committee.
+            <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
+              Four phases. Open each one for the week-by-week sessions and written deliverables. Guest lectures and the
+              investment committee are marked live. That is what tuition buys.
             </p>
             <CurriculumSchedule />
           </Reveal>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gray-50 border-b border-gray-200" id="admissions">
+      <section className="py-14 md:py-16 bg-gray-50 border-b border-gray-200" id="admissions">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Admissions</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-10">The bar to apply</h2>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-8">The bar to join</h2>
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
               <div className="bg-white border border-gray-200 p-6 md:p-8">
                 <h3 className="text-lg font-heading font-semibold text-black mb-4">Required</h3>
                 <ul className="space-y-3 text-gray-700 leading-relaxed list-disc pl-5">
@@ -212,44 +216,69 @@ export default function ProgrammeContent() {
                 </ul>
               </div>
             </div>
-            <p className="mt-10 text-sm text-gray-500">
-              Applications require a sector thesis and a reflection on a transaction you worked on. We do not place
-              anyone and we do not claim to.
+            <p className="mt-8 text-sm text-gray-500">
+              When applications open, you will submit a sector thesis and a reflection on a transaction you worked on.
+              We do not place anyone and we do not claim to.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white border-b border-gray-200" id="committee">
+      <section className="py-14 md:py-20 bg-white border-b border-gray-200" id="committee">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Judgement</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-4">Committee seats</h2>
-            <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-3">Committee seats</h2>
+            <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
               Three external members, currently investing, not employees of the programme. They read the memoranda in
-              advance, question the participants for three hours, and vote. Names are published as they are confirmed.
+              advance, question the participants for three hours, and vote. Faces and names are published as each seat
+              is confirmed.
             </p>
             <CommitteeCards members={committee} />
           </Reveal>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-black text-white" id="apply">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+      <section className="py-14 md:py-20 bg-black text-white" id="waitlist">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <Reveal>
-            <h2 className="font-heading font-bold text-white text-2xl sm:text-4xl mb-6">
-              Submit a sector thesis. Most applications are declined.
-            </h2>
-            <p className="text-white/75 mb-8 max-w-2xl mx-auto leading-relaxed">
-              If your profile fits, we invite you to a fit conversation before any offer is made. Tuition is confirmed
-              at offer stage.
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-3 text-center">
+              Next step
             </p>
-            <Button size="lg" asChild className="bg-white text-black hover:bg-gray-100 font-semibold">
-              <Link href={PROGRAMME.applySlug}>
-                Apply for PGP
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <h2 className="font-heading font-bold text-white text-2xl sm:text-4xl mb-4 text-center">
+              Waitlist for {PROGRAMME.applicationsOpenLabel}
+            </h2>
+            <p className="text-white/75 mb-8 max-w-2xl mx-auto leading-relaxed text-center">
+              Applications are not open yet. Join the waitlist for PGP, or join the community to stay close to the
+              curriculum while guest faculty and committee seats are confirmed.
+            </p>
+            <WaitlistForm tone="dark" className="max-w-xl mx-auto mb-8" />
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-black bg-transparent"
+                asChild
+              >
+                {communityIsExternal ? (
+                  <a href={communityHref} target="_blank" rel="noopener noreferrer">
+                    {communityLabel}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                ) : (
+                  <Link href={communityHref}>
+                    {communityLabel}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                )}
+              </Button>
+              <Button
+                variant="outline"
+                className="border-white/40 text-white/80 hover:bg-white/10 hover:text-white bg-transparent"
+                asChild
+              >
+                <Link href="/simulator">Try the Day One Simulator</Link>
+              </Button>
+            </div>
           </Reveal>
         </div>
       </section>
