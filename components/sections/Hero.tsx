@@ -70,9 +70,9 @@ export default function Hero() {
 
         <div className="relative min-h-[42vh] lg:min-h-full border-t lg:border-t-0 lg:border-l border-gray-200">
           <HeroVideo
-            src="/videos/hero-ic-defense.mp4"
-            poster="/videos/hero-ic-defense.jpg"
-            label="Deal professional standing to defend a recommendation to a seated investment committee"
+            src="/videos/hero-ic-pitch.mp4"
+            poster="/videos/hero-ic-pitch.jpg"
+            label="Professional pitching in a board meeting with a live market screen and agenda board"
           />
         </div>
       </div>
