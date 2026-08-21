@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PROGRAMME, PAID_PROGRAMME_NOTE, DISCORD_INVITE_URL } from "@/lib/programmes";
+import { PROGRAMME, DISCORD_INVITE_URL } from "@/lib/programmes";
 import { GUILD } from "@/lib/guild";
 import { committee } from "@/data/committee";
 import { CommitteeCards } from "@/components/programme/SeatCards";
@@ -21,13 +21,21 @@ const pageLinks = [
 
 const formatFacts = [
   { label: "Duration", value: "Twelve weeks" },
-  { label: "Seats", value: "Five per cohort" },
-  { label: "Deal universe", value: PROGRAMME.dealUniverse },
-  { label: "Live sessions", value: "Weekly, with written deliverables due before each session" },
-  { label: "Commitment", value: "Ten to twelve hours per week including preparation" },
-  { label: "Guest lectures", value: "Weeks 6, 7, and 12. TS, lending, and corporate counsel." },
-  { label: "Tuition", value: PAID_PROGRAMME_NOTE },
-  { label: "Applications", value: `Waitlist open. Applications open ${PROGRAMME.applicationsOpenLabel}.` },
+  { label: "Seats", value: "Five" },
+  { label: "Hours / week", value: "10 to 12" },
+  { label: "Applications", value: `Open ${PROGRAMME.applicationsOpenLabel}` },
+  { label: "Deal universe", value: "£5 to £30m UK owner-managed" },
+  { label: "Sessions", value: "Weekly + written deliverable" },
+  { label: "Guests", value: "TS, Debt, Counsel" },
+  { label: "Tuition", value: "Confirmed at offer" },
+];
+
+const cohortRules = [
+  "Lower mid-market process, not mega-fund auctions",
+  "Weeks 1 to 4: proprietary owner outreach",
+  "Live screen, LBO, memo draft and redraft before IC",
+  "Guest practitioners for TS, lending, and counsel",
+  "Recorded sessions. Materials stay with participants",
 ];
 
 const pillars = [
@@ -41,14 +49,6 @@ const pillars = [
     title: "External IC that votes",
     body: "Three practising investors, not programme staff. They read your memorandum in advance, question you for three hours, and vote. Recommendations can be rejected.",
   },
-];
-
-const cohortRules = [
-  "Benchmarked to lower mid-market and independent-sponsor process, not mega-fund auctions",
-  "Origination sprint across weeks 1 to 4, including real owner outreach",
-  "Deliberate practice: live screen, LBO, then memorandum draft and redraft before the IC",
-  "Guest practitioners for transaction services, lending, and corporate counsel",
-  "Sessions are recorded. Materials remain available to participants after the programme",
 ];
 
 const entryForYou = [
@@ -142,37 +142,35 @@ export default function ProgrammeContent() {
         </div>
       </section>
 
-      <section className="py-14 md:py-16 bg-gray-50 border-b border-gray-200" id="format">
+      <section className="py-10 md:py-12 bg-gray-50 border-b border-gray-200" id="format">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Format</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-8">How the cohort runs</h2>
-            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="bg-white border border-gray-200 p-6 md:p-8">
-                <h3 className="text-lg font-heading font-semibold text-black mb-5">Key facts</h3>
-                <dl className="space-y-4">
-                  {formatFacts.map((item) => (
-                    <div key={item.label} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
-                      <dt className="text-xs uppercase tracking-[0.14em] font-semibold text-gray-500 mb-1">
-                        {item.label}
-                      </dt>
-                      <dd className="text-sm text-black leading-relaxed">{item.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-              <div className="bg-white border border-gray-200 p-6 md:p-8">
-                <h3 className="text-lg font-heading font-semibold text-black mb-5">Operating rules</h3>
-                <ul className="space-y-4">
-                  {cohortRules.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5 text-black" aria-hidden />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="flex flex-wrap items-end justify-between gap-3 mb-5">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-2">Format</p>
+                <h2 className="text-2xl sm:text-3xl font-heading font-bold text-black">How the cohort runs</h2>
               </div>
             </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 border border-gray-200 bg-gray-200 gap-px">
+              {formatFacts.map((item) => (
+                <div key={item.label} className="bg-white px-4 py-3 sm:px-5 sm:py-4">
+                  <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-gray-500 mb-1">
+                    {item.label}
+                  </p>
+                  <p className="text-sm font-medium text-black leading-snug">{item.value}</p>
+                </div>
+              ))}
+            </div>
+
+            <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2">
+              {cohortRules.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-gray-700 leading-snug">
+                  <Check className="h-3.5 w-3.5 flex-shrink-0 mt-0.5 text-black" aria-hidden />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
