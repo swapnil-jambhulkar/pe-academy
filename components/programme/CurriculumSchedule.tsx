@@ -12,30 +12,36 @@ import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
 
-function kindClass(kind: SessionKind) {
-  if (kind === "guest-lecture") return "bg-black text-white border-black";
-  if (kind === "committee") return "bg-black text-white border-black";
-  if (kind === "live-drill") return "bg-white text-black border-black";
-  return "bg-gray-100 text-black border-gray-300";
-}
+function KindBadge({ kind, tone }: { kind: SessionKind; tone: "light" | "dark" }) {
+  const label = sessionKindLabel[kind];
 
-function KindBadge({ kind, onDark }: { kind: SessionKind; onDark?: boolean }) {
-  if (onDark) {
+  if (tone === "dark") {
     return (
-      <span className="inline-flex items-center border border-white bg-white text-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em]">
-        {sessionKindLabel[kind]}
+      <span className="inline-flex items-center border border-white/80 bg-transparent px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+        {label}
+      </span>
+    );
+  }
+
+  if (kind === "guest-lecture" || kind === "committee") {
+    return (
+      <span className="inline-flex items-center border border-black bg-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+        {label}
+      </span>
+    );
+  }
+
+  if (kind === "live-drill") {
+    return (
+      <span className="inline-flex items-center border border-black bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-black">
+        {label}
       </span>
     );
   }
 
   return (
-    <span
-      className={cn(
-        "inline-flex items-center border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em]",
-        kindClass(kind)
-      )}
-    >
-      {sessionKindLabel[kind]}
+    <span className="inline-flex items-center border border-gray-300 bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-gray-700">
+      {label}
     </span>
   );
 }
@@ -87,41 +93,79 @@ function WeekRow({ row }: { row: ProgrammeWeek }) {
     <article
       id={`week-${row.week}`}
       className={cn(
-        "scroll-mt-28 border p-5 md:p-6",
-        isEmphasis ? "bg-black text-white border-black" : "bg-white text-black border-gray-200"
+        "scroll-mt-28 grid gap-5 border md:grid-cols-[5.5rem_1fr] md:gap-0",
+        isEmphasis ? "border-black bg-black text-white" : "border-gray-200 bg-white text-black"
       )}
     >
-      <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className={cn("text-sm font-bold tabular-nums", isEmphasis ? "text-white" : "text-black")}>
-          Week {String(row.week).padStart(2, "0")}
-        </span>
-        <KindBadge kind={row.kind} onDark={isEmphasis} />
-        {row.guestSeat ? (
-          <span
-            className={cn(
-              "text-[10px] font-bold uppercase tracking-[0.16em]",
-              isEmphasis ? "text-white" : "text-black"
-            )}
-          >
-            {row.guestSeat} faculty
-          </span>
-        ) : null}
-      </div>
-      <h4 className={cn("text-xl font-heading font-bold mb-2", isEmphasis ? "text-white" : "text-black")}>
-        {row.session}
-      </h4>
-      <p className={cn("text-sm leading-relaxed mb-4", isEmphasis ? "text-white/80" : "text-gray-700")}>
-        {row.lecture}
-      </p>
-      <p
+      <div
         className={cn(
-          "text-xs uppercase tracking-[0.14em] font-semibold mb-1",
-          isEmphasis ? "text-white/50" : "text-gray-400"
+          "flex items-start justify-between gap-3 px-5 pt-5 md:flex-col md:justify-start md:border-r md:px-5 md:py-6",
+          isEmphasis ? "md:border-white/20" : "md:border-gray-200"
         )}
       >
-        Written deliverable
-      </p>
-      <p className={cn("text-sm", isEmphasis ? "text-white" : "text-gray-800")}>{row.deliverable}</p>
+        <div>
+          <p
+            className={cn(
+              "text-[10px] font-semibold uppercase tracking-[0.18em]",
+              isEmphasis ? "text-white/55" : "text-gray-400"
+            )}
+          >
+            Week
+          </p>
+          <p className={cn("font-heading text-4xl font-bold tabular-nums leading-none mt-1", isEmphasis ? "text-white" : "text-black")}>
+            {String(row.week).padStart(2, "0")}
+          </p>
+        </div>
+        <div className="md:mt-5">
+          <KindBadge kind={row.kind} tone={isEmphasis ? "dark" : "light"} />
+        </div>
+      </div>
+
+      <div className="px-5 pb-5 md:px-7 md:py-6">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-3">
+          <h4 className={cn("font-heading text-xl sm:text-2xl font-bold", isEmphasis ? "text-white" : "text-black")}>
+            {row.session}
+          </h4>
+          {row.guestSeat ? (
+            <span
+              className={cn(
+                "text-[10px] font-bold uppercase tracking-[0.16em]",
+                isEmphasis ? "text-white/70" : "text-gray-500"
+              )}
+            >
+              {row.guestSeat} faculty
+            </span>
+          ) : null}
+        </div>
+
+        <p className={cn("text-sm sm:text-base leading-relaxed max-w-3xl", isEmphasis ? "text-white/80" : "text-gray-700")}>
+          {row.lecture}
+        </p>
+
+        <div
+          className={cn(
+            "mt-5 border-t pt-4",
+            isEmphasis ? "border-white/20" : "border-gray-200"
+          )}
+        >
+          <div className="flex gap-3">
+            <span className={cn("mt-1 h-8 w-1 shrink-0", isEmphasis ? "bg-white" : "bg-black")} aria-hidden />
+            <div>
+              <p
+                className={cn(
+                  "text-[10px] font-semibold uppercase tracking-[0.16em] mb-1",
+                  isEmphasis ? "text-white/55" : "text-gray-400"
+                )}
+              >
+                Written deliverable
+              </p>
+              <p className={cn("text-sm font-medium leading-relaxed", isEmphasis ? "text-white" : "text-black")}>
+                {row.deliverable}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
   );
 }
@@ -139,17 +183,7 @@ export default function CurriculumSchedule() {
     <div>
       <GuestFacultyStrip />
 
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-2">Twelve week arc</p>
-          <p className="text-sm text-gray-600 max-w-2xl">
-            Open a phase to read its weeks, sessions, and written deliverables. Open more than one at a time if you
-            want to compare.
-          </p>
-        </div>
-      </div>
-
-      <Accordion type="multiple" defaultValue={["Origination"]} className="space-y-3 border-0">
+      <Accordion type="multiple" defaultValue={[]} className="space-y-3 border-0">
         {curriculumPhases.map((phase, index) => {
           const weeks = programmeWeeks.filter((row) => row.phase === phase.id);
           const span = phaseWeekSpan(weeks);
@@ -158,7 +192,7 @@ export default function CurriculumSchedule() {
             <AccordionItem
               key={phase.id}
               value={phase.id}
-              className="border border-gray-200 bg-white data-[state=open]:border-black"
+              className="border border-gray-200 bg-white data-[state=open]:border-black data-[state=open]:bg-gray-50"
             >
               <AccordionTrigger
                 className={cn(
@@ -185,8 +219,8 @@ export default function CurriculumSchedule() {
                   <span className="sr-only">Toggle {phase.id}</span>
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="px-5 pb-5 md:px-6 md:pb-6 pt-0">
-                <div className="space-y-3 border-t border-gray-200 pt-5">
+              <AccordionContent className="px-4 pb-4 md:px-5 md:pb-5 pt-0">
+                <div className="space-y-3 border-t border-gray-200 pt-4">
                   {weeks.map((row) => (
                     <WeekRow key={row.week} row={row} />
                   ))}
@@ -196,6 +230,12 @@ export default function CurriculumSchedule() {
           );
         })}
       </Accordion>
+
+      <p className="mt-8 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-2">Twelve week arc</p>
+      <p className="text-sm text-gray-600 max-w-2xl leading-relaxed">
+        Open a phase to read its weeks, sessions, and written deliverables. Open more than one at a time if you want to
+        compare.
+      </p>
     </div>
   );
 }
