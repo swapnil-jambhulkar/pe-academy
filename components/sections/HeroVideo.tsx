@@ -53,7 +53,7 @@ export default function HeroVideo({ src, poster, label }: HeroVideoProps) {
     <div className="absolute inset-0 bg-gray-100">
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover grayscale-[20%] contrast-[1.04]"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover grayscale-[20%] contrast-[1.04]"
         poster={poster}
         autoPlay
         muted
@@ -61,20 +61,21 @@ export default function HeroVideo({ src, poster, label }: HeroVideoProps) {
         playsInline
         preload="auto"
         aria-label={label}
+        tabIndex={-1}
       >
         <source src={src} type="video/mp4" />
       </video>
-      <div aria-hidden className="absolute inset-0 bg-black/10" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-black/10" />
 
       <button
         type="button"
         onClick={togglePlayback}
         disabled={reducedMotion}
-        className="absolute bottom-4 right-4 z-[1] inline-flex items-center gap-2 border border-white/80 bg-black/70 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-50"
+        className="absolute bottom-5 left-5 z-20 inline-flex items-center gap-2 border border-white/80 bg-black/75 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-sm backdrop-blur-sm transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-50"
         aria-label={playing ? "Pause background video" : "Play background video"}
       >
         {playing ? <Pause className="h-3.5 w-3.5" aria-hidden /> : <Play className="h-3.5 w-3.5" aria-hidden />}
-        {playing ? "Pause" : "Play"}
+        <span aria-hidden>{playing ? "Pause" : "Play"}</span>
       </button>
     </div>
   );
