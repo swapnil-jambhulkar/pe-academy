@@ -1,29 +1,26 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PROGRAMME, DISCORD_INVITE_URL } from "@/lib/programmes";
-import { GUILD } from "@/lib/guild";
+import { PROGRAMME } from "@/lib/programmes";
 import { committee } from "@/data/committee";
 import { CommitteeCards } from "@/components/programme/SeatCards";
 import CurriculumSchedule from "@/components/programme/CurriculumSchedule";
 import Reveal from "@/components/ui/reveal";
-import WaitlistForm from "@/components/forms/WaitlistForm";
 
 const pageLinks = [
   { href: "#pillars", label: "Signature" },
   { href: "#format", label: "Format" },
-  { href: "#guest-faculty", label: "Guest lectures" },
   { href: "#curriculum", label: "Schedule" },
   { href: "#admissions", label: "Admissions" },
   { href: "#committee", label: "Committee" },
-  { href: "#waitlist", label: "Waitlist" },
+  { href: "#apply", label: "Apply" },
 ];
 
 const formatFacts = [
   { label: "Duration", value: "Twelve weeks" },
   { label: "Seats", value: "Five" },
   { label: "Hours / week", value: "10 to 12" },
-  { label: "Applications", value: `Open ${PROGRAMME.applicationsOpenLabel}` },
+  { label: "Applications", value: "Open now" },
   { label: "Deal universe", value: "£5 to £30m UK owner-managed" },
   { label: "Sessions", value: "Weekly + written deliverable" },
   { label: "Guests", value: "TS, Debt, Counsel" },
@@ -64,10 +61,6 @@ const entryNotForYou = [
   "Your first question is what percentage of graduates get placed",
 ];
 
-const communityHref = DISCORD_INVITE_URL ?? GUILD.slug;
-const communityLabel = DISCORD_INVITE_URL ? "Join Discord" : "Join the Forum";
-const communityIsExternal = Boolean(DISCORD_INVITE_URL);
-
 export default function ProgrammeContent() {
   return (
     <div>
@@ -77,32 +70,31 @@ export default function ProgrammeContent() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">
               {PROGRAMME.fullName}
             </p>
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-5 max-w-4xl">
-              Twelve weeks. Five seats. One live defence.
-            </h1>
+            <div className="mb-5 flex flex-wrap items-center gap-3">
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl leading-[1.05] max-w-4xl">
+                Twelve weeks. Five seats. One live defence.
+              </h1>
+            </div>
+            <div className="mb-5 inline-flex items-center gap-2 border border-gray-300 bg-gray-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-black">
+              <span className="pgp-live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-black" aria-hidden />
+              Live cohort
+            </div>
             <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-3 max-w-2xl">
-              Source a proprietary £5 to £30 million UK target, structure the deal, and defend it to a voting investment
-              committee.
+              Source a proprietary £5 to £30 million UK target, structure the deal, and defend it to a voting
+              investment committee.
             </p>
             <p className="text-sm text-gray-600 mb-8 max-w-2xl">
-              Applications open {PROGRAMME.applicationsOpenLabel}. Join the waitlist now, or learn with the community
-              while seats and faculty are confirmed.
+              The programme is running. Apply for the current intake, or speak to admissions about seats.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               <Button className="bg-black text-white hover:bg-gray-900" asChild>
-                <Link href="#waitlist">
-                  Join the waitlist
+                <Link href={PROGRAMME.applySlug}>
+                  Apply for {PROGRAMME.shortName}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="outline" className="border-black text-black hover:bg-gray-100" asChild>
-                {communityIsExternal ? (
-                  <a href={communityHref} target="_blank" rel="noopener noreferrer">
-                    {communityLabel}
-                  </a>
-                ) : (
-                  <Link href={communityHref}>{communityLabel}</Link>
-                )}
+                <a href="#curriculum">View curriculum</a>
               </Button>
             </div>
             <nav aria-label="Programme sections" className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
@@ -184,7 +176,7 @@ export default function ProgrammeContent() {
             </h2>
             <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-8">
               Four phases. Open each one for the week-by-week sessions and written deliverables. Guest lectures and the
-              investment committee are marked live. That is what tuition buys.
+              investment committee are marked live while the cohort is in session.
             </p>
             <CurriculumSchedule />
           </Reveal>
@@ -215,8 +207,8 @@ export default function ProgrammeContent() {
               </div>
             </div>
             <p className="mt-8 text-sm text-gray-500">
-              When applications open, you will submit a sector thesis and a reflection on a transaction you worked on.
-              We do not place anyone and we do not claim to.
+              You submit a sector thesis and a reflection on a transaction you worked on. We do not place anyone and we
+              do not claim to.
             </p>
           </Reveal>
         </div>
@@ -237,37 +229,34 @@ export default function ProgrammeContent() {
         </div>
       </section>
 
-      <section className="py-14 md:py-20 bg-black text-white" id="waitlist">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <section className="py-14 md:py-20 bg-black text-white" id="apply">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
           <Reveal>
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-3 text-center">
-              Next step
-            </p>
-            <h2 className="font-heading font-bold text-white text-2xl sm:text-4xl mb-4 text-center">
-              Waitlist for {PROGRAMME.applicationsOpenLabel}
+            <div className="mb-3 inline-flex items-center gap-2 border border-white/25 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white">
+              <span className="pgp-live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-white" aria-hidden />
+              Programme live
+            </div>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-3">Next step</p>
+            <h2 className="font-heading font-bold text-white text-2xl sm:text-4xl mb-4">
+              Apply for the current {PROGRAMME.shortName} cohort
             </h2>
-            <p className="text-white/75 mb-8 max-w-2xl mx-auto leading-relaxed text-center">
-              Applications are not open yet. Join the waitlist for PGP, or join the community to stay close to the
-              curriculum while guest faculty and committee seats are confirmed.
+            <p className="text-white/75 mb-8 max-w-2xl mx-auto leading-relaxed">
+              The programme is running. Apply now, or speak to admissions if you want to understand fit before you
+              submit.
             </p>
-            <WaitlistForm tone="dark" className="max-w-xl mx-auto mb-8" />
             <div className="flex flex-wrap justify-center gap-3">
+              <Button className="bg-white text-black hover:bg-gray-100" asChild>
+                <Link href={PROGRAMME.applySlug}>
+                  Apply now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
               <Button
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-black bg-transparent"
                 asChild
               >
-                {communityIsExternal ? (
-                  <a href={communityHref} target="_blank" rel="noopener noreferrer">
-                    {communityLabel}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                ) : (
-                  <Link href={communityHref}>
-                    {communityLabel}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                )}
+                <Link href="/contact">Speak to admissions</Link>
               </Button>
               <Button
                 variant="outline"
