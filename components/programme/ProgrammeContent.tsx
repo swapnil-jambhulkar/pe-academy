@@ -6,14 +6,12 @@ import { GUILD } from "@/lib/guild";
 import { committee } from "@/data/committee";
 import { CommitteeCards } from "@/components/programme/SeatCards";
 import CurriculumSchedule from "@/components/programme/CurriculumSchedule";
-import ProgrammeTools from "@/components/programme/ProgrammeTools";
 import Reveal from "@/components/ui/reveal";
 import WaitlistForm from "@/components/forms/WaitlistForm";
 
 const pageLinks = [
   { href: "#pillars", label: "Signature" },
   { href: "#format", label: "Format" },
-  { href: "#tools", label: "Tools" },
   { href: "#guest-faculty", label: "Guest lectures" },
   { href: "#curriculum", label: "Schedule" },
   { href: "#admissions", label: "Admissions" },
@@ -176,8 +174,6 @@ export default function ProgrammeContent() {
           </Reveal>
         </div>
       </section>
-
-      <ProgrammeTools />
 
       <section className="py-14 md:py-20 bg-white border-b border-gray-200" id="curriculum">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
