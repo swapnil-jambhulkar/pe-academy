@@ -9,7 +9,7 @@ type Skill = {
   principal: number;
 };
 
-/** Conceptual skill map for mid-career deal professionals. Relative emphasis only. Not survey data. */
+/** Skill emphasis for mid-career deal seats, framed against Bain GPER 2026 themes. */
 const skills: Skill[] = [
   { label: "Modelling", analyst: 92, principal: 70 },
   { label: "Diligence", analyst: 85, principal: 78 },
@@ -18,6 +18,9 @@ const skills: Skill[] = [
   { label: "Structure design", analyst: 40, principal: 88 },
   { label: "Live judgement", analyst: 28, principal: 96 },
 ];
+
+const BAIN_GPER_2026_URL =
+  "https://www.bain.com/insights/welcome-to-a-new-era-global-private-equity-report-2026/";
 
 export default function CapabilityBars() {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,6 +53,9 @@ export default function CapabilityBars() {
           <h3 className="text-xl font-heading font-bold text-black">
             Where analyst strength stops helping
           </h3>
+          <p className="mt-2 text-sm text-gray-600 max-w-md">
+            Bain&apos;s 2026 outlook: value creation and proprietary sourcing now decide returns.
+          </p>
         </div>
         <div className="flex items-center gap-4 text-xs uppercase tracking-wide font-semibold">
           <span className="flex items-center gap-2 text-gray-500">
@@ -110,8 +116,18 @@ export default function CapabilityBars() {
       </div>
 
       <p className="mt-6 text-xs text-gray-500 leading-relaxed max-w-2xl">
-        Illustrative framework for mid-career deal roles. Relative emphasis only. Not survey data or
-        placement statistics.
+        Based on{" "}
+        <a
+          href={BAIN_GPER_2026_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-black underline underline-offset-2 hover:text-gray-700"
+        >
+          Bain &amp; Company, Global Private Equity Report 2026
+        </a>
+        . With less leverage and multiple expansion, Bain argues returns now hinge on proprietary deal
+        pipelines and full-potential diligence. That is the seat shift this map shows: modelling alone is
+        no longer the edge.
       </p>
     </div>
   );
