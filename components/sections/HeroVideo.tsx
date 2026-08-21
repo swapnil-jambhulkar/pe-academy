@@ -5,8 +5,9 @@ import { Pause, Play } from "lucide-react";
 
 /**
  * Self-hosted muted loop for the hero media panel.
- * Current asset: investment-committee style boardroom (Pexels, free licence).
- * Pauses to poster when prefers-reduced-motion is set.
+ * Asset: royalty-free Pexels clip (commercial use allowed) of a presenter
+ * standing to defend a recommendation to seated committee members.
+ * Not firm-proprietary footage. Pauses to poster when prefers-reduced-motion is set.
  */
 type HeroVideoProps = {
   src: string;
