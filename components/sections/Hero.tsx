@@ -37,12 +37,10 @@ export default function Hero() {
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mb-6 text-balance">
                 You have executed deals and never owned one.
               </h1>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4">
-                {PROGRAMME.fullName} is a twelve week cohort for mid career deal professionals. You source a proprietary
-                acquisition target among {PROGRAMME.dealUniverse}, price it, structure it, and defend the recommendation to
-                an investment committee that votes.
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 max-w-xl">
+                Source a proprietary £5 to £30 million UK target, structure the deal, and defend it to a voting
+                investment committee.
               </p>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">{PROGRAMME.dealUniverseDetail}</p>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500 mb-8">
                 <span>{PROGRAMME.duration}</span>
                 <span className="hidden sm:inline text-gray-300">|</span>
