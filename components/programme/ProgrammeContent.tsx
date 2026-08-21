@@ -48,18 +48,37 @@ const pillars = [
   },
 ];
 
-const entryForYou = [
-  "Three to eight years in transaction services, investment banking, corporate development, or strategy consulting with commercial diligence exposure",
-  "You can build a leveraged buyout model unaided",
-  "Every recommendation you have made had somebody senior standing behind it",
-  "You have never found a company nobody else was looking at",
-];
+const entryRequired = [
+  {
+    title: "Deal seat",
+    body: "Three to eight years in transaction services, investment banking, corporate development, or strategy consulting with commercial diligence exposure.",
+  },
+  {
+    title: "Modelling",
+    body: "You can build a leveraged buyout model unaided. We do not teach LBO from first principles.",
+  },
+  {
+    title: "Judgement gap",
+    body: "Every recommendation you have made had somebody senior standing behind it. You have never owned the call end to end.",
+  },
+  {
+    title: "Origination hunger",
+    body: "You have never found a company nobody else was looking at, and that is the gap you are here to close.",
+  },
+] as const;
 
-const entryNotForYou = [
+const entryDecline = [
   "You are a student or recent graduate",
   "You need leveraged buyout modelling taught from first principles",
   "Your first question is what percentage of graduates get placed",
-];
+] as const;
+
+const admissionsSteps = [
+  { step: "01", title: "Application", body: "Sector thesis and a reflection on a transaction you worked on." },
+  { step: "02", title: "Review", body: "Every file is read individually. Most applications are declined." },
+  { step: "03", title: "Fit conversation", body: "If the profile fits, a short call before any offer is made." },
+  { step: "04", title: "Offer", body: "Tuition confirmed at offer stage. Five seats per cohort." },
+] as const;
 
 export default function ProgrammeContent() {
   return (
@@ -183,33 +202,86 @@ export default function ProgrammeContent() {
         </div>
       </section>
 
-      <section className="py-14 md:py-16 bg-gray-50 border-b border-gray-200" id="admissions">
+      <section className="py-14 md:py-20 bg-gray-50 border-b border-gray-200" id="admissions">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <Reveal>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-3">Admissions</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-8">The bar to join</h2>
-            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="bg-white border border-gray-200 p-6 md:p-8">
-                <h3 className="text-lg font-heading font-semibold text-black mb-4">Required</h3>
-                <ul className="space-y-3 text-gray-700 leading-relaxed list-disc pl-5">
-                  {entryForYou.map((item) => (
-                    <li key={item}>{item}</li>
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-black mb-3">The bar to join</h2>
+            <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
+              Five seats. Built for mid-career deal professionals who can already execute and want to own the next
+              recommendation. We do not place anyone and we do not claim to.
+            </p>
+
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-12">
+              <div className="lg:col-span-7">
+                <h3 className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-500 mb-4">Required</h3>
+                <ol className="border-t border-gray-200">
+                  {entryRequired.map((item, index) => (
+                    <li
+                      key={item.title}
+                      className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-gray-200 py-4 sm:grid-cols-[3rem_1fr] sm:gap-5"
+                    >
+                      <span className="font-heading text-lg font-bold tabular-nums text-black/35 sm:text-xl">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <p className="font-heading text-lg font-semibold text-black sm:text-xl">{item.title}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-gray-700 sm:text-[15px]">{item.body}</p>
+                      </div>
+                    </li>
                   ))}
-                </ul>
+                </ol>
               </div>
-              <div className="bg-white border border-gray-200 p-6 md:p-8">
-                <h3 className="text-lg font-heading font-semibold text-black mb-4">Decline without review</h3>
-                <ul className="space-y-3 text-gray-700 leading-relaxed list-disc pl-5">
-                  {entryNotForYou.map((item) => (
-                    <li key={item}>{item}</li>
+
+              <div className="lg:col-span-5">
+                <h3 className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-500 mb-4">
+                  Decline without review
+                </h3>
+                <ul className="space-y-3 border border-gray-200 bg-white p-5 sm:p-6">
+                  {entryDecline.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-gray-700">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-black" aria-hidden />
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
+                <p className="mt-4 text-sm leading-relaxed text-gray-500">
+                  If that describes you, try the Day One Simulator first. It is free and tests judgment under time
+                  pressure.
+                </p>
+                <Link
+                  href="/simulator"
+                  className="mt-3 inline-flex items-center text-sm font-medium text-black underline-offset-4 hover:underline"
+                >
+                  Open the simulator
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" aria-hidden />
+                </Link>
               </div>
             </div>
-            <p className="mt-8 text-sm text-gray-500">
-              You submit a sector thesis and a reflection on a transaction you worked on. We do not place anyone and we
-              do not claim to.
-            </p>
+
+            <div className="mt-12 border-t border-gray-200 pt-10">
+              <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h3 className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-500 mb-2">Process</h3>
+                  <p className="font-heading text-2xl font-bold text-black sm:text-3xl">How applications move</p>
+                </div>
+                <Button className="bg-black text-white hover:bg-gray-900" asChild>
+                  <Link href={PROGRAMME.applySlug}>
+                    Apply for {PROGRAMME.shortName}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+              <ol className="grid gap-px overflow-hidden border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
+                {admissionsSteps.map((item) => (
+                  <li key={item.step} className="bg-white px-4 py-4 sm:px-5 sm:py-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-500">{item.step}</p>
+                    <p className="mt-2 font-heading text-lg font-semibold text-black">{item.title}</p>
+                    <p className="mt-1.5 text-sm leading-snug text-gray-700">{item.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </Reveal>
         </div>
       </section>
