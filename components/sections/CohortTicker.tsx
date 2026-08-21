@@ -15,10 +15,10 @@ export default function CohortTicker() {
           id="cohort-ticker-heading"
           className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 text-center"
         >
-          Previous cohorts
+          Who the programme is built for
         </p>
         <p className="mt-2 text-sm text-gray-600 text-center">
-          People in the last three cohorts came from these firms.
+          Bulge-bracket banking, Big Four, and top-tier consulting.
         </p>
       </div>
 
@@ -32,7 +32,7 @@ export default function CohortTicker() {
           aria-hidden
         />
         <div className="campus-ticker">
-          <div className="campus-ticker-track" style={{ animationDuration: "55s" }}>
+          <div className="campus-ticker-track" style={{ animationDuration: "40s" }}>
             {loop.map((firm, index) => (
               <div key={`${firm.id}-${index}`} className="campus-ticker-item px-5 md:px-8">
                 <Image
