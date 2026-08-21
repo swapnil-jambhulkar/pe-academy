@@ -1,3 +1,5 @@
+"use client";
+
 import {
   curriculumPhases,
   programmeWeeks,
@@ -7,6 +9,8 @@ import {
 } from "@/data/programme-weeks";
 import { faculty } from "@/data/faculty";
 import { cn } from "@/lib/utils";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 
 function kindClass(kind: SessionKind) {
   if (kind === "guest-lecture") return "bg-black text-white border-black";
@@ -122,29 +126,76 @@ function WeekRow({ row }: { row: ProgrammeWeek }) {
   );
 }
 
+function phaseWeekSpan(weeks: ProgrammeWeek[]) {
+  if (!weeks.length) return "";
+  const first = weeks[0].week;
+  const last = weeks[weeks.length - 1].week;
+  if (first === last) return `Week ${first}`;
+  return `Weeks ${first} to ${last}`;
+}
+
 export default function CurriculumSchedule() {
   return (
     <div>
       <GuestFacultyStrip />
 
-      <div className="space-y-12">
-        {curriculumPhases.map((phase) => {
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-2">Twelve week arc</p>
+          <p className="text-sm text-gray-600 max-w-2xl">
+            Open a phase to read its weeks, sessions, and written deliverables. Open more than one at a time if you
+            want to compare.
+          </p>
+        </div>
+      </div>
+
+      <Accordion type="multiple" defaultValue={["Origination"]} className="space-y-3 border-0">
+        {curriculumPhases.map((phase, index) => {
           const weeks = programmeWeeks.filter((row) => row.phase === phase.id);
+          const span = phaseWeekSpan(weeks);
+
           return (
-            <div key={phase.id}>
-              <div className="mb-4 pb-3 border-b border-gray-200">
-                <h3 className="text-2xl font-heading font-bold text-black">{phase.id}</h3>
-                <p className="text-sm text-gray-600 mt-1">{phase.summary}</p>
-              </div>
-              <div className="space-y-3">
-                {weeks.map((row) => (
-                  <WeekRow key={row.week} row={row} />
-                ))}
-              </div>
-            </div>
+            <AccordionItem
+              key={phase.id}
+              value={phase.id}
+              className="border border-gray-200 bg-white data-[state=open]:border-black"
+            >
+              <AccordionTrigger
+                className={cn(
+                  "group px-5 py-5 md:px-6 md:py-6 hover:no-underline text-left items-start gap-4",
+                  "[&>svg]:hidden"
+                )}
+              >
+                <span className="flex min-w-0 flex-1 items-start gap-4 md:gap-6">
+                  <span className="mt-1 text-xs font-bold tabular-nums tracking-[0.16em] text-gray-400 group-data-[state=open]:text-black">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-heading text-2xl sm:text-3xl font-bold text-black">{phase.id}</span>
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 tabular-nums">
+                        {span} · {weeks.length} {weeks.length === 1 ? "week" : "weeks"}
+                      </span>
+                    </span>
+                    <span className="mt-2 block text-sm text-gray-600 leading-relaxed font-normal">{phase.summary}</span>
+                  </span>
+                </span>
+                <span className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-black bg-white text-black transition-colors group-data-[state=open]:bg-black group-data-[state=open]:text-white">
+                  <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" aria-hidden />
+                  <span className="sr-only">Toggle {phase.id}</span>
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-5 md:px-6 md:pb-6 pt-0">
+                <div className="space-y-3 border-t border-gray-200 pt-5">
+                  {weeks.map((row) => (
+                    <WeekRow key={row.week} row={row} />
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           );
         })}
-      </div>
+      </Accordion>
     </div>
   );
 }

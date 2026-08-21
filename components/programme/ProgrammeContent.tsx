@@ -181,9 +181,8 @@ export default function ProgrammeContent() {
               Origination, diligence, structure, defence
             </h2>
             <p className="text-base text-gray-700 leading-relaxed max-w-3xl mb-10">
-              Each week has one live session and one written deliverable due before it. Guest lectures sit in weeks 6,
-              7, and 12. Week 11 is the investment committee. Core artefacts get more than one practice cycle: screen,
-              LBO, then memorandum draft and redraft.
+              Four phases. Open each one for the week-by-week sessions and written deliverables. Guest lectures sit in
+              weeks 6, 7, and 12. Week 11 is the investment committee.
             </p>
             <CurriculumSchedule />
           </Reveal>
