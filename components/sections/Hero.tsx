@@ -14,7 +14,7 @@ export default function Hero() {
       className="relative min-h-[85vh] border-b border-gray-200 overflow-hidden scroll-mt-24 bg-white text-black"
     >
       <link rel="preload" as="image" href={HERO_POSTER} fetchPriority="high" />
-      <link rel="preload" as="video" href={HERO_VIDEO} type="video/mp4" />
+      <link rel="preload" as="video" href={HERO_VIDEO} type="video/mp4" fetchPriority="high" />
 
       <div className="grid min-h-[85vh] lg:grid-cols-2">
         <div className="relative flex items-center pt-28 pb-16 lg:pb-20">
