@@ -32,7 +32,7 @@ export default function CohortTicker() {
           aria-hidden
         />
         <div className="campus-ticker">
-          <div className="campus-ticker-track" style={{ animationDuration: "40s" }}>
+          <div className="campus-ticker-track" style={{ animationDuration: "50s" }}>
             {loop.map((firm, index) => (
               <div key={`${firm.id}-${index}`} className="campus-ticker-item px-5 md:px-8">
                 <Image
@@ -40,7 +40,7 @@ export default function CohortTicker() {
                   alt={firm.name}
                   width={200}
                   height={48}
-                  className="h-8 md:h-10 w-auto max-w-[180px] object-contain"
+                  className="h-8 md:h-10 w-auto max-w-[240px] object-contain"
                   unoptimized
                 />
               </div>
