@@ -22,22 +22,28 @@ export default function HeroVideo({ src, poster, label }: HeroVideoProps) {
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => {
+    const video = videoRef.current;
+
+    const applyPreference = () => {
       const preferStill = media.matches;
       setReducedMotion(preferStill);
-      const video = videoRef.current;
       if (!video) return;
       if (preferStill) {
         video.pause();
         setPlaying(false);
-      } else {
-        void video.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
       }
     };
-    sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
+
+    applyPreference();
+    media.addEventListener("change", applyPreference);
+    return () => media.removeEventListener("change", applyPreference);
   }, []);
+
+  const startPlayback = () => {
+    const video = videoRef.current;
+    if (!video || reducedMotion || !video.paused) return;
+    void video.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  };
 
   const togglePlayback = () => {
     const video = videoRef.current;
@@ -63,6 +69,8 @@ export default function HeroVideo({ src, poster, label }: HeroVideoProps) {
         preload="auto"
         aria-label={label}
         tabIndex={-1}
+        onLoadedData={startPlayback}
+        onCanPlay={startPlayback}
       >
         <source src={src} type="video/mp4" />
       </video>
