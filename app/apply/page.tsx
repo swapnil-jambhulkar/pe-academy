@@ -26,7 +26,8 @@ export default function ApplyPage() {
           </h1>
           <p className="text-base text-gray-700 leading-relaxed mb-2">
             Five seats per cohort. Applications are reviewed individually and most are declined. Complete every field
-            below. Short or generic answers will not be considered.
+            below. Short or generic answers will not be considered. Successful submissions are saved to the admissions
+            spreadsheet with one column per answer.
           </p>
           <p className="text-sm text-gray-500">{PAID_PROGRAMME_NOTE}</p>
         </div>

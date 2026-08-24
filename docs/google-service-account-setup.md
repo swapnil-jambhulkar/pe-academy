@@ -40,6 +40,7 @@ Create tabs named exactly:
 
 - `CONTACT_SUBMISSIONS`
 - `SIMULATOR_SUBMISSIONS`
+- `APPLY_SUBMISSIONS`
 
 Header row (row 1) is optional; new rows append below existing data.
 
@@ -48,6 +49,8 @@ Header row (row 1) is optional; new rows append below existing data.
 **CONTACT_SUBMISSIONS:** submittedAt, submissionId, name, email, subject, message
 
 **SIMULATOR_SUBMISSIONS:** submittedAt, submissionId, fullName, email, phone, linkedIn, currentRole, organization, experienceLevel, peGoal, resumeFileName, resumeMimeType, resumeSizeBytes, resumeDriveUrl, driveError
+
+**APPLY_SUBMISSIONS:** submittedAt, submissionId, name, email, linkedIn, currentRole, firm, yearsInDealRole, location, sectorWhy, transactionReflection, weeklyCommitment
 
 ## 5. Vercel environment variables
 
@@ -64,6 +67,7 @@ You can remove (or leave unused):
 
 - `GOOGLE_SHEETS_CONTACT_WEBHOOK_URL`
 - `GOOGLE_SHEETS_SIMULATOR_WEBHOOK_URL`
+- `GOOGLE_SHEETS_APPLY_WEBHOOK_URL`
 - `GOOGLE_SHEETS_SHARED_SECRET`
 
 ## 6. Redeploy
