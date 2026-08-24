@@ -3,10 +3,10 @@ import { Linkedin, Mail } from "lucide-react";
 
 const linkGroups = [
   {
-    title: "Programmes",
+    title: "Programme",
     links: [
-      { label: "GCPE", href: "/cohort" },
       { label: "PGP", href: "/pgp" },
+      { label: "Apply", href: "/apply" },
       { label: "Day One Simulator", href: "/simulator" },
       { label: "PE Forum", href: "/guild" },
     ],
@@ -37,8 +37,8 @@ const legalLinks = [
 const socialLinks = [
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/company/norland-capital-ltd",
-    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/stator-capital",
+    label: "Stator Capital on LinkedIn",
   },
   {
     icon: Mail,
@@ -52,7 +52,6 @@ export default function Footer() {
     <footer className="bg-black text-white border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
-          {/* Brand */}
           <div className="col-span-2 md:col-span-1 space-y-4">
             <div>
               <h3 className="text-lg font-heading font-medium text-white uppercase tracking-tight">
@@ -63,7 +62,7 @@ export default function Footer() {
               </p>
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
-              Live deal training for private equity careers.
+              Deal training for professionals who have executed transactions and never owned one.
             </p>
             <div className="flex items-center gap-4 pt-1">
               {socialLinks.map((social) => {
@@ -88,7 +87,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link groups */}
           {linkGroups.map((group) => (
             <div key={group.title}>
               <h4 className="text-sm font-sans font-bold text-white uppercase tracking-wide mb-4">
@@ -112,7 +110,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} Stator Capital
+            © {new Date().getFullYear()} Stator Capital. Norland Academy is operated by Stator Capital.
           </p>
           <div className="flex items-center gap-5">
             {legalLinks.map((link) => (

@@ -1,100 +1,36 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { PAID_PROGRAMME_NOTE } from "@/lib/programmes";
-
-function CtaBlock({ mobile }: { mobile: boolean }) {
-  return (
-    <>
-      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-        <span className="text-white/80 text-sm font-semibold">Application-based cohort</span>
-      </div>
-
-      <h2 className={`font-heading font-bold text-white mb-4 ${mobile ? "text-2xl" : "text-4xl md:text-5xl"}`}>
-        Ready for institutional PE training?
-      </h2>
-
-      <p className={`text-white/70 mb-4 ${mobile ? "text-base" : "text-xl max-w-2xl mx-auto"}`}>
-        Start with the Day One Simulator, then apply for the 12-week GCPE or enquire about the 48-week PGP.
-      </p>
-      <p className={`text-white/50 mb-8 ${mobile ? "text-xs" : "text-sm max-w-2xl mx-auto mb-10"}`}>
-        {PAID_PROGRAMME_NOTE}
-      </p>
-
-      <div className={mobile ? "space-y-3" : "flex flex-row flex-wrap gap-4 justify-center items-center mb-12"}>
-        <Button
-          variant="default"
-          size="lg"
-          asChild
-          className={
-            mobile
-              ? "w-full bg-white text-black hover:bg-gray-100 font-bold py-5"
-              : "bg-white text-black hover:bg-gray-100 font-semibold px-8 py-6"
-          }
-        >
-          <Link href="/simulator">
-            Start simulator
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-        <Button
-          variant="default"
-          size="lg"
-          asChild
-          className={
-            mobile
-              ? "w-full border border-white/40 text-white hover:bg-white/10 font-bold py-5"
-              : "border border-white/40 text-white hover:bg-white/10 font-semibold px-8 py-6"
-          }
-        >
-          <Link href="/cohort">
-            Apply for GCPE
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-        <Button
-          variant="outline"
-          size="lg"
-          asChild
-          className={
-            mobile
-              ? "w-full border-white/30 text-white hover:bg-white/10 py-5"
-              : "border border-white/40 text-white hover:bg-white/10 px-8 py-6"
-          }
-        >
-          <Link href="/pgp">Enquire PGP</Link>
-        </Button>
-      </div>
-    </>
-  );
-}
+import Reveal from "@/components/ui/reveal";
+import { PROGRAMME } from "@/lib/programmes";
 
 export default function FinalCTA() {
   return (
-    <section className="flex items-center bg-black text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 md:py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="md:hidden"
+    <section id="apply" className="relative bg-black text-white py-16 md:py-24 overflow-hidden scroll-mt-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative">
+        <Reveal>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-4">
+            {PROGRAMME.shortName}
+          </p>
+          <h2 className="font-heading font-bold text-white text-2xl sm:text-4xl md:text-5xl mb-8">
+            Five seats. Applications are reviewed individually and most are declined.
+          </h2>
+          <Button
+            size="lg"
+            asChild
+            className="bg-white text-black hover:bg-gray-100 font-semibold transition-transform hover:-translate-y-0.5"
           >
-            <CtaBlock mobile />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="hidden md:block"
-          >
-            <CtaBlock mobile={false} />
-          </motion.div>
-        </div>
+            <Link href="/apply">Apply for PGP</Link>
+          </Button>
+        </Reveal>
       </div>
     </section>
   );

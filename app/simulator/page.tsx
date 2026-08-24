@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Day One Analyst Simulator",
   description:
     "Three live-deal judgment scenarios from the Norland Capital desk. Test execution instincts before day one, then apply for the 12-week GCPE or enquire about PGP.",
+  alternates: { canonical: "/simulator" },
 };
 
 export default function SimulatorPage() {

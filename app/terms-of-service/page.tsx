@@ -8,46 +8,32 @@ export default function TermsOfServicePage() {
               Terms of Service
             </h1>
             <div className="prose prose-neutral max-w-none space-y-6">
+              <p className="text-gray-700">Last updated: 13 August 2026</p>
               <p className="text-gray-700">
-                Last updated: {new Date().toLocaleDateString()}
+                By accessing and using Norland Academy&apos;s website and services, you agree to be bound by these Terms of
+                Service.
               </p>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Program Enrollment</h2>
               <p className="text-gray-700">
-                By accessing and using Norland Academy's website and services,
-                you agree to be bound by these Terms of Service.
+                Enrollment in The Principal Programme and related offerings is subject to availability. We reserve the
+                right to refuse enrollment at our discretion.
               </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Program Enrollment
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Refund Policy</h2>
               <p className="text-gray-700">
-                Enrollment in our programmes (GCPE, PGP, and related offerings) is subject to availability.
-                We reserve the right to refuse enrollment at our discretion.
+                The Principal Programme: payments are final once enrolment is confirmed unless otherwise stated in your
+                offer letter. No refunds after the programme has started.
               </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Refund Policy
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Intellectual Property</h2>
               <p className="text-gray-700">
-                GCPE and PGP: Payments are final once enrolment is confirmed unless otherwise stated in your offer letter.
-                No refunds after the programme has started.
+                All program materials, templates, and content are the intellectual property of Stator Capital. You may
+                use them for personal learning and portfolio building, but may not redistribute or resell them.
               </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Intellectual Property
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">No Job Guarantee</h2>
               <p className="text-gray-700">
-                All program materials, templates, and content are the intellectual property of
-                Stator Capital. You may use them for personal learning and portfolio building,
-                but may not redistribute or resell them.
+                We do not guarantee job placement. The programme provides skills, templates, and critique of work you
+                produce. Hiring decisions are made by employers.
               </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                No Job Guarantee
-              </h2>
-              <p className="text-gray-700">
-                We do not guarantee job placement. Our programs provide skills, templates, and
-                mentorship to help you build a portfolio and land interviews, but final hiring
-                decisions are made by employers.
-              </p>
-              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">
-                Contact Us
-              </h2>
+              <h2 className="text-2xl font-heading font-bold text-black mt-8 mb-4">Contact Us</h2>
               <p className="text-gray-700">
                 If you have questions about these Terms, please contact us at{" "}
                 <a href="mailto:admissions@norlandacademy.com" className="text-black underline hover:text-gray-700">

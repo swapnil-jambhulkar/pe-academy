@@ -1,48 +1,38 @@
-import dynamic from "next/dynamic";
+import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
-import Problem from "@/components/sections/Problem";
+import CohortTicker from "@/components/sections/CohortTicker";
+import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
+import WhatIsMissing from "@/components/sections/WhatIsMissing";
+import ProgrammeArc from "@/components/sections/ProgrammeArc";
+import WhatYouLeaveWith from "@/components/sections/WhatYouLeaveWith";
+import InvestmentCommittee from "@/components/sections/InvestmentCommittee";
+import FreeBeforeYouApply from "@/components/sections/FreeBeforeYouApply";
+import WhoRunsIt from "@/components/sections/WhoRunsIt";
+import FinalCTA from "@/components/sections/FinalCTA";
+import FloatingCTA from "@/components/ui/floating-cta";
+import ScrollProgress from "@/components/ui/scroll-progress";
+import SectionRail from "@/components/ui/section-rail";
 
-const Programmes = dynamic(() => import("@/components/sections/Programmes"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
-const PathwayToInterview = dynamic(() => import("@/components/sections/PathwayToInterview"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
-const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
-const Guarantee = dynamic(() => import("@/components/sections/Guarantee"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
-const Instructor = dynamic(() => import("@/components/sections/Instructor"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
-const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"), {
-  loading: () => <div className="min-h-[400px]" />,
-});
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
+      <SectionRail />
       <Hero />
-
-      <div className="md:hidden">
-        <Problem />
-        <Programmes />
-        <Instructor />
-        <Guarantee />
-        <FinalCTA />
-      </div>
-
-      <div className="hidden md:block">
-        <Problem />
-        <Programmes />
-        <PathwayToInterview />
-        <Testimonials />
-        <Guarantee />
-        <Instructor />
-        <FinalCTA />
-      </div>
+      <CohortTicker />
+      <WhoThisIsFor />
+      <WhatIsMissing />
+      <ProgrammeArc />
+      <WhatYouLeaveWith />
+      <InvestmentCommittee />
+      <FreeBeforeYouApply />
+      <WhoRunsIt />
+      <FinalCTA />
+      <FloatingCTA />
     </>
   );
 }

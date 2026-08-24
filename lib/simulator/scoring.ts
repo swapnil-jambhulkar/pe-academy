@@ -30,7 +30,7 @@ export function postMortemHardTruth(rating: PerformanceRating): string {
 }
 
 export const CONVERSION_WALL_COPY =
-  "Textbooks teach you formulas. Norland Academy teaches you execution. If you want to stop guessing on live transactions and gain the institutional reps required to run a cross-border mid-market buyout from sourcing to close, apply for the Graduate Certificate in Private Equity (GCPE) today.";
+  "Textbooks teach you formulas. The Principal Programme teaches you to source, price, structure, and defend a deal as the person accountable for the recommendation. If you have executed transactions and never owned one, apply for the twelve week cohort.";
 
 export const POSITIVE_CLOSE_COPY =
-  "Strong instincts on live deal judgment calls. The gap between theory and IC-ready execution is exactly what the apprenticeship is built to close, and it is still worth locking a cohort seat early.";
+  "Strong instincts on live deal judgment calls. The gap between theory and principal-level execution is exactly what the programme is built to close.";

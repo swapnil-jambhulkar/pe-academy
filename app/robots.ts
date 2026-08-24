@@ -7,8 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://academy.norlandcapital.co.uk/sitemap.xml",
+    sitemap: "https://norlandacademy.com/sitemap.xml",
   };
 }
-
-

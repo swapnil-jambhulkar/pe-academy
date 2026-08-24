@@ -1,4 +1,18 @@
 import FAQ from "@/components/sections/FAQ";
+import { programmeFaqs } from "@/data/programme-faq";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: programmeFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 
 export default function FAQPage() {
   return (
@@ -10,12 +24,12 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Programme structure and admissions for GCPE, PGP, and the Day One Simulator.
+            Admissions, format, and expectations for The Principal Programme and the Day One Simulator.
           </p>
         </div>
       </section>
       <FAQ showHeader={false} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </div>
   );
 }
-

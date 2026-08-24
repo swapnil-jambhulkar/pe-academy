@@ -7,59 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const faqs = [
-  {
-    question: "Are GCPE and PGP free?",
-    answer:
-      "No. GCPE and PGP are paid programmes. The Day One Simulator is free. Tuition is confirmed at offer stage after application review.",
-  },
-  {
-    question: "Do I need prior finance experience?",
-    answer:
-      "No prior finance experience is required. GCPE and PGP are designed for ambitious professionals breaking into PE from non-traditional backgrounds. Basic Excel skills and a willingness to learn are essential.",
-  },
-  {
-    question: "What if I miss a live session?",
-    answer:
-      "All live sessions are recorded and available for replay. You will have lifetime access to session recordings for your cohort.",
-  },
-  {
-    question: "What's the time commitment per week?",
-    answer:
-      "For GCPE, expect 8-10 hours per week including live sessions, assignments, and practice. PGP requires a sustained commitment across 48 weeks. The Day One Simulator is free and self-paced.",
-  },
-  {
-    question: "What's your refund policy?",
-    answer:
-      "GCPE and PGP enrolment is confirmed after offer acceptance. Cohort places are limited. Review programme details before you apply.",
-  },
-  {
-    question: "Do you guarantee job placement?",
-    answer:
-      "We do not guarantee placement. You will leave with real deal work in your portfolio, partner-level feedback, and execution proof institutions recognise.",
-  },
-  {
-    question: "What is the difference between GCPE and PGP?",
-    answer:
-      "GCPE is the 12-week technical sprint with live deal work and the graduate certificate examination. PGP is the 48-week institutional track that embeds GCPE in Term 1, then extends into deal engineering, portfolio work, and networking immersion.",
-  },
-  {
-    question: "Can I join from outside the UK?",
-    answer:
-      "Yes. Programmes are open globally. Live sessions are scheduled for UK, Europe, and US time zones where possible. Materials are delivered digitally.",
-  },
-  {
-    question: "How many cohorts per year?",
-    answer:
-      "We run rolling GCPE cohorts roughly every six weeks, limited to 10 places per cohort. PGP starts are announced selectively. Contact admissions for the next PGP intake.",
-  },
-  {
-    question: "What happens after I complete GCPE?",
-    answer:
-      "You retain lifetime alumni community access, materials, and recordings. Many participants continue to PGP or use their GCPE portfolio in interview processes.",
-  },
-];
+import { programmeFaqs } from "@/data/programme-faq";
 
 type FAQProps = {
   showHeader?: boolean;
@@ -81,7 +29,7 @@ export default function FAQ({ showHeader = true }: FAQProps) {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Everything you need to know about our programmes.
+              Admissions, format, and expectations for The Principal Programme.
             </p>
           </motion.div>
         ) : null}
@@ -94,7 +42,7 @@ export default function FAQ({ showHeader = true }: FAQProps) {
           className="max-w-3xl mx-auto"
         >
           <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
+            {programmeFaqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger className="text-left font-semibold">
                   {faq.question}

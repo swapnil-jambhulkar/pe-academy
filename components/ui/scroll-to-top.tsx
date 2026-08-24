@@ -1,54 +1,46 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsVisible(window.scrollY > 300);
+        ticking = false;
+      });
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    toggleVisibility();
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-          className="fixed bottom-8 right-8 z-50"
-        >
-          <Button
-            onClick={scrollToTop}
-            size="icon"
-            variant="default"
-            className="rounded-full shadow-lg bg-black text-white hover:bg-gray-800"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="h-5 w-5" />
-          </Button>
-        </motion.div>
+    <Button
+      onClick={scrollToTop}
+      size="icon"
+      variant="default"
+      aria-label="Scroll to top"
+      className={cn(
+        "fixed bottom-8 right-8 z-50 rounded-full shadow-lg bg-black text-white hover:bg-gray-800 transition-opacity duration-200",
+        isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       )}
-    </AnimatePresence>
+    >
+      <ArrowUp className="h-5 w-5" />
+    </Button>
   );
 }
-

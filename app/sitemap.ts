@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { INDUSTRY_PAGES } from "@/lib/seo/industry-pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://academy.norlandcapital.co.uk";
+  const baseUrl = "https://norlandacademy.com";
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -12,13 +12,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/cohort`,
+      url: `${baseUrl}/pgp`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
-      url: `${baseUrl}/pgp`,
+      url: `${baseUrl}/programme`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/apply`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,
@@ -88,6 +94,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms-of-service`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
     {
       url: `${baseUrl}/glossary/private-equity-deal-mechanics`,

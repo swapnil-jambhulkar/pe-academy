@@ -56,30 +56,30 @@ export default function DayOneSimulator() {
     if (rating.scorePercent >= 80) {
       return {
         title: "You are operating at a strong analyst baseline.",
-        body: "You are a fit for the PGP interview track. Submit your profile for partner review.",
-        primaryHref: "/contact",
-        primaryLabel: "Apply for PGP interview",
-        secondaryHref: "/cohort#admissions",
-        secondaryLabel: "Use GCPE as technical prep",
+        body: "You may be ready to apply for PGP. Submit your application with a sector thesis and transaction reflection.",
+        primaryHref: "/apply",
+        primaryLabel: "Apply for PGP",
+        secondaryHref: "/pgp",
+        secondaryLabel: "Read the PGP",
       };
     }
     if (rating.scorePercent >= 55) {
       return {
         title: "You are close to analyst-ready, with gaps to close.",
-        body: "GCPE is the fastest path to tighten execution quality before PGP evaluation.",
-        primaryHref: "/cohort#admissions",
-        primaryLabel: "Apply for GCPE",
-        secondaryHref: "/contact",
-        secondaryLabel: "Discuss PGP suitability",
+        body: "Review the PGP structure and consider whether you can commit ten to twelve hours per week before applying.",
+        primaryHref: "/pgp",
+        primaryLabel: "Read the PGP",
+        secondaryHref: "/apply",
+        secondaryLabel: "Apply anyway",
       };
     }
     return {
-      title: "You need stronger execution reps before interview track.",
-      body: "Start with GCPE fundamentals, then return to this assessment for PGP progression.",
-      primaryHref: "/cohort#admissions",
-      primaryLabel: "Start with GCPE",
+      title: "You need stronger execution reps before applying.",
+      body: "Retake the simulator after reviewing the PGP requirements, or read the curriculum before you commit to an application.",
+      primaryHref: "/pgp",
+      primaryLabel: "Read the PGP",
       secondaryHref: "/simulator",
-      secondaryLabel: "Retake simulator later",
+      secondaryLabel: "Retake simulator",
     };
   }, [rating.scorePercent]);
 
