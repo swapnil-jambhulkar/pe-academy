@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "setup:sheets": "node scripts/setup-google-sheet.mjs"
+    "setup:sheets": "node scripts/setup-google-sheet.mjs",
+    "init:sheets": "node scripts/init-sheet-tabs.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
