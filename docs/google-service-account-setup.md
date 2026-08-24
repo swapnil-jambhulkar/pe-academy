@@ -28,7 +28,23 @@ Copy the service account email (looks like `norland-form-writer@....iam.gservice
 1. Open your **Google Sheet** → Share → add that email as **Editor**
 2. Open your **resume Drive folder** → Share → add the same email as **Editor** (or Content manager)
 
-## 4. Spreadsheet ID
+## 4. Create the spreadsheet (one command)
+
+After you have the service account JSON values, run this once on your machine:
+
+```bash
+GOOGLE_SERVICE_ACCOUNT_EMAIL=your-sa@project.iam.gserviceaccount.com \
+GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n" \
+node scripts/setup-google-sheet.mjs
+```
+
+This creates **Norland Academy Submissions** with tabs `CONTACT_SUBMISSIONS`, `SIMULATOR_SUBMISSIONS`, and `APPLY_SUBMISSIONS`, each with header row matching the form fields.
+
+Copy the printed `GOOGLE_SPREADSHEET_ID` into Vercel. Do **not** commit the private key or spreadsheet ID to git.
+
+Alternatively, create a blank sheet manually and add tabs yourself (see column list below).
+
+## 5. Spreadsheet ID
 
 From the sheet URL:
 
@@ -36,7 +52,7 @@ From the sheet URL:
 
 Set `GOOGLE_SPREADSHEET_ID=SPREADSHEET_ID`
 
-Create tabs named exactly:
+Tabs required:
 
 - `CONTACT_SUBMISSIONS`
 - `SIMULATOR_SUBMISSIONS`
