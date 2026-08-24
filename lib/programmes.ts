@@ -2,6 +2,9 @@
 
 export const PAID_PROGRAMME_NOTE = "Tuition is confirmed at offer stage.";
 
+/** Official PGP application form (Google Forms). Responses collect in the linked sheet. */
+export const APPLY_FORM_URL = "https://forms.gle/TAnLstv7bMcbSVHs8";
+
 export const PROGRAMME = {
   id: "pgp",
   slug: "/pgp",

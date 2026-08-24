@@ -22,9 +22,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Local env files
-.env*.local
+# Local secrets only (never commit)
 .env
+.env*.local
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+uploads/
 
 # Vercel
 .vercel

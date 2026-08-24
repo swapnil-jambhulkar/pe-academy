@@ -28,7 +28,29 @@ Copy the service account email (looks like `norland-form-writer@....iam.gservice
 1. Open your **Google Sheet** → Share → add that email as **Editor**
 2. Open your **resume Drive folder** → Share → add the same email as **Editor** (or Content manager)
 
-## 4. Spreadsheet ID
+## 4. Create the spreadsheet
+
+**Recommended:** create a blank sheet in **your** Google account (not the service account):
+
+1. Go to [Google Sheets](https://sheets.google.com) → Blank spreadsheet
+2. Name it **Norland Academy Submissions**
+3. Share → add `norland-form-writer@winsmart-469107.iam.gserviceaccount.com` (or your service account email) as **Editor**
+4. Copy the spreadsheet ID from the URL: `https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit`
+
+Then run (creates tabs + headers):
+
+```bash
+GOOGLE_SPREADSHEET_ID=your_spreadsheet_id \
+GOOGLE_SERVICE_ACCOUNT_EMAIL=your-sa@project.iam.gserviceaccount.com \
+GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n" \
+npm run init:sheets
+```
+
+**Alternative:** `npm run setup:sheets` creates a new spreadsheet via the service account (requires Google Sheets API enabled and Drive quota available on that account).
+
+Do **not** commit the private key or spreadsheet ID to git.
+
+## 5. Spreadsheet ID
 
 From the sheet URL:
 
@@ -36,10 +58,11 @@ From the sheet URL:
 
 Set `GOOGLE_SPREADSHEET_ID=SPREADSHEET_ID`
 
-Create tabs named exactly:
+Tabs required:
 
 - `CONTACT_SUBMISSIONS`
 - `SIMULATOR_SUBMISSIONS`
+- `APPLY_SUBMISSIONS`
 
 Header row (row 1) is optional; new rows append below existing data.
 
@@ -49,7 +72,9 @@ Header row (row 1) is optional; new rows append below existing data.
 
 **SIMULATOR_SUBMISSIONS:** submittedAt, submissionId, fullName, email, phone, linkedIn, currentRole, organization, experienceLevel, peGoal, resumeFileName, resumeMimeType, resumeSizeBytes, resumeDriveUrl, driveError
 
-## 5. Vercel environment variables
+**APPLY_SUBMISSIONS:** submittedAt, submissionId, name, email, linkedIn, currentRole, firm, yearsInDealRole, location, sectorWhy, transactionReflection, weeklyCommitment
+
+## 6. Vercel environment variables
 
 ```bash
 GOOGLE_SERVICE_ACCOUNT_EMAIL=your-sa@project.iam.gserviceaccount.com
@@ -64,9 +89,10 @@ You can remove (or leave unused):
 
 - `GOOGLE_SHEETS_CONTACT_WEBHOOK_URL`
 - `GOOGLE_SHEETS_SIMULATOR_WEBHOOK_URL`
+- `GOOGLE_SHEETS_APPLY_WEBHOOK_URL`
 - `GOOGLE_SHEETS_SHARED_SECRET`
 
-## 6. Redeploy
+## 7. Redeploy
 
 Redeploy on Vercel after saving env vars, then test contact and simulator forms on production.
 

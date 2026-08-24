@@ -66,6 +66,74 @@ async function postToAppsScriptWebhook(
   }
 }
 
+export async function saveApplySubmission(payload: {
+  submittedAt: string;
+  submissionId: string;
+  name: string;
+  email: string;
+  linkedIn: string;
+  currentRole: string;
+  firm: string;
+  yearsInDealRole: string;
+  location: string;
+  sectorWhy: string;
+  transactionReflection: string;
+  weeklyCommitment: string;
+}): Promise<StorageResult> {
+  if (isGoogleApiConfigured()) {
+    try {
+      const duplicate = await contactSubmissionExists("APPLY_SUBMISSIONS", payload.submissionId);
+      if (duplicate) {
+        return { ok: true, method: "google-api", error: "", duplicate: true };
+      }
+
+      await appendSheetRow("APPLY_SUBMISSIONS", [
+        payload.submittedAt,
+        payload.submissionId,
+        payload.name,
+        payload.email,
+        payload.linkedIn,
+        payload.currentRole,
+        payload.firm,
+        payload.yearsInDealRole,
+        payload.location,
+        payload.sectorWhy,
+        payload.transactionReflection,
+        payload.weeklyCommitment,
+      ]);
+
+      return { ok: true, method: "google-api", error: "", duplicate: false };
+    } catch (error) {
+      return {
+        ok: false,
+        method: "google-api",
+        error: error instanceof Error ? error.message : "Google Sheets save failed.",
+      };
+    }
+  }
+
+  const webhookUrl = process.env.GOOGLE_SHEETS_APPLY_WEBHOOK_URL?.trim();
+  if (webhookUrl) {
+    const result = await postToAppsScriptWebhook(webhookUrl, {
+      ...payload,
+      source: "apply-form",
+    });
+    return {
+      ok: result.ok,
+      method: "apps-script-webhook",
+      error: result.error,
+      details: result.details,
+      duplicate: result.duplicate,
+    };
+  }
+
+  return {
+    ok: false,
+    method: "none",
+    error: "No Google storage configured. Set service account env vars or GOOGLE_SHEETS_APPLY_WEBHOOK_URL.",
+  };
+}
+
 export async function saveContactSubmission(payload: {
   submittedAt: string;
   submissionId: string;

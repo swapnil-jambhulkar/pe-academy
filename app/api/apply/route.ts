@@ -1,93 +1,67 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { saveContactSubmission } from "@/lib/google/submissions";
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { saveApplySubmission } from "@/lib/google/submissions";
+import { validateApplySubmission } from "@/lib/schemas/apply";
 
 type ApplyBody = {
-  name?: string;
-  email?: string;
-  linkedIn?: string;
-  currentRole?: string;
-  firm?: string;
-  yearsInDealRole?: string;
-  location?: string;
-  sectorWhy?: string;
-  transactionReflection?: string;
-  weeklyCommitment?: string;
   submissionId?: string;
-};
+} & Record<string, unknown>;
 
-function buildApplicationMessage(body: ApplyBody): string {
-  return [
-    `LinkedIn: ${body.linkedIn ?? ""}`,
-    `Current role: ${body.currentRole ?? ""}`,
-    `Firm: ${body.firm ?? ""}`,
-    `Years in deal role: ${body.yearsInDealRole ?? ""}`,
-    `Location: ${body.location ?? ""}`,
-    `Weekly commitment (10-12 hrs): ${body.weeklyCommitment ?? ""}`,
-    "",
-    "Sector and why:",
-    body.sectorWhy ?? "",
-    "",
-    "Transaction reflection:",
-    body.transactionReflection ?? "",
-  ].join("\n");
+function buildApplicationEmailHtml(data: {
+  name: string;
+  email: string;
+  linkedIn: string;
+  currentRole: string;
+  firm: string;
+  yearsInDealRole: string;
+  location: string;
+  sectorWhy: string;
+  transactionReflection: string;
+  weeklyCommitment: string;
+}): string {
+  return `
+    <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto;">
+      <h2 style="color: #000; border-bottom: 2px solid #000; padding-bottom: 10px;">
+        New Principal Programme Application
+      </h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px;">
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Name</td><td>${data.name}</td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Email</td><td><a href="mailto:${data.email}">${data.email}</a></td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">LinkedIn</td><td><a href="${data.linkedIn}">${data.linkedIn}</a></td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Current role</td><td>${data.currentRole}</td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Firm</td><td>${data.firm}</td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Years in deal role</td><td>${data.yearsInDealRole}</td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Location</td><td>${data.location}</td></tr>
+        <tr><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Weekly commitment</td><td>${data.weeklyCommitment}</td></tr>
+      </table>
+      <h3 style="margin-top: 20px; margin-bottom: 8px;">Sector and why</h3>
+      <div style="background: #f5f5f5; padding: 12px; white-space: pre-wrap;">${data.sectorWhy}</div>
+      <h3 style="margin-top: 20px; margin-bottom: 8px;">Transaction reflection</h3>
+      <div style="background: #f5f5f5; padding: 12px; white-space: pre-wrap;">${data.transactionReflection}</div>
+    </div>
+  `;
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as ApplyBody;
-    const {
-      name,
-      email,
-      linkedIn,
-      currentRole,
-      firm,
-      yearsInDealRole,
-      location,
-      sectorWhy,
-      transactionReflection,
-      weeklyCommitment,
-      submissionId,
-    } = body;
+    const validation = validateApplySubmission(body);
 
-    if (
-      !name ||
-      !email ||
-      !linkedIn ||
-      !currentRole ||
-      !firm ||
-      !yearsInDealRole ||
-      !location ||
-      !sectorWhy ||
-      !transactionReflection ||
-      !weeklyCommitment
-    ) {
-      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    if (!validation.ok) {
+      return NextResponse.json({ error: validation.error, field: validation.field }, { status: 400 });
     }
 
-    if (!EMAIL_REGEX.test(email)) {
-      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
-    }
-
-    if (weeklyCommitment !== "yes" && weeklyCommitment !== "no") {
-      return NextResponse.json({ error: "Invalid weekly commitment answer" }, { status: 400 });
-    }
-
+    const data = validation.data;
     const submittedAt = new Date().toISOString();
-    const resolvedSubmissionId =
-      submissionId || `${email.trim().toLowerCase()}-principal-${submittedAt}`;
+    const submissionId =
+      typeof body.submissionId === "string" && body.submissionId.trim()
+        ? body.submissionId.trim()
+        : `${data.email}-apply-${Date.now()}`;
 
-    const message = buildApplicationMessage(body);
-
-    const storageResult = await saveContactSubmission({
+    const storageResult = await saveApplySubmission({
       submittedAt,
-      submissionId: resolvedSubmissionId,
-      name,
-      email,
-      subject: "Principal Programme Application",
-      message,
+      submissionId,
+      ...data,
     });
 
     if (!storageResult.ok) {
@@ -111,10 +85,9 @@ export async function POST(request: NextRequest) {
     }
 
     if (!process.env.RESEND_API_KEY) {
-      console.log("Principal Programme Application:", {
-        name,
-        email,
-        submissionId: resolvedSubmissionId,
+      console.log("Principal Programme Application saved:", {
+        submissionId,
+        email: data.email,
         submittedAt,
         storage: storageResult.method,
       });
@@ -133,20 +106,9 @@ export async function POST(request: NextRequest) {
       await resend.emails.send({
         from: "Norland Academy <onboarding@resend.dev>",
         to: ["admissions@norlandacademy.com"],
-        replyTo: email,
-        subject: `Principal Programme Application: ${name}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #000; border-bottom: 2px solid #000; padding-bottom: 10px;">
-              New Principal Programme Application
-            </h2>
-            <div style="margin-top: 20px;">
-              <p><strong>Name:</strong> ${name}</p>
-              <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-              <div style="background: #f5f5f5; padding: 15px; margin-top: 10px; border-left: 3px solid #000; white-space: pre-wrap;">${message.replace(/\n/g, "<br>")}</div>
-            </div>
-          </div>
-        `,
+        replyTo: data.email,
+        subject: `Principal Programme Application: ${data.name}`,
+        html: buildApplicationEmailHtml(data),
       });
     } catch (emailError) {
       console.error("Resend email error:", emailError);

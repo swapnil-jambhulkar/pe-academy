@@ -4,11 +4,13 @@
  * Handles:
  * - Contact form payloads from app/api/contact/route.ts
  * - Simulator registration payloads from app/api/simulator/register/route.ts
+ * - Principal Programme apply payloads from app/api/apply/route.ts
  *
  * Setup:
  * 1) Create a Google Sheet with tabs:
  *    - CONTACT_SUBMISSIONS
  *    - SIMULATOR_SUBMISSIONS
+ *    - APPLY_SUBMISSIONS
  * 2) Open Extensions > Apps Script and paste this file (bound to that sheet).
  * 3) In Apps Script Project Settings > Script properties, add:
  *    - SHARED_SECRET=<same as GOOGLE_SHEETS_SHARED_SECRET>
@@ -61,6 +63,11 @@ function doPost(e) {
       });
     }
 
+    if (source === "apply-form") {
+      var applyResult = writeApplyRow(payload);
+      return jsonResponse({ ok: true, source: source, duplicate: applyResult.duplicate });
+    }
+
     return jsonResponse({ ok: false, error: "Unsupported source" }, 400);
   } catch (err) {
     return jsonResponse({ ok: false, error: String(err) }, 500);
@@ -71,7 +78,7 @@ function doGet() {
   return jsonResponse({
     ok: true,
     message: "Webhook is live. Use POST with JSON payload.",
-    sources: ["contact-form", "simulator-registration"],
+    sources: ["contact-form", "simulator-registration", "apply-form"],
     driveFolderConfigured: Boolean(
       PropertiesService.getScriptProperties().getProperty("DRIVE_FOLDER_ID")
     ),
@@ -144,6 +151,45 @@ function contactSubmissionExists_(sheet, submissionId) {
     }
   }
   return false;
+}
+
+function writeApplyRow(payload) {
+  var submissionId = String(payload.submissionId || "");
+  var sheet = getOrCreateSheet_("APPLY_SUBMISSIONS", [
+    "submittedAt",
+    "submissionId",
+    "name",
+    "email",
+    "linkedIn",
+    "currentRole",
+    "firm",
+    "yearsInDealRole",
+    "location",
+    "sectorWhy",
+    "transactionReflection",
+    "weeklyCommitment",
+  ]);
+
+  if (submissionId && contactSubmissionExists_(sheet, submissionId)) {
+    return { duplicate: true };
+  }
+
+  sheet.appendRow([
+    String(payload.submittedAt || new Date().toISOString()),
+    submissionId,
+    String(payload.name || ""),
+    String(payload.email || ""),
+    String(payload.linkedIn || ""),
+    String(payload.currentRole || ""),
+    String(payload.firm || ""),
+    String(payload.yearsInDealRole || ""),
+    String(payload.location || ""),
+    String(payload.sectorWhy || ""),
+    String(payload.transactionReflection || ""),
+    String(payload.weeklyCommitment || ""),
+  ]);
+
+  return { duplicate: false };
 }
 
 function writeSimulatorRow(payload, resumeUrl, driveError) {
