@@ -33,7 +33,7 @@ export const ACADEMY_SHARED = {
 /** GCPE: 12-week technical sprint. */
 export const GCPE = {
   id: "gcpe",
-  slug: "/apply",
+  slug: "/gcpe",
   applySlug: "/apply",
   shortName: "GCPE",
   name: "Graduate Certificate in Private Equity",

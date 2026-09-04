@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -87,6 +88,13 @@ export default function ApplyPage() {
                     <dd className="text-gray-700">{capacity}</dd>
                   </div>
                 </dl>
+                <Link
+                  href={programme.slug}
+                  className="mt-6 inline-flex items-center text-sm font-medium text-black underline-offset-4 hover:underline"
+                >
+                  Read {programme.shortName}
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" aria-hidden />
+                </Link>
               </article>
             ))}
           </div>
