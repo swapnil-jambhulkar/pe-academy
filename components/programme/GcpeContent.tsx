@@ -32,7 +32,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { APPLY_FORM_URL, GCPE, PAID_PROGRAMME_NOTE } from "@/lib/programmes";
+import {
+  APPLY_FORM_URL,
+  formatNextCohortStart,
+  GCPE,
+  PAID_PROGRAMME_NOTE,
+} from "@/lib/programmes";
 
 // 12-Week GCPE Curriculum
 const fullCurriculum = [
@@ -186,43 +191,16 @@ const gcpeProgram = {
   paymentLink: "[RAZORPAY_LINK_COHORT_12WEEK]",
 };
 
-// Rolling Cohort System - Fully Automated
-// Base date: First cohort start (April 6, 2026)
-// New cohort every 6 weeks (42 days)
-const COHORT_BASE_DATE = new Date("2026-04-06");
-const COHORT_CYCLE_DAYS = 42; // 6 weeks
-const EARLY_ENROLLMENT_CYCLE_DAYS = 15; // Rolling 15-day urgency
-
-// Total spots per cohort (GCPE only)
+// Early enrollment urgency stays on a rolling 15-day cycle.
+// Next Start always shows the following calendar month.
+const EARLY_ENROLLMENT_CYCLE_DAYS = 15;
 const TOTAL_SPOTS_GCPE = 10;
 
-// Calculate the next cohort start date (rolling every 6 weeks)
-function getNextCohortDate(): Date {
-  const now = new Date();
-  const baseTime = COHORT_BASE_DATE.getTime();
-  const nowTime = now.getTime();
-  
-  // If we're before the first cohort, return the base date
-  if (nowTime < baseTime) {
-    return new Date(COHORT_BASE_DATE);
-  }
-  
-  // Calculate how many cycles have passed
-  const daysSinceBase = Math.floor((nowTime - baseTime) / (1000 * 60 * 60 * 24));
-  const cyclesPassed = Math.floor(daysSinceBase / COHORT_CYCLE_DAYS);
-  
-  // Next cohort is the upcoming cycle
-  const nextCycleNumber = cyclesPassed + 1;
-  const nextCohortDate = new Date(baseTime + (nextCycleNumber * COHORT_CYCLE_DAYS * 24 * 60 * 60 * 1000));
-  
-  return nextCohortDate;
-}
-
-// Calculate dynamic spots filled based on day of the 15-day cycle
-// More spots fill up as the cycle progresses (creates urgency)
 function getDynamicSpotsFilled(): number {
   const now = new Date();
-  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+  const dayOfYear = Math.floor(
+    (now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24),
+  );
 
   const dayInCycle = (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS) + 1;
   const progress = dayInCycle / EARLY_ENROLLMENT_CYCLE_DAYS;
@@ -232,53 +210,44 @@ function getDynamicSpotsFilled(): number {
   return Math.floor(minFilled + progress * (maxFilled - minFilled));
 }
 
-// Calculate rolling early enrollment days (always 1-15, creates perpetual urgency)
 function getEarlyEnrollmentDaysLeft(): number {
   const now = new Date();
-  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
-  
-  // Rolling 15-day cycle - always shows between 1 and 15 days
-  const daysInCycle = ((EARLY_ENROLLMENT_CYCLE_DAYS - (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS)) % EARLY_ENROLLMENT_CYCLE_DAYS);
-  
-  // Never show 0, minimum is 1 day
+  const dayOfYear = Math.floor(
+    (now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24),
+  );
+
+  const daysInCycle =
+    (EARLY_ENROLLMENT_CYCLE_DAYS - (dayOfYear % EARLY_ENROLLMENT_CYCLE_DAYS)) %
+    EARLY_ENROLLMENT_CYCLE_DAYS;
+
   return daysInCycle === 0 ? EARLY_ENROLLMENT_CYCLE_DAYS : daysInCycle;
-}
-
-// Format cohort date for display
-function formatCohortDate(date: Date): string {
-  return date.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
-}
-
-// Format short date
-function formatShortDate(date: Date): string {
-  return date.toLocaleDateString("en-GB", { month: "short", year: "numeric" });
 }
 
 export function GcpeContent() {
   const [applicationOpen, setApplicationOpen] = useState(false);
   const [daysRemaining, setDaysRemaining] = useState(15);
-  const [nextCohortDate, setNextCohortDate] = useState<Date>(new Date());
   const [spotsFilled, setSpotsFilled] = useState(4);
+  const [cohortStartDisplay, setCohortStartDisplay] = useState(() => formatNextCohortStart("long"));
+  const [cohortStartShort, setCohortStartShort] = useState(() => formatNextCohortStart("short"));
 
   // Handle #apply anchor - open dialog when URL has #apply
   useEffect(() => {
     if (window.location.hash === "#apply") {
       setApplicationOpen(true);
-      // Remove hash from URL after opening
       window.history.replaceState(null, "", window.location.pathname);
     }
   }, []);
-  
-  // Rolling dates & dynamic spots - fully automated
+
+  // Next Start = next calendar month. Days remaining and seats stay on the rolling cycle.
   useEffect(() => {
     const updateAll = () => {
-      setNextCohortDate(getNextCohortDate());
+      setCohortStartDisplay(formatNextCohortStart("long"));
+      setCohortStartShort(formatNextCohortStart("short"));
       setDaysRemaining(getEarlyEnrollmentDaysLeft());
       setSpotsFilled(getDynamicSpotsFilled());
     };
-    
+
     updateAll();
-    // Update hourly to catch changes
     const interval = setInterval(updateAll, 1000 * 60 * 60);
 
     return () => clearInterval(interval);
@@ -287,13 +256,7 @@ export function GcpeContent() {
   const totalSpots = TOTAL_SPOTS_GCPE;
   const spotsRemaining = totalSpots - spotsFilled;
   const fillPercentage = (spotsFilled / totalSpots) * 100;
-  
-  // Early enrollment is always active (perpetual urgency)
   const isEarlyBirdActive = true;
-  
-  // Formatted dates for display
-  const cohortStartDisplay = formatCohortDate(nextCohortDate);
-  const cohortStartShort = formatShortDate(nextCohortDate);
 
   return (
     <div>
