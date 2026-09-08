@@ -5,7 +5,24 @@ export const PAID_PROGRAMME_NOTE = "Tuition is confirmed at offer stage.";
 /** Official Academy application form (Google Forms). Responses collect in the linked sheet. */
 export const APPLY_FORM_URL = "https://forms.gle/TAnLstv7bMcbSVHs8";
 
-export const NEXT_COHORT_START = "June 2026";
+/** First day of the calendar month after `from` (default: now). */
+export function getNextCohortStartDate(from: Date = new Date()): Date {
+  return new Date(from.getFullYear(), from.getMonth() + 1, 1);
+}
+
+/** Display label for next cohort start, e.g. "October 2026" or "Oct 2026". */
+export function formatNextCohortStart(
+  style: "long" | "short" = "long",
+  from: Date = new Date(),
+): string {
+  return getNextCohortStartDate(from).toLocaleDateString("en-GB", {
+    month: style === "long" ? "long" : "short",
+    year: "numeric",
+  });
+}
+
+/** Next cohort start month. Always the following calendar month. */
+export const NEXT_COHORT_START = formatNextCohortStart("long");
 
 export const ACADEMY_SHARED = {
   intro:

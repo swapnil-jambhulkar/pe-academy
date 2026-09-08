@@ -14,12 +14,12 @@ import {
 export const metadata: Metadata = {
   title: "Apply",
   description:
-    "Apply to Norland Academy. Choose GCPE (12-week sprint) or PGP (48-week full-cycle track). Live deal desks, not academic courses. Next cohort June 2026.",
+    `Apply to Norland Academy. Choose GCPE (12-week sprint) or PGP (48-week full-cycle track). Live deal desks, not academic courses. Next cohort ${NEXT_COHORT_START}.`,
   alternates: { canonical: "/apply" },
   openGraph: {
     title: "Apply | Norland Academy",
     description:
-      "Two pathways: GCPE twelve-week sprint and PGP forty-eight-week full-cycle track. Live pipeline deals. Next cohort June 2026.",
+      `Two pathways: GCPE twelve-week sprint and PGP forty-eight-week full-cycle track. Live pipeline deals. Next cohort ${NEXT_COHORT_START}.`,
     url: "/apply",
     type: "website",
   },
