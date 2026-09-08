@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { label: "GCPE", href: "/gcpe" },
   { label: "PGP", href: "/pgp" },
   { label: "Forum", href: "/guild" },
   { label: "Simulator", href: "/simulator" },
@@ -43,6 +44,9 @@ export default function Header() {
   const isActive = (href: string) => {
     if (href === "/pgp") {
       return pathname === "/pgp" || pathname === "/programme" || pathname.startsWith("/pgp/");
+    }
+    if (href === "/gcpe") {
+      return pathname === "/gcpe" || pathname.startsWith("/gcpe/");
     }
     return pathname === href || pathname.startsWith(`${href}/`);
   };

@@ -7,12 +7,12 @@ const nextConfig = {
     return [
       {
         source: "/cohort",
-        destination: "/pgp",
+        destination: "/gcpe",
         permanent: true,
       },
       {
         source: "/cohort/:path*",
-        destination: "/pgp",
+        destination: "/gcpe",
         permanent: true,
       },
       {
